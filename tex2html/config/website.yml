@@ -16,6 +16,8 @@ chapters:
   - 01_Context
   - 02_EthicalDevelopment
   - 03_GroupFairness
+  - 04_IndividualFairness
+  - 05_InequalityIndices
 
 figureFileTypes:
   - png

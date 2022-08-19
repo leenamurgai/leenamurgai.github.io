@@ -6,7 +6,7 @@ def update_website_files():
 
     def replace_oldfile_w_newfile(old_file, new_file):
         print('Replace: ', new_file)
-        os.system('rm '+old_file)
+        os.system('rm -f '+old_file)
         os.system('cp '+new_file+' '+old_file)
 
     # 1. load the list of online book files, folders and fileTypes
@@ -22,6 +22,7 @@ def update_website_files():
     for chapter in vars['chapters']:
         fig_folder = os.path.join(chapter, 'figures')
         destination_folder = os.path.join(vars['onlineBookFolder'],fig_folder)
+        os.system('mkdir -p '+destination_folder)
         files = []
         for ext in vars['figureFileTypes']:
             fig_files = [f for f in os.listdir(fig_folder) if (os.path.isfile(os.path.join(fig_folder, f)) and f.endswith(ext))]
@@ -37,6 +38,7 @@ def update_website_files():
         destination_folder = os.path.join(vars['onlineBookFolder'],
                                           tex2html_folder)
         # Make a list of files in the folder that end with the file ext
+        os.system('mkdir -p '+destination_folder)
         files = [f for f in os.listdir(tex2html_folder)
         if (os.path.isfile(os.path.join(tex2html_folder, f)) and f.endswith(ext))]
         for file in files:
