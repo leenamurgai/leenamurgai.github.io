@@ -13,6 +13,7 @@ $endif$
 $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
 $endif$
+  <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
   <meta property="og:title" content="Mitigating Bias in Machine Learning">
@@ -57,10 +58,10 @@ $if(subtitle)$
 <p class="subtitle">$subtitle$</p>
 $endif$
 $if(author)$
-<p class="byline">$author$</p>
+<p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">$author$</a></p>
 $endif$
 $if(date)$
-<p class="byline">$date$</p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">$date$</a></p>
 $endif$
 </header>
 $endif$
