@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Dr Leena Murgai">
-  <meta name="dcterms.date" content="2022-08-29">
+  <meta name="dcterms.date" content="2022-09-04">
   <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
@@ -32,7 +32,7 @@
 <header>
 <h1 class="title">Mitigating Bias in Machine Learning</h1>
 <p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">Dr Leena Murgai</a></p>
-<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">29 August 2022</a></p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer"> 4 September 2022</a></p>
 </header>
 <div class="TOC">
 <nav id="TOC">
@@ -303,7 +303,7 @@
 </section>
 <section id="what-kind-of-bias" class="level3" data-number="1.1.3">
 <h3 data-number="1.1.3"><span class="header-section-number">1.1.3</span> What Kind of Bias?</h3>
-<p><em>Bias</em> can have numerous different meanings depending on the context even within the same subject. Let’s talk about the kinds of biases that are relevant here. The word bias is used to describe systematic errors in variable estimation (predictions) from data. If the goal is to create systems that work similarly well for all types of people, we certainly want to avoid these. In a social context, bias is spoken of as prejudice or discrimination based on characteristics that we as a society deem to be unacceptable or unfair. Systemic discrimination exists and it shows up in the data in numerous different ways, in historical decisions, who is in it (and who is not). Bias need not be conscious, in reality it starts at the very inception of technology, in deciding which problems are worth solving in the first place. Bias exists in how we measure the cost and benefit of new technologies. For sociotechnical systems, these are all deeply intertwined.</p>
+<p><em>Bias</em> can have numerous different meanings depending on the context even within the same subject. Let’s talk about the kinds of biases that are relevant here. The word bias is used to describe systematic errors in variable estimation (predictions) from data. If the goal is to create systems that work similarly well for all types of people, we certainly want to avoid these. In a social context, bias is spoken of as prejudice or discrimination in a given context, based on characteristics that we as a society deem to be unacceptable or unfair (for example hiring practices that systematically disadvantage some groups over others). Bias can also manifest in social contexts if a system fails to adequately discriminate based on characteristics that are relevant to the problem (for example systematically higher rates of error in gender recognition systems for some groups compared to others). Systemic bias and discrimination exists and it shows up in the data in numerous different ways, in historical decisions, who is in it (and who is not). Bias need not be conscious, in reality it starts at the very inception of technology, in deciding which problems are worth solving in the first place. Bias exists in how we measure the cost and benefit of new technologies. For sociotechnical systems, these are all deeply intertwined.</p>
 <p>Ultimately, mitigating bias in our models is about fairness and in this book we shall use the terms interchangeably. Machine learning models are capable of not only of proliferating existing societal biases, but amplifying them and are easily deployed at scale. But how do we even define fairness? And from whose perspective do we mean fair? The law can provide <em>some</em> context here. Laws, in many cases, define <em>protected</em> characteristics and domains (we’ll talk more about these later). We can potentially use these as a guide and we certainly have a responsibility to be law abiding citizens. A common approach historically has been to ignore protected characteristics. There’s a few reasons for this. One reason is the false belief that, an algorithm cannot discriminate based on features not included in the data. This assumption is is easy to disprove with a counter example. A reasonably fool-proof way to systematically discriminate by race or rather ethnicity (without explicitly using it), is to discriminate by location/residence; that is, another variable that’s strongly correlated and serves as a proxy. The legality of this practice depends on the domain. In truth, you don’t need a feature, or a proxy, to discriminate based on it, you just need enough data, to be able to predict it. If it is predictable, the information there and the algorithm is likely using it. Another reason for ignoring protected features is avoiding legal liability (we’ll talk more about this when we take a legal perspective later in the chapter).</p>
 <section id="example-amazon-prime-same-day-delivery-service" class="level4 unnumbered">
 <h4 class="unnumbered">Example: Amazon Prime same day delivery service</h4>
@@ -1567,24 +1567,30 @@
 <div class="chapsumm">
 <p><strong>This chapter at a glance</strong></p>
 <ul>
-<li><p>Group fairness concept and metrics</p></li>
+<li><p>Group fairness concepts and metrics</p></li>
 <li><p>Comparing different group fairness metrics</p></li>
 <li><p>Incompatibility of group fairness criteria</p></li>
 </ul>
 </div>
-<p>The term <em>group fairness</em> is used to describe a class of metrics that are used to measure discrimination or bias in a given decision process (algorithmic or otherwise). In this chapter we will introduce the different types of group fairness metrics in a structured way. We will become familiar with the terminology for well known metrics and we will compare and analyse them, in terms of their meaning and potential implications. We’ll derive results that show how the various fairness metrics discussed, can in fact be incompatible in certain cases; that is to say, they cannot be satisfied simultaneously except in some degenerate cases. The goal of this chapter, is to develop a deeper understanding of group fairness and it’s associated metrics, that will enable us to make more educated decisions about which metrics might offer valuable insights for a given problem.</p>
-<p>Group fairness metrics all stem from the same high level notion of fairness; the idea that in a fair system, some <em>property</em> should be similar for different <em>subgroups</em> of a population. The <em>subgroups</em> are typically determined by the values of <em>protected characteristics</em> such as gender or ethnicity. We might also describe these as <em>sensitive features</em>. Partitions of the population could be defined by a single feature or logical conjunctions of multiple sensitive features if we are interested in measuring <em>intersectional</em> disparities. For example, if we were considering both race and gender simultaneously, one group of the partition might be Black women, another White men, and so on. The <em>property</em> we’ll be interested in comparing will be some statistical measure; the particular kind, will depend on our beliefs about what fairness should mean in the context of the problem.</p>
+<p>The term <em>group fairness</em> is used to describe a class of metrics that are used to measure discrimination or bias across specific subgroups of a population, in a given decision process (algorithmic or otherwise). In this chapter we will introduce group fairness metrics in a structured way, and familiarise ourselves with the terminology for well known metrics. We will compare and analyse the different categories of groups fairness metrics in terms of their assumptions, interpretation and potential implications. We’ll prove that the different classes of metrics cannot be satisfied simultaneously except in some degenerate cases. The goal of this chapter, is to develop a deeper understanding of different group fairness metrics, that will enable us to make more educated decisions about which metrics might offer paricularly valuable insights for a given problem.</p>
+<p>At the implementation level, all group fairness metrics indicate the extent to which, some <em>statistical property</em> differs between different <em>subgroups</em> of a population. The <em>subgroups</em> are typically determined by the values of <em>protected characteristics</em> such as gender or ethnicity. We might also describe these as <em>sensitive features</em>. Partitions of the population could be defined by a single feature or logical conjunctions of multiple sensitive features if we are interested in <em>intersectional fairness</em>. For example, if we were considering both race and gender simultaneously, one group of the partition might be Black women, another White men, and so on (more about this later). The <em>statistical property</em> we’ll be interested in comparing will depend on our beliefs about what fairness should mean in the context of the problem.</p>
 <p>We broadly classify group fairness criteria into two types; those comparing <em>outcomes</em> across groups and those comparing <em>errors</em>. We discussed examples of both in chapter <a href="#ch_Background" data-reference-type="ref" data-reference="ch_Background">1</a>. Recall that in section <a href="#sec_SimpsParadox" data-reference-type="ref" data-reference="sec_SimpsParadox">1.4</a>, we compared outcomes (acceptance rates) for male and female applicants to Berkeley as an example of Simpson’s rule. In section <a href="#sec_harms" data-reference-type="ref" data-reference="sec_harms">1.5</a>, we discussed Gender Shades, a project that compared the errors (or equivalently accuracy) of a set of gender recognition systems, across subgroups defined by skin tone and gender. We’ll see how in general group fairness criterion can be understood as independence constraints on the joint distributions of the non-sensitive features <span class="math inline">\(X\)</span>, sensitive features, <span class="math inline">\(Z\)</span>, the target variable <span class="math inline">\(Y\)</span> and predicted target <span class="math inline">\(\hat{Y}\)</span> (or rather <span class="math inline">\(P\)</span> for a classification problem where we want our fairness criteria to hold for all thresholds). For brevity, we will express all constraints in terms of <span class="math inline">\(\hat{Y}\)</span>, but keep in mind that for classification problems we might want to instead impose it on the score <span class="math inline">\(P\)</span>. We will introduce the necessary mathematical notation as required throughout this book. A helpful summary is provided in the preamble on page .</p>
 <section id="sec_BalOut" class="level2" data-number="3.1">
 <h2 data-number="3.1"><span class="header-section-number">3.1</span> Comparing Outcomes</h2>
-<p>First we look at fairness constraints on the relationship between the sensitive features <span class="math inline">\(Z\)</span>, and the predicted target <span class="math inline">\(\hat{Y}\)</span> (or rather <span class="math inline">\(Y\)</span> if we are interested in measuring the fairness of our data rather than our model). We’ll discuss two fairness criteria. In the first we require the outcome <span class="math inline">\(\hat{Y}\)</span>, to be marginally (unconditionally) independent of the sensitive features <span class="math inline">\(Z\)</span>. In the second we are essentially trying to establish cause; we require the outcome <span class="math inline">\(\hat{Y}\)</span> to be independent of the sensitive features <span class="math inline">\(Z\)</span> when conditioned on all other (non-sensitive) features <span class="math inline">\(X\)</span>. We’ll describe the latter as the twin test, that is <span class="math inline">\(\hat{Y}\)</span> and <span class="math inline">\(Z\)</span> being independent ceteris paribus (all else, or rather all other variables <span class="math inline">\(X\)</span>, being equal).</p>
+<p>First we look at fairness constraints on the relationship between the sensitive features <span class="math inline">\(Z\)</span>, and the predicted target <span class="math inline">\(\hat{Y}\)</span> (or rather <span class="math inline">\(Y\)</span> if we are interested in understanding our data rather than our model output). We’ll discuss two fairness criteria. In the first we require the outcome <span class="math inline">\(\hat{Y}\)</span>, to be marginally (unconditionally) independent of the sensitive features <span class="math inline">\(Z\)</span>. In the second we are essentially trying to establish cause; we require the outcome <span class="math inline">\(\hat{Y}\)</span> to be independent of the sensitive features <span class="math inline">\(Z\)</span> when conditioned on all other (non-sensitive) features <span class="math inline">\(X\)</span>. We’ll describe the latter as the twin test, that is <span class="math inline">\(\hat{Y}\)</span> and <span class="math inline">\(Z\)</span> being independent ceteris paribus (all else, or rather all other variables <span class="math inline">\(X\)</span>, being equal).</p>
 <section id="independence" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1"><span class="header-section-number">3.1.1</span> Independence</h3>
-<p>Of all the fairness criteria, independence is the most well known and that which (as we’ll see later), imposes the strongest constraint. It requires the target variable to be marginally (unconditionally) independent of the sensitive feature, that is, <span class="math inline">\(\hat{Y} \bot Z\)</span>. This is true, if and only if (<span class="math inline">\(\iff\)</span>) the probability distribution of the target variable <span class="math inline">\(f_{\hat{Y}}(y)\)</span>, is the same for all values of the sensitive feature <span class="math inline">\(Z\)</span>, that is, <span class="math inline">\(f_{\hat{Y}|Z}(y)=f_{\hat{Y}}(y)\)</span>. For a discrete target variable we can say <span class="math display">\[\hat{Y} \bot Z \quad \iff \quad \mathbb{P}(\hat{Y}=\hat{y}|Z=z) = \mathbb{P}(\hat{Y}=\hat{y}) \quad \forall \quad y \in \mathcal{Y}, \quad z \in \mathcal{Z},\]</span> or <span class="math inline">\(\mathbb{P}(\hat{y}|z)=\mathbb{P}(\hat{y})\)</span> in our abbreviated notation.</p>
-<p>Independence might be viewed as addressing disparate impact, since we are only interested in the relationship between the outcome and sensitive feature. Recall that for the 1973 Berkeley admissions example in section <a href="#sec_SimpsParadox" data-reference-type="ref" data-reference="sec_SimpsParadox">1.4</a>, we looked at independence criterion, by comparing acceptance rates across the sensitive feature gender. Imposing independence is a strong expression of the view that fairness is equality. It might be interpreted as the notion that abilities (or features of importance <span class="math inline">\(X\)</span>, in determining <span class="math inline">\(Y\)</span>) in all groups are, or should be, similarly distributed; the belief that observed differences in the joint distributions in training data are a manifestation of unfair discrimination, rather than inherent differences in people belonging to groups that differ by their sensitive features <span class="math inline">\(Z\)</span>.</p>
+<p>Of all fairness criteria, independence is undoubtably the most well known. It requires the target variable to be unconditionally (marginally) <em>independent</em> of the sensitive feature, that is, <span class="math inline">\(\hat{Y} \bot Z\)</span>. This is true if and only if (<span class="math inline">\(\iff\)</span>), the probability distribution of the target variable <span class="math inline">\(f_{\hat{Y}}(y)\)</span>, is the same for all values of the sensitive feature <span class="math inline">\(Z\)</span>; that is, <span class="math inline">\(f_{\hat{Y}|Z}(y)=f_{\hat{Y}}(y)\)</span>. For a discrete target variable we require <span class="math display">\[\hat{Y} \bot Z \quad \iff \quad \mathbb{P}(\hat{Y}=\hat{y}|Z=z) = \mathbb{P}(\hat{Y}=\hat{y}) \quad \forall \quad y \in \mathcal{Y}, \quad z \in \mathcal{Z},\]</span> or <span class="math inline">\(\mathbb{P}(\hat{y}|z)=\mathbb{P}(\hat{y})\)</span> in our abbreviated notation.</p>
+<p>Recall that for the 1973 Berkeley admissions example in section <a href="#sec_SimpsParadox" data-reference-type="ref" data-reference="sec_SimpsParadox">1.4</a>, we looked at independence criterion, by comparing acceptance rates across the sensitive feature gender. Independence has been interpreted as addressing disparate impact<span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[49]</a></span><span class="marginnote"><span id="ref-DispMistreat" class="csl-entry" role="doc-biblioentry">
+<span class="csl-left-margin">[49] </span><span class="csl-right-inline">M. B. Zafar, I. Valera, M. Gomez Rodriguez, and K. P. Gummadi, <span>“Fairness beyond disparate treatment &amp; disparate impact,”</span> <em>Proceedings of the 26th International Conference on World Wide Web</em>, 2017, doi: <a href="https://doi.org/10.1145/3038912.3052660">10.1145/3038912.3052660</a>.</span>
+</span>
+</span>, since we are only interested in the relationship between the outcome and sensitive feature. Independence criterion might be interpreted as a strong expression of fairness as equality; the belief or assumption that any differences in the target between subgroups, are a direct result of structural injustice<span class="citation" data-cites="GrpIndConflict"><a href="#ref-GrpIndConflict" role="doc-biblioref">[50]</a></span><span class="marginnote"><span id="ref-GrpIndConflict" class="csl-entry" role="doc-biblioentry">
+<span class="csl-left-margin">[50] </span><span class="csl-right-inline">R. Binns, <span>“On the apparent conflict between individual and group fairness.”</span> arXiv, 2019. doi: <a href="https://doi.org/10.48550/ARXIV.1912.06883">10.48550/ARXIV.1912.06883</a>.</span>
+</span>
+</span>. It’s important to acknowledge that if independence is not satisfied by the data, imposing it on a model implies a level of distrust in the data or model. Independence metrics provide valuable insight and in some cases trying to achieve independence might even make sense as a corrective measure; but if differences are large it should naturally lead us to question the suitability of the data and modelling of the problem before introducing technical interventions.</p>
 <section id="measures-of-independence" class="level4 unnumbered">
 <h4 class="unnumbered">Measures of independence</h4>
-<p>Below we will define a range of fairness metrics, which are all derived from the notion of independence. Along the way, we will familiarise ourselves with some of the terminology used to describe the various independence metrics that are commonly analysed. In each case the metric provides some measure, of how far from independent, the target variable and sensitive feature are. Notice that independence imposes a constraint on only two random variables, the predicted target <span class="math inline">\(\hat{Y}\)</span> and sensitive feature <span class="math inline">\(Z\)</span>. In the equations that follow, we provide metrics that quantify the fairness of our model output <span class="math inline">\(\hat{Y}\)</span>, but we could equally well replace the predicted target variable <span class="math inline">\(\hat{Y}\)</span>, with the actual target variable <span class="math inline">\(Y\)</span> to assess the fairness of our data under the same criterion.</p>
+<p>In this section we will define a range of fairness metrics derived from the notion of independence. Along the way, we will familiarise ourselves with some of the terminology used to describe them. In the equations that follow, we provide metrics that quantify the extent of the relationship between our model output <span class="math inline">\(\hat{Y}\)</span> and sensitive feature <span class="math inline">\(Z\)</span>, but we could equally well replace the predicted target variable <span class="math inline">\(\hat{Y}\)</span>, with the actual target <span class="math inline">\(Y\)</span> to assess our data under the same criterion.</p>
 <p><strong>Mutual information</strong>, denoted <span class="math inline">\(I\)</span>, is popular in information theory for measuring dependence between random variables.</p>
 <div id="eq:MutualInfo">
 <table style="width:99%;">
@@ -1595,15 +1601,16 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
-I(\hat{Y},Z) = \int_{\hat{y} \in \mathcal{Y}} \int_{z \in \mathcal{Z}}
-f_{\hat{Y},Z}(\hat{y},z) \log \frac{f_{\hat{Y},Z}(\hat{y},z)}{f_{\hat{Y}}(\hat{y})f_Z(z)}\,\mathrm{d}z\,\mathrm{d}\hat{y}.\]</span></td>
+I(\hat{Y},Z) = \sum_{z \in \mathcal{Z}} \,\, \int_{\hat{y} \in \mathcal{Y}}
+f_{\hat{Y},Z}(\hat{y},z) \log \frac{f_{\hat{Y},Z}(\hat{y},z)}
+{f_{\hat{Y}}(\hat{y})\mathbb{P}(z)}\,\mathrm{d}\hat{y}.\]</span></td>
 <td style="text-align: right;">(3.1)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>It is equal to zero, if and only if the joint distribution of <span class="math inline">\(Z\)</span> and <span class="math inline">\(\hat{Y}\)</span> is equal to the product of their marginal distributions, that is if <span class="math inline">\(f_{\hat{Y},Z}(\hat{y},z)=f_{\hat{Y}}(\hat{y})f_Z(z)\)</span>. Therefore, two variables which have zero mutual information are independent. The <strong>normalised prejudice index</strong><span class="citation" data-cites="Fukuchi"><a href="#ref-Fukuchi" role="doc-biblioref">[49]</a></span><span class="marginnote"><span id="ref-Fukuchi" class="csl-entry" role="doc-biblioentry">
-<span class="csl-left-margin">[49] </span><span class="csl-right-inline">K. Fukuchi, J. Sakuma, and T. Kamishima, <span>“Prediction with model-based neutrality,”</span> <em>IEICE TRANS. INF. &amp; SYS.</em>, vol. E98–D, no. 8, 2015, doi: <a href="https://doi.org/Fukuchi">Fukuchi</a>.</span>
+<p>It is equal to zero, if and only if the joint distribution of <span class="math inline">\(Z\)</span> and <span class="math inline">\(\hat{Y}\)</span> is equal to the product of their marginal distributions, that is if <span class="math inline">\(f_{\hat{Y},Z}(\hat{y},z)=f_{\hat{Y}}(\hat{y})\mathbb{P}(z)\)</span>. Therefore, two variables which have zero mutual information are independent. The <strong>normalised prejudice index</strong><span class="citation" data-cites="Fukuchi"><a href="#ref-Fukuchi" role="doc-biblioref">[51]</a></span><span class="marginnote"><span id="ref-Fukuchi" class="csl-entry" role="doc-biblioentry">
+<span class="csl-left-margin">[51] </span><span class="csl-right-inline">K. Fukuchi, J. Sakuma, and T. Kamishima, <span>“Prediction with model-based neutrality,”</span> <em>IEICE TRANS. INF. &amp; SYS.</em>, vol. E98–D, no. 8, 2015, doi: <a href="https://doi.org/10.1587/transinf.2014EDP7367">10.1587/transinf.2014EDP7367</a>.</span>
 </span>
 </span> divides mutual information by a normalising factor so that the resulting value falls between zero and one:</p>
 <div id="eq:npi">
@@ -1621,8 +1628,8 @@ r_{\text{npi}} = \frac{I(\hat{Y},Z)}{\sqrt{H(\hat{Y})H(Z)}},\]</span></td>
 </tbody>
 </table>
 </div>
-<p>where</p>
-<div id="eq:entropy">
+<p>where <span class="math inline">\(H\)</span> is the entropy,</p>
+<div id="eq:entropyY">
 <table style="width:99%;">
 <colgroup>
 <col style="width: 90%" />
@@ -1637,24 +1644,39 @@ H(Y) = -\int_{y \in \mathcal{Y}} f_Y(y) \log f_Y(y)\,\mathrm{d}y,\]</span></td>
 </tbody>
 </table>
 </div>
-<p>is the entropy. We have provided the formula for continuous random variables, for discrete variables we simply replace the integrals with sums.</p>
+<p>and</p>
+<div id="eq:entropyZ">
+<table style="width:99%;">
+<colgroup>
+<col style="width: 90%" />
+<col style="width: 9%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math display">\[
+H(Z) = -\sum_{z \in \mathcal{Z}} \mathbb{P}(z) \log \mathbb{P}(z),\]</span></td>
+<td style="text-align: right;">(3.4)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In the above equation we assume a continuous target variable, for classification problems we can replace the integrals in equations (3.1) and (3.4) with sumations.</p>
 <div class="lookbox">
 <p><strong>Exercise: Normalised prejudice index</strong></p>
 <p>Write a function that takes two arrays <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> of categorical features and returns the normalised prejudice index. Hint:</p>
 <ol>
 <li><p>Compute the probability distributions <span class="math inline">\(\mathbb{P}(y)\)</span>, <span class="math inline">\(\mathbb{P}(z)\)</span> and <span class="math inline">\(\mathbb{P}(y,z)\)</span>. Note that these can be thought of as the frequency with which each event occurs.</p></li>
-<li><p>Compute the entropies <span class="math inline">\(H(y)\)</span> and <span class="math inline">\(H(z)\)</span> shown in equation (3.3) and use these to compute the normalising factor, <span class="math inline">\(\sqrt{H(y)H(z)}\)</span>.</p></li>
+<li><p>Compute the entropies <span class="math inline">\(H(y)\)</span> and <span class="math inline">\(H(z)\)</span> shown in equations and (3.4). Use these to compute the normalising factor, <span class="math inline">\(\sqrt{H(y)H(z)}\)</span>.</p></li>
 <li><p>Compute the mutual information <span class="math inline">\(I(z,y)\)</span> shown in equation (3.1) and divide by the normalising factor.</p></li>
 </ol>
 <p>Test your implementation against scikit-learn’s: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.normalized_mutual_info_score.html">sklearn.metrics.normalized_mutual_info_score</a>.<br />
 <a href="#GF_NPI">Solution</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
 </div>
-<p>A simple relaxation of independence requires only the mean predicted target variable (rather than the full distribution) to be equal for all values of the sensitive feature, that is, <span class="math display">\[\mathbb{E}(\hat{Y} | Z=a) = \mathbb{E}(\hat{Y} | Z=b).\]</span> A popular metric derived from this for regression problems is called the <strong>mean difference</strong> (illustrated in Figure <a href="#fig:distributions" data-reference-type="ref" data-reference="fig:distributions">3.1</a>) which (as the name suggests) looks at the difference between the mean predictions for different partitions of the population based on the sensitive feature <span class="math inline">\(Z\)</span>, <span class="math display">\[d = \mathbb{E}(\hat{Y} | Z=a) - \mathbb{E}(\hat{Y} | Z \ne a).\]</span></p>
+<p>A simple relaxation of independence requires only the mean predicted target variable (rather than the full distribution) to be equal for all values of the sensitive feature, that is, <span class="math display">\[\mathbb{E}(\hat{Y} | Z=a) = \mathbb{E}(\hat{Y} | Z=b).\]</span> We could measure the extent of the disparity by taking the ratio or the difference of the expectations; the latter is more commonly used. The <strong>mean difference</strong> (illustrated in Figure <a href="#fig:distributions" data-reference-type="ref" data-reference="fig:distributions">3.1</a>) which (as the name suggests) looks at the difference between the mean predictions for different partitions of the population based on the sensitive feature <span class="math inline">\(Z\)</span>, <span class="math display">\[d = \mathbb{E}(\hat{Y} | Z=a) - \mathbb{E}(\hat{Y} | Z \ne a).\]</span></p>
 <figure>
 <img src="03_GroupFairness/figures/Fig_distributions.png" id="fig:distributions" alt="Figure 3.1: Visualisation of the mean difference for a continuous target variable." /><figcaption aria-hidden="true">Figure 3.1: Visualisation of the mean difference for a continuous target variable.</figcaption>
 </figure>
-<p>Taking the simplest example of discrete binary classifier where we have a binary sensitive feature. We can write the requirement of independence as, <span class="math display">\[\mathbb{P}(\hat{Y}=1 | Z=1) = \mathbb{P}(\hat{Y}=1 | Z=0).\]</span> This criterion goes by many names in research literature - <strong>demographic parity</strong>, <strong>statistical parity</strong> and <strong>parity impact</strong>, among others.</p>
-<p>With this criterion for fairness of a classifier, we can quantify the disparity by looking at the difference or the ratio of the probabilities for each sensitive feature. Both are straightforward to calculate given the 2 <span class="math inline">\(\times\)</span> 2 contingency table (Table <a href="#tbl:independence" data-reference-type="ref" data-reference="tbl:independence">3.1</a>) summarising the observed relationship between the sensitive feature and outcome. Each cell of the contingency table shows the number of examples satisfying the conditions given in the corresponding row and column headers. So for example, <span class="math inline">\(n_{01}\)</span> is the number of data points for which <span class="math inline">\(Z=0\)</span> and <span class="math inline">\(\hat{Y}=1\)</span>.</p>
+<p>Taking the simplest example of discrete binary classifier where we have a binary sensitive feature. We can write the requirement of independence as, <span class="math display">\[\mathbb{P}(\hat{Y}=1 | Z=1) = \mathbb{P}(\hat{Y}=1 | Z=0).\]</span> This criterion goes by many names in research literature - <strong>demographic parity</strong>, <strong>statistical parity</strong> and <strong>parity impact</strong>, among others. We can quantify the disparity by looking at the difference or the ratio of the acceptance rates for each sensitive feature. Both are straightforward to calculate given the 2 <span class="math inline">\(\times\)</span> 2 contingency table (Table <a href="#tbl:independence" data-reference-type="ref" data-reference="tbl:independence">3.1</a>), which summarises the observed relationship between the sensitive feature and outcome. Each cell of the contingency table shows the number of examples satisfying the conditions given in the corresponding row and column headers. So for example, <span class="math inline">\(n_{01}\)</span> is the number of data points for which <span class="math inline">\(Z=0\)</span> and <span class="math inline">\(\hat{Y}=1\)</span>.</p>
 <div id="tbl:independence">
 <table>
 <caption>Table 3.1: Contingency table for prediction against the sensitive feature.</caption>
@@ -1688,9 +1710,9 @@ H(Y) = -\int_{y \in \mathcal{Y}} f_Y(y) \log f_Y(y)\,\mathrm{d}y,\]</span></td>
 </tbody>
 </table>
 </div>
-<p>In bio-medical sciences, the <strong>risk difference</strong>: <span class="math display">\[d = \mathbb{P}(\hat{Y}=1 | Z=1) - \mathbb{P}(\hat{Y}=1 | Z=0)
-  = \frac{n_{11}}{n_{Z=1}} - \frac{n_{01}}{n_{Z=0}},\]</span> measures the impact of treatment (or risk factors), <span class="math inline">\(Z\)</span> on outcome, <span class="math inline">\(\hat{Y}\)</span>. In discrimination literature, it has been described as the <strong>discrimination score</strong> and <strong>statistical parity difference</strong> among others. Note that if <span class="math inline">\(\hat{Y}=1\)</span> is the advantageous outcome and <span class="math inline">\(Z=1\)</span> is the advantaged group, we would expect <span class="math inline">\(d\)</span> to be non-negative. The algorithm is fair when <span class="math inline">\(d=0\)</span>. The further from zero, the more unfair. A modified version of this metric is the <strong>normalised difference</strong><span class="citation" data-cites="Zliobaite"><a href="#ref-Zliobaite" role="doc-biblioref">[50]</a></span><span class="marginnote"><span id="ref-Zliobaite" class="csl-entry" role="doc-biblioentry">
-<span class="csl-left-margin">[50] </span><span class="csl-right-inline">I. Zliobaite, <span>“On the relation between accuracy and fairness in binary classification.”</span> 2015.Available: <a href="https://arxiv.org/abs/1505.05723">https://arxiv.org/abs/1505.05723</a></span>
+<p>In bio-medical sciences, the <strong>risk difference</strong>: <span class="math display">\[d = \mathbb{P}(\hat{Y}=1 | Z=0) - \mathbb{P}(\hat{Y}=1 | Z=1)
+  = \frac{n_{11}}{n_{Z=0}} - \frac{n_{01}}{n_{Z=1}},\]</span> measures the impact of treatment (or risk factors), <span class="math inline">\(Z\)</span> on outcome, <span class="math inline">\(\hat{Y}\)</span>. In discrimination literature, it has been described as the <strong>discrimination score</strong> and <strong>statistical parity difference</strong> among others. Note that if <span class="math inline">\(\hat{Y}=1\)</span> is the advantageous outcome and <span class="math inline">\(Z=1\)</span> is the advantaged group, we would expect <span class="math inline">\(d\)</span> to be negative. The algorithm is fair when <span class="math inline">\(d=0\)</span>. The further from zero, the greater the disparity. A modified version of this metric is the <strong>normalised difference</strong><span class="citation" data-cites="Zliobaite"><a href="#ref-Zliobaite" role="doc-biblioref">[52]</a></span><span class="marginnote"><span id="ref-Zliobaite" class="csl-entry" role="doc-biblioentry">
+<span class="csl-left-margin">[52] </span><span class="csl-right-inline">I. Zliobaite, <span>“On the relation between accuracy and fairness in binary classification.”</span> 2015.Available: <a href="https://arxiv.org/abs/1505.05723">https://arxiv.org/abs/1505.05723</a></span>
 </span>
 </span> which divides the difference by,</p>
 <div id="eq:dmax">
@@ -1706,7 +1728,7 @@ d_{\max} = \min\left\{ \frac{\mathbb{P}(\hat{Y}=1)}{\mathbb{P}(Z=1)},
                        \frac{\mathbb{P}(\hat{Y}=0)}{\mathbb{P}(Z=0)} \right\}
 = \min\left\{ \frac{n_{\hat{Y}=1}}{n_{Z=1}},
               \frac{n_{\hat{Y}=0}}{n_{Z=0}} \right\},\]</span></td>
-<td style="text-align: right;">(3.4)</td>
+<td style="text-align: right;">(3.5)</td>
 </tr>
 </tbody>
 </table>
@@ -1717,15 +1739,15 @@ d_{\max} = \min\left\{ \frac{\mathbb{P}(\hat{Y}=1)}{\mathbb{P}(Z=1)},
 <p>Show that <span class="math display">\[d_{\max} = \min\left\{ \frac{\mathbb{P}(\hat{Y}=1)}{\mathbb{P}(Z=1)},
                        \frac{\mathbb{P}(\hat{Y}=0)}{\mathbb{P}(Z=0)} \right\}.\]</span> <a href="#GF_SPDmax">Solution</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
 </div>
-<p>Alternatively, we could instead take the ratio as a measure of discrimination: <span class="math display">\[r = \frac{\mathbb{P}(\hat{Y}=1 | Z=1)}{\mathbb{P}(\hat{Y}=1 | Z=0)}
-  = \frac{n_{11}/n_{Z=1}}{n_{01}/n_{Z=0}}.\]</span> In biomedical sciences this measure is called the <strong>risk ratio</strong>. It is used to measure the strength of association between treatment (or risk factors), <span class="math inline">\(Z\)</span>, and outcome, <span class="math inline">\(\hat{Y}\)</span>. It has been described in discrimination aware machine learning literature as the <strong>impact ratio</strong> or <strong>disparate impact ratio</strong>. The algorithm is fair if <span class="math inline">\(r=1\)</span>. The further from one <span class="math inline">\(r\)</span> is, the more unfair. The Equal Employment Opportunity Commission (EEOC) have used this measure in their guidelines for identifying discrimination in employment selection processes<span class="citation" data-cites="US-EEOC"><a href="#ref-US-EEOC" role="doc-biblioref">[51]</a></span><span class="marginnote"><span id="ref-US-EEOC" class="csl-entry" role="doc-biblioentry">
-<span class="csl-left-margin">[51] </span><span class="csl-right-inline">U. S. E. E. O. Commission, <span>“Questions and answers to clarify and provide a common interpretation of the uniform guidelines on employee selection procedures,”</span> <em>Federal Register</em>, vol. 44, no. 43, 1979.</span>
+<p>Alternatively, we could instead take the ratio as a measure of discrimination: <span class="math display">\[r = \frac{\mathbb{P}(\hat{Y}=1 | Z=0)}{\mathbb{P}(\hat{Y}=1 | Z=1)}
+  = \frac{n_{11}/n_{Z=0}}{n_{01}/n_{Z=1}}.\]</span> In biomedical sciences this measure is called the <strong>risk ratio</strong>. It is used to measure the strength of association between treatment (or risk factors), <span class="math inline">\(Z\)</span>, and outcome, <span class="math inline">\(\hat{Y}\)</span>. It has been described in discrimination aware machine learning literature as the <strong>impact ratio</strong> or <strong>disparate impact ratio</strong>. The algorithm is fair if <span class="math inline">\(r=1\)</span>. If we take <span class="math inline">\(Z=1\)</span> to be the advataged group the value is bounded between zero and one. The Equal Employment Opportunity Commission (EEOC) have used this measure in their guidelines for identifying discrimination in employment selection processes<span class="citation" data-cites="US-EEOC"><a href="#ref-US-EEOC" role="doc-biblioref">[53]</a></span><span class="marginnote"><span id="ref-US-EEOC" class="csl-entry" role="doc-biblioentry">
+<span class="csl-left-margin">[53] </span><span class="csl-right-inline">U. S. E. E. O. Commission, <span>“Questions and answers to clarify and provide a common interpretation of the uniform guidelines on employee selection procedures,”</span> <em>Federal Register</em>, vol. 44, no. 43, 1979.</span>
 </span>
 </span>. As a rule of thumb, the EEOC determine that a company’s selection system is having an adverse impact on a particular group if the selection rate for that group is less than four-fifths (or 80%) that of the most advantaged group, that is, the impact ratio is less than 0.8 where <span class="math inline">\(Z=0\)</span> is the most advantaged group (for which the acceptance rate is the highest).</p>
-<p>The <strong>elift ratio</strong><span class="citation" data-cites="Pedreschi"><a href="#ref-Pedreschi" role="doc-biblioref">[52]</a></span><span class="marginnote"><span id="ref-Pedreschi" class="csl-entry" role="doc-biblioentry">
-<span class="csl-left-margin">[52] </span><span class="csl-right-inline">D. Pedreschi, S. Ruggieri, and F. Turini, <span>“Discrimination-aware data mining,”</span> in <em>Proceedings of the ACM SIGKDD international conference on knowledge discovery and data mining</em>, 2008, pp. 560–568. doi: <a href="https://doi.org/10.1145/1401890.1401959">10.1145/1401890.1401959</a>.</span>
+<p>The <strong>elift ratio</strong><span class="citation" data-cites="Pedreschi"><a href="#ref-Pedreschi" role="doc-biblioref">[54]</a></span><span class="marginnote"><span id="ref-Pedreschi" class="csl-entry" role="doc-biblioentry">
+<span class="csl-left-margin">[54] </span><span class="csl-right-inline">D. Pedreschi, S. Ruggieri, and F. Turini, <span>“Discrimination-aware data mining,”</span> in <em>Proceedings of the ACM SIGKDD international conference on knowledge discovery and data mining</em>, 2008, pp. 560–568. doi: <a href="https://doi.org/10.1145/1401890.1401959">10.1145/1401890.1401959</a>.</span>
 </span>
-</span> is similar to the impact ratio but instead of comparing acceptance rates for protected groups to each other, we compare them to the overall acceptance rate: <span class="math display">\[r_{\text{elift}} = \frac{\mathbb{P}(\hat{Y}=1 | Z=0)}{\mathbb{P}(\hat{Y}=1)}.\]</span></p>
+</span> is similar to the impact ratio but instead of comparing acceptance rates for protected groups to each other, we compare them to the overall/mean acceptance rate: <span class="math display">\[r_{\text{elift}} = \frac{\mathbb{P}(\hat{Y}=1 | Z=0)}{\mathbb{P}(\hat{Y}=1)}.\]</span></p>
 <p>In theory, any measure of association suitable for the data types can be used as a metric to understand the magnitude of discrimination in our data or predictions. The <strong>odds ratio</strong> (popular in natural, social and biomedical sciences) is the ratio of the odds of a positive prediction for each group. We can write it as: <span class="math display">\[r_{\text{odds}}
 = \frac{\mathbb{P}(\hat{Y}=1 | Z=1)\mathbb{P}(\hat{Y}=0 | Z=0)}
        {\mathbb{P}(\hat{Y}=0 | Z=1)\mathbb{P}(\hat{Y}=1 | Z=0)}
@@ -1734,42 +1756,37 @@ d_{\max} = \min\left\{ \frac{\mathbb{P}(\hat{Y}=1)}{\mathbb{P}(Z=1)},
 <p><strong>Exercise: Odds ratio</strong></p>
 <p>Show that the odds ratio is always greater than or equal to one in the case where <span class="math inline">\(\hat{Y}=1\)</span> in the advantaged outcome and <span class="math inline">\(Z=1\)</span> is the privileged group. <a href="#GF_OR">Solution</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
 </div>
-<p>As mentioned earlier, independence metrics is they can be evaluated on both the data and the model. A common problem in machine learning is that existing biases in the data can be exaggerated if protected groups are minorities in the population. By comparing bias metrics for the data with those of our model output, we can understand if our model is inadvertently introducing biases that do not originate from the data.</p>
-<p>It might seem intuitive already, that independence can only be satisfied by a model (optimising for utility), if the target variable <span class="math inline">\(Y\)</span> and sensitive feature <span class="math inline">\(Z\)</span> are in fact independent. <span class="sidenote-wrapper"><label for="sn-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-5" class="margin-toggle"/><span class="sidenote">We’ll prove this to be true in section <a href="#sec_Impossible" data-reference-type="ref" data-reference="sec_Impossible">3.3</a>, for the case where our variables are binary.<br />
+<p>As mentioned earlier, independence metrics can be evaluated on both the data and the model. A common problem in machine learning is that existing biases in the data can be exaggerated if protected groups are minorities in the population. By comparing metrics for the data with those of our model output, we can understand if our model is inadvertently introducing biases that do not originate from the data.</p>
+<p>It might seem intuitive already, that independence can only be satisfied by a model (optimising for utility), if the target variable <span class="math inline">\(Y\)</span> and sensitive feature <span class="math inline">\(Z\)</span> are in fact independent<span class="sidenote-wrapper"><label for="sn-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-5" class="margin-toggle"/><span class="sidenote">We’ll prove this to be true in section <a href="#sec_Impossible" data-reference-type="ref" data-reference="sec_Impossible">3.3</a>, for the case where our variables are binary.<br />
 <br />
-</span></span> If this is not the case, then satisfying independence for your model, will not permit the theoretically ‘perfect’ solution <span class="math inline">\(\hat{Y}=Y\)</span> (should your model be able to achieve it). We would also then naturally, expect that the stronger the relationship between the sensitive feature and target, the greater the trade-off between fairness and utility in satisfying independence criterion.</p>
-<p>A major shortcoming of independence (discussed in section <a href="#sec_SimpsParadox" data-reference-type="ref" data-reference="sec_SimpsParadox">1.4</a>) is that it doesn’t consider that there may be confounding variables. It assumes that all relevant features, are distributed among all protected groups, equally. This is a strong assumption, and erronously enforcing it does not guarantee fairness in a broader sense. Consider a simple hypothetical example where, there are discrepancies between credit card approval rates for men and women at the population level, which disappear once you control for (the confounding variable) income. It could be argued then that the real issue with respect to fairness here, appears to be the fact that women, generally earn less than men. If the lender was to enforce independence between gender and its loan approval rate by, for example, setting lower income requirements for women than men, this might feasibly lead to higher default rates among women. Clearly a less than desirable solution which, arguably, doesn’t address the actual underlying problem. Furthermore, it might be argued that enforcing independence could lead to less fair outcomes, on an individual level; in the sense that a man and woman who were the same in all other respects (features) would receive different outcomes, violating the twin test, which we’ll talk about in the next section. We’ll talk about individual fairness in the next chapter.</p>
-<p>Suppose we want to measure the relationship between the sensitive feature and outcome using one of the above metrics. A natural solution to the problem of confounding variables, is to control for them, that is if, you have them recorded in your dataset. Next, we consider the case where we condition on all the non-sensitive variables <span class="math inline">\(X\)</span>.</p>
+</span></span>. If this is not the case, then satisfying independence for one’s model, will not permit the theoretically perfect solution <span class="math inline">\(\hat{Y}=Y\)</span> (should your model be able to achieve it). We would also then naturally, expect that the stronger the relationship between the sensitive feature and target, the greater the trade-off between fairness and utility in satisfying independence criterion.</p>
+<p>Independence does not guarantee fairness in a broader sense. Consider a simple hypothetical example where, there are discrepancies between credit card approval rates for men and women at the population level, which disappear once you control for (the confounding variable) income. The underlying issue appears to be the fact that women, generally earn less than men. If the lender was to enforce independence between gender and its loan approval rate by, for example, setting lower income requirements for women than men, this could concievably lead to higher default rates among women. Clearly a less than desirable solution which, arguably, doesn’t address the underlying problem. Furthermore, it might be argued that satisfying independence could lead to less fair outcomes from a different perspective; that a man and woman who were the same in all other respects (features) would receive different outcomes. In the next chapter we’ll talk about individual fairness which reconciles these differences in perspective by requiring the specification of a task specific similarity metric for individuals.</p>
+<p>It is important to note that the assumption of independence does not allow for confounding variables (discussed in section <a href="#sec_SimpsParadox" data-reference-type="ref" data-reference="sec_SimpsParadox">1.4</a>). Suppose we want to measure the relationship between the sensitive feature and outcome using one of the above metrics. A natural solution to the problem of confounding variables, is to control for them (assuming you have them recorded in your dataset and your data is representative of the population). Next, we consider the case where we condition on all the non-sensitive variables <span class="math inline">\(X\)</span>.</p>
 </section>
 </section>
 <section id="sec_CondIndep" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2"><span class="header-section-number">3.1.2</span> The Twin Test</h3>
-<p>The twin test tries to establish cause, by conditioning on all non-sensitive features. In this case, our fairness criterion requires the predicted target variable to be independent of the sensitive features when conditioned on all other features. This is true, if and only if, the probability distribution of <span class="math inline">\(Y\)</span> conditioned on <span class="math inline">\(X\)</span> is the same, for all values of the sensitive feature; <span class="math display">\[\hat{Y} \bot Z | X \quad \iff \quad
-f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wish to establish a causal connection between the decision or outcome and an individual’s membership in some protected group. Typically, in a human decision process which is subjective, there are a number of unobserved variables. Take a job interview for example, the factors that determine who gets hired are typically subjective (which means that two people might rate an interview candiate differently even on the same feature, or, a candidate might rate differently on the same feature if they were given an alternative test. This makes proving a causal connection difficult. But in the case where a decision is made purely on the basis of an algorithm, making this causal connection becomes trivial. We simply perform a so called ‘twin test’. Imagine a ‘counterfactual’ world in which for every individual in this world (say John Doe) there exists an ‘identical twin’ in the counterfactual world which differers only by the sensitive feature gender (Jane Doe). If a model produces predictions that are different for for John and Jane, we have established the individual’s gender as being the reason for it.</p>
-<p>Taking this approach to establishing cause with a model is pretty straight forward. We simply conduct a randomized experiment. The individuals for which we check the model output, need not exist, we can simply fabricate them, and compare model predictions with those of the counterfactual twin. Performing the twin test on a dataset (i.e. where you do not have access to the algorithm, only the outcomes recorded in the data) is less trivial, since the conterfactual twin for any given example, need not exist; and we have no way of producing them without the algorithm. Furthermore, for any given point in the non-sensitive feature space, the number of data points will likely be too small, to justify the use of statistical methods in establishing cause. Barring these limitations, using the counterfactual approach to establishing the fairness of our model, we can consider all the metrics we have above with independence as our fairness criterion but conditioned on <span class="math inline">\(X\)</span> as well as <span class="math inline">\(Z\)</span>. So for example we define the <strong>causal mean difference</strong> as <span class="math display">\[d = \mathbb{E}(\hat{Y} | Z=1, X=x) - \mathbb{E}(\hat{Y} | Z=0, X=x).\]</span> and the <strong>observed mean difference</strong> as <span class="math display">\[d = \mathbb{E}(Y | Z=1, X=x) - \mathbb{E}(Y | Z=0, X=x).\]</span> Calculating the mean difference is a popular way to establish disparate treatment in an algorithmic decision process because it exposes differing treatment of individuals based on protected class membership.</p>
+<p>The twin test tries to establish cause (of differing treatment across protected groups), by conditioning on all other features. Because of this, it has been interpreted as avoiding disparate treatment<span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[49]</a></span>. While legally speaking such proof is not required to establish liability (as discussed in section <a href="#sec_AppLaw" data-reference-type="ref" data-reference="sec_AppLaw">1.3.2</a>), the twin test provides a useful tool for evaluating feature specific discrimination in models. In this case, our fairness criterion requires the predicted target variable to be independent of the sensitive features when conditioned on all other features. This is true, if and only if, the probability distribution of <span class="math inline">\(Y\)</span> conditioned on <span class="math inline">\(X\)</span> is the same, for all values of the sensitive feature <span class="math inline">\(Z\)</span>; <span class="math display">\[\hat{Y} \bot Z | X \quad \iff \quad
+f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
+<p>Suppose we wish to establish a causal connection between the decision or outcome and an individual’s membership in some protected group. Typically, in a human decision process which is subjective, proving a causal connection difficult (a problem addressed by judicial systems). In the case where a decision is made purely on the basis of a deterministic algorithm (which one has access to and need only be in the form of a black box), making this causal connection is easier. Imagine a ‘counterfactual’ world in which for every individual in this world (say John Doe) there exists an identical twin in the counterfactual world which differers only by the sensitive feature (say Jane Doe). If a deterministic model produces predictions that are different for for John and Jane, we have established the individual’s sensitive feature as the reason.</p>
+<p>With this approach, establishing cause with a model becomes straight forward. We conduct a randomized experiment, sampling for <span class="math inline">\(X\)</span>. The individuals for which we check the model output need not exist, we can simply fabricate them, and compare the target distributions. What if the model is not deterministic but rather makes randomised predictions for a given <span class="math inline">\(X\)</span>? This makes things a bit more complicated because neither John nor Jane Doe get the same model prediction at every trial, so it’s not enough to check the outcome for a single John and Jane for each Doe. This makes the test computationally more expensive. We need to compute the target <span class="math inline">\(\hat{Y}\)</span> a sufficiently large number of times to obtain the distribution for each value of <span class="math inline">\(X\)</span>. For a dataset, the twin test is less reliable. Without access to the (potentially human and thus non-deterministic) algorithm by which it was produced, we have no way of producing counterfactual twins that don’t exist, making sample size a potential issue.</p>
+<p>The counterfactual approach to establishing the fairness of our model, we can consider all independence metrics described above have natural extensions which are conditioned on <span class="math inline">\(X\)</span> as well as <span class="math inline">\(Z\)</span>. So for example we define the <strong>causal mean difference</strong> as <span class="math display">\[d = \mathbb{E}(\hat{Y} | Z=1, X=x) - \mathbb{E}(\hat{Y} | Z=0, X=x).\]</span> and the <strong>observed mean difference</strong> as <span class="math display">\[d = \mathbb{E}(Y | Z=1, X=x) - \mathbb{E}(Y | Z=0, X=x).\]</span></p>
 </section>
 </section>
 <section id="sec_BalErr" class="level2" data-number="3.2">
 <h2 data-number="3.2"><span class="header-section-number">3.2</span> Comparing Errors</h2>
-<p>In this section we learn about fairness criteria which seek to compare model errors across groups, rather than outcomes. A fundamental assumption here is that the training data is fair; it represents the the ground truth; the target variable is the that which we wish to affect, the data is accurate and representative of the population, and include the features related related to the target. Assuming we have said data, under these criteria, for our model to be fair, we require the errors, not only to be sufficiently small, but also distributed similarly for different subgroups of the population (defined by the values of the sensitive features). Expressed differently, we want the errors to be independent of protected characteristics, that is, <span class="math inline">\((\hat{Y}-Y) \bot Z\)</span>. We discussed earlier in the chapter how independence and twin test constraints have been interpreted as avoiding disparate impact and disparate treatment respectively. Analogously, criteria on model errors have been described as avoiding <strong>disparate mistreatment</strong><span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[53]</a></span><span class="marginnote"><span id="ref-DispMistreat" class="csl-entry" role="doc-biblioentry">
-<span class="csl-left-margin">[53] </span><span class="csl-right-inline">M. B. Zafar, I. Valera, M. Gomez Rodriguez, and K. P. Gummadi, <span>“Fairness beyond disparate treatment &amp; disparate impact,”</span> <em>Proceedings of the 26th International Conference on World Wide Web</em>, 2017, doi: <a href="https://doi.org/10.1145/3038912.3052660">10.1145/3038912.3052660</a>.</span>
+<p>In this section we learn about fairness criteria which seek to compare model errors across groups, rather than outcomes. A fundamental assumption here is that the training data is fair and just. In this context, ensuring fairness across subgroups requires the models errors (or equivalently predictive performance), to be independent of protected characteristics, that is, <span class="math inline">\((\hat{Y}-Y) \bot Z\)</span>. We discussed earlier in the chapter how independence and twin test constraints have been interpreted as avoiding disparate impact and disparate treatment respectively. Analogously, criteria on model errors have been described as avoiding <strong>disparate mistreatment</strong><span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[49]</a></span>.</p>
+<p>A relaxation of this criterion compares only the mean error for the groups (rather than the full distributions). <span class="math display">\[\mu_{\text{err}} = \mathbb{E}(\hat{Y} - Y).\]</span> The mean error tells us if essentially if our model is over or underestimating the target <span class="math inline">\(Y\)</span> (or score <span class="math inline">\(P\)</span> for classification) on average. For classification problems it provides a measure of the number of false positives compared to false negatives. If <span class="math inline">\(\mu\)</span> is positive there are more false positives and vice versa. Another way to look at the mean error is a measure of luck or opportunity. Depending on whether it is preferable to have a model under or overestimate <span class="math inline">\(Y\)</span> determines which direction is lucky (given greater opportunity) versus unlucky.</p>
+<p>For regression, a relaxation of this criterion compares only the mean error. <strong>Balanced residuals</strong><span class="citation" data-cites="BalRes"><a href="#ref-BalRes" role="doc-biblioref">[55]</a></span><span class="marginnote"><span id="ref-BalRes" class="csl-entry" role="doc-biblioentry">
+<span class="csl-left-margin">[55] </span><span class="csl-right-inline">T. Calders, A. Karim, F. Kamiran, W. Ali, and X. Zhang, <span>“Controlling attribute effect in linear regression,”</span> 2013. doi: <a href="https://doi.org/10.1109/ICDM.2013.114">10.1109/ICDM.2013.114</a>.</span>
 </span>
-</span>.</p>
-<section id="regression" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1"><span class="header-section-number">3.2.1</span> Regression</h3>
-<p>Once again, relaxation of this criterion compares the mean error for the groups (rather than comparing the full distributions). <strong>Balanced residuals</strong><span class="citation" data-cites="BalRes"><a href="#ref-BalRes" role="doc-biblioref">[54]</a></span><span class="marginnote"><span id="ref-BalRes" class="csl-entry" role="doc-biblioentry">
-<span class="csl-left-margin">[54] </span><span class="csl-right-inline">T. Calders, A. Karim, F. Kamiran, W. Ali, and X. Zhang, <span>“Controlling attribute effect in linear regression,”</span> 2013. doi: <a href="https://doi.org/10.1109/ICDM.2013.114">10.1109/ICDM.2013.114</a>.</span>
-</span>
-</span> takes the difference of the mean errors as a measure of fairness: <span class="math display">\[d_{\text{err}} = \mathbb{E}(\hat{Y} - Y | Z=1) - \mathbb{E}(\hat{Y} - Y | Z=0).\]</span> This can be calculated for <span class="math inline">\(n=n_0+n_1\)</span> data points as, <span class="math display">\[d_{\text{err}} = \frac{1}{n_0}\sum_{i|z_i=0}(y_i-\hat{y}_i)
-               - \frac{1}{n_1}\sum_{i|z_i=1}(y_i-\hat{y}_i).\]</span> Here <span class="math inline">\(d_{\text{err}}=0\)</span> would be considered fair.</p>
-</section>
-<section id="classification" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2"><span class="header-section-number">3.2.2</span> Classification</h3>
-<p>For a classification problem the most obvious relaxation would be to ensure equal error rates (or equivalently accuracy) for all groups. As an example, recall the project Gender Shades we discussed in section <a href="#sec_harms" data-reference-type="ref" data-reference="sec_harms">1.5</a>, that audited several commercial gender classification packages measured their accuracy for different protected groups. To derive a measure of fairness from this criterion we could (as before) take the difference, or the ratio. The <strong>error rate difference</strong> is given by, <span class="math display">\[d_{\text{err}} = \mathbb{P}(\hat{Y}\neq Y | Z=1) - \mathbb{P}(\hat{Y}\neq Y | Z=0).\]</span> Again here <span class="math inline">\(d_{\text{err}}=0\)</span> would be considered fair. <strong>error rate ratio</strong> is given by <span class="math display">\[r_{\text{err}} = \frac{\mathbb{P}(\hat{Y}\neq Y | Z=1)}
-                      {\mathbb{P}(\hat{Y}\neq Y | Z=0)}\]</span> in which case <span class="math inline">\(r_{\text{err}}=1\)</span> would be considered fair.</p>
+</span> takes the difference of the mean errors, <span class="math display">\[d_{\text{err}} = \mathbb{E}(\hat{Y} - Y | Z=1) - \mathbb{E}(\hat{Y} - Y | Z=0).\]</span> This can be calculated for <span class="math inline">\(n=n_0+n_1\)</span> data points as, <span class="math display">\[d_{\text{err}} = \frac{1}{n_1}\sum_{i|z_i=1}(\hat{y}_i-y_i).
+               - \frac{1}{n_0}\sum_{i|z_i=0}(\hat{y}_i-y_i)\]</span></p>
+<p>For a classification problem a relaxation of this criterion compares only the error rates (or equivalently accuracy) for all groups. To derive a measure of fairness from this criterion we could (as before) take the difference, or the ratio. The <strong>error rate difference</strong> is given by, <span class="math display">\[d_{\text{err}} = \mathbb{P}(\hat{Y}\neq Y | Z=1) - \mathbb{P}(\hat{Y}\neq Y | Z=0).\]</span> The <strong>error rate ratio</strong> is given by <span class="math display">\[r_{\text{err}} = \frac{\mathbb{P}(\hat{Y}\neq Y | Z=0)}
+                      {\mathbb{P}(\hat{Y}\neq Y | Z=1)}.\]</span> For a binary classifier, false positives and false negatives will typically have different implications and associated costs which are ignored when comparing error rates. Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a> summarises terminology for the different types of error rates for a binary classification model. Table <a href="#tbl:CMPerfMetrics" data-reference-type="ref" data-reference="tbl:CMPerfMetrics">3.3</a> summarises terminology for the equivalent predictive performance metrics.</p>
 <div id="tbl:CMErrMetrics">
 <table>
-<caption>Table 3.2: Summary of error rate types for a binary classifier</caption>
+<caption>Table 3.2: Summary of error rate metrics for a binary classifier</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" colspan="2"></th>
@@ -1812,10 +1829,9 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 </tbody>
 </table>
 </div>
-<p>A binary classification model can make two different types of errors (false positives and false negatives), the costs of which will typically not be equal. Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a> summarises terminology for the different types of error rates for a binary classification model.</p>
 <div id="tbl:CMPerfMetrics">
 <table>
-<caption>Table 3.3: Summary of performance metrics for a binary classifier</caption>
+<caption>Table 3.3: Summary of predictive performance metrics for a binary classifier</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;" colspan="2"></th>
@@ -1862,34 +1878,31 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 <p><sup>a</sup> Positive Predictive Value = Precision</p>
 <p><sup>b</sup> True Positive Rate = Recall</p>
 </div>
-<p>Fairness criteria that compare errors (or equivalently performance metrics - see Table <a href="#tbl:CMPerfMetrics" data-reference-type="ref" data-reference="tbl:CMPerfMetrics">3.3</a> for a summary) across groups can be broken down into two conditional independence constraints on the joint distributions of the sensitive features, <span class="math inline">\(Z\)</span>, the target feature <span class="math inline">\(Y\)</span> and predicted target <span class="math inline">\(\hat{Y}\)</span>. These can be described as <strong>separation</strong> (<span class="math inline">\(\hat{Y}\bot Z|Y\)</span>) and <strong>sufficiency</strong><span class="citation" data-cites="FairMLBook"><a href="#ref-FairMLBook" role="doc-biblioref">[55]</a></span><span class="marginnote"><span id="ref-FairMLBook" class="csl-entry" role="doc-biblioentry">
-<span class="csl-left-margin">[55] </span><span class="csl-right-inline">S. Barocas, M. Hardt, and A. Narayanan, <em>Fairness and machine learning</em>. fairmlbook.org, 2019.</span>
-</span>
-</span> (<span class="math inline">\(Y\bot Z|\hat{Y}\)</span>). Each of these criteria can be defined as a conditional independence constraint on the joint distributions of the sensitive features, <span class="math inline">\(Z\)</span>, the target feature <span class="math inline">\(Y\)</span> and predicted target <span class="math inline">\(\hat{Y}\)</span>. Separation requires equal error (false negative and false positive) rates along the columns (conditioning on <span class="math inline">\(Y\)</span>), while sufficiency requires equal error (false discovery and false omission) rates along the rows (conditioning on <span class="math inline">\(\hat{Y}\)</span>) of the confusion matrix (Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a>).</p>
+<p>Fairness criteria that compare error distributions (or equivalently predictive performance metrics) across groups can be broken down into conditional independence constraints on the joint distributions of the sensitive features, <span class="math inline">\(Z\)</span>, the target feature <span class="math inline">\(Y\)</span> and predicted target <span class="math inline">\(\hat{Y}\)</span>. <em>Separation</em> conditions on <span class="math inline">\(Y\)</span> (the columns of the confusion matrix) requiring the false negative and false positive (or equivalently the true positive and true negative) rates to be independent of protected group membership. <em>Sufficiency</em> (also described as <em>calibration</em>) conditions on <span class="math inline">\(\hat{Y}\)</span> (the rows of the confusion matrix) requiring the false discovery and false omission (or equivalently positive predictive value and negative predictive value) rates to be independent of protected group membership. Let’s take a closer look at them.</p>
 <section id="separation" class="level4 unnumbered">
 <h4 class="unnumbered">Separation</h4>
-<p>Separation requires the predicted target variable to be independent of the sensitive feature, conditioned on the target variable, that is, <span class="math inline">\(\hat{Y} \bot (Z|Y)\)</span>. We can say that the predicted target <span class="math inline">\(\hat{Y}\)</span>, is ‘separated’ from the sensitive feature <span class="math inline">\(Z\)</span>, by the target variable <span class="math inline">\(Y\)</span>. The corresponding graphical model for separation criteria is shown in Figure <a href="#fig:separation" data-reference-type="ref" data-reference="fig:separation">3.2</a>.</p>
+<p>Separation requires the predicted target variable to be independent of the sensitive feature, conditioned on the target variable, that is, <span class="math inline">\(\hat{Y} \bot (Z|Y)\)</span>. We can say that the predicted target <span class="math inline">\(\hat{Y}\)</span>, is <em>separated</em> from the sensitive feature <span class="math inline">\(Z\)</span>, by the target variable <span class="math inline">\(Y\)</span>. The corresponding graphical model for separation criteria is shown in Figure <a href="#fig:separation" data-reference-type="ref" data-reference="fig:separation">3.2</a>.</p>
 <figure>
 <img src="03_GroupFairness/figures/Fig_Separation.png" id="fig:separation" style="width:50.0%" alt="Figure 3.2: Graphical model for separation." /><figcaption aria-hidden="true">Figure 3.2: Graphical model for separation.</figcaption>
 </figure>
-<p>Essentially we are saying that for a fixed value of the target variable, there should be no difference in the distribution of the predicted target variable, for different values of the sensitive feature. That is, <span class="math display">\[\mathbb{P}(\hat{y}|y, z) = \mathbb{P}(\hat{y}|y).\]</span> Unlike independence, separation, allows for dependence between the predicted target variable and the sensitive feature but only to the extent that it exists between the actual target variable and the sensitive feature.</p>
-<p>Once again let’s take the simplest example of discrete binary classifier where we have a single sensitive binary feature. We can write this requirement (most well known as <strong>equalised odds</strong><span class="citation" data-cites="EqOfOp"><a href="#ref-EqOfOp" role="doc-biblioref">[56]</a></span><span class="marginnote"><span id="ref-EqOfOp" class="csl-entry" role="doc-biblioentry">
+<p>So, for a fixed value of the target variable, there should be no difference in the distribution of the predicted target variable, across different values of the sensitive feature. That is, <span class="math display">\[\mathbb{P}(\hat{y}|y, z) = \mathbb{P}(\hat{y}|y).\]</span> Unlike independence, separation, allows for dependence between the predicted target variable and the sensitive feature but only to the extent that it exists between the actual target variable and the sensitive feature.</p>
+<p>For a binary classifier where we have a single sensitive binary feature. We can write this requirement (most well known as <strong>equalised odds</strong><span class="citation" data-cites="EqOfOp"><a href="#ref-EqOfOp" role="doc-biblioref">[56]</a></span><span class="marginnote"><span id="ref-EqOfOp" class="csl-entry" role="doc-biblioentry">
 <span class="csl-left-margin">[56] </span><span class="csl-right-inline">M. Hardt, E. Price, and N. Srebro, <span>“Equality of opportunity in supervised learning.”</span> 2016.Available: <a href="https://arxiv.org/abs/1610.02413">https://arxiv.org/abs/1610.02413</a></span>
 </span>
 </span>) as two conditions, <span class="math display">\[\begin{aligned}
 \mathbb{P}(\hat{Y}=1 | Z=1, Y=1) &amp; = \mathbb{P}(\hat{Y}=1 | Z=0, Y=1), \\
-\mathbb{P}(\hat{Y}=1 | Z=1, Y=0) &amp; = \mathbb{P}(\hat{Y}=1 | Z=0, Y=0).\end{aligned}\]</span> Recall that <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=1)\)</span> is the true positive rate (<span class="math inline">\(TPR\)</span>) of the classifier and <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=0)\)</span> is the false positive rate (<span class="math inline">\(FPR\)</span>). We see then that separation requires the true positive rate, and the false positive rate, to be the same for all values of the sensitive feature. Note that the true positive rate is equal if and only if the false negative rate is equal, so thinking in terms of error metrics only, separation requires the false negative and false positive rates to be equal for all values of the sensitive feature.</p>
-<p>Two related metrics are the average odds difference and average odds error. The <strong>average odds difference</strong> measures the magnitude of unfairness as the average of the difference in true positive rate and false positive rate, that is, <span class="math display">\[d_{\text{av-odds}} = \frac{1}{2}
-[ TPR_{Z=0} - TPR_{Z=1} + FPR_{Z=0} - FPR_{Z=1} ].\]</span> The <strong>average odds error</strong> measures the magnitude of unfairness as the average of the absolute difference in true positive rate and false positive rate, that is, <span class="math display">\[d_{\text{av-odds-err}} = \frac{1}{2}
-[ |TPR_{Z=0} - TPR_{Z=1}| + |FPR_{Z=0} - FPR_{Z=1}| ].\]</span> A relaxed version of equalised odds, called <strong>equal opportunity</strong><span class="citation" data-cites="EqOfOp"><a href="#ref-EqOfOp" role="doc-biblioref">[56]</a></span>, requires only the true positive rates to be the same across all groups (assuming a positive prediction is the more advantageous ourcome). A metric which uses this as a criterion to measure unfairness is <strong>equal opportunity difference</strong> which takes the difference in true positive rates across groups, that is, <span class="math display">\[d_{\text{eq-op}} = TPR_{Z=0} - TPR_{Z=1}.\]</span></p>
-<div class="lookbox">
-<p><strong>Exercise: Fair equality of opportunity</strong></p>
-<p>Can you see how the metric <em>equal opportunity</em> relates to the second principle of justice as fairness (Fair equality of opportunity) discussed in section <a href="#sec_FairnessJustice" data-reference-type="ref" data-reference="sec_FairnessJustice">1.2</a>?</p>
-</div>
+\mathbb{P}(\hat{Y}=1 | Z=1, Y=0) &amp; = \mathbb{P}(\hat{Y}=1 | Z=0, Y=0).\end{aligned}\]</span> Recall that <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=1)\)</span> is the true positive rate (<span class="math inline">\(TPR\)</span>) of the classifier and <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=0)\)</span> is the false positive rate (<span class="math inline">\(FPR\)</span>). We see then that separation requires the true positive rate, and the false positive rate, to be the same for all values of the sensitive feature.</p>
+<p>Let’s think about what this means in the context of a recidivism risk predictor used in sentencing. Separation requires the proportion of (false positive) errors among those that did not in fact reoffend, and (false negative) errors among those that did to be the same across protected groups. This was essentially Propublica’s criticism of COMPAS, that the model overestimated the risk presented by Black defendants (demonstrated by their higher false positive rate) and underestimated the risk presented by White defendants (demonstrated by their higher false negative rate).</p>
+<p>Two related metrics are the average odds difference and average odds error. The <strong>average odds difference</strong> measures the magnitude of unfairness as the average of the difference in true positive rate and false positive rate, <span class="math display">\[d_{\text{av-odds}} = \frac{1}{2}
+[ TPR_{Z=0} - TPR_{Z=1} + FPR_{Z=0} - FPR_{Z=1} ].\]</span> The <strong>average odds error</strong> measures the magnitude of unfairness as the average of the absolute difference in true positive rate and false positive rate, <span class="math display">\[d_{\text{av-odds-err}} = \frac{1}{2}
+[ |TPR_{Z=0} - TPR_{Z=1}| + |FPR_{Z=0} - FPR_{Z=1}| ].\]</span></p>
+<p>A relaxed version of equalised odds, called <strong>equal opportunity</strong><span class="citation" data-cites="EqOfOp"><a href="#ref-EqOfOp" role="doc-biblioref">[56]</a></span>, requires only the true positive rates to be the same across all groups, assuming a positive prediction is the advantageous or lucky outcome<span class="sidenote-wrapper"><label for="sn-6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-6" class="margin-toggle"/><span class="sidenote">Recall Rawl’s second principle of justice as fairness (fair equality of opportunity) discussed in section <a href="#sec_FairnessJustice" data-reference-type="ref" data-reference="sec_FairnessJustice">1.2</a>.<br />
+<br />
+</span></span>. If the reverse is true (i.e. the negative prediction is the advantageous outcome), we would instead want the true negative rates to be equal. For our recidivism risk predictor, this would mean ensuring that for defendents which did not reoffend have the same probability of being flagged low risk. Said another way, we want defendents that were in fact low risk to be given equal opportunity to be marked low risk across protected groups. A metric which uses this as a criterion to measure unfairness is <strong>equal opportunity difference</strong> which takes the difference in true positive rates across groups, that is, <span class="math display">\[d_{\text{eq-op}} = TPR_{Z=0} - TPR_{Z=1}.\]</span></p>
 </section>
-<section id="sufficiency" class="level4 unnumbered">
-<h4 class="unnumbered">Sufficiency</h4>
-<p>Sufficiency requires the sensitive feature <span class="math inline">\(Z\)</span> and target variable <span class="math inline">\(Y\)</span> to be independent, conditional on the predicted target variable <span class="math inline">\(\hat{Y}\)</span>, that is, <span class="math inline">\(Y \bot (Z|\hat{Y})\)</span>. We can say that the predicted target <span class="math inline">\(\hat{Y}\)</span> is ‘sufficient’ for the sensitive feature <span class="math inline">\(Z\)</span>. That is to say, given <span class="math inline">\(\hat{Y}\)</span>, <span class="math inline">\(Z\)</span> provides no additional information. The corresponding graphical model for sufficiency criteria is shown in Figure <a href="#fig:sufficiency" data-reference-type="ref" data-reference="fig:sufficiency">3.3</a>.</p>
+<section id="sufficiency-and-calibration-by-group" class="level4 unnumbered">
+<h4 class="unnumbered">Sufficiency and Calibration by Group</h4>
+<p><em>Sufficiency</em> requires the sensitive feature <span class="math inline">\(Z\)</span> and target variable <span class="math inline">\(Y\)</span> to be independent, conditional on the predicted target variable <span class="math inline">\(\hat{Y}\)</span>, that is, <span class="math inline">\(Y \bot (Z|\hat{Y})\)</span>. We can say that the predicted target <span class="math inline">\(\hat{Y}\)</span> is <em>sufficient</em> for the sensitive feature <span class="math inline">\(Z\)</span>. That is to say, given <span class="math inline">\(\hat{Y}\)</span>, <span class="math inline">\(Z\)</span> provides no additional information. The corresponding graphical model for sufficiency criteria is shown in Figure <a href="#fig:sufficiency" data-reference-type="ref" data-reference="fig:sufficiency">3.3</a>.</p>
 <figure>
 <img src="03_GroupFairness/figures/Fig_sufficiency.png" id="fig:sufficiency" style="width:50.0%" alt="Figure 3.3: Graphical model for sufficiency." /><figcaption aria-hidden="true">Figure 3.3: Graphical model for sufficiency.</figcaption>
 </figure>
@@ -1898,10 +1911,15 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 <p><strong>Exercise: Sufficiency</strong></p>
 <p>Show that sufficiency is satisfied if and only if the false omission rate and false discovery rate are equal for all groups. <a href="#GF_Suff">Solution</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
 </div>
-</section>
-<section id="comparing-group-fairness-metrics" class="level4 unnumbered">
-<h4 class="unnumbered">Comparing group fairness metrics</h4>
-<p>There are some nice properties of separation and sufficiency criteria. Note that unlike criteria comparing outcomes they do not preclude the theoretically ‘perfect’ solution, <span class="math inline">\(\hat{Y}=Y\)</span>. The criteria also preclude large differences in error rates for different groups that are typical when disadvantaged classes are minorities suffering from low support. It’s worth reiterating that unlike independence, separation and sufficiency criteria assume that the relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> prescribed by the training data is fair. In such cases, error comparison criteria allow flexibility in the choice which types of errors are important to equalize, based on the cost and our values. For example, in pretrial risk assessment we might choose to prioritise ensuring equal false positive rates if we believe that it is preferable to set free a guilty defendant than incarcerate an innocent one. As another example, let’s take the infamous <a href="https://en.wikipedia.org/wiki/Stop-and-frisk_in_New_York_City">NYPD stop-and-frisk program</a> where pedestrians were stopped, interrogated and searched on ‘reasonable’ suspicion of carrying contraband. In this case we might want to ensure false discovery rates are equal across groups to ensure we are not disproportionately targeting particular minority groups.</p>
+<p>Sufficiency requires the probability of of an error for a given prediction to be the same across protected groups. Let’s thik about what this means for our binary recidivism risk calculator. Sufficiency requires that for a given prediction (high/low risk), the probability of error (predicting high risk for those that did not reoffend/predicting low risk for those that did) is independent of protected group membership.</p>
+<p>Of our two fairness criteria, separation and sufficiency, the latter imposes a weaker constraint on our model. To understand why, we explore another interpretation of sufficiency which intuitively explains why it might be satisfied implicitly through the training process<span class="citation" data-cites="ImplicitFairness"><a href="#ref-ImplicitFairness" role="doc-biblioref">[57]</a></span><span class="marginnote"><span id="ref-ImplicitFairness" class="csl-entry" role="doc-biblioentry">
+<span class="csl-left-margin">[57] </span><span class="csl-right-inline">L. T. Liu, M. Simchowitz, and M. Hardt, <span>“The implicit fairness criterion of unconstrained learning.”</span> 2019.Available: <a href="https://arxiv.org/abs/1808.10013">https://arxiv.org/abs/1808.10013</a></span>
+</span>
+</span>. Let us look at sufficiency criteria in terms of the classification score <span class="math inline">\(P\)</span>, <span class="math display">\[\mathbb{P}(Y=1 | P=p, Z=1) = \mathbb{P}(Y=1 | P=p, Z=0) \quad \forall \, p\]</span> We say that a classifier score is calibrated if <span class="math display">\[\mathbb{P}(Y=1 | P=p) = p \quad \forall \, p.\]</span> Essentially, this is the requirement that the proportion of data points assigned the score <span class="math inline">\(p\)</span>, which did in fact have a positive outcome <span class="math inline">\(Y=1\)</span>, should be equal to the score <span class="math inline">\(p\)</span>. The score <span class="math inline">\(p\)</span> can then be interpreted, at the population level, as the probability that the a positive prediction <span class="math inline">\(\hat{Y}=1\)</span> would be correct<span class="sidenote-wrapper"><label for="sn-7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-7" class="margin-toggle"/><span class="sidenote">For the score to be interpretable as this probability at the individual level, we would need to satisfy the stronger criteria <span class="math inline">\(P=\mathbb{E}[Y|X]\)</span>.<br />
+<br />
+</span></span>.</p>
+<p>From the definitions above we can see that if our classifier scores are calibrated for all groups, sufficiency is automatically satisfied. If our model satisfies sufficiency but not calibration by group, we can calibrate our model score through a simple transformation. We simply pick a value for <span class="math inline">\(Z\)</span>, <span class="math inline">\(Z=1\)</span> say, and then calculate the mapping, <span class="math display">\[\mathbb{P}(Y=1|P=p, Z=1) = f(p).\]</span> We then transform all our scores to new scores (which satisfy calibration by group) by applying the inverse mapping <span class="math inline">\(f^{-1}(P)\)</span>. The resulting model is both sufficient and calibrated.</p>
+<p>There are some nice properties of separation and sufficiency criteria. Note that unlike criteria comparing outcomes they do not preclude the theoretically perfect solution, <span class="math inline">\(\hat{Y}=Y\)</span>. The criteria also preclude large differences in error rates for different groups that are typical when disadvantaged classes are minorities suffering from low support. It’s worth reiterating that unlike independence, separation and sufficiency criteria assume that the relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> prescribed by the training data is fair. Depending on the context of the problem one might wish to prioritise equalising one type of error over another. For example, in pretrial risk assessment we might choose to prioritise ensuring equal false positive rates if we believe that it is preferable to set free a guilty defendant than incarcerate an innocent one. As another example, let’s take the infamous <a href="https://en.wikipedia.org/wiki/Stop-and-frisk_in_New_York_City">NYPD stop-and-frisk program</a> where pedestrians were stopped, interrogated and searched on ‘reasonable’ suspicion of carrying contraband. In this case we might want to ensure false discovery rates are equal across groups to ensure we are not disproportionately targeting particular minority groups.</p>
 <div class="lookbox">
 <p><strong>Exercise: Stop-and-frisk</strong></p>
 <ul>
@@ -1910,14 +1928,6 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 <li><p>How might we go about measuring the false omission rate if we wanted to compare them?</p></li>
 </ul>
 </div>
-<p>Of our two fairness criteria, separation and sufficiency, the latter imposes a weaker constraint on our model. To understand why, we explore another interpretation of sufficiency which intuitively explains why it might be satisfied implicitly through the training process<span class="citation" data-cites="ImplicitFairness"><a href="#ref-ImplicitFairness" role="doc-biblioref">[57]</a></span><span class="marginnote"><span id="ref-ImplicitFairness" class="csl-entry" role="doc-biblioentry">
-<span class="csl-left-margin">[57] </span><span class="csl-right-inline">L. T. Liu, M. Simchowitz, and M. Hardt, <span>“The implicit fairness criterion of unconstrained learning.”</span> 2019.Available: <a href="https://arxiv.org/abs/1808.10013">https://arxiv.org/abs/1808.10013</a></span>
-</span>
-</span>. Let us look at sufficiency criteria in terms of the classification score <span class="math inline">\(P\)</span>, <span class="math display">\[\mathbb{P}(Y=1 | P=p, Z=1) = \mathbb{P}(Y=1 | P=p, Z=0) \quad \forall \, p\]</span> We say that a classifier score is calibrated if <span class="math display">\[\mathbb{P}(Y=1 | P=p) = p \quad \forall \, p.\]</span> Essentially, this is the requirement that the proportion of data points assigned the score <span class="math inline">\(p\)</span>, which did in fact have a positive outcome <span class="math inline">\(Y=1\)</span>, should be equal to the score <span class="math inline">\(p\)</span>. The score <span class="math inline">\(p\)</span> can then be interpreted, at the population level, as the probability that the a positive prediction <span class="math inline">\(\hat{Y}=1\)</span> would be correct<span class="sidenote-wrapper"><label for="sn-6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-6" class="margin-toggle"/><span class="sidenote">For the score to be interpretable as this probability at the individual level, we would need to satisfy the stronger criteria <span class="math inline">\(P=\mathbb{E}[Y|X]\)</span>.<br />
-<br />
-</span></span>.</p>
-<p>From the definitions above we can see that if our classifier scores are calibrated for all groups, sufficiency is automatically satisfied. If our model satisfies sufficiency but not calibration by group, we can calibrate our model score through a simple transformation. We simply pick a value for <span class="math inline">\(Z\)</span>, <span class="math inline">\(Z=1\)</span> say, and then calculate the mapping, <span class="math display">\[\mathbb{P}(Y=1|P=p, Z=1) = f(p).\]</span> We then transform all our scores to new scores (which satisfy calibration by group) by applying the inverse mapping <span class="math inline">\(f^{-1}(P)\)</span>. The resulting model is both sufficient and the model score is calibrated.</p>
-</section>
 </section>
 </section>
 <section id="sec_Impossible" class="level2" data-number="3.3">
@@ -1944,7 +1954,7 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 \textrm{Product rule} \quad
 &amp; \Rightarrow \quad \mathbb{P}(z|y) = \frac{\mathbb{P}(z,y)}{\mathbb{P}(y)}\nonumber\\
 &amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \frac{\mathbb{P}(z,y)}{\mathbb{P}(y)}.\end{aligned}\]</span></td>
-<td style="text-align: right;">(3.5)</td>
+<td style="text-align: right;">(3.6)</td>
 </tr>
 </tbody>
 </table>
@@ -1964,12 +1974,12 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 \textrm{Independence: } Z \bot \hat{Y} \quad 
 &amp; \Rightarrow \quad \mathbb{P}(z|\hat{y}) = \mathbb{P}(z)\nonumber\\
 &amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z).\end{aligned}\]</span></td>
-<td style="text-align: right;">(3.6)</td>
+<td style="text-align: right;">(3.7)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Equating (3.5) and (3.6) and rearranging gives, <span class="math display">\[\mathbb{P}(z,y) = \mathbb{P}(z)\mathbb{P}(y).\]</span> Thus, <span class="math inline">\(Z\)</span> and <span class="math inline">\(Y\)</span> must be independent.</p>
+<p>Equating (3.6) and (3.7) and rearranging gives, <span class="math display">\[\mathbb{P}(z,y) = \mathbb{P}(z)\mathbb{P}(y).\]</span> Thus, <span class="math inline">\(Z\)</span> and <span class="math inline">\(Y\)</span> must be independent.</p>
 </section>
 <section id="independence-versus-separation" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2"><span class="header-section-number">3.3.2</span> Independence versus Separation</h3>
@@ -1991,7 +2001,7 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 = \sum_{y\in\mathcal{Y}}  \mathbb{P}(\hat{y}, y).\nonumber\\
 \textrm{Product rule} \quad &amp; \Rightarrow \quad \mathbb{P}(\hat{y})
 = \sum_{y\in\mathcal{Y}} \mathbb{P}(\hat{y}|y) \mathbb{P}(y). \end{aligned}\]</span></td>
-<td style="text-align: right;">(3.7)</td>
+<td style="text-align: right;">(3.8)</td>
 </tr>
 </tbody>
 </table>
@@ -2009,12 +2019,12 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 = \sum_{y\in\mathcal{Y}} \mathbb{P}(\hat{y}|y, z) \mathbb{P}(y|z).\nonumber\\
 \textrm{Independence: } \hat{Y} \bot Z \quad \Rightarrow \quad \mathbb{P}(\hat{y})
 = \sum_{y\in\mathcal{Y}} \mathbb{P}(\hat{y}|y) \mathbb{P}(y|z). \end{aligned}\]</span></td>
-<td style="text-align: right;">(3.8)</td>
+<td style="text-align: right;">(3.9)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Equating (3.7) and (3.8) and rearranging gives,</p>
+<p>Equating (3.8) and (3.9) and rearranging gives,</p>
 <div id="eq:IndSep3">
 <table style="width:99%;">
 <colgroup>
@@ -2025,12 +2035,12 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 \sum_{y\in\mathcal{Y}} \mathbb{P}(\hat{y}|y) [\mathbb{P}(y)-\mathbb{P}(y|z)] = 0\]</span></td>
-<td style="text-align: right;">(3.9)</td>
+<td style="text-align: right;">(3.10)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>For binary <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mathcal{Y}=\{0,1\}\)</span>. Denoting <span class="math inline">\(\mathbb{P}(y)=p_y\)</span> and <span class="math inline">\(\mathbb{P}(y|z) = q_y\)</span>, then <span class="math inline">\(p_1 = 1-p_0\)</span> and <span class="math inline">\(q_1 = 1-q_0\)</span>. Substituting into (3.9) gives, <span class="math display">\[\begin{aligned}
+<p>For binary <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mathcal{Y}=\{0,1\}\)</span>. Denoting <span class="math inline">\(\mathbb{P}(y)=p_y\)</span> and <span class="math inline">\(\mathbb{P}(y|z) = q_y\)</span>, then <span class="math inline">\(p_1 = 1-p_0\)</span> and <span class="math inline">\(q_1 = 1-q_0\)</span>. Substituting into (3.10) gives, <span class="math display">\[\begin{aligned}
 &amp; \phantom{[}\mathbb{P}(\hat{y}|Y=0)(p_0-q_0)+\mathbb{P}(\hat{y}|Y=1)[1-p_0-(1-q_0)] = 0 \\
 \Leftrightarrow \quad &amp; [\mathbb{P}(\hat{y}|Y=0)-\mathbb{P}(\hat{y}|Y=1)](p_0-q_0) = 0\end{aligned}\]</span> which is true if and only if, <span class="math display">\[\begin{aligned}
 &amp;\textrm{either }
@@ -2061,7 +2071,7 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 \textrm{Sufficiency: } Z \bot Y | \hat{Y} \quad 
 &amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z|\hat{y}) \nonumber\\
 &amp; \Rightarrow \quad \mathbb{P}(z|y) = \mathbb{P}(z|\hat{y}).\end{aligned}\]</span></td>
-<td style="text-align: right;">(3.10)</td>
+<td style="text-align: right;">(3.11)</td>
 </tr>
 </tbody>
 </table>
@@ -2076,15 +2086,15 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[\begin{aligned}
 \textrm{Product rule: } \quad\phantom{\Rightarrow} \mathbb{P}(z,y) &amp; = \mathbb{P}(z|y) \mathbb{P}(y)\nonumber\\
-(3.10) \qquad\quad \Rightarrow \quad \mathbb{P}(z,y) &amp; = \mathbb{P}(z|\hat{y}) \mathbb{P}(y).\end{aligned}\]</span></td>
-<td style="text-align: right;">(3.11)</td>
+(3.11) \qquad\quad \Rightarrow \quad \mathbb{P}(z,y) &amp; = \mathbb{P}(z|\hat{y}) \mathbb{P}(y).\end{aligned}\]</span></td>
+<td style="text-align: right;">(3.12)</td>
 </tr>
 </tbody>
 </table>
 </div>
 <p><span class="math display">\[\begin{aligned}
 \textrm{Sum rule: } \quad \phantom{\Rightarrow}\mathbb{P}(z) &amp; = \sum_{y\in\mathcal{Y}} \mathbb{P}(z,y)\\
-(3.11) \quad\,\, \Rightarrow \quad
+(3.12) \quad\,\, \Rightarrow \quad
 \mathbb{P}(z) &amp; = \sum_{y\in\mathcal{Y}} \mathbb{P}(z|\hat{y}) \mathbb{P}(y)\end{aligned}\]</span> If all events have non-zero probability, we can move <span class="math inline">\(\mathbb{P}(z|\hat{y})\)</span> outside of the summation,</p>
 <div id="eq:SepSuf3">
 <table style="width:99%;">
@@ -2096,12 +2106,12 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 \mathbb{P}(z) = \mathbb{P}(z|\hat{y})\]</span></td>
-<td style="text-align: right;">(3.12)</td>
+<td style="text-align: right;">(3.13)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Thus showing that <span class="math inline">\(Z\)</span> and <span class="math inline">\(\hat{Y}\)</span> must be independent. Equating (3.10) and (3.12) shows that <span class="math inline">\(Z\)</span> and <span class="math inline">\(Y\)</span> must also be independent.</p>
+<p>Thus showing that <span class="math inline">\(Z\)</span> and <span class="math inline">\(\hat{Y}\)</span> must be independent. Equating (3.11) and (3.13) shows that <span class="math inline">\(Z\)</span> and <span class="math inline">\(Y\)</span> must also be independent.</p>
 <div class="lookbox">
 <p><strong>Separation versus Sufficiency II</strong></p>
 <p>In the case where <span class="math inline">\(Y\)</span> is binary, separation and sufficiency can only be satisfied simultaneously if the sensitive feature is independent of the target variable, or the model has an accuracy of 100% (<span class="math inline">\(\hat{Y}=Y\)</span>) or 0% (<span class="math inline">\(\hat{Y}=1-Y\)</span>).</p>
@@ -2117,7 +2127,7 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span> Suppose we wi
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 PPV = \frac{p TPR}{p TPR + (1-p)FPR}\]</span></td>
-<td style="text-align: right;">(3.13)</td>
+<td style="text-align: right;">(3.14)</td>
 </tr>
 </tbody>
 </table>
@@ -2133,7 +2143,7 @@ PPV = \frac{p TPR}{p TPR + (1-p)FPR}\]</span></td>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 NPV = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}\]</span></td>
-<td style="text-align: right;">(3.14)</td>
+<td style="text-align: right;">(3.15)</td>
 </tr>
 </tbody>
 </table>
@@ -2141,9 +2151,9 @@ NPV = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}\]</span></td>
 <p>where <span class="math inline">\(p=\mathbb{P}(Y=1)\)</span>.</p>
 <div class="lookbox">
 <p><strong>Exercise: Predictive values</strong></p>
-<p>Prove the results given in equations (3.13) and (3.14). Refer to Table <a href="#tbl:CMPerfMetrics" data-reference-type="ref" data-reference="tbl:CMPerfMetrics">3.3</a> for a summary of model performance metrics for a binary classifier. <a href="#GF_PredVal">Solution</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
+<p>Prove the results given in equations (3.14) and (3.15). Refer to Table <a href="#tbl:CMPerfMetrics" data-reference-type="ref" data-reference="tbl:CMPerfMetrics">3.3</a> for a summary of model performance metrics for a binary classifier. <a href="#GF_PredVal">Solution</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
 </div>
-<p>Denote <span class="math inline">\(p_z=\mathbb{P}(Y=1|Z=z)\)</span> then we can show from equations (3.13) and (3.14) that for any distinct pair of groups <span class="math inline">\(Z=a\)</span> and <span class="math inline">\(Z=b\)</span> for both separation and sufficiency to hold we must have</p>
+<p>Denote <span class="math inline">\(p_z=\mathbb{P}(Y=1|Z=z)\)</span> then we can show from equations (3.14) and (3.15) that for any distinct pair of groups <span class="math inline">\(Z=a\)</span> and <span class="math inline">\(Z=b\)</span> for both separation and sufficiency to hold we must have</p>
 <div id="eq:PRT1">
 <table style="width:99%;">
 <colgroup>
@@ -2154,7 +2164,7 @@ NPV = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}\]</span></td>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 FPR (p_a-p_b) TPR = 0\]</span></td>
-<td style="text-align: right;">(3.15)</td>
+<td style="text-align: right;">(3.16)</td>
 </tr>
 </tbody>
 </table>
@@ -2170,7 +2180,7 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 (1-FPR) (p_a-p_b) (1-TPR) = 0\]</span></td>
-<td style="text-align: right;">(3.16)</td>
+<td style="text-align: right;">(3.17)</td>
 </tr>
 </tbody>
 </table>
@@ -2178,9 +2188,9 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <p>respectively.</p>
 <div class="lookbox">
 <p><strong>Exercise: Separation versus sufficiency</strong></p>
-<p>Show that for separation and sufficiency to hold equations (3.15) and (3.16) must hold for for any pair of groups <span class="math inline">\(Z=a\)</span> and <span class="math inline">\(Z=b\)</span>. <a href="#GF_SepVsSuff">Solution</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
+<p>Show that for separation and sufficiency to hold equations (3.16) and (3.17) must hold for for any pair of groups <span class="math inline">\(Z=a\)</span> and <span class="math inline">\(Z=b\)</span>. <a href="#GF_SepVsSuff">Solution</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
 </div>
-<p>Equations (3.15) and (3.16) can only be simultaneously satisfied in 3 cases:</p>
+<p>Equations (3.16) and (3.17) can only be simultaneously satisfied in 3 cases:</p>
 <ol>
 <li><p><span class="math inline">\(p_a=p_b \, \forall \, a, b\)</span> in which case <span class="math inline">\(Y \bot Z\)</span>,</p></li>
 <li><p><span class="math inline">\(FPR=0\)</span> and <span class="math inline">\(TPR=1\)</span> in which case <span class="math inline">\(Y=\hat{Y}\)</span>,</p></li>
@@ -2193,10 +2203,9 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <section id="group-fairness" class="level3 unnumbered">
 <h3 class="unnumbered">Group fairness</h3>
 <ul>
-<li><p>The term group fairness is used to describe a class of metrics that all stem from the same high level idea; the notion that some property should be equally distributed across different subgroups of a population.</p></li>
-<li><p>Group fairness metrics are often used to measure discrimination or bias in a given decision process.</p></li>
+<li><p>The term group fairness is used to describe a class of metrics that are used to measure discrimination or bias across specific subgroups of a population, in a given decision process. At the implementation level, all group fairness metrics indicate the extent to which, some statistical property differs between different groups.</p></li>
 <li><p>In general group fairness criterion and measures can be derived from independence constraints on the joint distributions of the non-sensitive features <span class="math inline">\(X\)</span>, sensitive features, <span class="math inline">\(Z\)</span>, the target feature <span class="math inline">\(Y\)</span> and predicted target <span class="math inline">\(\hat{Y}\)</span>.</p></li>
-<li><p>Group fairness criteria can be broadly classified into two types; those seeking to compare outcomes across groups and those comparing errors.</p></li>
+<li><p>Group fairness criteria can be broadly classified into two types; those that compare outcomes and those comparing errors.</p></li>
 </ul>
 <div id="tbl:GFairSumm">
 <table>
@@ -2212,19 +2221,19 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <tr class="odd">
 <td style="text-align: left;">Criterion</td>
 <td style="text-align: center;">Independence</td>
-<td style="text-align: center;">Twin test</td>
+<td style="text-align: center;">Twin Test</td>
 <td style="text-align: center;">Separation</td>
 <td style="text-align: center;">Sufficiency</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Constraint</td>
-<td style="text-align: center;"><span class="math inline">\(Y\bot Z\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(Y\bot (Z|X)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\hat{Y}\bot Z\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\hat{Y}\bot (Z|X)\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(\hat{Y}\bot (Z|Y)\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(Y\bot (Z|\hat{Y})\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Preventing</td>
+<td style="text-align: left;">Measures</td>
 <td style="text-align: center;">Disparate impact</td>
 <td style="text-align: center;">Disparate treatment</td>
 <td style="text-align: center;" colspan="2">Disparate mistreatment</td>
@@ -2235,44 +2244,44 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 </section>
 <section id="comparing-outcomes" class="level3 unnumbered">
 <h3 class="unnumbered">Comparing Outcomes</h3>
-<section id="independence-1" class="level4 unnumbered">
-<h4 class="unnumbered">Independence</h4>
+<section id="independence-hatybot-z" class="level4 unnumbered">
+<h4 class="unnumbered">Independence (<span class="math inline">\(\hat{Y}\bot Z\)</span>)</h4>
 <ul>
-<li><p>Independence is a strong expression of the view that fairness is equality. It might be interpreted as the notion that abilities (or features) in all groups are, or should be, equally distributed; the belief that observed differences in the distributions in training data are a manifestation of unfair discrimination, errors in data collection, or both, rather than inherent differences in the abilities of people belonging to one group or another.</p></li>
-<li><p>Independence metrics is they can be evaluated on both the data and the model. A common problem in machine learning is that existing biases in the data can be exaggerated if protected groups are minorities in the population. By comparing independence metrics for the data and with those of our model output we can understand if our model is inadvertently introducing biases that do not originate from the data.</p></li>
-<li><p>If the target variable <span class="math inline">\(Y\)</span> and sensitive feature <span class="math inline">\(Z\)</span> are not independent then satisfying independence for your model will not permit the theoretically ‘perfect’ solution <span class="math inline">\(Y = \hat{Y}\)</span>. We would naturally expect that the stronger the relationship between the sensitive feature and target, the greater the trade-off between fairness and utility in satisfying the independence criterion.</p></li>
-<li><p>A major shortcoming of independence is that it doesn’t consider that there may be confounding variables. It assumes that all relevant features are held by all protected groups equally and where there are differences it assumes unfairness and passes the task of correcting for it to the decision maker.</p></li>
+<li><p>Independence metrics can be evaluated on both data and model output. Comparing them is important in understanding if our model is inadvertently introducing or exaggerating biases in the training data.</p></li>
+<li><p>If the target variable <span class="math inline">\(Y\)</span> and sensitive feature <span class="math inline">\(Z\)</span> are not independent then imposing it on a model does not permit the theoretically perfect solution <span class="math inline">\(Y = \hat{Y}\)</span>. The stronger the relationship between <span class="math inline">\(Z\)</span> and <span class="math inline">\(Y\)</span>, the greater the trade-off between fairness and utility in satisfying independence criterion.</p></li>
+<li><p>Independence does not consider the existance of confounding variables.</p></li>
+<li><p>In the case where independence is not satisfied by the data, imposing it on a model implies a level of distrust in the data or modelling of the problem.</p></li>
 </ul>
 </section>
-<section id="the-twin-test" class="level4 unnumbered">
-<h4 class="unnumbered">The twin test</h4>
+<section id="the-twin-test-hatybot-zx" class="level4 unnumbered">
+<h4 class="unnumbered">The Twin Test (<span class="math inline">\(\hat{Y}\bot (Z|X)\)</span>)</h4>
 <ul>
-<li><p>The twin test has been interpreted as addressing disparate treatment, since it exposes differing treatment of individuals based on protected class membership. In reality, while it would be sufficient to demonstrate disparate treatment, it is not necessary. Using protected features in the algorithm would be enough to result in disparate treatment liability in the US, the impact of using the feature is irrelevant.</p></li>
-<li><p>In the case where a decision is made purely on the basis of an algorithm and there are no unobserved variables, we can perform a ‘twin test’ to establish disparate treatment. We conduct a randomized experiment and compute the causal mean difference. If the value is non-zero, we have established the existence of disparate treatment.</p></li>
+<li><p>The twin test tries to establish cause (of differing treatment across protected groups), by comparing results for counterfactual twins that differ only by group membership.</p></li>
+<li><p>Given access to the model in the form of a black box, the twin test consists of a randomised experiment, sampling individuals and comparing the output for the corresponding twins.</p></li>
+<li><p>For a stochastic model, the twin test is computationally more expensive, since we must evaluate our model for each pair of twins a sufficently large number of times to obtain the predicted target distribution.</p></li>
 </ul>
 </section>
 </section>
 <section id="comparing-errors" class="level3 unnumbered">
 <h3 class="unnumbered">Comparing errors</h3>
 <ul>
-<li><p>Criteria comparing errors assume that the relationship between the target variable and sensitive feature prescribed by the training data is fair so only make sense if the target variable is reliable as the ground truth. Under this assumption that our data is fair, for our model to be fair, we require errors to be distributed similarly for different subgroups of the population (defined by the values of sensitive features).</p></li>
-<li><p>Ensuring equal errors has been described as avoiding disparate mistreatment.</p></li>
-<li><p>For a regression model balanced residuals takes the difference of the mean errors for each group as a measure of fairness.</p></li>
-<li><p>For a classification problem we could could use the error rate difference or the error rate ratio as a measure of fairness.</p></li>
-<li><p>Unlike criteria comparing outcomes, criteria comparing errors do not preclude the theoretically ‘perfect’ solution, <span class="math inline">\(\hat{Y}=Y\)</span>.</p></li>
+<li><p>Criteria comparing errors assume that the data is fair.</p></li>
+<li><p>Unlike criteria comparing outcomes, criteria comparing errors do not preclude the theoretically perfect solution, <span class="math inline">\(\hat{Y}=Y\)</span>.</p></li>
 </ul>
-<section id="separation-1" class="level4 unnumbered">
-<h4 class="unnumbered">Separation</h4>
+<section id="separation-hatybot-zy" class="level4 unnumbered">
+<h4 class="unnumbered">Separation (<span class="math inline">\(\hat{Y}\bot (Z|Y)\)</span>)</h4>
 <ul>
 <li><p>Separation, allows for dependence between the predicted target variable and the sensitive feature but only to the extent that it exists between the actual target variable and the sensitive feature.</p></li>
-<li><p>For a binary classification model, separation requires both the false negative and false positive rates to be equal across groups. This criterion is known as equalised odds</p></li>
-<li><p>Equal opportunity criterion requires only the true positive rates to be the same across all groups (assuming a positive prediction is the more advantageous outcome).</p></li>
+<li><p>For a binary classification model, separation requires the probability of of an error for a given target, to be equal across protected groups.</p></li>
+<li><p>For a binary classification model, sufficiency requires both the false positive rate and false negative rate to be independent of protected group membership.</p></li>
 </ul>
 </section>
-<section id="sufficiency-1" class="level4 unnumbered">
-<h4 class="unnumbered">Sufficiency</h4>
+<section id="sufficiency-ybot-zhaty-and-calibration-by-group" class="level4 unnumbered">
+<h4 class="unnumbered">Sufficiency (<span class="math inline">\(Y\bot (Z|\hat{Y})\)</span>) and Calibration by Group</h4>
 <ul>
-<li><p>For a binary classification model, sufficiency requires both the false omission rate and false discovery rates to be equal across protected groups.</p></li>
+<li><p>For a binary classification model, sufficiency requires the probability of of an error for a given prediction to be equal across protected groups.</p></li>
+<li><p>For a binary classification model, sufficiency requires both the positive predictive value and negative predictive value to be independent of protected group membership.</p></li>
+<li><p>A model that is calibrated by group satisies sufficiency.</p></li>
 <li><p>Sufficiency is is a weaker model constraint compared to separation as it is satisfied implicitly through the training process.</p></li>
 </ul>
 </section>
@@ -2295,11 +2304,10 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <ul>
 <li><p>Individual fairness as a continuity constraint</p></li>
 <li><p>Individual fairness as consistency</p></li>
-<li><p>Quantifying unfairness with inequality indices</p></li>
-<li><p>Understanding within-group and between-group unfairness</p></li>
+<li><p>Comparing individual and group fairness</p></li>
 </ul>
 </div>
-<p>This chapter is divided into two parts, in the first part we will introduce the notion of individual fairness. Compared to the notions we have studied so far, individual fairness is arguably a much more expansive concept of fairness. Group fairness criteria for decision processes are rather specific, they are intended to address the issue of discrimination based on protected characteristics. But fairness isn’t just about discrimination. Broadly speaking, <strong>individual fairness</strong><span class="citation" data-cites="DworkIndFair"><a href="#ref-DworkIndFair" role="doc-biblioref">[58]</a></span><span class="marginnote"><span id="ref-DworkIndFair" class="csl-entry" role="doc-biblioentry">
+<p>This chapter we will introduce the notion of individual fairness. Compared to the notions we have studied so far, individual fairness is arguably a much more expansive concept of fairness. Group fairness criteria for decision processes are rather specific, they are intended to address the issue of discrimination based on protected characteristics. But fairness isn’t just about discrimination. Broadly speaking, <strong>individual fairness</strong><span class="citation" data-cites="DworkIndFair"><a href="#ref-DworkIndFair" role="doc-biblioref">[58]</a></span><span class="marginnote"><span id="ref-DworkIndFair" class="csl-entry" role="doc-biblioentry">
 <span class="csl-left-margin">[58] </span><span class="csl-right-inline">C. Dwork, M. Hardt, T. Pitassi, O. Reingold, and R. Zemel, <span>“Fairness through awareness.”</span> 2011.Available: <a href="https://arxiv.org/abs/1104.3913">https://arxiv.org/abs/1104.3913</a></span>
 </span>
 </span> is the idea that a given decision process, is fair if similar people (with respect to the task) receive similar decisions. As a metric, individual fairness cares not about the actual decision, but rather about the consistency with which they are made. We’ll spend a considerable part of the first half of this chapter translating this high level concept into a criterion (for regression and classification models) in order understand how it might be measured. We will see that by this notion of fairness, deterministic classification models are inherently unfair. We discuss how to resolve this issue and implement the resolution. We use the metric consistency in AIF360 to measure individual fairness in our data and model predictions from the previous chapter.</p>
@@ -2310,7 +2318,7 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <p>It’s worth noting that although the approach of randomly selecting female applicants to accept might seem unnecessarily naive, there can be cases, (particularly when there are multiple protected characteristics that intersect) where protected groups are so small that models simply do not have enough training data to be able to make accurate predictions for them. In such cases a model could conceivably be, not much better than guessing for individuals in those groups. Even if we supposedly take a smarter approach of say, choosing the individuals closest to the decision boundary (rather than choosing them randomly) this would be equivalent to choosing a different acceptance threshold for women, in which case we would be using a different criterion to determine acceptance for male and female applicants (which are in all other respects similar). This could be viewed as unfair, and yet satisfy the fairness criterion. This notion of fairness at the individual level might be described as the requirement that decision processes should be consistent.</p>
 <section id="individual-fairness-and-continuity" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1"><span class="header-section-number">4.1.1</span> Individual Fairness and Continuity</h3>
-<p>A simple translation of the individual fairness criterion for a decision process would be a requirement that individuals with similar features (assuming the features are relevant to the decision which they are used to make) receive similar predictions. What would this mean for a model? Let’s start with a regression model and think of it as a function that maps individuals to predictions. Individual fairness can then be interpreted as a requirement that, two points that are close in input (feature) space are also close in output (prediction) space. This is essentially the requirement that our model mapping should be continuous. Why does our model need to be a continuous mapping? Because at a discontinuity, two individuals falling either side of it can be arbitrarily similar (identical) in feature space and yet receive very different outcomes. For a more precise definition of continuity, below we describe Lipschitz<span class="sidenote-wrapper"><label for="sn-7" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-7" class="margin-toggle"/><span class="sidenote">Named after the German mathematician Rudolf Lipschitz, perhaps most well known for his contributions to mathematical analysis.<br />
+<p>A simple translation of the individual fairness criterion for a decision process would be a requirement that individuals with similar features (assuming the features are relevant to the decision which they are used to make) receive similar predictions. What would this mean for a model? Let’s start with a regression model and think of it as a function that maps individuals to predictions. Individual fairness can then be interpreted as a requirement that, two points that are close in input (feature) space are also close in output (prediction) space. This is essentially the requirement that our model mapping should be continuous. Why does our model need to be a continuous mapping? Because at a discontinuity, two individuals falling either side of it can be arbitrarily similar (identical) in feature space and yet receive very different outcomes. For a more precise definition of continuity, below we describe Lipschitz<span class="sidenote-wrapper"><label for="sn-8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-8" class="margin-toggle"/><span class="sidenote">Named after the German mathematician Rudolf Lipschitz, perhaps most well known for his contributions to mathematical analysis.<br />
 <br />
 </span></span> Continuity in the context of a regression model.</p>
 <div class="lookbox">
@@ -2338,7 +2346,7 @@ d_{\mathcal{Y}}(f(\boldsymbol{x}_i), \hat{y}(\boldsymbol{x}_j)) \leq K d_{\mathc
 <figure>
 <img src="04_IndividualFairness/figures/Fig_Score2ProbDisc.png" id="fig:DiscThreshold" style="width:60.0%" alt="Figure 4.1: Discontinuity in the probability of acceptance as a function of model score (at the threshold t) under a deterministic binary classifier." /><figcaption aria-hidden="true">Figure 4.1: Discontinuity in the probability of acceptance as a function of model score (at the threshold <span class="math inline">\(t\)</span>) under a deterministic binary classifier.</figcaption>
 </figure>
-<p>If we want our model to be fair at the individual level, we need to remove the discontinuity (close the gap) at our decision boundary. How might we do this? Let’s return to our simple example of the job applicant filter. Let’s assume our binary classifier outputs a score and that score is a continuous function of our features. In this case, the discontinuity in our model mapping is a result of the threshold alone because continuity holds under composition. That is to say, a continuous function of a continuous function is also continuous<span class="sidenote-wrapper"><label for="sn-8" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-8" class="margin-toggle"/><span class="sidenote">More precisely, for <span class="math inline">\(f(x)=g(h(x))\)</span>, if <span class="math inline">\(h(x)\)</span> is continuous at <span class="math inline">\(x=a\)</span> and <span class="math inline">\(g(x)\)</span> is continuous at <span class="math inline">\(x=h(a)\)</span> then <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x=a\)</span>.<br />
+<p>If we want our model to be fair at the individual level, we need to remove the discontinuity (close the gap) at our decision boundary. How might we do this? Let’s return to our simple example of the job applicant filter. Let’s assume our binary classifier outputs a score and that score is a continuous function of our features. In this case, the discontinuity in our model mapping is a result of the threshold alone because continuity holds under composition. That is to say, a continuous function of a continuous function is also continuous<span class="sidenote-wrapper"><label for="sn-9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-9" class="margin-toggle"/><span class="sidenote">More precisely, for <span class="math inline">\(f(x)=g(h(x))\)</span>, if <span class="math inline">\(h(x)\)</span> is continuous at <span class="math inline">\(x=a\)</span> and <span class="math inline">\(g(x)\)</span> is continuous at <span class="math inline">\(x=h(a)\)</span> then <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x=a\)</span>.<br />
 <br />
 </span></span>. Then if we can remove the discontinuity at the threshold our model mapping will be continuous. Rather than imposing a threshold on the model score and rejecting or accepting individuals based on which side of the threshold they fall, we can use the score to determine the probability of acceptance. We then randomly draw a value according to that probability distribution, to determine if the individual is accepted or not. This approach allows the probability of acceptance to be a continuous function of model score. See for example Figure <a href="#fig:ContThreshold" data-reference-type="ref" data-reference="fig:ContThreshold">4.2</a>.</p>
 <figure>
@@ -2429,7 +2437,7 @@ d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i), f(\boldsymbol{x}_j)) \leq K d_
 <li><p>Quantifying algorithmic unfairness with inequality indices</p></li>
 <li><p>Generalised entropy indices and subgroup decomposability</p></li>
 <li><p>Analysing different benefit functions</p></li>
-<li><p>Analysing the behaviour generalised entropy indices for classifiers</p></li>
+<li><p>Analysing the behaviour for classifiers</p></li>
 <li><p>Understanding trade-off between individual and group fairness</p></li>
 </ul>
 </div>
@@ -2443,7 +2451,8 @@ d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i), f(\boldsymbol{x}_j)) \leq K d_
 <li><p><strong>Index calculation:</strong> There are lots of indices available that have different properties and measure inequality in different ways, which one should we use?</p></li>
 <li><p><strong>Benefit function:</strong> How do we map our predictions to benefits?</p></li>
 </ol>
-<p>Inspired by the work of Speicher, Heidari et al.<span class="citation" data-cites="IneqIndPaper"><a href="#ref-IneqIndPaper" role="doc-biblioref">[60]</a></span>, we dicuss these questions, specifically for algorithmic classifiers. It’s worth noting that this suggested application of inequality indices to measure algorithmic unfairness is relatively new. Much of the application of inequality indices to date, has been for more continuous and measurable or observable variables such as income or throughput. Binary classifiers on the other hand are often used for far more subjective, and far less observable targets. That said, binary classifiers have a rather constrained model space; constrained enough for us to derive results, that provide a detailed physical account of an index’s behaviour. The goal of this chapter is to develop our understanding of these metrics for classification problems so that we are better equipped to assess and interpret their meaning and value; not just for a particular data set, model or index choice, but rather for all possible data sets, models and indices.</p>
+<p>Inspired by the work of Speicher, Heidari et al.<span class="citation" data-cites="IneqIndPaper"><a href="#ref-IneqIndPaper" role="doc-biblioref">[60]</a></span>, we dicuss these questions, specifically for algorithmic classifiers. It’s worth noting that this suggested application of inequality indices to measure algorithmic unfairness is relatively new. Much of the application of inequality indices to date, has been for more continuous variables defined on a semi-infinite domain. Variables also tend to be more measurable or observable such as income or throughput. Binary classifiers on the other hand are often used for far more subjective, and far less observable targets.</p>
+<p>We will see in this chapter that binary classifiers have a constrained enough solution space for us to derive results, that provide an analytical account of the index’s behaviour for different models. The goal of this chapter is to develop our understanding of these metrics for classification problems so that we are better equipped to assess and interpret their meaning and value; not just for a particular data set, model or index choice, but rather for all possible data sets, models and indices.</p>
 <section id="properties" class="level3 unnumbered">
 <h3 class="unnumbered">Properties</h3>
 <p>Before getting into the particular family of indices we’ll focus on in this chapter, we mention some more general properties of inequality indices that describe their behaviour. To do this it will help to introduce some notation. We denote the benefits received by each individual, in our population size <span class="math inline">\(n\)</span>, as the vector <span class="math inline">\(b=(b_1, b_2,...,b_n)\)</span>. We use <span class="math inline">\((b_{(1)}, b_{(2)},...,b_{(n)})\)</span> to denote the benefit vector, <span class="math inline">\(\boldsymbol{b}\)</span> sorted in ascending order. We denote our inequality measure with <span class="math inline">\(I\)</span> where <span class="math inline">\(I:\mathbb{R}^n_{\geq 0}\mapsto\mathbb{R}_{\geq 0}\)</span>; that is, the inequality measure maps a vector of <span class="math inline">\(n\)</span> non-negative, real valued benefits <span class="math inline">\(\boldsymbol{b}\)</span> to a positive real number <span class="math inline">\(I(\boldsymbol{b})\geq0\)</span>.</p>
@@ -3331,7 +3340,7 @@ h^+(\alpha) =  \left\{
 <pre><code>\$ conda create --name mbml python=3.7</code></pre></li>
 <li><p>Activate your new environment:</p>
 <pre><code>$ conda activate mbml</code></pre></li>
-<li><p>This book is a work in progress. As part of analysing the metrics and methods it uses code that is not yet available with the library<span class="sidenote-wrapper"><label for="sn-9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-9" class="margin-toggle"/><span class="sidenote">If you’re interested, here is the <a href="https://github.com/Trusted-AI/AIF360/pull/214">open pull request</a>.<br />
+<li><p>This book is a work in progress. As part of analysing the metrics and methods it uses code that is not yet available with the library<span class="sidenote-wrapper"><label for="sn-10" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-10" class="margin-toggle"/><span class="sidenote">If you’re interested, here is the <a href="https://github.com/Trusted-AI/AIF360/pull/214">open pull request</a>.<br />
 <br />
 </span></span>. Once it is merged, you will just be able to just pip install the aif360 library. Until then you must clone this <a href="https://github.com/leenamurgai/AIF360">fork of AIF360</a>:</p>
 <pre><code>$ git clone https://github.com/leenamurgai/AIF360.git</code></pre></li>
@@ -3344,7 +3353,7 @@ h^+(\alpha) =  \left\{
 <section id="comparing-outcomes-1" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1"><span class="header-section-number">A.1.1</span> Comparing Outcomes</h3>
 <p>Now that we have covered some measures of fairness, let’s dive into calculating them. In this book we are going to use IBM’s <a href="https://aif360.mybluemix.net/resources">AI Fairness 360 (AIF360)</a>. AIF360 is currently the most comprehensive open source library available for measuring and mitigating bias in machine learning models. The Python package includes an extensive set of metrics for datasets and models to test for biases, explanations for these metrics, and algorithms to mitigate bias in datasets and models many of which we will cover in this book. The system has been designed to be extensible, adopted software engineering best practices to maintain code quality, and is well <a href="https://aif360.readthedocs.io/en/latest/index.html">documented</a>. The package implements techniques from at-least eight published papers and includes over 71 bias detection metrics and nine bias mitigation algorithms. These techniques can all be called in a standard way, similar to scikit-learn’s fit/transform/predict paradigm.</p>
-<p>In this section we’re going to use AIF360 to calculate some of the metrics we’ve talked about in the previous section as a means to get started working with it. For calculating the metrics we’ve talked about so far, using AIF360 might seem to add unnecessary overhead as they are reasonably straightforward to code up directly once you have your data in a Pandas DataFrame. But remember, the library contains implementations of more complicated metrics and bias mitigations algorithms that we’ll cover later on in this book. Before we can use the library, we need to install it. Instructions are provided in Appendix <a href="#app_Install" data-reference-type="ref" data-reference="app_Install">[app_Install]</a>.</p>
+<p>In this section we’re going to use AIF360 to calculate some of the metrics we’ve talked about in the previous section as a means to get started working with it. For calculating the metrics we’ve talked about so far, using AIF360 might seem to add unnecessary overhead as they are reasonably straightforward to code up directly once you have your data in a Pandas DataFrame. But remember, the library contains implementations of more complicated metrics and bias mitigations algorithms that we’ll cover later on in this book. Before we can use the library, we need to install it. Instructions are provided in Appendix <a href="#app_AIF360" data-reference-type="ref" data-reference="app_AIF360">A</a>.</p>
 <section id="statlog-german-credit-data-data-set" class="level4 unnumbered">
 <h4 class="unnumbered">Statlog (German Credit Data) Data Set</h4>
 <p>The Jupyter Notebook, <code>mbml_german.ipynb</code>, contains an example calculating some of the above fairness metrics on both a dataset and model output. It uses the <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">Statlog (German Credit Data) Data Set</a>, in which one thousand loan applicants are classified as representing ‘good’ or ‘bad’ credit risks based on features such as loan term, loan amount, age, gender, marital status and more.</p>
@@ -4096,7 +4105,7 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <p>Write a function that takes two arrays <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> of categorical features and returns the normalised prejudice index. Hint:</p>
 <ol>
 <li><p>Compute the probability distributions <span class="math inline">\(\mathbb{P}(y)\)</span>, <span class="math inline">\(\mathbb{P}(z)\)</span> and <span class="math inline">\(\mathbb{P}(y,z)\)</span>. Note that these can be thought of as the frequency with which each event occurs.</p></li>
-<li><p>Compute the entropies <span class="math inline">\(H(y)\)</span> and <span class="math inline">\(H(z)\)</span> shown in equation (3.3) and use these to compute the normalising factor, <span class="math inline">\(\sqrt{H(y)H(z)}\)</span>.</p></li>
+<li><p>Compute the entropies <span class="math inline">\(H(y)\)</span> and <span class="math inline">\(H(z)\)</span> shown in equations (3.3) and (3.4). Use these to compute the normalising factor, <span class="math inline">\(\sqrt{H(y)H(z)}\)</span>.</p></li>
 <li><p>Compute the mutual information <span class="math inline">\(I(z,y)\)</span> shown in equation (3.1) and divide by the normalising factor.</p></li>
 </ol>
 <p>You can test your implementation against scikit-learn’s:<br />
@@ -4170,7 +4179,7 @@ d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-)
 <div id="GF_PredVal">
 <p><strong>Exercise: Predictive values</strong></p>
 </div>
-<p>Prove the results given in equations (3.13) and (3.14).</p>
+<p>Prove the results given in equations (3.14) and (3.15).</p>
 </div>
 <p>We want to write the positive and negative predictive values (<span class="math inline">\(PPV\)</span> and <span class="math inline">\(NPV\)</span> respectively) in terms of the true positive, false positive and acceptance rates (<span class="math inline">\(TPR\)</span>, <span class="math inline">\(FPR\)</span> and <span class="math inline">\(p\)</span> respectively). We start by looking at some relationships between the elements of a confusion matrix shown in Table <a href="#tbl:app_ConfMax" data-reference-type="ref" data-reference="tbl:app_ConfMax">D.1</a>.</p>
 <div id="tbl:app_ConfMax">
@@ -4224,14 +4233,14 @@ d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-)
 </div>
 <p>where <span class="math inline">\(n= TP+FP+FN+TN\)</span> denotes the total number of data points. Using the equations in the final row of the table we can write, <span class="math display">\[\begin{aligned}
     p TPR &amp; = \frac{TP}{n}, &amp;     (1-p) FPR &amp; = \frac{FP}{n}, \\
-p (1-TPR) &amp; = \frac{FN}{n}, &amp; (1-p) (1-FPR) &amp; = \frac{TP}{n}.\end{aligned}\]</span> Finally, we can substitute these into our expressions for <span class="math inline">\(PPV\)</span> and <span class="math inline">\(NPV\)</span> in the right hand column of Table <a href="#tbl:app_ConfMax" data-reference-type="ref" data-reference="tbl:app_ConfMax">D.1</a> to find the relationships in equations (3.13) and (3.14). <span class="math display">\[\begin{aligned}
+p (1-TPR) &amp; = \frac{FN}{n}, &amp; (1-p) (1-FPR) &amp; = \frac{TP}{n}.\end{aligned}\]</span> Finally, we can substitute these into our expressions for <span class="math inline">\(PPV\)</span> and <span class="math inline">\(NPV\)</span> in the right hand column of Table <a href="#tbl:app_ConfMax" data-reference-type="ref" data-reference="tbl:app_ConfMax">D.1</a> to find the relationships in equations (3.14) and (3.15). <span class="math display">\[\begin{aligned}
 PPV &amp; = \frac{p TPR}{p TPR + (1-p)FPR} \\
 NPV &amp; = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}.\end{aligned}\]</span></p>
 <div class="lookbox">
 <div id="GF_SepVsSuff">
 <p><strong>Exercise: Separation versus sufficiency</strong></p>
 </div>
-<p>Show that for separation and sufficiency to hold equations (3.15) and (3.16) must hold for for any pair of groups <span class="math inline">\(Z=a\)</span> and <span class="math inline">\(Z=b\)</span>.</p>
+<p>Show that for separation and sufficiency to hold equations (3.16) and (3.17) must hold for for any pair of groups <span class="math inline">\(Z=a\)</span> and <span class="math inline">\(Z=b\)</span>.</p>
 </div>
 <p>For separation to hold the true positive rate (<span class="math inline">\(TPR\)</span>) and false positive rate (<span class="math inline">\(FPR\)</span>) must be constant across all values of the sensitive features. For sufficiency to hold the positive predictive value (<span class="math inline">\(PPV\)</span>) and negative predictive value (<span class="math inline">\(NPV\)</span>) must be constant across all values of the sensitive features. For brevity we shal use a subscript to denote conditioning on <span class="math inline">\(Z\)</span>, for example <span class="math inline">\(p_z=\mathbb{P}(Y=1|Z=z)\)</span>. For both separation and sufficiency to hold, we must have <span class="math display">\[\begin{aligned}
 &amp; PPV_a = PPV_b \\
@@ -4582,25 +4591,25 @@ f&#39;_{\alpha}(x):(0,n]\rightarrow\left(0,
 <div class="csl-left-margin">[48] </div><div class="csl-right-inline"><span>“The voice of 12,000 patients: Experiences and expectations of rare disease patients on diagnosis and care in europe.”</span> 2009.</div>
 </div>
 <div class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[49] </div><div class="csl-right-inline">K. Fukuchi, J. Sakuma, and T. Kamishima, <span>“Prediction with model-based neutrality,”</span> <em>IEICE TRANS. INF. &amp; SYS.</em>, vol. E98–D, no. 8, 2015, doi: <a href="https://doi.org/Fukuchi">Fukuchi</a>.</div>
+<div class="csl-left-margin">[49] </div><div class="csl-right-inline">M. B. Zafar, I. Valera, M. Gomez Rodriguez, and K. P. Gummadi, <span>“Fairness beyond disparate treatment &amp; disparate impact,”</span> <em>Proceedings of the 26th International Conference on World Wide Web</em>, 2017, doi: <a href="https://doi.org/10.1145/3038912.3052660">10.1145/3038912.3052660</a>.</div>
 </div>
 <div class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[50] </div><div class="csl-right-inline">I. Zliobaite, <span>“On the relation between accuracy and fairness in binary classification.”</span> 2015.Available: <a href="https://arxiv.org/abs/1505.05723">https://arxiv.org/abs/1505.05723</a></div>
+<div class="csl-left-margin">[50] </div><div class="csl-right-inline">R. Binns, <span>“On the apparent conflict between individual and group fairness.”</span> arXiv, 2019. doi: <a href="https://doi.org/10.48550/ARXIV.1912.06883">10.48550/ARXIV.1912.06883</a>.</div>
 </div>
 <div class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[51] </div><div class="csl-right-inline">U. S. E. E. O. Commission, <span>“Questions and answers to clarify and provide a common interpretation of the uniform guidelines on employee selection procedures,”</span> <em>Federal Register</em>, vol. 44, no. 43, 1979.</div>
+<div class="csl-left-margin">[51] </div><div class="csl-right-inline">K. Fukuchi, J. Sakuma, and T. Kamishima, <span>“Prediction with model-based neutrality,”</span> <em>IEICE TRANS. INF. &amp; SYS.</em>, vol. E98–D, no. 8, 2015, doi: <a href="https://doi.org/10.1587/transinf.2014EDP7367">10.1587/transinf.2014EDP7367</a>.</div>
 </div>
 <div class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[52] </div><div class="csl-right-inline">D. Pedreschi, S. Ruggieri, and F. Turini, <span>“Discrimination-aware data mining,”</span> in <em>Proceedings of the ACM SIGKDD international conference on knowledge discovery and data mining</em>, 2008, pp. 560–568. doi: <a href="https://doi.org/10.1145/1401890.1401959">10.1145/1401890.1401959</a>.</div>
+<div class="csl-left-margin">[52] </div><div class="csl-right-inline">I. Zliobaite, <span>“On the relation between accuracy and fairness in binary classification.”</span> 2015.Available: <a href="https://arxiv.org/abs/1505.05723">https://arxiv.org/abs/1505.05723</a></div>
 </div>
 <div class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[53] </div><div class="csl-right-inline">M. B. Zafar, I. Valera, M. Gomez Rodriguez, and K. P. Gummadi, <span>“Fairness beyond disparate treatment &amp; disparate impact,”</span> <em>Proceedings of the 26th International Conference on World Wide Web</em>, 2017, doi: <a href="https://doi.org/10.1145/3038912.3052660">10.1145/3038912.3052660</a>.</div>
+<div class="csl-left-margin">[53] </div><div class="csl-right-inline">U. S. E. E. O. Commission, <span>“Questions and answers to clarify and provide a common interpretation of the uniform guidelines on employee selection procedures,”</span> <em>Federal Register</em>, vol. 44, no. 43, 1979.</div>
 </div>
 <div class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[54] </div><div class="csl-right-inline">T. Calders, A. Karim, F. Kamiran, W. Ali, and X. Zhang, <span>“Controlling attribute effect in linear regression,”</span> 2013. doi: <a href="https://doi.org/10.1109/ICDM.2013.114">10.1109/ICDM.2013.114</a>.</div>
+<div class="csl-left-margin">[54] </div><div class="csl-right-inline">D. Pedreschi, S. Ruggieri, and F. Turini, <span>“Discrimination-aware data mining,”</span> in <em>Proceedings of the ACM SIGKDD international conference on knowledge discovery and data mining</em>, 2008, pp. 560–568. doi: <a href="https://doi.org/10.1145/1401890.1401959">10.1145/1401890.1401959</a>.</div>
 </div>
 <div class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[55] </div><div class="csl-right-inline">S. Barocas, M. Hardt, and A. Narayanan, <em>Fairness and machine learning</em>. fairmlbook.org, 2019.</div>
+<div class="csl-left-margin">[55] </div><div class="csl-right-inline">T. Calders, A. Karim, F. Kamiran, W. Ali, and X. Zhang, <span>“Controlling attribute effect in linear regression,”</span> 2013. doi: <a href="https://doi.org/10.1109/ICDM.2013.114">10.1109/ICDM.2013.114</a>.</div>
 </div>
 <div class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">[56] </div><div class="csl-right-inline">M. Hardt, E. Price, and N. Srebro, <span>“Equality of opportunity in supervised learning.”</span> 2016.Available: <a href="https://arxiv.org/abs/1610.02413">https://arxiv.org/abs/1610.02413</a></div>
