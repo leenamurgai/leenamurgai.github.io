@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Dr Leena Murgai">
-  <meta name="dcterms.date" content="2022-09-24">
+  <meta name="dcterms.date" content="2022-09-29">
   <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
@@ -32,7 +32,7 @@
 <header>
 <h1 class="title">Mitigating Bias in Machine Learning</h1>
 <p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">Dr Leena Murgai</a></p>
-<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">24 September 2022</a></p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">29 September 2022</a></p>
 </header>
 <div class="TOC">
 <nav id="TOC">
@@ -1018,10 +1018,6 @@
 <p>Machine learning systems can have long-term and compounding effects on the world around us. In this section we analyse the impact in a variety of different examples to breakdown the mechanisms that determine the nature and magnitude of the effect. In Figure <a href="#fig:MLCycle" data-reference-type="ref" data-reference="fig:MLCycle">2.1</a>, we present the machine learning cycle - a high-level depiction of the interaction between a machine learning solution and the real world. A machine learning system starts with a set of objectives. These can be achieved in a myriad of different ways. The translation of these objectives, into a tractable machine learning problem, consists of a series of subjective decisions; what data we collect to train a model on, what events we predict, what features we use, how we clean and process the data, how we evaluate the model and the decision policy are all choices. They determine the model we create, the actions we take and finally the resulting cycle of feedback on the data.</p>
 <p>The most familiar parts of the cycle to most developers of machine learning solutions are on the right hand side; processing data, model selection, training and cross validation and prediction. Each action taken on the basis of our model prediction creates a new world state, which generates new data, which we collect and train our model on, and around it goes again. The actions we take based on our model predictions define how we use the model. The same model used in a different way can result in a very different feedback cycle.</p>
 <p>Notice that the world state and data are distinct nodes in in the cycle. Most machine learning models rely on the assumption that the training data is accurate, rich and representative of the population, but this is often not the case. Data is a necessarily subjective representation of the world. The sample may be biased, contain an inadequate collection of features, subjective decisions around how to categorise features into groups, systematic errors or be tainted with prejudice decisions. We may not even be able to measure the true metric we wish to impact. Data collected for one purpose is often reused for another under the assumption that it represents the ground truth when it does not.</p>
-<div class="lookbox">
-<p><strong>Stale data</strong></p>
-<p>Suppose a model trained on a dataset is used to make decisions but those decisions are never fed back into the model because the model is not retrained. Our model may continually impact the world state, but the resulting changes are not fed back into the model. What are the implicit assumptions one might be using here? Are there conditions under which this might be an acceptable practice? What are the factors that might affect the nature of the feedback. What makes this better, worse or no different to regular retraining?</p>
-</div>
 <section id="feedback-from-model-to-data" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1"><span class="header-section-number">2.1.1</span> Feedback from Model to Data</h3>
 <p>In cases where the ground truth assignment (target variable choice) systematically disadvantages certain classes, actions taken based on predictions from models trained on the data can reinforce the bias and even amplify it. Similarly, decisions made on the basis of results derived from machine learning algorithms, trained on data that under or over-represents disadvantaged classes, can have feedback effects that further skew the representation of those classes in future data. The cycle of training on biased data (which justifies inaccurate beliefs), taking actions in kind, and further generating data that reinforces those biases can become a kind of self-fulfilling prophecy. The good news is that just as we can create pernicious cycles that exaggerate disparities, we can create virtuous ones that have the effect of reducing them. Let’s take two illustrative examples.</p>
@@ -1049,7 +1045,7 @@
 <h3 data-number="2.1.2"><span class="header-section-number">2.1.2</span> Model Use</h3>
 <p>We’ve seen some examples illustrating how the strength and direction of feedback from models to (future) data can vary. In this section we’ll demonstrate how the same model can have a very different feedback cycle depending on how it is used (i.e. the actions that are taken based on its predictions). A crucial part of responsible model development and deployment then should be clearly defining and documenting the way in which a model is intended to be used and relevant tests and checks that were performed. In addition, considering potential use cases for which one might be tempted to use the model but for which it is not suitable and documenting them can prevent misuse. Setting out the specific use case is an important part of enabling effective and focused analysis and testing in order to understand both its strengths and weaknesses.</p>
 <p>The idea that the use case for a product, tool or model should be well understood before release; that it should be validated and thoroughly tested for that use case and further that the potential harms caused (even for unintended uses) should be mitigated is not novel. In fact, many industries have safety standards set by a regulatory body that enshrine these ideas in law. The motor vehicle industry has a rich history of regulation aimed at reducing risk of death or serious injury from road traffic accidents that continues to evolve today. In the early days, protruding knobs and controls on the dash would impale people in collisions. It was not until the 1960s that seatbelts, collapsing steering columns and head restraints became a requirement. Safety testing and requirements have continued to expand to including rear brake lights, a variety of impact crash tests, ISOFIX child car seat anchors among others. There are many more such examples across different industries but it is perhaps more instructive to consider an example that involves the use of models.</p>
-<p>Let’s look at an example in the banking industry. Derivatives are financial products in the form of a contract that result in payments to the holder contingent on future events. The details, such as payment amounts, dates and events that lead to them are outlined in the contract. The simplest kinds of derivatives are called vanilla options; if at expiry, the underlying asset is above (call option) or below (put option) a specified limit, the holder receives the difference. In order to price them one must model the behaviour of the underlying asset over time. As the events which result in payments become more elaborate, so does the modelling required to be able to price them, as does the certainty with which they can be priced. In derivatives markets, it is a well understood fact that valuation models are product specific. A model that is suitable for pricing a simple financial instrument will not necessarily be appropriate for pricing a more complex one. For this reason, regulated banks that trade derivatives must validate models specifically for the instruments they will be used to price and document their testing. Furthermore they must track their product inventory (along with the models being used to price them) in order to ensure that they are not using models to price products for which the are inappropriate. Model suitability is determined via an approval process, where approved models have been validated as part of a model review process to some standard of due diligence has been carried out for specified the use case.</p>
+<p>Let’s look at an example in the banking industry. Derivatives are financial products in the form of a contract that result in payments to the holder contingent on future events. The details, such as payment amounts, dates and events that lead to them are outlined in the contract. The simplest kinds of derivatives are called vanilla options; if at expiry, the underlying asset is above (call option) or below (put option) a specified limit, the holder receives the difference. In order to price them one must model the behaviour of the underlying asset over time. As the events which result in payments become more elaborate, so does the modelling required to be able to price them, as does the certainty with which they can be priced. In derivatives markets, it is a well understood fact that valuation models are product specific. A model that is suitable for pricing a simple financial instrument will not necessarily be appropriate for pricing a more complex one. For this reason, regulated banks that trade derivatives must validate models specifically for the instruments they will be used to price and document their testing. Furthermore they must track their product inventory (along with the models being used to price them) in order to ensure that they are not using models to price products for which the are inappropriate. Model suitability is determined via an approval process, where approved models have been validated as part of a model review process to some standard of due diligence has been carried out for the specified use case.</p>
 <p>Though machine learning models are not currently regulated in this way, it’s easy to draw parallels when it comes to setting requirements around model suitability. But clear consideration of the use case for a machine learning model is not just about making sure that the model performs well for the intended use case. How a predictive model is used, ultimately determines the actions that are taken in kind, and thus the nature of the feedback it has on future data. Just as household appliances come with manuals and warnings against untested / inappropriate / dangerous uses, datasets and models could be required to be properly documented with descriptions, metrics, analysis around use case specific performance and warnings.</p>
 <p>It is worth noting that COMPAS<span class="citation" data-cites="ProPub2"><a href="#ref-ProPub2" role="doc-biblioref">[30]</a></span><span class="marginnote"><span id="ref-ProPub2" class="csl-entry" role="doc-biblioentry">
 <span class="csl-left-margin">[30] </span><span class="csl-right-inline">J. Larson, S. Mattu, L. Kirchner, and J. Angwin, <span>“How we analyzed the COMPAS recidivism algorithm,”</span> <em>ProPublica</em>, 2016.</span>
@@ -2466,15 +2462,21 @@ d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i,y), f(\boldsymbol{x}_j,y)) \leq 
 <li><p>If the gradient is zero, then we treat everyone the same (we map everyone to the same distribution of outcomes). We are in the maximum equality scenario. Notice that individual fairness does not care what distribution we map everyone too, only how this map changes for similar individuals.</p></li>
 <li><p>As we increase the allowed gradient, optimising for utility fits the data as best it can within the constraint. By maximising utility we rank people for the task and hope the data contains enough information to be able to find a pattern.</p></li>
 <li><p>The calculation of individual fairness, ignores the ground truth target and looks only at the features.</p></li>
-<li><p>We know that individual fairness accepts that there is uncertainty in our predictions, where does this come from?</p>
+<li><p>We know that individual fairness accepts that there is uncertainty in our predictions and even advocates randomised predictions. Where does this uncertainty come from?</p>
+<ol>
+<li><p><strong>Misrepresentation of the population</strong> Our map won’t work well for under-represented groups. This is a hard problem. We might be able to find under-represented groups in our training data but if some types of people just aren’t there at all, we have no way of knowing by looking at the data. Maybe the answer is to just ignore this - if they are not there then they are not there.</p>
 <ul>
-<li><p>Misrepresentation of the population - our map wont work well for under-represented individuals. This is a hard problem. We might be able to find under-represented groups in our training data but if some types of people just aren’t there, we have no way of knowing by looking at the data.</p></li>
-<li><p>Errors in our feature matrix.</p></li>
+<li><p>The connection between fairness and uncertainty is an interesting one. It points to the importance of representation in predictions.</p></li>
+<li><p>There a talk about something to do with this, about fairness in recommendations where you make several (say <span class="math inline">\(k\)</span>) recommendations and you have a disadvantaged group. It turns out that always making sure that one of the recommendations is from the disadvantaged group has a surprising impact if I recall.</p></li>
 </ul></li>
+<li><p><strong>Errors in our feature matrix</strong> These could be anything from human errors in filling in forms to systematic discrimination.</p>
+<ul>
 <li><p>If we accept that our data (feature matrix) is not perfect and contains errors, then the larger the change in predictions (with respect to similarity) the larger the expected error in the prediction.</p></li>
-<li><p>It seems like individual fairness is some measure of the error (on the population, not our sample dataset). Where the change in prediction with respect to similarity is large, we expect the error to be larger.</p></li>
-<li><p>If this is true then, the individual fairness constraint is capping the error?</p></li>
-<li><p>The connection between fairness and uncertainty is an interesting one. It points to the importance of representation</p></li>
+<li><p>It seems like individual fairness is some measure of the error (on the population, not our sample dataset). Where the change in prediction with respect to similarity is large, we expect the error distribution to be wider.</p></li>
+<li><p>Utility does not take into account uncertainty in prediction because it assumes we have the ground truth. In this sense, we can think of Utility as trying to fit to the data and individual fairness as trying to minimise changes (between individuals) in the distribution of error.</p></li>
+<li><p>In <span class="citation" data-cites="ZemelLearnFairReps"><a href="#ref-ZemelLearnFairReps" role="doc-biblioref">[62]</a></span>, they talk about learning fair respresentations. I should re-read this paper. I think I recall that it suffers from overfitting.</p></li>
+</ul></li>
+</ol></li>
 </ul>
 </section>
 </section>
@@ -2593,12 +2595,12 @@ I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\sum_{i=1}^n f_{\alpha}(x_i) \quad\textr
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 f_{\alpha}(x) = \left\{
-\begin{array}{ll}
--\ln x &amp; \quad\textrm{for}\quad \alpha=0 \\
-x\ln x &amp; \quad\textrm{for}\quad \alpha=1 \\
+\begin{array}{cl}
+-\ln x &amp; \;\textrm{for}\quad \alpha=0 \\
+x\ln x &amp; \;\textrm{for}\quad \alpha=1 \\
 \rule{0em}{3.5ex}
 \dfrac{x^{\alpha}-1}{\alpha(\alpha-1)}
-       &amp; \quad\textrm{for}\quad \alpha\in\mathbb{R},\,\alpha\notin\{0,1\}.
+       &amp; \;\textrm{for}\quad \alpha\in\mathbb{R},\,\alpha\notin\{0,1\}.
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.3)</td>
 </tr>
@@ -2764,9 +2766,9 @@ I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 <p>For the values <span class="math inline">\(\alpha=0\)</span> and <span class="math inline">\(\alpha=1\)</span>, the within-group component is a true weighted average of the index values for the subgroups, since the coefficients sum to one. For <span class="math inline">\(\alpha\in(0,1)\)</span> the coefficients sum to less than unity, For <span class="math inline">\(\alpha&gt;1\)</span>, the coefficients sum to more than unity. The sum of the coefficients is minimised for <span class="math inline">\(\alpha=1/2\)</span>.</p>
 <div class="lookbox">
 <p><strong>Relative contribution from the Between and Within-group Components</strong></p>
-<p>For <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, <span class="math inline">\(\alpha\notin\{0,1\}\)</span>, the sum of coefficients is linearly dependent on between-group component, <span class="math display">\[\sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac{\mu_g}{\mu}\right)^{\alpha}
+<p>By substituting for <span class="math inline">\(f_{\alpha}\)</span> in the between group component, equation (5.8), it’s straightforward to prove that for <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, <span class="math inline">\(\alpha\notin\{0,1\}\)</span>, the sum of coefficients is linearly dependent on between-group component. In particular, <span class="math display">\[\sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac{\mu_g}{\mu}\right)^{\alpha}
 = 1 + \alpha(\alpha-1) I_{\beta}^{G}(\boldsymbol{b}; \alpha).\]</span> The relative contribution to the index from the between-group component is maximised when <span class="math inline">\(\alpha=1/2\)</span>, in which case the sum of the coefficients of the within-group component are given by, <span class="math display">\[\sum_{g=1}^{|G|} \frac{n_g}{n} \sqrt{\frac{\mu_g}{\mu}}
-= 1 - \frac{I_{\beta}^{G}(\boldsymbol{b}; \alpha)}{2} .\]</span> <a href="#II_WithinGroupCoefficients">Proof</a> in in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
+= 1 - \frac{1}{2} I_{\beta}^{G}(\boldsymbol{b}; \alpha).\]</span></p>
 </div>
 </section>
 </section>
@@ -2776,10 +2778,10 @@ I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 <div class="lookbox">
 <p><strong>Generalised Entropy Index Maximum</strong></p>
 <p><span class="math display">\[\max_{\boldsymbol{b}}[I_{\alpha}(\boldsymbol{b})] = \left\{
-\begin{array}{ll}
-\ln n &amp; \quad\textrm{for}\quad\alpha=1 \\
+\begin{array}{cl}
+\ln n &amp; \;\textrm{for}\quad\alpha=1 \\
 \dfrac{n^{\alpha-1}-1}{\alpha(\alpha-1)}
-      &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1
+      &amp; \;\textrm{for}\quad0&lt;\alpha\ne1
 \end{array}\right.\]</span> <a href="#II_GEImax">Proof</a> in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
 <p>In Figure <a href="#fig:GEI_Imax" data-reference-type="ref" data-reference="fig:GEI_Imax">5.2</a>, we plot the maximal value of the index as a function of <span class="math inline">\(n\)</span> for different values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
@@ -2791,11 +2793,11 @@ I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 <p>Interestingly, looking at the maximal value of the generalised entropy index (as a function of <span class="math inline">\(n\)</span>), also gives us some insight into the relative size of the between and within-group components, as we change the number of subgroups. Suppose we partition our population, into <span class="math inline">\(|G|\)</span> equally sized subgroups. Recall from equation (5.8), we can write our between-group component as, <span class="math display">\[I_{\beta}^G(\boldsymbol{b};\alpha)
 = \sum_{g=1}^{|G|}\frac{n_g}{n} f_{\alpha}\left(\frac{\mu_g}{\mu}\right)
 = \frac{1}{|G|}\sum_{g=1}^{|G|} f_{\alpha}\left(\frac{\mu_g}{\mu}\right);\]</span> which looks exactly like the formula for the index, given in equation (5.2). Therefore, just as the index has a maximal value, so does the between-group component, <span class="math display">\[\max_{\boldsymbol{b}}\left[I^G_{\beta}(\boldsymbol{b};\alpha)\right] = \left\{
-\begin{array}{ll}
-\ln(|G|) &amp; \quad\textrm{for}\quad\alpha=1\\
+\begin{array}{cl}
+\ln(|G|) &amp; \;\textrm{for}\quad\alpha=1\\
 \rule{0em}{4.2ex}
 \dfrac{|G|^{\alpha-1}-1}{\alpha(\alpha-1)}
-&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+&amp; \;\textrm{for}\quad0&lt;\alpha\ne1.
 \end{array}\right.\]</span> This further confirms our earlier observation, that the number of subgroups in a partition <span class="math inline">\(|G|\)</span>, greatly influences the size of the between-group component as a proportion of the index, assuming the groups to be equal in size.</p>
 </section>
 </section>
@@ -2924,13 +2926,12 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 <div class="lookbox">
 <p><strong>Index value for Binary Benefits</strong></p>
 <p>For binary benefits, the value of the index is given by <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = I_{\alpha}(\mu)
-= \mu\,f_{\alpha}\left(\dfrac{1}{\mu}\right)
 = \left\{ 
-\begin{array}{ll}
-\ln \left(\dfrac{1}{\mu}\right) &amp; \quad\textrm{for}\quad\alpha=1 \\
+\begin{array}{cl}
+-\ln\mu &amp; \;\textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
-\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-\mu\right)
-&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-1\right)
+&amp; \;\textrm{for}\quad0&lt;\alpha\ne1.
 \end{array}\right.\]</span> <a href="#II_Binary">Proof</a> in in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
 <p>For binary benefits, the index is a monotonic increasing function of the mean benefit. The index is maximal where only one individual benefits. As we increase the proportion of people who benefit from from <span class="math inline">\(1/n\)</span> to <span class="math inline">\(n\)</span>, the distribution of benefits approaches uniform. As the number of individuals grows, so does the maximal value of the index (as shown in section <a href="#sec_GEImax" data-reference-type="ref" data-reference="sec_GEImax">5.1.5</a>). In Figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.3</a>, we plot the value of the index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for a variety of values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
@@ -2988,14 +2989,14 @@ b_+ &amp; 1
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 I_{\alpha}\left(\mu,\lambda\right) = \left\{
-\begin{array}{ll}
+\begin{array}{cl}
 \left(1-\dfrac{\lambda}{\mu}\right)\ln2-\ln\mu
-&amp; \quad\textrm{for}\quad\alpha = 1 \\
+&amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.5ex}
 \dfrac{1}{\alpha(\alpha-1)}
 \left[ \left(\dfrac{2}{\mu}\right)^{\alpha-1}
 - \dfrac{(2^{\alpha-1}-1)}{\mu^{\alpha}}\lambda - 1 \right]
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1.
+&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1.
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.9)</td>
 </tr>
@@ -3050,11 +3051,11 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 \mu=\tilde{\mu} \nonumber\\
 \textrm{where}\quad \tilde{\mu} = g(\alpha)\lambda
 \quad\textrm{and}\quad g(\alpha) = \left\{
-\begin{array}{ll}
-\ln2 &amp; \quad\textrm{for}\quad\alpha = 1 \\
+\begin{array}{cl}
+\ln2 &amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right. \end{gathered}\]</span></td>
 <td style="text-align: right;">(5.11)</td>
 </tr>
@@ -3136,7 +3137,7 @@ g(\alpha)&gt;1 &amp; \textrm{for} &amp;   \alpha&gt;2.
 <p>We are almost there. We now know that, <span class="math display">\[\max_{\mu}\left[I_{\alpha}\left(\mu,\lambda\right)\right]
 = I_{\alpha}\left(\mu_*,\lambda\right) \nonumber\\
 \]</span> where, <span class="math display">\[\mu_* = \left\{
-\begin{array}{ll}
+\begin{array}{cl}
 \lambda          &amp; \quad\textrm{if}\quad 0&lt;\alpha\leq2 \\
 g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 \quad\textrm{and}\quad \lambda&lt;\tilde{\lambda}(\alpha) \\
@@ -3146,26 +3147,26 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 <div class="lookbox">
 <p><strong>Equal Luck Generalised Entropy Index Maximum Value</strong></p>
 <p>We can write the maximal value of the generalised entropy index as a function of <span class="math inline">\(\lambda\)</span>, <span class="math display">\[\max_{\mu}\left[I_{\alpha}\left(\mu,\lambda\right)\right] = \left\{
-\begin{array}{ll}
--\ln\lambda &amp; \quad\textrm{for}\quad \alpha=1 \\
+\begin{array}{cl}
+-\ln\lambda &amp; \;\textrm{for}\quad \alpha=1 \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\lambda^{\alpha-1}} - 1 \right)
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\leq2, \quad \alpha\ne1 \\
+&amp; \;\textrm{for}\quad 0&lt;\alpha\leq2, \quad \alpha\ne1 \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)}\left[\dfrac{2^{\alpha-1}}
 {\alpha g^{\alpha-1}(\alpha)\lambda^{\alpha-1}} - 1 \right]
-&amp; \quad\textrm{for}\quad \alpha&gt;2,\quad \lambda&lt;\tilde{\lambda}(\alpha) \\
+&amp; \;\textrm{for}\quad \alpha&gt;2,\quad \lambda&lt;\tilde{\lambda}(\alpha) \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)}
 \left(\dfrac{1}{(2-\lambda)^{\alpha-1}} - 1 \right)
-&amp; \quad\textrm{for}\quad \alpha&gt;2,\quad \lambda\geq\tilde{\lambda}(\alpha).
+&amp; \;\textrm{for}\quad \alpha&gt;2,\quad \lambda\geq\tilde{\lambda}(\alpha).
 \end{array}\right.\]</span> where <span class="math display">\[\tilde{\lambda}(\alpha) = \frac{2}{1+g(\alpha)}
 \quad\textrm{and}\quad g(\alpha) = \left\{
-\begin{array}{ll}
-\ln2 &amp; \quad\textrm{for}\quad\alpha = 1 \\
+\begin{array}{cl}
+\ln2 &amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right..\]</span></p>
 </div>
 <p>In Figures <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.8</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\alpha\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\lambda\)</span>. In the final plot, <span class="math inline">\(\lambda=95\%\)</span>; we see that <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> is a strictly increasing function of <span class="math inline">\(\mu\)</span>, for both <span class="math inline">\(\alpha=3\)</span> and <span class="math inline">\(\alpha=4\)</span>.</p>
@@ -3212,14 +3213,14 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 \left(\frac{\lambda}{\mu}-\frac{1}{n\mu}\right)
 \left(1\pm\frac{1}{n\mu}\right)^{-\alpha} - 1 \right].\]</span> We showed earlier that we must have, <span class="math inline">\(\lambda\leq\mu\leq2-\lambda\)</span>, in addition, for most problems, any reasonable model should have <span class="math inline">\(0.5\leq\lambda\leq1\)</span>. We deduce that we must have <span class="math inline">\(0.5\leq\mu\leq1.5\)</span> and so <span class="math inline">\(\mu=\mathrm{O}(1)\)</span>. Then for large <span class="math inline">\(n\)</span>, we can be sure that <span class="math inline">\(n\mu\)</span> is large and its reciprocal is small. For large <span class="math inline">\(n\)</span>, we can write the cost of an error as <span class="math display">\[\Delta I^{\pm}_{\alpha}(\mu,\lambda;n) = \xi_{\alpha}(\mu,\lambda)
 \left(\frac{1}{n\mu}\right) + \mathrm{O}\left(\frac{1}{n\mu}\right)^2\]</span> where, <span class="math display">\[\xi_{\alpha}(\mu,\lambda) = \left\{
-\begin{array}{ll}
+\begin{array}{cl}
 \left(1\pm\dfrac{\lambda}{\mu}\right)\ln2\mp1
-&amp; \quad\textrm{for}\quad\alpha = 1 \\
+&amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)\mu^{\alpha}}\bigg[ 
 \Big((1\pm1\mp\alpha)2^{\alpha-1}-1\Big)\mu \pm 
 \alpha(2^{\alpha-1}-1)\lambda\bigg]
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1.
+&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1.
 \end{array}\right.\]</span></p>
 <p>From these expressions, we can get a clearer understanding of when the index deviates from simply being a measure of error. In particular, we want to know when an error, is preferable to an accurate prediction; that is, when the index change (resulting from an error) is negative. With a little effort we can show that,</p>
 <div id="eq:DeltaI_neg">
@@ -3232,7 +3233,7 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 \left.
-\begin{array}{ll}
+\begin{array}{cl}
 &amp; \Delta I^-_{\alpha}(\mu,\lambda;n) &lt; 0 \quad\Rightarrow\quad
 \mu &lt; h^-(\alpha) \lambda \\
 &amp; \Delta I^+_{\alpha}(\mu,\lambda;n) &lt; 0 \quad\Rightarrow\quad
@@ -3254,11 +3255,11 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 h^{\pm}(\alpha) =  \left\{
-\begin{array}{ll}
-\dfrac{\ln2}{1\mp\ln2} &amp; \quad\textrm{for}\quad\alpha = 1 \\
+\begin{array}{cl}
+\dfrac{\ln2}{1\mp\ln2} &amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1\mp1)2^{\alpha-1}\pm1}
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.16)</td>
 </tr>
@@ -3279,11 +3280,11 @@ h^{\pm}(\alpha) =  \left\{
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 h^-(\alpha) =  \left\{
-\begin{array}{ll}
-\dfrac{\ln2}{1+\ln2} \approx 0.41 &amp; \quad\textrm{for}\quad\alpha = 1 \\
+\begin{array}{cl}
+\dfrac{\ln2}{1+\ln2} \approx 0.41 &amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 1-\dfrac{\alpha-1}{\alpha2^{\alpha-1}-1}
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.17)</td>
 </tr>
@@ -3309,11 +3310,11 @@ h^-(\alpha) =  \left\{
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 h^+(\alpha) =  \left\{
-\begin{array}{ll}
-\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \quad\textrm{for}\quad\alpha = 1 \\
+\begin{array}{cl}
+\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.2ex}
 \dfrac{\alpha(1-2^{1-\alpha})}{(\alpha-2)+2^{1-\alpha}}
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1.
+&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1.
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.18)</td>
 </tr>
@@ -3333,11 +3334,11 @@ h^+(\alpha) =  \left\{
 \forall\,\mu, \,\lambda, \, n \\
 &amp; \Delta I^+_{\alpha}(\mu,\lambda;n) &lt; 0 \quad\Rightarrow\quad
 \mu &gt; h^+(\alpha) \lambda\end{aligned}\]</span> where, <span class="math display">\[h^+(\alpha) =  \left\{
-\begin{array}{ll}
-\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \quad\textrm{for}\quad\alpha = 1 \\
+\begin{array}{cl}
+\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.2ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-2)2^{\alpha-1}+1}
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right.\]</span> This is only possible if the accuracy is sufficiently low, <span class="math display">\[\lambda &lt; \bar{\lambda}(\alpha)=\frac{2}{1+h^+(\alpha)}.\]</span> The deviation region is then described as, <span class="math inline">\(\mu&gt;h^+(\alpha)\lambda\)</span>, where <span class="math inline">\(h^+(\alpha)\)</span> is given in equation (5.18). We mark the deviation region on the contour plot for <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> in Figure <a href="#fig:cplot_varalpha" data-reference-type="ref" data-reference="fig:cplot_varalpha">5.12</a>.</p>
 <figure>
 <img src="05_InequalityIndices/figures/Fig_ccplot_varalpha.png" id="fig:cplot_varalpha" alt="Figure 5.12: Contour plots showing I_{\alpha}(\mu, \lambda) for different values of \alpha." /><figcaption aria-hidden="true">Figure 5.12: Contour plots showing <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> for different values of <span class="math inline">\(\alpha\)</span>.</figcaption>
@@ -3439,9 +3440,17 @@ b_+ &amp; 1
 <section id="further-work-1" class="level2 unnumbered">
 <h2 class="unnumbered">Further Work</h2>
 <ul>
-<li><p>Is there something special about <span class="math inline">\(\alpha=0\)</span> that I’m missing? I’ve read that a lateral shift in the cost matrix does not change the location of the minima (should prove this). Is this true only for <span class="math inline">\(\alpha=0\)</span>?</p></li>
+<li><p>Is there something special about <span class="math inline">\(\alpha=0\)</span> that I’m missing? I’ve read that a lateral shift in the cost matrix does not change the location of the minima (should prove this). Is this true for all values of <span class="math inline">\(\alpha\)</span>?</p></li>
 <li><p>There are other loss functions, hinge loss for SVM for example.</p></li>
-<li><p>It looks like all of these indices are convex with respect to <span class="math inline">\(\hat{y}\)</span>.</p></li>
+<li><p>It looks like all of these indices are convex with respect to <span class="math inline">\(\hat{y}\)</span>, since <span class="math inline">\(f_{\alpha}&#39;&#39;(x)=x^{\alpha-2}\)</span>. From equation (5.3) <span class="math display">\[f_{\alpha}&#39;(x) = \left\{
+\begin{array}{cl}
+-\dfrac{1}{x} &amp; \;\textrm{for}\quad \alpha=0 \\
+\rule{0em}{2.6ex}
+1+\ln x       &amp; \;\textrm{for}\quad \alpha=1 \\
+\rule{0em}{3.7ex}
+\dfrac{x^{\alpha-1}}{\alpha-1}
+              &amp; \;\textrm{for}\quad \alpha\in\mathbb{R},\,\alpha\notin\{0,1\}.
+\end{array}\right.\]</span></p></li>
 <li><p>For <span class="math inline">\(\alpha=1/2\)</span>, the between group component as a proportion of the utility is maximised. This is exciting! Could this be a utility function that somehow prioritises between-group fairness and if so how? Why does this happen? What’s special about <span class="math inline">\(\alpha=1/2\)</span>?</p></li>
 <li><p>Is it worth generalising the value of <span class="math inline">\(b_+\)</span>. Can we choose these more intentionally based on our relative preference of false positives to false negatives? What do we believe our index surface should look like?</p></li>
 </ul>
@@ -4428,8 +4437,8 @@ f_0(x) = -\ln (x) \quad
 &amp; \Rightarrow \quad f&#39;_0(x):(0,n)
                     \rightarrow\left(-\infty,-\frac{1}{n}\right). \\
 f_0(x) = 0 \quad &amp; \Leftrightarrow\quad x = 1.\end{aligned}\]</span> For <span class="math inline">\(\alpha=1\)</span>, <span class="math display">\[\begin{aligned}
-f_1(x) = x\ln(x) \quad
-&amp; \Rightarrow \quad f&#39;_1(x) = 1 + \ln(x) = 0 \quad
+f_1(x) = x\ln x \quad
+&amp; \Rightarrow \quad f&#39;_1(x) = 1 + \ln x = 0 \quad
   \Leftrightarrow\quad x = \frac{1}{e}.\\
 &amp; \Rightarrow \quad f&#39;&#39;_1(x) = \frac{1}{x} &gt; 0 \quad\forall\,x &gt; 0 \\
 &amp; \Rightarrow \quad f_1(x) \textrm{ is minimal at } x=\frac{1}{e} \\
@@ -4524,19 +4533,11 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 \left(\frac{\mu_g}{\mu}\right)^{\alpha} I_{\alpha}(\boldsymbol{b}_g)}_{\text{within group component}} + \underbrace{\frac{1}{n\alpha(\alpha-1)}
 \sum_{g=1}^{|G|}n_g\left[\left(\frac{\mu_g}{\mu}\right)^{\alpha}-1\right]}_{\text{between group component}}\end{aligned}\]</span></p>
 <div class="lookbox">
-<div id="II_WithinGroupCoefficients">
-<p><strong>Contribution to the Index from the Within-group Component</strong></p>
-</div>
-<p>For <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, <span class="math inline">\(\alpha\notin\{0,1\}\)</span>, the sum of coefficients is linearly dependent on between group component, <span class="math display">\[\sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac{\mu_g}{\mu}\right)^{\alpha}
-= 1 + \alpha(\alpha-1) I_{\beta}^{G}(\boldsymbol{b}; \alpha).\]</span></p>
-</div>
-<p><span style="color: red">Write up proof.</span></p>
-<div class="lookbox">
 <div id="II_GEImax">
 <p><strong>Proof: Generalised Entropy Index Maximum</strong></p>
 </div>
 <p><span class="math display">\[\max_{\boldsymbol{b}}[I_{\alpha}(\boldsymbol{b})] = \left\{
-\begin{array}{ll}
+\begin{array}{cl}
 \ln n &amp; \quad\textrm{for}\quad\alpha=1 \\
 \dfrac{n^{\alpha-1}-1}{\alpha(\alpha-1)}
       &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1
@@ -4567,22 +4568,37 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 <p><strong>Index value for Binary Benefits</strong></p>
 </div>
 <p>For binary benefits, the value of the index is given by <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = I_{\alpha}(\mu)
-= \mu\,f_{\alpha}\left(\dfrac{1}{\mu}\right)
 = \left\{ 
-\begin{array}{ll}
-\ln \left(\dfrac{1}{\mu}\right) &amp; \quad\textrm{for}\quad\alpha=1 \\
+\begin{array}{cl}
+- \ln\mu &amp; \quad\textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
-\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-\mu\right)
+\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-1\right)
 &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
 \end{array}\right.\]</span></p>
 </div>
-<p><span style="color: red">Write up proof.</span></p>
+<p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>) and the remaining <span class="math inline">\(n_-=n-n_c\)</span> predictions are errors (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as, <span class="math display">\[\begin{aligned}
+I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n}\left[(n-n_c)f_{\alpha}(0)
++ n_c f_{\alpha}\left(\frac{1}{\mu}\right)\right]\\
+&amp; = (1-\mu) f_{\alpha}(0) + \mu f_{\alpha}\left(\frac{1}{\mu}\right),\end{aligned}\]</span> since the mean error <span class="math inline">\(\mu=n_c/n\)</span> is exactly the accuracy of our model. From equation (5.3) we know, <span class="math display">\[\begin{aligned}
+(1-\mu)f_{\alpha}(0) &amp; = \left\{ 
+\begin{array}{cl}
+0                            &amp; \quad\textrm{for}\quad\alpha=1 \\
+\rule{0em}{4ex}
+\dfrac{\mu-1}{\alpha(\alpha-1)} &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+\end{array}\right.\\
+\mu f_{\alpha}\left(\dfrac{1}{\mu}\right) &amp; = \left\{ 
+\begin{array}{cl}
+-\ln\mu
+&amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
+\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-\mu\right)
+&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+\end{array}\right.\end{aligned}\]</span> Substituting yields the required result.</p>
 <div class="lookbox">
 <div id="II_Luck">
 <p><strong>Index value for Equal Luck</strong></p>
 </div>
 <p><span class="math display">\[I_{\alpha}\left(\mu,\lambda\right) = \left\{
-\begin{array}{ll}
+\begin{array}{cl}
 \left(1-\dfrac{\lambda}{\mu}\right)\ln2-\ln\mu
 &amp; \quad\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.5ex}
@@ -4592,42 +4608,37 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 &amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1.
 \end{array}\right.\]</span></p>
 </div>
-<p><span style="color: red">Write up proof.</span></p>
-<p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>); <span class="math inline">\(n_+\)</span> false positive predictions (in which case <span class="math inline">\(b=2\)</span>); and the remaining <span class="math inline">\(n_-=n-n_c-n_+\)</span> predictions are false negative (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as,</p>
-<div id="eq:EqMer">
-<table style="width:99%;">
-<colgroup>
-<col style="width: 90%" />
-<col style="width: 9%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math display">\[
-I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
+<p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>); <span class="math inline">\(n_+\)</span> false positive predictions (in which case <span class="math inline">\(b=2\)</span>); and the remaining <span class="math inline">\(n-n_c-n_+\)</span> predictions are false negative (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as, <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
 + n_c f_{\alpha}\left(\frac{1}{\mu}\right)
-+ n_+ f_{\alpha}\left(\frac{2}{\mu}\right)\right].\]</span></td>
-<td style="text-align: right;">(9.1)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Let us denote the accuracy of our model with <span class="math inline">\(\lambda\)</span>. We have,</p>
-<div id="eq:lambda_mu_def">
-<table style="width:99%;">
-<colgroup>
-<col style="width: 90%" />
-<col style="width: 9%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math display">\[
-\lambda = \frac{n_c}{n} \qquad \textrm{and} \qquad \mu = \frac{n_c+2n_+}{n}.\]</span></td>
-<td style="text-align: right;">(9.2)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>By substituting for <span class="math inline">\(f_{\alpha}(x)\)</span> into equation (D.1), we can write the value of the index, in terms of the mean benefit <span class="math inline">\(\mu\)</span>, and model accuracy <span class="math inline">\(\lambda\)</span>.</p>
++ n_+ f_{\alpha}\left(\frac{2}{\mu}\right)\right].\]</span> From equation (5.3) we know, <span class="math display">\[\begin{aligned}
+f_{\alpha}(0) &amp; = \left\{ 
+\begin{array}{cl}
+0                            &amp; \quad\textrm{for}\quad\alpha=1 \\
+\rule{0em}{4ex}
+\dfrac{-1}{\alpha(\alpha-1)} &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1,
+\end{array}\right.\\
+f_{\alpha}\left(\dfrac{1}{\mu}\right) &amp; = \left\{ 
+\begin{array}{cl}
+-\dfrac{\ln\mu}{\mu}
+&amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
+\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha}}-1\right)
+&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1,
+\end{array}\right. \\
+f_{\alpha}\left(\dfrac{2}{\mu}\right) &amp; = \left\{ 
+\begin{array}{cl}
+\dfrac{2(\ln2-\ln\mu)}{\mu}
+&amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
+\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{2^{\alpha}}{\mu^{\alpha}}-1\right)
+&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+\end{array}\right. \\
+\Rightarrow\quad I_{\alpha}(\boldsymbol{b}) &amp; = \left\{ 
+\begin{array}{cl}
+-\dfrac{(n_c+2n_+)}{n}\dfrac{\ln\mu}{\mu} + \dfrac{2n_+\ln2}{n\mu}
+&amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
+\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{n_c+2^{\alpha}n_+}{n\mu^{\alpha}} - 1\right)
+&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+\end{array}\right.\end{aligned}\]</span> Let us denote the accuracy of our model with <span class="math inline">\(\lambda\)</span>. We have, <span class="math display">\[\lambda = \frac{n_c}{n} \quad\textrm{and}\quad \mu = \frac{n_c+2n_+}{n} 
+\quad\Rightarrow\quad \frac{2n_+}{n} = \mu-\lambda.\]</span> Substituting yields the required result.</p>
 <div class="lookbox">
 <div id="II_IndexTpt">
 <p><strong>Index turning point</strong></p>
@@ -4637,7 +4648,7 @@ I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
 \mu=\tilde{\mu} \nonumber\\
 \textrm{where}\quad \tilde{\mu} = g(\alpha)\lambda
 \quad\textrm{and}\quad g(\alpha) = \left\{
-\begin{array}{ll}
+\begin{array}{cl}
 \ln2 &amp; \quad\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
@@ -4645,7 +4656,7 @@ I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
 \end{array}\right.\end{gathered}\]</span></p>
 </div>
 <p>We wish to find the maximal value of the index for a given accuracy. We start by looking for turning points. Differentiating equation (5.9), <span class="math display">\[\frac{ \partial I_{\alpha} }{ \partial \mu } = \left\{
-\begin{array}{ll}
+\begin{array}{cl}
 \dfrac{1}{\mu^2} \left( \lambda\ln2 - \mu \right)
 &amp; \quad\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
@@ -4655,13 +4666,13 @@ I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
 \end{array}\right.\]</span> <span class="math display">\[\frac{ \partial I_{\alpha} }{ \partial \mu } = 0 \quad\Leftrightarrow\quad
 \mu = \tilde{\mu} = g(\alpha)\lambda \quad\textrm{where}\quad
 g(\alpha) = \left\{
-\begin{array}{ll}
+\begin{array}{cl}
 \ln2 &amp; \quad\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
 &amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right.\]</span> <span class="math display">\[\frac{ \partial^2 I_{\alpha} }{ \partial \mu^2 } =\left\{
-\begin{array}{ll}
+\begin{array}{cl}
 \dfrac{1}{\mu^3} \left[\mu-\lambda2\ln2\right]
 &amp; \quad\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
@@ -4669,7 +4680,7 @@ g(\alpha) = \left\{
 \left[\mu-\dfrac{(\alpha+1)(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
       \lambda\right] &amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right.\]</span> <span class="math display">\[\Rightarrow\quad\left.\frac{ \partial^2 I_{\alpha} }{ \partial \mu^2 }\right|_{\mu=\tilde{\mu}} = \left\{
-\begin{array}{ll}
+\begin{array}{cl}
 -\dfrac{\ln2}{\tilde{\mu}^3} \lambda
 &amp; \quad\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
