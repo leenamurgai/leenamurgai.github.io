@@ -1,0 +1,1 @@
+Mitigating Bias in Machine Learning discusses how practising model developers, might build fairer predictive systems and avoid causing harm. Part I offers context (philosophical, legal, technical) and more practical solutions. Part II discusses how we quantify different notions of fairness. Part III analyses methods for mitigating bias through model interventions.

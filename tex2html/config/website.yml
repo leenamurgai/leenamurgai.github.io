@@ -2,7 +2,7 @@
 # python tex2html/src/updatewebsitefiles.py
 
 # Location of the online book files
-onlineBookFolder: ../../leenamurgai.github.io
+onlineBookFolder: ../leenamurgai.github.io
 
 files:
   - index.html
@@ -10,18 +10,24 @@ files:
   - tex2html/src/README.md
   - tex2html/tufte/tufte.css
   - tex2html/tufte/tufte.html5
+  - profile/mbml_summary.md
+  - profile/mbml_citation.bib
 
-chapters:
+figFolders:
   - 01_Context
   - 02_EthicalDevelopment
   - 03_GroupFairness
   - 04_IndividualFairness
   - 05_InequalityIndices
+  - profile
+  - code
 
-figureFileTypes:
+codeFileType: ipynb
+
+figFileTypes:
   - png
-  - pdf
-  - pdf_tex
+# - pdf
+# - pdf_tex
 
 tex2htmlFolderFileType:
   config: yml
