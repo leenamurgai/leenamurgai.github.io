@@ -26,8 +26,6 @@ codeFileType: ipynb
 
 figFileTypes:
   - png
-# - pdf
-# - pdf_tex
 
 tex2htmlFolderFileType:
   config: yml

@@ -63,6 +63,7 @@ $endif$
 $if(date)$
 <p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">$date$</a></p>
 $endif$
+<p class="byline"><a href="https://raw.githubusercontent.com/leenamurgai/mitigatingbias.ml/main/profile/mbml_citation.bib" target="_blank" rel="noopener noreferrer">Cite this book</a></p>
 </header>
 $endif$
 $if(toc)$

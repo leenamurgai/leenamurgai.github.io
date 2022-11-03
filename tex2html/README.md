@@ -10,21 +10,21 @@ python3 tex2html/src/tex2html.py
 
 The ```tex2html``` script:
 1. Calls pandoc to convert the file from ```MBML.tex``` to ```MBML.html```.
-2. Then executes post-processing steps to create ```index.html``` from pandoc's output. The post-processing is discussed in the [README.md for the source code](https://github.com/leenamurgai/leenamurgai.github.io/tree/main/tex2html).
+2. Then executes post-processing steps to create ```index.html``` from pandoc's output. The post-processing is discussed in the [README.md for the source code](https://github.com/leenamurgai/mitigatingbias.ml/tree/main/tex2html).
 
 ## 2. Pandoc
 
 - This repository uses [pandoc version 2.14.02](https://github.com/jgm/pandoc) (same version as the [online converter](https://pandoc.org/try/), at the time of writing) to convert  ```MBML.tex```  to ```MBML.html```.
 - Pandoc's [manual](https://pandoc.org/MANUAL.html).
-- Pandoc is configured in [pandoc.yml](https://github.com/leenamurgai/leenamurgai.github.io/tree/master/book/tex2html/config/pandoc.yml)
+- Pandoc is configured in [pandoc.yml](https://github.com/leenamurgai/mitigatingbias.ml/tree/main/tex2html/config/pandoc.yml)
 - Pandoc works by converting the input file into an intermediary internal data structure - an abstract syntax tree (AST).
 
 ### 2.1 Pandoc Filters
 
 Pandoc allows you to modify the internal AST (as part of the conversion process) using filters. The pandoc conversion in tex2html uses the following pandoc filters:
-1. [date.lua](https://github.com/leenamurgai/leenamurgai.github.io/tree/master/book/tex2html/filters/date.lua): adds the option to use the date the file was converted.
-2. [texref.lua](https://github.com/leenamurgai/leenamurgai.github.io/tree/master/book/tex2html/filters/texref.lua). This edits pandoc's AST in advance of applying pandoc-crossref, in order to ensure cross references to code listings and equations (provided by pandoc-crossref) work. See pandoc-crossref issue [[#319](https://github.com/lierdakil/pandoc-crossref/issues/319)].
-3. [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref): to manage cross references to figures, tables, code listings and equatons. It is configured in [pandoc-crossref.yml](https://github.com/leenamurgai/leenamurgai.github.io/tree/master/book/tex2html/config/pandoc-crossref.yml).
+1. [date.lua](https://github.com/leenamurgai/mitigatingbias.ml/tree/main/tex2html/filters/date.lua): adds the option to use the date the file was converted.
+2. [texref.lua](https://github.com/leenamurgai/mitigatingbias.ml/tree/main/tex2html/filters/texref.lua). This edits pandoc's AST in advance of applying pandoc-crossref, in order to ensure cross references to code listings and equations (provided by pandoc-crossref) work. See pandoc-crossref issue [[#319](https://github.com/lierdakil/pandoc-crossref/issues/319)].
+3. [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref): to manage cross references to figures, tables, code listings and equatons. It is configured in [pandoc-crossref.yml](https://github.com/leenamurgai/mitigatingbias.ml/tree/main/tex2html/config/pandoc-crossref.yml).
 4. [citeproc](https://pandoc.org/MANUAL.html#citation-rendering): pandoc's inbuilt citation processing system.
 5. [pandoc-sidenote](https://github.com/jez/pandoc-sidenote): to convert footnotes to sidenotes which are better suited to html format.
 
@@ -111,11 +111,11 @@ To update the website, use the command:
 python3 tex2html/src/updatewebsite.py
 ```
 
-- The files and folders which require updating are configured in [website.yml](https://github.com/leenamurgai/leenamurgai.github.io/tree/master/book/tex2html/config/wesite.yml).
+- The files and folders which require updating are configured in [website.yml](https://github.com/leenamurgai/mitigatingbias.ml/tree/main/tex2html/config/wesite.yml).
 - The code
   1. Updates the html file by running tex2html.
   2. Deletes the files (if they exist) and copies the specified files to the website repository locally.
-- To update the website, the changes have to be pushed to the website repository [leenamurgai.github.io](https://github.com/leenamurgai/leenamurgai.github.io)
+- To update the website, the changes have to be pushed to the website repository [mitigatingbias.ml](https://github.com/leenamurgai/mitigatingbias.ml)
 
 ## 5. Remaining issues with the conversion from LaTeX to HTML
 
