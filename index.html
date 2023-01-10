@@ -1892,7 +1892,7 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <h4 class="unnumbered">Separation</h4>
 <p>Separation requires the predicted target variable to be independent of the sensitive feature, conditioned on the target variable, that is, <span class="math inline">\(\hat{Y} \bot (Z|Y)\)</span>. We can say that the predicted target <span class="math inline">\(\hat{Y}\)</span>, is <em>separated</em> from the sensitive feature <span class="math inline">\(Z\)</span>, by the target variable <span class="math inline">\(Y\)</span>. The corresponding graphical model for separation criteria is shown in Figure <a href="#fig:separation" data-reference-type="ref" data-reference="fig:separation">3.2</a>.</p>
 <figure>
-<img src="03_GroupFairness/figures/Fig_Separation.png" id="fig:separation" style="width:50.0%" alt="Figure 3.2: Graphical model for separation." />
+<img src="03_GroupFairness/figures/Fig_separation.png" id="fig:separation" style="width:50.0%" alt="Figure 3.2: Graphical model for separation." />
 <figcaption aria-hidden="true">Figure 3.2: Graphical model for separation.</figcaption>
 </figure>
 <p>So, for a fixed value of the target variable, there should be no difference in the distribution of the predicted target variable, across different values of the sensitive feature. That is, <span class="math display">\[\mathbb{P}(\hat{y}|y, z) = \mathbb{P}(\hat{y}|y).\]</span> Unlike independence, separation, allows for dependence between the predicted target variable and the sensitive feature but only to the extent that it exists between the actual target variable and the sensitive feature.</p>
