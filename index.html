@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Dr Leena Murgai">
-  <meta name="dcterms.date" content="2022-11-03">
+  <meta name="dcterms.date" content="2023-01-10">
   <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
@@ -32,7 +32,7 @@
 <header>
 <h1 class="title">Mitigating Bias in Machine Learning</h1>
 <p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">Dr Leena Murgai</a></p>
-<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer"> 3 November 2022</a></p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">10 January 2023</a></p>
 <p class="byline"><a href="https://raw.githubusercontent.com/leenamurgai/mitigatingbias.ml/main/profile/mbml_citation.bib" target="_blank" rel="noopener noreferrer">Cite this book</a></p>
 </header>
 <div class="TOC">
@@ -41,67 +41,67 @@
     <div class="shortthickbar"></div>
     <div class="shortthickbar"></div>
 <ul>
-<li><a href="#ch_Notation">Notation and conventions</a></li>
-<li><a href="#part-i-introduction">Part I Introduction</a></li>
-<li><a href="#ch_Background"><span class="toc-section-number">1</span> Context</a>
+<li><a href="#ch_Notation" id="toc-ch_Notation">Notation and conventions</a></li>
+<li><a href="#part-i-introduction" id="toc-part-i-introduction">Part I Introduction</a></li>
+<li><a href="#ch_Background" id="toc-ch_Background"><span class="toc-section-number">1</span> Context</a>
 <ul>
-<li><a href="#bias-in-machine-learning"><span class="toc-section-number">1.1</span> Bias in Machine Learning</a></li>
-<li><a href="#sec_FairnessJustice"><span class="toc-section-number">1.2</span> A Philosophical Perspective</a></li>
-<li><a href="#a-legal-perspective"><span class="toc-section-number">1.3</span> A Legal Perspective</a></li>
-<li><a href="#sec_SimpsParadox"><span class="toc-section-number">1.4</span> A Technical Perspective</a></li>
-<li><a href="#sec_harms"><span class="toc-section-number">1.5</span> What’s the Harm?</a></li>
-<li><a href="#summary">Summary</a></li>
+<li><a href="#bias-in-machine-learning" id="toc-bias-in-machine-learning"><span class="toc-section-number">1.1</span> Bias in Machine Learning</a></li>
+<li><a href="#sec_FairnessJustice" id="toc-sec_FairnessJustice"><span class="toc-section-number">1.2</span> A Philosophical Perspective</a></li>
+<li><a href="#a-legal-perspective" id="toc-a-legal-perspective"><span class="toc-section-number">1.3</span> A Legal Perspective</a></li>
+<li><a href="#sec_SimpsParadox" id="toc-sec_SimpsParadox"><span class="toc-section-number">1.4</span> A Technical Perspective</a></li>
+<li><a href="#sec_harms" id="toc-sec_harms"><span class="toc-section-number">1.5</span> What’s the Harm?</a></li>
+<li><a href="#summary" id="toc-summary">Summary</a></li>
 </ul></li>
-<li><a href="#ch_EthicalDev"><span class="toc-section-number">2</span> Ethical development</a>
+<li><a href="#ch_EthicalDev" id="toc-ch_EthicalDev"><span class="toc-section-number">2</span> Ethical development</a>
 <ul>
-<li><a href="#machine-learning-cycle"><span class="toc-section-number">2.1</span> Machine Learning Cycle</a></li>
-<li><a href="#sec_ResponseDev"><span class="toc-section-number">2.2</span> Model Development and Deployment Life Cycle</a></li>
-<li><a href="#sec_ProcessPolicy"><span class="toc-section-number">2.3</span> Responsible Model Development and Deployment</a></li>
-<li><a href="#common-causes-of-harm"><span class="toc-section-number">2.4</span> Common Causes of Harm</a></li>
-<li><a href="#linking-common-causes-of-harm-to-the-workflow"><span class="toc-section-number">2.5</span> Linking Common Causes of Harm to the Workflow</a></li>
-<li><a href="#summary-1">Summary</a></li>
+<li><a href="#machine-learning-cycle" id="toc-machine-learning-cycle"><span class="toc-section-number">2.1</span> Machine Learning Cycle</a></li>
+<li><a href="#sec_ResponseDev" id="toc-sec_ResponseDev"><span class="toc-section-number">2.2</span> Model Development and Deployment Life Cycle</a></li>
+<li><a href="#sec_ProcessPolicy" id="toc-sec_ProcessPolicy"><span class="toc-section-number">2.3</span> Responsible Model Development and Deployment</a></li>
+<li><a href="#common-causes-of-harm" id="toc-common-causes-of-harm"><span class="toc-section-number">2.4</span> Common Causes of Harm</a></li>
+<li><a href="#linking-common-causes-of-harm-to-the-workflow" id="toc-linking-common-causes-of-harm-to-the-workflow"><span class="toc-section-number">2.5</span> Linking Common Causes of Harm to the Workflow</a></li>
+<li><a href="#summary-1" id="toc-summary-1">Summary</a></li>
 </ul></li>
-<li><a href="#part-ii-measuring-bias">Part II Measuring Bias</a></li>
-<li><a href="#ch_GroupFairness"><span class="toc-section-number">3</span> Group Fairness</a>
+<li><a href="#part-ii-measuring-bias" id="toc-part-ii-measuring-bias">Part II Measuring Bias</a></li>
+<li><a href="#ch_GroupFairness" id="toc-ch_GroupFairness"><span class="toc-section-number">3</span> Group Fairness</a>
 <ul>
-<li><a href="#sec_BalOut"><span class="toc-section-number">3.1</span> Comparing Outcomes</a></li>
-<li><a href="#sec_BalErr"><span class="toc-section-number">3.2</span> Comparing Errors</a></li>
-<li><a href="#sec_Impossible"><span class="toc-section-number">3.3</span> Incompatibility Between Fairness Criteria</a></li>
-<li><a href="#weaknesses-of-group-fairness-metrics"><span class="toc-section-number">3.4</span> Weaknesses of Group Fairness Metrics</a></li>
-<li><a href="#summary-2">Summary</a></li>
+<li><a href="#sec_BalOut" id="toc-sec_BalOut"><span class="toc-section-number">3.1</span> Comparing Outcomes</a></li>
+<li><a href="#sec_BalErr" id="toc-sec_BalErr"><span class="toc-section-number">3.2</span> Comparing Errors</a></li>
+<li><a href="#sec_Impossible" id="toc-sec_Impossible"><span class="toc-section-number">3.3</span> Incompatibility Between Fairness Criteria</a></li>
+<li><a href="#weaknesses-of-group-fairness-metrics" id="toc-weaknesses-of-group-fairness-metrics"><span class="toc-section-number">3.4</span> Weaknesses of Group Fairness Metrics</a></li>
+<li><a href="#summary-2" id="toc-summary-2">Summary</a></li>
 </ul></li>
-<li><a href="#ch_IndividualFairness"><span class="toc-section-number">4</span> Individual Fairness</a>
+<li><a href="#ch_IndividualFairness" id="toc-ch_IndividualFairness"><span class="toc-section-number">4</span> Individual Fairness</a>
 <ul>
-<li><a href="#individual-fairness-as-continuity"><span class="toc-section-number">4.1</span> Individual Fairness as Continuity</a></li>
-<li><a href="#individual-fairness-as-randomness"><span class="toc-section-number">4.2</span> Individual Fairness as Randomness</a></li>
-<li><a href="#similarity-metrics"><span class="toc-section-number">4.3</span> Similarity Metrics</a></li>
-<li><a href="#measuring-individual-fairness-in-practice"><span class="toc-section-number">4.4</span> Measuring Individual Fairness in Practice</a></li>
-<li><a href="#summary-3">Summary</a></li>
-<li><a href="#further-work">Further Work</a></li>
+<li><a href="#individual-fairness-as-continuity" id="toc-individual-fairness-as-continuity"><span class="toc-section-number">4.1</span> Individual Fairness as Continuity</a></li>
+<li><a href="#individual-fairness-as-randomness" id="toc-individual-fairness-as-randomness"><span class="toc-section-number">4.2</span> Individual Fairness as Randomness</a></li>
+<li><a href="#similarity-metrics" id="toc-similarity-metrics"><span class="toc-section-number">4.3</span> Similarity Metrics</a></li>
+<li><a href="#measuring-individual-fairness-in-practice" id="toc-measuring-individual-fairness-in-practice"><span class="toc-section-number">4.4</span> Measuring Individual Fairness in Practice</a></li>
+<li><a href="#summary-3" id="toc-summary-3">Summary</a></li>
+<li><a href="#further-work" id="toc-further-work">Further Work</a></li>
 </ul></li>
-<li><a href="#ch_InequalityIndices"><span class="toc-section-number">5</span> Fairness as Utility</a>
+<li><a href="#ch_InequalityIndices" id="toc-ch_InequalityIndices"><span class="toc-section-number">5</span> Fairness as Utility</a>
 <ul>
-<li><a href="#generalised-entropy-indices"><span class="toc-section-number">5.1</span> Generalised Entropy Indices</a></li>
-<li><a href="#defining-a-benefit-function"><span class="toc-section-number">5.2</span> Defining a Benefit Function</a></li>
-<li><a href="#fairness-as-utility"><span class="toc-section-number">5.3</span> Fairness as Utility</a></li>
-<li><a href="#summary-4">Summary</a></li>
-<li><a href="#further-work-1">Further Work</a></li>
+<li><a href="#generalised-entropy-indices" id="toc-generalised-entropy-indices"><span class="toc-section-number">5.1</span> Generalised Entropy Indices</a></li>
+<li><a href="#defining-a-benefit-function" id="toc-defining-a-benefit-function"><span class="toc-section-number">5.2</span> Defining a Benefit Function</a></li>
+<li><a href="#fairness-as-utility" id="toc-fairness-as-utility"><span class="toc-section-number">5.3</span> Fairness as Utility</a></li>
+<li><a href="#summary-4" id="toc-summary-4">Summary</a></li>
+<li><a href="#further-work-1" id="toc-further-work-1">Further Work</a></li>
 </ul></li>
-<li><a href="#app_AIF360"><span class="toc-section-number">A</span> AIF360</a>
+<li><a href="#app_AIF360" id="toc-app_AIF360"><span class="toc-section-number">A</span> AIF360</a>
 <ul>
-<li><a href="#app_AIF360_GF"><span class="toc-section-number">A.1</span> Group Fairness</a></li>
-<li><a href="#app_AIF360_IF"><span class="toc-section-number">A.2</span> Individual Fairness</a></li>
-<li><a href="#app_AIF360_II"><span class="toc-section-number">A.3</span> Inequality Indices</a></li>
+<li><a href="#app_AIF360_GF" id="toc-app_AIF360_GF"><span class="toc-section-number">A.1</span> Group Fairness</a></li>
+<li><a href="#app_AIF360_IF" id="toc-app_AIF360_IF"><span class="toc-section-number">A.2</span> Individual Fairness</a></li>
+<li><a href="#app_AIF360_II" id="toc-app_AIF360_II"><span class="toc-section-number">A.3</span> Inequality Indices</a></li>
 </ul></li>
-<li><a href="#app_Metrics"><span class="toc-section-number">B</span> Performance Metrics</a></li>
-<li><a href="#app_ProbRules"><span class="toc-section-number">C</span> Rules of Probability</a></li>
-<li><a href="#app_Solutions"><span class="toc-section-number">D</span> Proofs and Code</a>
+<li><a href="#app_Metrics" id="toc-app_Metrics"><span class="toc-section-number">B</span> Performance Metrics</a></li>
+<li><a href="#app_ProbRules" id="toc-app_ProbRules"><span class="toc-section-number">C</span> Rules of Probability</a></li>
+<li><a href="#app_Solutions" id="toc-app_Solutions"><span class="toc-section-number">D</span> Proofs and Code</a>
 <ul>
-<li><a href="#sec_app_GFSolutions"><span class="toc-section-number">D.1</span> Group Fairness</a></li>
-<li><a href="#sec_app_IFSolutions"><span class="toc-section-number">D.2</span> Individual Fairness</a></li>
-<li><a href="#sec_app_IISolutions"><span class="toc-section-number">D.3</span> Fairness as Utility</a></li>
+<li><a href="#sec_app_GFSolutions" id="toc-sec_app_GFSolutions"><span class="toc-section-number">D.1</span> Group Fairness</a></li>
+<li><a href="#sec_app_IFSolutions" id="toc-sec_app_IFSolutions"><span class="toc-section-number">D.2</span> Individual Fairness</a></li>
+<li><a href="#sec_app_IISolutions" id="toc-sec_app_IISolutions"><span class="toc-section-number">D.3</span> Fairness as Utility</a></li>
 </ul></li>
-<li><a href="#bibliography">References</a></li>
+<li><a href="#bibliography" id="toc-bibliography">References</a></li>
 </ul>
 </nav>
 </div>
@@ -113,67 +113,67 @@
   </button>
   <div class="content">
     <ul>
-    <li><a href="#ch_Notation">Notation and conventions</a></li>
-    <li><a href="#part-i-introduction">Part I Introduction</a></li>
-    <li><a href="#ch_Background"><span class="toc-section-number">1</span> Context</a>
+    <li><a href="#ch_Notation" id="toc-ch_Notation">Notation and conventions</a></li>
+    <li><a href="#part-i-introduction" id="toc-part-i-introduction">Part I Introduction</a></li>
+    <li><a href="#ch_Background" id="toc-ch_Background"><span class="toc-section-number">1</span> Context</a>
     <ul>
-    <li><a href="#bias-in-machine-learning"><span class="toc-section-number">1.1</span> Bias in Machine Learning</a></li>
-    <li><a href="#sec_FairnessJustice"><span class="toc-section-number">1.2</span> A Philosophical Perspective</a></li>
-    <li><a href="#a-legal-perspective"><span class="toc-section-number">1.3</span> A Legal Perspective</a></li>
-    <li><a href="#sec_SimpsParadox"><span class="toc-section-number">1.4</span> A Technical Perspective</a></li>
-    <li><a href="#sec_harms"><span class="toc-section-number">1.5</span> What’s the Harm?</a></li>
-    <li><a href="#summary">Summary</a></li>
+    <li><a href="#bias-in-machine-learning" id="toc-bias-in-machine-learning"><span class="toc-section-number">1.1</span> Bias in Machine Learning</a></li>
+    <li><a href="#sec_FairnessJustice" id="toc-sec_FairnessJustice"><span class="toc-section-number">1.2</span> A Philosophical Perspective</a></li>
+    <li><a href="#a-legal-perspective" id="toc-a-legal-perspective"><span class="toc-section-number">1.3</span> A Legal Perspective</a></li>
+    <li><a href="#sec_SimpsParadox" id="toc-sec_SimpsParadox"><span class="toc-section-number">1.4</span> A Technical Perspective</a></li>
+    <li><a href="#sec_harms" id="toc-sec_harms"><span class="toc-section-number">1.5</span> What’s the Harm?</a></li>
+    <li><a href="#summary" id="toc-summary">Summary</a></li>
     </ul></li>
-    <li><a href="#ch_EthicalDev"><span class="toc-section-number">2</span> Ethical development</a>
+    <li><a href="#ch_EthicalDev" id="toc-ch_EthicalDev"><span class="toc-section-number">2</span> Ethical development</a>
     <ul>
-    <li><a href="#machine-learning-cycle"><span class="toc-section-number">2.1</span> Machine Learning Cycle</a></li>
-    <li><a href="#sec_ResponseDev"><span class="toc-section-number">2.2</span> Model Development and Deployment Life Cycle</a></li>
-    <li><a href="#sec_ProcessPolicy"><span class="toc-section-number">2.3</span> Responsible Model Development and Deployment</a></li>
-    <li><a href="#common-causes-of-harm"><span class="toc-section-number">2.4</span> Common Causes of Harm</a></li>
-    <li><a href="#linking-common-causes-of-harm-to-the-workflow"><span class="toc-section-number">2.5</span> Linking Common Causes of Harm to the Workflow</a></li>
-    <li><a href="#summary-1">Summary</a></li>
+    <li><a href="#machine-learning-cycle" id="toc-machine-learning-cycle"><span class="toc-section-number">2.1</span> Machine Learning Cycle</a></li>
+    <li><a href="#sec_ResponseDev" id="toc-sec_ResponseDev"><span class="toc-section-number">2.2</span> Model Development and Deployment Life Cycle</a></li>
+    <li><a href="#sec_ProcessPolicy" id="toc-sec_ProcessPolicy"><span class="toc-section-number">2.3</span> Responsible Model Development and Deployment</a></li>
+    <li><a href="#common-causes-of-harm" id="toc-common-causes-of-harm"><span class="toc-section-number">2.4</span> Common Causes of Harm</a></li>
+    <li><a href="#linking-common-causes-of-harm-to-the-workflow" id="toc-linking-common-causes-of-harm-to-the-workflow"><span class="toc-section-number">2.5</span> Linking Common Causes of Harm to the Workflow</a></li>
+    <li><a href="#summary-1" id="toc-summary-1">Summary</a></li>
     </ul></li>
-    <li><a href="#part-ii-measuring-bias">Part II Measuring Bias</a></li>
-    <li><a href="#ch_GroupFairness"><span class="toc-section-number">3</span> Group Fairness</a>
+    <li><a href="#part-ii-measuring-bias" id="toc-part-ii-measuring-bias">Part II Measuring Bias</a></li>
+    <li><a href="#ch_GroupFairness" id="toc-ch_GroupFairness"><span class="toc-section-number">3</span> Group Fairness</a>
     <ul>
-    <li><a href="#sec_BalOut"><span class="toc-section-number">3.1</span> Comparing Outcomes</a></li>
-    <li><a href="#sec_BalErr"><span class="toc-section-number">3.2</span> Comparing Errors</a></li>
-    <li><a href="#sec_Impossible"><span class="toc-section-number">3.3</span> Incompatibility Between Fairness Criteria</a></li>
-    <li><a href="#weaknesses-of-group-fairness-metrics"><span class="toc-section-number">3.4</span> Weaknesses of Group Fairness Metrics</a></li>
-    <li><a href="#summary-2">Summary</a></li>
+    <li><a href="#sec_BalOut" id="toc-sec_BalOut"><span class="toc-section-number">3.1</span> Comparing Outcomes</a></li>
+    <li><a href="#sec_BalErr" id="toc-sec_BalErr"><span class="toc-section-number">3.2</span> Comparing Errors</a></li>
+    <li><a href="#sec_Impossible" id="toc-sec_Impossible"><span class="toc-section-number">3.3</span> Incompatibility Between Fairness Criteria</a></li>
+    <li><a href="#weaknesses-of-group-fairness-metrics" id="toc-weaknesses-of-group-fairness-metrics"><span class="toc-section-number">3.4</span> Weaknesses of Group Fairness Metrics</a></li>
+    <li><a href="#summary-2" id="toc-summary-2">Summary</a></li>
     </ul></li>
-    <li><a href="#ch_IndividualFairness"><span class="toc-section-number">4</span> Individual Fairness</a>
+    <li><a href="#ch_IndividualFairness" id="toc-ch_IndividualFairness"><span class="toc-section-number">4</span> Individual Fairness</a>
     <ul>
-    <li><a href="#individual-fairness-as-continuity"><span class="toc-section-number">4.1</span> Individual Fairness as Continuity</a></li>
-    <li><a href="#individual-fairness-as-randomness"><span class="toc-section-number">4.2</span> Individual Fairness as Randomness</a></li>
-    <li><a href="#similarity-metrics"><span class="toc-section-number">4.3</span> Similarity Metrics</a></li>
-    <li><a href="#measuring-individual-fairness-in-practice"><span class="toc-section-number">4.4</span> Measuring Individual Fairness in Practice</a></li>
-    <li><a href="#summary-3">Summary</a></li>
-    <li><a href="#further-work">Further Work</a></li>
+    <li><a href="#individual-fairness-as-continuity" id="toc-individual-fairness-as-continuity"><span class="toc-section-number">4.1</span> Individual Fairness as Continuity</a></li>
+    <li><a href="#individual-fairness-as-randomness" id="toc-individual-fairness-as-randomness"><span class="toc-section-number">4.2</span> Individual Fairness as Randomness</a></li>
+    <li><a href="#similarity-metrics" id="toc-similarity-metrics"><span class="toc-section-number">4.3</span> Similarity Metrics</a></li>
+    <li><a href="#measuring-individual-fairness-in-practice" id="toc-measuring-individual-fairness-in-practice"><span class="toc-section-number">4.4</span> Measuring Individual Fairness in Practice</a></li>
+    <li><a href="#summary-3" id="toc-summary-3">Summary</a></li>
+    <li><a href="#further-work" id="toc-further-work">Further Work</a></li>
     </ul></li>
-    <li><a href="#ch_InequalityIndices"><span class="toc-section-number">5</span> Fairness as Utility</a>
+    <li><a href="#ch_InequalityIndices" id="toc-ch_InequalityIndices"><span class="toc-section-number">5</span> Fairness as Utility</a>
     <ul>
-    <li><a href="#generalised-entropy-indices"><span class="toc-section-number">5.1</span> Generalised Entropy Indices</a></li>
-    <li><a href="#defining-a-benefit-function"><span class="toc-section-number">5.2</span> Defining a Benefit Function</a></li>
-    <li><a href="#fairness-as-utility"><span class="toc-section-number">5.3</span> Fairness as Utility</a></li>
-    <li><a href="#summary-4">Summary</a></li>
-    <li><a href="#further-work-1">Further Work</a></li>
+    <li><a href="#generalised-entropy-indices" id="toc-generalised-entropy-indices"><span class="toc-section-number">5.1</span> Generalised Entropy Indices</a></li>
+    <li><a href="#defining-a-benefit-function" id="toc-defining-a-benefit-function"><span class="toc-section-number">5.2</span> Defining a Benefit Function</a></li>
+    <li><a href="#fairness-as-utility" id="toc-fairness-as-utility"><span class="toc-section-number">5.3</span> Fairness as Utility</a></li>
+    <li><a href="#summary-4" id="toc-summary-4">Summary</a></li>
+    <li><a href="#further-work-1" id="toc-further-work-1">Further Work</a></li>
     </ul></li>
-    <li><a href="#app_AIF360"><span class="toc-section-number">A</span> AIF360</a>
+    <li><a href="#app_AIF360" id="toc-app_AIF360"><span class="toc-section-number">A</span> AIF360</a>
     <ul>
-    <li><a href="#app_AIF360_GF"><span class="toc-section-number">A.1</span> Group Fairness</a></li>
-    <li><a href="#app_AIF360_IF"><span class="toc-section-number">A.2</span> Individual Fairness</a></li>
-    <li><a href="#app_AIF360_II"><span class="toc-section-number">A.3</span> Inequality Indices</a></li>
+    <li><a href="#app_AIF360_GF" id="toc-app_AIF360_GF"><span class="toc-section-number">A.1</span> Group Fairness</a></li>
+    <li><a href="#app_AIF360_IF" id="toc-app_AIF360_IF"><span class="toc-section-number">A.2</span> Individual Fairness</a></li>
+    <li><a href="#app_AIF360_II" id="toc-app_AIF360_II"><span class="toc-section-number">A.3</span> Inequality Indices</a></li>
     </ul></li>
-    <li><a href="#app_Metrics"><span class="toc-section-number">B</span> Performance Metrics</a></li>
-    <li><a href="#app_ProbRules"><span class="toc-section-number">C</span> Rules of Probability</a></li>
-    <li><a href="#app_Solutions"><span class="toc-section-number">D</span> Proofs and Code</a>
+    <li><a href="#app_Metrics" id="toc-app_Metrics"><span class="toc-section-number">B</span> Performance Metrics</a></li>
+    <li><a href="#app_ProbRules" id="toc-app_ProbRules"><span class="toc-section-number">C</span> Rules of Probability</a></li>
+    <li><a href="#app_Solutions" id="toc-app_Solutions"><span class="toc-section-number">D</span> Proofs and Code</a>
     <ul>
-    <li><a href="#sec_app_GFSolutions"><span class="toc-section-number">D.1</span> Group Fairness</a></li>
-    <li><a href="#sec_app_IFSolutions"><span class="toc-section-number">D.2</span> Individual Fairness</a></li>
-    <li><a href="#sec_app_IISolutions"><span class="toc-section-number">D.3</span> Fairness as Utility</a></li>
+    <li><a href="#sec_app_GFSolutions" id="toc-sec_app_GFSolutions"><span class="toc-section-number">D.1</span> Group Fairness</a></li>
+    <li><a href="#sec_app_IFSolutions" id="toc-sec_app_IFSolutions"><span class="toc-section-number">D.2</span> Individual Fairness</a></li>
+    <li><a href="#sec_app_IISolutions" id="toc-sec_app_IISolutions"><span class="toc-section-number">D.3</span> Fairness as Utility</a></li>
     </ul></li>
-    <li><a href="#bibliography">References</a></li>
+    <li><a href="#bibliography" id="toc-bibliography">References</a></li>
     </ul>
   </div>
 </div>
@@ -335,7 +335,7 @@
 </section>
 <section id="sec_FairnessJustice" class="level2" data-number="1.2">
 <h2 data-number="1.2"><span class="header-section-number">1.2</span> A Philosophical Perspective</h2>
-<p>Cathy O’Neil describes models as “opinions embedded in code”. Developing models is not an objective scientific process, it involves making a series subjective choices. One of the most fundamental ways in which we impose our opinion on a machine learning model is in deciding how we measure success. Let’s look at the process of training a model. We start with some parametric representation (a family of models), which you hope is sufficiently in complex to be able to reflect the relationships between the variables in the data. The goal in training is to determine which model (in our chosen family) is <em>best</em>. The <em>best</em> model being the one that maximises utility (from our perspective).</p>
+<p>Cathy O’Neil describes models as “opinions embedded in code”. Developing models is not an objective scientific process, it involves making a series subjective choices. One of the most fundamental ways in which we impose our opinion on a machine learning model is in deciding how we measure success. Let’s look at the process of training a model. We start with some parametric representation (a family of models), which you hope is sufficiently complex to be able to reflect the relationships between the variables in the data. The goal in training is to determine which model (in our chosen family) is <em>best</em>. The <em>best</em> model being the one that maximises utility (from our perspective).</p>
 <p>For sociotechnical systems, our predictions don’t only impact the decision maker, they also result in a benefit (or harm) to those subjected to them. The very purpose of codifying a decision policy is often to cheaply deploy it at scale. The more people it processes, the more value there is in codifying the decision process. Another, way to look such models instead then, is as a system for distributing benefits (or harms) among a population. Given this, which model is the <em>right</em> one so to speak. In this section we briefly discuss some more philosophical theories relevant to these types of problems. We start with utilitarianism which is perhaps the easiest theory to draw parallels with model optimisation.</p>
 <section id="utilitarianism" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1"><span class="header-section-number">1.2.1</span> Utilitarianism</h3>
@@ -410,7 +410,7 @@
 <td style="text-align: left;">Equal Credit Opportunity Act</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" rowspan="3">Education</td>
+<td rowspan="3" style="text-align: left;">Education</td>
 <td style="text-align: left;">Civil Rights Act (1964)</td>
 </tr>
 <tr class="odd">
@@ -420,21 +420,21 @@
 <td style="text-align: left;">IDEA (1975)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="2">Employment</td>
+<td rowspan="2" style="text-align: left;">Employment</td>
 <td style="text-align: left;">Equal Pay Act(1963)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Civil Rights Act (1964)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="2">Housing</td>
+<td rowspan="2" style="text-align: left;">Housing</td>
 <td style="text-align: left;">Fair Housing Act (1968)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Fair Housing Amendments Act (1988)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="3">Transport</td>
+<td rowspan="3" style="text-align: left;">Transport</td>
 <td style="text-align: left;">Urban Mass Transit Act (1970)</td>
 </tr>
 <tr class="even">
@@ -469,7 +469,7 @@
 <td style="text-align: left;">Civil Rights Act (1964)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" rowspan="3">Sex</td>
+<td rowspan="3" style="text-align: left;">Sex</td>
 <td style="text-align: left;">Equal Pay Act (1963)</td>
 </tr>
 <tr class="odd">
@@ -499,14 +499,14 @@
 <td style="text-align: left;">Civil Rights Act (1968)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" rowspan="2">Disability status</td>
+<td rowspan="2" style="text-align: left;">Disability status</td>
 <td style="text-align: left;">Rehabilitation Act of 1973</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">American with Disabilities Act of 1990</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" rowspan="2">Veteran status</td>
+<td rowspan="2" style="text-align: left;">Veteran status</td>
 <td style="text-align: left;">Veterans’ Readjustment Assistance Act 1974</td>
 </tr>
 <tr class="odd">
@@ -663,17 +663,20 @@
 </div>
 <p>Figure <a href="#fig:SimpsParAccByDept" data-reference-type="ref" data-reference="fig:SimpsParAccByDept">1.1</a> shows the acceptance rates for each department by gender, in decreasing order of acceptance rates. Performing <span class="math inline">\(\chi^2\)</span> tests for each department reveals the only department where there is strong evidence of bias is A, but the bias is in favour of female applicants. The probability of observing the data for department A, under the assumption of independence, is <span class="math inline">\(5\times10^{-5}\)</span>.</p>
 <figure>
-<img src="01_Context/figures/Fig_BerkeleyAccByDept.png" id="fig:SimpsParAccByDept" style="width:85.0%" alt="Figure 1.1: Acceptance rate distributions by department for male and female applicants." /><figcaption aria-hidden="true">Figure 1.1: Acceptance rate distributions by department for male and female applicants.</figcaption>
+<img src="01_Context/figures/Fig_BerkeleyAccByDept.png" id="fig:SimpsParAccByDept" style="width:85.0%" alt="Figure 1.1: Acceptance rate distributions by department for male and female applicants." />
+<figcaption aria-hidden="true">Figure 1.1: Acceptance rate distributions by department for male and female applicants.</figcaption>
 </figure>
 <p>So what’s going on? Figure <a href="#fig:SimpsParAppByDept" data-reference-type="ref" data-reference="fig:SimpsParAppByDept">1.2</a> shows the application distributions for male and female applicants for each of the six departments. From the plots we are able to see a pattern. Female applicants are more often applying for departments with a lower acceptance rate.</p>
 <figure>
-<img src="01_Context/figures/Fig_BerkeleyAppByDept.png" id="fig:SimpsParAppByDept" style="width:85.0%" alt="Figure 1.2: Application distributions by department for male and female applicants." /><figcaption aria-hidden="true">Figure 1.2: Application distributions by department for male and female applicants.</figcaption>
+<img src="01_Context/figures/Fig_BerkeleyAppByDept.png" id="fig:SimpsParAppByDept" style="width:85.0%" alt="Figure 1.2: Application distributions by department for male and female applicants." />
+<figcaption aria-hidden="true">Figure 1.2: Application distributions by department for male and female applicants.</figcaption>
 </figure>
 <p>In other words a larger proportion of the women are being filtered out overall, simply because they are applying to departments that are harder to get into.</p>
 <p>This is a classic example of Simpson’s Paradox (also known as the reversal paradox and Yule-Simpson effect). We have an observable relationship between two categorical variables (in this case gender and acceptance) which disappears or reverses, after controlling for one or more other variables (in this case department). Simpson’s Paradox is a special case of so called association paradoxes (where the variables are categorical, and the relationship changes qualitatively), but the same rules also apply to continuous variables. The <em>marginal</em> (unconditional) measure of association (e.g. correlation) between two variables need not be bounded by the <em>partial</em> (conditional) measures of association (after controlling for one or more variables). Although Edward Hugh Simpson famously wrote about the paradox in 1951, it was not discovered by him. In fact, it was reported by George Udny Yule as early as 1903. The association paradox for continuous variables was demonstrated by Karl Pearson in 1899.</p>
 <p>Let’s discuss another quick example. A 1996 follow-up study on the effects of smoking recorded the mortality rate for the participants over a 20 year period. They found higher mortality rates among the non-smokers, 31.4% compared to 23.9% which, in itself, might imply a considerable protective affect from smoking. Clearly there’s something fishy going on. Disaggregating the data by age group showed that the mortality rates were higher for smokers in all but one of them. Looking at the age distribution of the populations of smokers and non-smokers, it’s apparent that the age distribution of the non-smoking group is more positively skewed, and so they are older on average. This concords with the rationale that non-smokers live longer - hence the difference in age distributions of the participants.</p>
 <figure>
-<img src="01_Context/figures/Fig_SimpParaReg.png" id="fig:SimpsPara" style="width:98.0%" alt="Figure 1.3: Visualisation of Simpsons Paradox. Wikipedia." /><figcaption aria-hidden="true">Figure 1.3: Visualisation of Simpsons Paradox. <a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Wikipedia</a>.</figcaption>
+<img src="01_Context/figures/Fig_SimpParaReg.png" id="fig:SimpsPara" style="width:98.0%" alt="Figure 1.3: Visualisation of Simpsons Paradox. Wikipedia." />
+<figcaption aria-hidden="true">Figure 1.3: Visualisation of Simpsons Paradox. <a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Wikipedia</a>.</figcaption>
 </figure>
 </section>
 <section id="causality" class="level3" data-number="1.4.2">
@@ -688,22 +691,22 @@
 <caption>Table 1.5: Data summary showing the association between variables <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, first for all the data points and then stratified by the value of <span class="math inline">\(C\)</span>.</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" colspan="5"></th>
-<th style="text-align: center;" colspan="4"><span style="color: SteelBlue">Stained?</span> / <span style="color: FireBrick">Male?</span></th>
+<th colspan="5" style="text-align: center;"></th>
+<th colspan="4" style="text-align: center;"><span style="color: SteelBlue">Stained?</span> / <span style="color: FireBrick">Male?</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;" colspan="5"></td>
-<td style="text-align: center;" colspan="2"><span class="math inline">\(C=1\)</span></td>
-<td style="text-align: center;" colspan="2"><span class="math inline">\(C=0\)</span></td>
+<td colspan="5" style="text-align: center;"></td>
+<td colspan="2" style="text-align: center;"><span class="math inline">\(C=1\)</span></td>
+<td colspan="2" style="text-align: center;"><span class="math inline">\(C=0\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2"><span style="color: SteelBlue">Black?</span>/ <span style="color: FireBrick">Died?</span></td>
-<td style="text-align: center;" colspan="2"><span style="color: SteelBlue">Plain?</span>/ <span style="color: FireBrick">Treated?</span></td>
-<td style="text-align: center;" rowspan="5"></td>
-<td style="text-align: center;" rowspan="2"><span style="color: SteelBlue">Black?</span>/ <span style="color: FireBrick">Died?</span></td>
-<td style="text-align: center;" colspan="4"><span style="color: SteelBlue">Plain?</span>/ <span style="color: FireBrick">Treated?</span></td>
+<td rowspan="2" style="text-align: center;"><span style="color: SteelBlue">Black?</span>/ <span style="color: FireBrick">Died?</span></td>
+<td colspan="2" style="text-align: center;"><span style="color: SteelBlue">Plain?</span>/ <span style="color: FireBrick">Treated?</span></td>
+<td rowspan="5" style="text-align: center;"></td>
+<td rowspan="2" style="text-align: center;"><span style="color: SteelBlue">Black?</span>/ <span style="color: FireBrick">Died?</span></td>
+<td colspan="4" style="text-align: center;"><span style="color: SteelBlue">Plain?</span>/ <span style="color: FireBrick">Treated?</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">\(A=1\)</span></td>
@@ -777,7 +780,8 @@
 <h4 class="unnumbered">Back to Causality</h4>
 <p>The key difference between these examples is the causal relationship between the variables rather than the statistical structure of the data. In the first example with the playing cards, the variable <span class="math inline">\(C\)</span> is a <em>colliding</em> variable, in the second example looking at patient mortality, it is a <em>confounding</em> variable. Figure <a href="#fig:CollConfProg" data-reference-type="ref" data-reference="fig:CollConfProg">1.4</a> a) and b) show the causal relationships between the variables in the two cases.</p>
 <figure class="fullwidth">
-<img src="01_Context/figures/Fig_CollConfProg.png" id="fig:CollConfProg" alt="Figure 1.4: Causal diagrams for A, B and C when C is a colliding, confounding and prognostic variable." /><figcaption aria-hidden="true">Figure 1.4: Causal diagrams for <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> when <span class="math inline">\(C\)</span> is a colliding, confounding and prognostic variable.</figcaption>
+<img src="01_Context/figures/Fig_CollConfProg.png" id="fig:CollConfProg" alt="Figure 1.4: Causal diagrams for A, B and C when C is a colliding, confounding and prognostic variable." />
+<figcaption aria-hidden="true">Figure 1.4: Causal diagrams for <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> when <span class="math inline">\(C\)</span> is a colliding, confounding and prognostic variable.</figcaption>
 </figure>
 <p>The causal diagram in Figure <a href="#fig:CollConfProg" data-reference-type="ref" data-reference="fig:CollConfProg">1.4</a> a) shows the variables <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> for the first example. The arrows exist both from card character and colour to cleanliness because apparently, baby Milen had a preference for royal cards over plain and red cards over black. Conditioning on a collider <span class="math inline">\(C\)</span> generates an association (e.g. correlation) between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, even if they are unconditionally independent. This common effect is often observed as <em>selection</em> or <em>representation bias</em>. Representation bias can induce correlation between variables, even where there is none. For decision systems, this can lead to feedback loops that increase the extremity of the representation bias in future data. We’ll come back to this in chapter <a href="#ch_EthicalDev" data-reference-type="ref" data-reference="ch_EthicalDev">2</a>, when we talk about common causes of bias.</p>
 <p>The causal diagram in Figure <a href="#fig:CollConfProg" data-reference-type="ref" data-reference="fig:CollConfProg">1.4</a> b) shows the variables <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> for the second example. The arrows exist from <span class="math inline">\(gender\)</span> to treatment because men were less likely to be treated, and from gender to death because men were also less likely to die. The arrow from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> represents the effect of treatment on mortality which is observable only by conditioning on gender. Note that there are two sources of association in opposite directions between variables <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> (treatment and death); a positive association, because men were less likely to be treated; and a negative association, because male patients are less likely to die. The two effects cancel each other out when the data is aggregated.</p>
@@ -850,7 +854,8 @@
 </span>
 </span>, Carole shows images of some the adverts on Facebook, people were targeted with as part of the leave campaign (see Figure <a href="#fig:Brexit" data-reference-type="ref" data-reference="fig:Brexit">1.5</a>). They were all centred around a lie - that Turkey was joining the EU.</p>
 <figure>
-<img src="01_Context/figures/Fig_Brexit.png" id="fig:Brexit" alt="Figure 1.5: Targeted disinformation adverts shown on Facebook[17]." /><figcaption aria-hidden="true">Figure 1.5: Targeted disinformation adverts shown on Facebook<sup><span class="citation" data-cites="CarCadTED"><a href="#ref-CarCadTED" role="doc-biblioref">[17]</a></span></sup>.</figcaption>
+<img src="01_Context/figures/Fig_Brexit.png" id="fig:Brexit" alt="Figure 1.5: Targeted disinformation adverts shown on Facebook[17]." />
+<figcaption aria-hidden="true">Figure 1.5: Targeted disinformation adverts shown on Facebook<sup><span class="citation" data-cites="CarCadTED"><a href="#ref-CarCadTED" role="doc-biblioref">[17]</a></span></sup>.</figcaption>
 </figure>
 <p>Most people in the UK saw adverts on buses and billboards with false claims, for example that the National Health Service (NHS) would have an extra £350 million a week, if we left the EU. Although many believed them, those adverts circulated in the open for everyone to see, giving the mainstream media at the opportunity to debunk them. The same cannot be said for the adverts in Figure <a href="#fig:Brexit" data-reference-type="ref" data-reference="fig:Brexit">1.5</a>. They were targeted towards specific individuals, as part of an evolving stream of information displayed in their Facebook ‘news’ feed. The leave campaign paid Cambridge Analytica (a company that had illegally gained access to the data of 87 million Facebook users) to identify individuals that could be manipulated into voting leave. In the UK, spending on elections in the is limited by law as a means to ensure fair elections. After a nine month investigation, the UK’s Electoral Commission confirmed these spending limits had been breached by the leave campaign. There are ongoing criminal investigations into where the funds for the campaign originate (overseas funding of election campaigns is also illegal) but evidence suggests ties with Russia. Brexit was the precursor to the Trump administration winning the US election just a few months later that year. The same people and companies used the same strategies. It’s become clear that current legislation protecting democracy is inadequate. Facebook, was able to profit from politically motivated money without recognizing any responsibility in ensuring the transactions were legal. Five years later, the full extent of the disinformation campaign on Facebook has yet to be understood. Who was shown what and when, how people were targeted, what other lies were told, who paid for the adverts or where the money came from.</p>
 <p>Since then deep learning technology has advanced to the point of being able to pose as human in important ways that risk enabling disinformation not just through targeted advertising but machines impersonating humans. GANs can fabricate facial images, videos (deepfakes) and audio. Advancements in language models (Open AIs GPT-2 and more recently GPT-3) are capable of creating lengthy human like prose given just a few prompts. Deep learning now provides all the tools to fabricate human identities and target dissemination of false information at scale. There are growing concerns that in the future, bots will drown out actual human voices. As for the current state of play, it’s difficult to know the exact numbers but in 2017, researchers estimated that between 9 and 15% of all twitter accounts were bots<span class="citation" data-cites="FakeTwitter"><a href="#ref-FakeTwitter" role="doc-biblioref">[18]</a></span><span class="marginnote"><span id="ref-FakeTwitter" class="csl-entry" role="doc-biblioentry">
@@ -914,7 +919,8 @@
 </span>
 </span>, revealed some disturbing results. TinyImages (a dataset of 79 million 32 x 32 pixel colour photos compiled in 2006, by MIT’s Computer Science and Artificial Intelligence Lab for image recognition tasks) contained racist, misogynistic and demeaning labels with corresponding images. Figure <a href="#fig:TinyImages" data-reference-type="ref" data-reference="fig:TinyImages">1.6</a> shows a subset of the data found in TinyImages.</p>
 <figure>
-<img src="01_Context/figures/Fig_TinyImages.png" id="fig:TinyImages" alt="Figure 1.6: Subset of data in TinyImages exemplifying toxicity in both the images and labels[26]." /><figcaption aria-hidden="true">Figure 1.6: Subset of data in TinyImages exemplifying toxicity in both the images and labels<span class="citation" data-cites="TinyImages"><a href="#ref-TinyImages" role="doc-biblioref">[26]</a></span>.</figcaption>
+<img src="01_Context/figures/Fig_TinyImages.png" id="fig:TinyImages" alt="Figure 1.6: Subset of data in TinyImages exemplifying toxicity in both the images and labels[26]." />
+<figcaption aria-hidden="true">Figure 1.6: Subset of data in TinyImages exemplifying toxicity in both the images and labels<span class="citation" data-cites="TinyImages"><a href="#ref-TinyImages" role="doc-biblioref">[26]</a></span>.</figcaption>
 </figure>
 <p>The problem, unfortunately, does not end here. Many of the datasets used to train and benchmark, not just computer vision but natural language processing tasks, are related. Tiny Images was compiled by searching the internet for images associated with words in WordNet (a machine readable, lexical database, organised by meaning, developed at Princeton), which is where TinyImages inherited its labels from. ImageNet (widely considered to be a turning point in computer vision capabilities) is also based on WordNet and, Cifar-10 and Cifar-100 were derived from TinyImages.</p>
 <p>Vision and language datasets are enormous. The time, effort and consideration in collecting the data that forms the foundation of these technologies (compared to that which has gone into advancing the models built on them), is questionable to say the least. Furthermore a dataset can have impact beyond the applications trained on it, because datasets often don’t just die, they evolve. This calls into question the technologies that are in use today, capable of creating persistent representations of our world, and trained on datasets so large they are difficult and expensive to audit.</p>
@@ -1014,7 +1020,8 @@
 <section id="machine-learning-cycle" class="level2" data-number="2.1">
 <h2 data-number="2.1"><span class="header-section-number">2.1</span> Machine Learning Cycle</h2>
 <figure>
-<img src="02_EthicalDevelopment/figures/Fig_MLCycle.png" id="fig:MLCycle" style="width:65.0%" alt="Figure 2.1: The machine learning cycle" /><figcaption aria-hidden="true">Figure 2.1: The machine learning cycle</figcaption>
+<img src="02_EthicalDevelopment/figures/Fig_MLCycle.png" id="fig:MLCycle" style="width:65.0%" alt="Figure 2.1: The machine learning cycle" />
+<figcaption aria-hidden="true">Figure 2.1: The machine learning cycle</figcaption>
 </figure>
 <p>Machine learning systems can have long-term and compounding effects on the world around us. In this section we analyse the impact in a variety of different examples to breakdown the mechanisms that determine the nature and magnitude of the effect. In Figure <a href="#fig:MLCycle" data-reference-type="ref" data-reference="fig:MLCycle">2.1</a>, we present the machine learning cycle - a high-level depiction of the interaction between a machine learning solution and the real world. A machine learning system starts with a set of objectives. These can be achieved in a myriad of different ways. The translation of these objectives, into a tractable machine learning problem, consists of a series of subjective decisions; what data we collect to train a model on, what events we predict, what features we use, how we clean and process the data, how we evaluate the model and the decision policy are all choices. They determine the model we create, the actions we take and finally the resulting cycle of feedback on the data.</p>
 <p>The most familiar parts of the cycle to most developers of machine learning solutions are on the right hand side; processing data, model selection, training and cross validation and prediction. Each action taken on the basis of our model prediction creates a new world state, which generates new data, which we collect and train our model on, and around it goes again. The actions we take based on our model predictions define how we use the model. The same model used in a different way can result in a very different feedback cycle.</p>
@@ -1029,7 +1036,8 @@
 </span>
 </span> despite drug related crime being more prevalent among Whites. Taking actions based on predictions from an algorithm trained on arrest data will likely amplify existing disparities between under and over-policed neighbourhoods which correlate with race.</p>
 <figure>
-<img src="02_EthicalDevelopment/figures/Fig_RatesDrugUseSaleRace.png" id="fig:drugs" alt="Figure 2.2: Rates of drug use and sales compared to criminal justice measures by race[29]." /><figcaption aria-hidden="true">Figure 2.2: Rates of drug use and sales compared to criminal justice measures by race<span class="citation" data-cites="HamProj"><a href="#ref-HamProj" role="doc-biblioref">[29]</a></span>.</figcaption>
+<img src="02_EthicalDevelopment/figures/Fig_RatesDrugUseSaleRace.png" id="fig:drugs" alt="Figure 2.2: Rates of drug use and sales compared to criminal justice measures by race[29]." />
+<figcaption aria-hidden="true">Figure 2.2: Rates of drug use and sales compared to criminal justice measures by race<span class="citation" data-cites="HamProj"><a href="#ref-HamProj" role="doc-biblioref">[29]</a></span>.</figcaption>
 </figure>
 </section>
 <section id="car-insurance" class="level4 unnumbered">
@@ -1060,7 +1068,8 @@
 </span>
 </span>. Their analysis found the distributions of risk scores for Black and White defendants to be markedly different, with White defendants being more likely to be scored low-risk - see Figure <a href="#fig:COMPAS" data-reference-type="ref" data-reference="fig:COMPAS">2.3</a>.</p>
 <figure>
-<img src="02_EthicalDevelopment/figures/Fig_Propublica.png" id="fig:COMPAS" style="width:85.0%" alt="Figure 2.3: Comparison of recidivism risk scores for White and Black defendants[32]" /><figcaption aria-hidden="true">Figure 2.3: Comparison of recidivism risk scores for White and Black defendants<sup><span class="citation" data-cites="ProPub3"><a href="#ref-ProPub3" role="doc-biblioref">[32]</a></span></sup></figcaption>
+<img src="02_EthicalDevelopment/figures/Fig_Propublica.png" id="fig:COMPAS" style="width:85.0%" alt="Figure 2.3: Comparison of recidivism risk scores for White and Black defendants[32]" />
+<figcaption aria-hidden="true">Figure 2.3: Comparison of recidivism risk scores for White and Black defendants<sup><span class="citation" data-cites="ProPub3"><a href="#ref-ProPub3" role="doc-biblioref">[32]</a></span></sup></figcaption>
 </figure>
 <p>Comparing predicted recidivism rates for over 7,000 of the defendants with the rate that actually occurred over a two-year period, they found the accuracy of the algorithm in predicting recidivism for Black and White defendants to be similar (59% for White and 63% for Black defendants), however the errors revealed a different pattern. They found that Blacks were almost twice as likely as Whites to be labelled as higher risk but not actually re-offend . The errors for White defendants were in the opposite direction; while being more likely to be labelled as low-risk, they more often went on to commit further crimes. See Table <a href="#tbl:COMPAS" data-reference-type="ref" data-reference="tbl:COMPAS">2.1</a>.</p>
 <div id="tbl:COMPAS">
@@ -1117,7 +1126,8 @@
 <p>In this section we cover the more practical aspects of ethical model development and deployment. We take a take a higher level view of the process by which machine learning systems are created and identify the stages at which we can build in safety considerations. We take inspiration from model risk management in finance where models are ubiquitous. In banking, processes and policies with regard to development, testing, documentation, review, monitoring and reporting of model related valuation risk, have been developed over decades, alongside regulation. Many of the ideas we discuss in this chapter were developed and implemented after the 2008 credit crisis in an effort to improve controls around valuation model risk for derivative products (more on this later).</p>
 <p>Before we think about identifying and categorising common causes of harm in machine learning applications, it will be helpful to outline the workflow through which machine learning models might be developed and deployed responsibly. Figure <a href="#fig:Workflow" data-reference-type="ref" data-reference="fig:Workflow">2.4</a> does exactly this.</p>
 <figure class="fullwidth">
-<img src="02_EthicalDevelopment/figures/Fig_Workflow.png" id="fig:Workflow" alt="Figure 2.4: Fairness aware machine learning system development, deployment and management workflow." /><figcaption aria-hidden="true">Figure 2.4: Fairness aware machine learning system development, deployment and management workflow.</figcaption>
+<img src="02_EthicalDevelopment/figures/Fig_Workflow.png" id="fig:Workflow" alt="Figure 2.4: Fairness aware machine learning system development, deployment and management workflow." />
+<figcaption aria-hidden="true">Figure 2.4: Fairness aware machine learning system development, deployment and management workflow.</figcaption>
 </figure>
 <section id="model-governance-standards" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1"><span class="header-section-number">2.2.1</span> Model Governance Standards</h3>
@@ -1276,9 +1286,9 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;" rowspan="11">System</td>
-<td style="text-align: left;" rowspan="4">Policy</td>
-<td style="text-align: left;" rowspan="2">Prioritisation</td>
+<td rowspan="11" style="text-align: left;">System</td>
+<td rowspan="4" style="text-align: left;">Policy</td>
+<td rowspan="2" style="text-align: left;">Prioritisation</td>
 <td style="text-align: left;">Failure to allocate appropriate/sufficient resource</td>
 </tr>
 <tr class="even">
@@ -1293,12 +1303,12 @@
 <td style="text-align: left;">Failure to identify and manage model related risk</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="7">Controls</td>
+<td rowspan="7" style="text-align: left;">Controls</td>
 <td style="text-align: left;">Deployment bias</td>
 <td style="text-align: left;">Inappropriate model use / misinterpretation of model results</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" rowspan="3">Independent model validation</td>
+<td rowspan="3" style="text-align: left;">Independent model validation</td>
 <td style="text-align: left;">Data appropriateness and preparation</td>
 </tr>
 <tr class="odd">
@@ -1308,7 +1318,7 @@
 <td style="text-align: left;">Model evaluation metrics (pre and post deployment)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="2">Monitoring</td>
+<td rowspan="2" style="text-align: left;">Monitoring</td>
 <td style="text-align: left;">Poor monitoring of model validity and impact</td>
 </tr>
 <tr class="even">
@@ -1319,13 +1329,13 @@
 <td style="text-align: left;">Non deference to human domain expert</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" rowspan="18">Model</td>
-<td style="text-align: left;" rowspan="7">Data</td>
+<td rowspan="18" style="text-align: left;">Model</td>
+<td rowspan="7" style="text-align: left;">Data</td>
 <td style="text-align: left;">Historical bias</td>
 <td style="text-align: left;">Data records wrongful discrimination</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="3">Measurement bias</td>
+<td rowspan="3" style="text-align: left;">Measurement bias</td>
 <td style="text-align: left;">Quality of data varies across protected classes</td>
 </tr>
 <tr class="even">
@@ -1347,12 +1357,12 @@
 <td style="text-align: left;">Failure to adequately document</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="11">Misspecification</td>
+<td rowspan="11" style="text-align: left;">Misspecification</td>
 <td style="text-align: left;">Aggregation bias</td>
 <td style="text-align: left;">Failure to model differences of type</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" rowspan="3">Target variable</td>
+<td rowspan="3" style="text-align: left;">Target variable</td>
 <td style="text-align: left;">Target variable subjectivity</td>
 </tr>
 <tr class="odd">
@@ -1362,21 +1372,21 @@
 <td style="text-align: left;">Heterogeneous target variable</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="2">Features</td>
+<td rowspan="2" style="text-align: left;">Features</td>
 <td style="text-align: left;">Inclusion of protected features without control variables</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Inclusion of protected feature proxies (redlining)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="2">Cost function</td>
+<td rowspan="2" style="text-align: left;">Cost function</td>
 <td style="text-align: left;">Failure to specify asymmetric error costs</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Omitted discrimination penalties</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="2">Evaluation bias</td>
+<td rowspan="2" style="text-align: left;">Evaluation bias</td>
 <td style="text-align: left;">Poor choice of evaluation metrics</td>
 </tr>
 <tr class="even">
@@ -1478,7 +1488,8 @@
 <h2 data-number="2.5"><span class="header-section-number">2.5</span> Linking Common Causes of Harm to the Workflow</h2>
 <p>In Figure <a href="#fig:Taxonomy" data-reference-type="ref" data-reference="fig:Taxonomy">2.5</a> we provide a visual summary of the taxonomy in Table <a href="#tbl:Taxonomy" data-reference-type="ref" data-reference="tbl:Taxonomy">2.2</a>, the goal being that it might be useful as a reference for teams developing machine learning technologies. Since failures of policy do not relate to any particular part of the model development and deployment life cycle but rather all of it, we omit these.</p>
 <figure class="fullwidth">
-<img src="02_EthicalDevelopment/figures/Fig_Taxonomy.png" id="fig:Taxonomy" alt="Figure 2.5: Taxonomy of common causes of bias in machine learning models together with the stages of the model development and deployment life cycle they relate to." /><figcaption aria-hidden="true">Figure 2.5: Taxonomy of common causes of bias in machine learning models together with the stages of the model development and deployment life cycle they relate to.</figcaption>
+<img src="02_EthicalDevelopment/figures/Fig_Taxonomy.png" id="fig:Taxonomy" alt="Figure 2.5: Taxonomy of common causes of bias in machine learning models together with the stages of the model development and deployment life cycle they relate to." />
+<figcaption aria-hidden="true">Figure 2.5: Taxonomy of common causes of bias in machine learning models together with the stages of the model development and deployment life cycle they relate to.</figcaption>
 </figure>
 <p>At the top of Figure <a href="#fig:Taxonomy" data-reference-type="ref" data-reference="fig:Taxonomy">2.5</a> we have a simplified version of the model development and deployment life cycle. Below this, the causes of harm are displayed in boxes which span the parts of the lifecycle to which they relate. We use colour to separate different categories of failures and curly brackets to group issues by type.</p>
 </section>
@@ -1607,10 +1618,10 @@
 <p>In this section we will define a range of fairness metrics derived from the notion of independence. Along the way, we will familiarise ourselves with some of the terminology used to describe them. In the equations that follow, we provide metrics that quantify the extent of the relationship between our model output <span class="math inline">\(\hat{Y}\)</span> and sensitive feature <span class="math inline">\(Z\)</span>, but we could equally well replace the predicted target variable <span class="math inline">\(\hat{Y}\)</span>, with the actual target <span class="math inline">\(Y\)</span> to assess our data under the same criterion.</p>
 <p><strong>Mutual information</strong>, denoted <span class="math inline">\(I\)</span>, is popular in information theory for measuring dependence between random variables.</p>
 <div id="eq:MutualInfo">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1628,10 +1639,10 @@ f_{\hat{Y},Z}(\hat{y},z) \log \frac{f_{\hat{Y},Z}(\hat{y},z)}
 </span>
 </span> divides mutual information by a normalising factor so that the resulting value falls between zero and one:</p>
 <div id="eq:npi">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1644,10 +1655,10 @@ r_{\text{npi}} = \frac{I(\hat{Y},Z)}{\sqrt{H(\hat{Y})H(Z)}},\]</span></td>
 </div>
 <p>where <span class="math inline">\(H\)</span> is the entropy,</p>
 <div id="eq:entropyY">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1660,10 +1671,10 @@ H(Y) = -\int_{y \in \mathcal{Y}} f_Y(y) \log f_Y(y)\,\mathrm{d}y,\]</span></td>
 </div>
 <p>and</p>
 <div id="eq:entropyZ">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1677,7 +1688,8 @@ H(Z) = -\sum_{z \in \mathcal{Z}} \mathbb{P}(z) \log \mathbb{P}(z),\]</span></td>
 <p>In the above equation we assume a continuous target variable, for classification problems we can replace the integrals in equations (3.1) and (3.4) with summations. <a href="#GF_NPI">Implemention</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
 <p>A simple relaxation of independence requires only the mean predicted target variable (rather than the full distribution) to be equal for all values of the sensitive feature, that is, <span class="math display">\[\mathbb{E}(\hat{Y} | Z=a) = \mathbb{E}(\hat{Y} | Z=b).\]</span> We could measure the extent of the disparity by taking the ratio or the difference of the expectations; the latter is more commonly used. The <strong>mean difference</strong> (illustrated in Figure <a href="#fig:distributions" data-reference-type="ref" data-reference="fig:distributions">3.1</a>) which (as the name suggests) looks at the difference between the mean predictions for different partitions of the population based on the sensitive feature <span class="math inline">\(Z\)</span>, <span class="math display">\[d = \mathbb{E}(\hat{Y} | Z=a) - \mathbb{E}(\hat{Y} | Z \ne a).\]</span></p>
 <figure>
-<img src="03_GroupFairness/figures/Fig_distributions.png" id="fig:distributions" alt="Figure 3.1: Visualisation of the mean difference for a continuous target variable." /><figcaption aria-hidden="true">Figure 3.1: Visualisation of the mean difference for a continuous target variable.</figcaption>
+<img src="03_GroupFairness/figures/Fig_distributions.png" id="fig:distributions" alt="Figure 3.1: Visualisation of the mean difference for a continuous target variable." />
+<figcaption aria-hidden="true">Figure 3.1: Visualisation of the mean difference for a continuous target variable.</figcaption>
 </figure>
 <p>Taking the simplest example of discrete binary classifier where we have a binary sensitive feature. We can write the requirement of independence as, <span class="math display">\[\mathbb{P}(\hat{Y}=1 | Z=1) = \mathbb{P}(\hat{Y}=1 | Z=0).\]</span> This criterion goes by many names in research literature - <strong>demographic parity</strong>, <strong>statistical parity</strong> and <strong>parity impact</strong>, among others. We can quantify the disparity by looking at the difference or the ratio of the acceptance rates for each sensitive feature. Both are straightforward to calculate given the 2 <span class="math inline">\(\times\)</span> 2 contingency table (Table <a href="#tbl:independence" data-reference-type="ref" data-reference="tbl:independence">3.1</a>), which summarises the observed relationship between the sensitive feature and outcome. Each cell of the contingency table shows the number of examples satisfying the conditions given in the corresponding row and column headers. So for example, <span class="math inline">\(n_{01}\)</span> is the number of data points for which <span class="math inline">\(Z=0\)</span> and <span class="math inline">\(\hat{Y}=1\)</span>.</p>
 <div id="tbl:independence">
@@ -1721,10 +1733,10 @@ H(Z) = -\sum_{z \in \mathcal{Z}} \mathbb{P}(z) \log \mathbb{P}(z),\]</span></td>
 <div class="lookbox">
 <p><strong>Statistical Parity Difference Maximum</strong></p>
 <div id="eq:dmax">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1786,40 +1798,40 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <caption>Table 3.2: Summary of error rate metrics for a binary classifier</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" colspan="2"></th>
-<th style="text-align: center;" colspan="2">Ground Truth</th>
+<th colspan="2" style="text-align: center;"></th>
+<th colspan="2" style="text-align: center;">Ground Truth</th>
 <th style="text-align: center;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;" colspan="2"></td>
+<td colspan="2" style="text-align: center;"></td>
 <td style="text-align: center;"><span class="math inline">\(y=1\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(y=0\)</span></td>
 <td style="text-align: center;">Error Rate Type</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="4">Prediction</td>
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=1\)</span></td>
-<td style="text-align: center;" rowspan="2">True Positive</td>
-<td style="text-align: center;" rowspan="2">False Positive<br>Type I Error</td>
-<td style="text-align: center;" rowspan="2">False Discovery Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=1)\)</span></td>
+<td rowspan="4" style="text-align: center;">Prediction</td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=1\)</span></td>
+<td rowspan="2" style="text-align: center;">True Positive</td>
+<td rowspan="2" style="text-align: center;">False Positive<br>Type I Error</td>
+<td rowspan="2" style="text-align: center;">False Discovery Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=1)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=0\)</span></td>
-<td style="text-align: center;" rowspan="2">False Negative<br>Type II Error</td>
-<td style="text-align: center;" rowspan="2">True Negative</td>
-<td style="text-align: center;" rowspan="2">False Omission Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=0)\)</span></td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=0\)</span></td>
+<td rowspan="2" style="text-align: center;">False Negative<br>Type II Error</td>
+<td rowspan="2" style="text-align: center;">True Negative</td>
+<td rowspan="2" style="text-align: center;">False Omission Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=0)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" colspan="2" rowspan="2">Error Rate Type</td>
-<td style="text-align: center;" rowspan="2">False Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=1)\)</span></td>
-<td style="text-align: center;" rowspan="2">False Positive Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=0)\)</span></td>
-<td style="text-align: center;" rowspan="2">Error Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y)\)</span></td>
+<td colspan="2" rowspan="2" style="text-align: center;">Error Rate Type</td>
+<td rowspan="2" style="text-align: center;">False Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=1)\)</span></td>
+<td rowspan="2" style="text-align: center;">False Positive Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=0)\)</span></td>
+<td rowspan="2" style="text-align: center;">Error Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
@@ -1831,40 +1843,40 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <caption>Table 3.3: Summary of predictive performance metrics for a binary classifier</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" colspan="2"></th>
-<th style="text-align: center;" colspan="2">Ground Truth</th>
+<th colspan="2" style="text-align: center;"></th>
+<th colspan="2" style="text-align: center;">Ground Truth</th>
 <th style="text-align: center;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;" colspan="2"></td>
+<td colspan="2" style="text-align: center;"></td>
 <td style="text-align: center;"><span class="math inline">\(y=1\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(y=0\)</span></td>
 <td style="text-align: center;">Metric</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="4">Prediction</td>
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=1\)</span></td>
-<td style="text-align: center;" rowspan="2">True Positive</td>
-<td style="text-align: center;" rowspan="2">False Positive<br>Type I Error</td>
-<td style="text-align: center;" rowspan="2">Positive Predictive Value<sup>a</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=1)\)</span></td>
+<td rowspan="4" style="text-align: center;">Prediction</td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=1\)</span></td>
+<td rowspan="2" style="text-align: center;">True Positive</td>
+<td rowspan="2" style="text-align: center;">False Positive<br>Type I Error</td>
+<td rowspan="2" style="text-align: center;">Positive Predictive Value<sup>a</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=1)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=0\)</span></td>
-<td style="text-align: center;" rowspan="2">False Negative<br>Type II Error</td>
-<td style="text-align: center;" rowspan="2">True Negative</td>
-<td style="text-align: center;" rowspan="2">Negative Predictive Value<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=0)\)</span></td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=0\)</span></td>
+<td rowspan="2" style="text-align: center;">False Negative<br>Type II Error</td>
+<td rowspan="2" style="text-align: center;">True Negative</td>
+<td rowspan="2" style="text-align: center;">Negative Predictive Value<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=0)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" colspan="2" rowspan="2">Metric</td>
-<td style="text-align: center;" rowspan="2">True Positive Rate<sup>b</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=1)\)</span></td>
-<td style="text-align: center;" rowspan="2">True Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=0)\)</span></td>
-<td style="text-align: center;" rowspan="2">Accuracy<br><span class="math inline">\(\mathbb{P}(\hat{y}=y)\)</span></td>
+<td colspan="2" rowspan="2" style="text-align: center;">Metric</td>
+<td rowspan="2" style="text-align: center;">True Positive Rate<sup>b</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=1)\)</span></td>
+<td rowspan="2" style="text-align: center;">True Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=0)\)</span></td>
+<td rowspan="2" style="text-align: center;">Accuracy<br><span class="math inline">\(\mathbb{P}(\hat{y}=y)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
@@ -1880,7 +1892,8 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <h4 class="unnumbered">Separation</h4>
 <p>Separation requires the predicted target variable to be independent of the sensitive feature, conditioned on the target variable, that is, <span class="math inline">\(\hat{Y} \bot (Z|Y)\)</span>. We can say that the predicted target <span class="math inline">\(\hat{Y}\)</span>, is <em>separated</em> from the sensitive feature <span class="math inline">\(Z\)</span>, by the target variable <span class="math inline">\(Y\)</span>. The corresponding graphical model for separation criteria is shown in Figure <a href="#fig:separation" data-reference-type="ref" data-reference="fig:separation">3.2</a>.</p>
 <figure>
-<img src="03_GroupFairness/figures/Fig_Separation.png" id="fig:separation" style="width:50.0%" alt="Figure 3.2: Graphical model for separation." /><figcaption aria-hidden="true">Figure 3.2: Graphical model for separation.</figcaption>
+<img src="03_GroupFairness/figures/Fig_Separation.png" id="fig:separation" style="width:50.0%" alt="Figure 3.2: Graphical model for separation." />
+<figcaption aria-hidden="true">Figure 3.2: Graphical model for separation.</figcaption>
 </figure>
 <p>So, for a fixed value of the target variable, there should be no difference in the distribution of the predicted target variable, across different values of the sensitive feature. That is, <span class="math display">\[\mathbb{P}(\hat{y}|y, z) = \mathbb{P}(\hat{y}|y).\]</span> Unlike independence, separation, allows for dependence between the predicted target variable and the sensitive feature but only to the extent that it exists between the actual target variable and the sensitive feature.</p>
 <p>For a binary classifier where we have a single sensitive binary feature. We can write this requirement (most well known as <strong>equalised odds</strong><span class="citation" data-cites="EqOfOp"><a href="#ref-EqOfOp" role="doc-biblioref">[56]</a></span><span class="marginnote"><span id="ref-EqOfOp" class="csl-entry" role="doc-biblioentry">
@@ -1888,7 +1901,8 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 </span>
 </span>) as two conditions, <span class="math display">\[\begin{aligned}
 \mathbb{P}(\hat{Y}=1 | Z=1, Y=1) &amp; = \mathbb{P}(\hat{Y}=1 | Z=0, Y=1), \\
-\mathbb{P}(\hat{Y}=1 | Z=1, Y=0) &amp; = \mathbb{P}(\hat{Y}=1 | Z=0, Y=0).\end{aligned}\]</span> Recall that <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=1)\)</span> is the true positive rate (<span class="math inline">\(TPR\)</span>) of the classifier and <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=0)\)</span> is the false positive rate (<span class="math inline">\(FPR\)</span>). We see then that separation requires the true positive rate, and the false positive rate, to be the same for all values of the sensitive feature.</p>
+\mathbb{P}(\hat{Y}=1 | Z=1, Y=0) &amp; = \mathbb{P}(\hat{Y}=1 | Z=0, Y=0).
+\end{aligned}\]</span> Recall that <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=1)\)</span> is the true positive rate (<span class="math inline">\(TPR\)</span>) of the classifier and <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=0)\)</span> is the false positive rate (<span class="math inline">\(FPR\)</span>). We see then that separation requires the true positive rate, and the false positive rate, to be the same for all values of the sensitive feature.</p>
 <p>Let’s think about what this means in the context of a recidivism risk predictor used in sentencing. Separation requires the proportion of (false positive) errors among those that did not in fact reoffend, and (false negative) errors among those that did to be the same across protected groups. This was essentially Propublica’s criticism of COMPAS, that the model overestimated the risk presented by Black defendants (demonstrated by their higher false positive rate) and underestimated the risk presented by White defendants (demonstrated by their higher false negative rate).</p>
 <p>Two related metrics are the average odds difference and average odds error. The <strong>average odds difference</strong> measures the magnitude of unfairness as the average of the difference in true positive rate and false positive rate, <span class="math display">\[d_{\text{av-odds}} = \frac{1}{2}
 [ TPR_{Z=0} - TPR_{Z=1} + FPR_{Z=0} - FPR_{Z=1} ].\]</span> The <strong>average odds error</strong> measures the magnitude of unfairness as the average of the absolute difference in true positive rate and false positive rate, <span class="math display">\[d_{\text{av-odds-err}} = \frac{1}{2}
@@ -1901,7 +1915,8 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <h4 class="unnumbered">Sufficiency and Calibration by Group</h4>
 <p><em>Sufficiency</em> requires the sensitive feature <span class="math inline">\(Z\)</span> and target variable <span class="math inline">\(Y\)</span> to be independent, conditional on the predicted target variable <span class="math inline">\(\hat{Y}\)</span>, that is, <span class="math inline">\(Y \bot (Z|\hat{Y})\)</span>. We can say that the predicted target <span class="math inline">\(\hat{Y}\)</span> is <em>sufficient</em> for the sensitive feature <span class="math inline">\(Z\)</span>. That is to say, given <span class="math inline">\(\hat{Y}\)</span>, <span class="math inline">\(Z\)</span> provides no additional information. The corresponding graphical model for sufficiency criteria is shown in Figure <a href="#fig:sufficiency" data-reference-type="ref" data-reference="fig:sufficiency">3.3</a>.</p>
 <figure>
-<img src="03_GroupFairness/figures/Fig_sufficiency.png" id="fig:sufficiency" style="width:50.0%" alt="Figure 3.3: Graphical model for sufficiency." /><figcaption aria-hidden="true">Figure 3.3: Graphical model for sufficiency.</figcaption>
+<img src="03_GroupFairness/figures/Fig_sufficiency.png" id="fig:sufficiency" style="width:50.0%" alt="Figure 3.3: Graphical model for sufficiency." />
+<figcaption aria-hidden="true">Figure 3.3: Graphical model for sufficiency.</figcaption>
 </figure>
 <p>Comparing sufficiency to separation we note that <span class="math inline">\(Y\)</span> and <span class="math inline">\(\hat{Y}\)</span> are reversed in the graphical model and conditional independence constraint. It should hopefully be straightforward to see then that sufficiency requires the false omission rate and false discovery rate (see Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a>) to be equal across protected groups.</p>
 <div class="lookbox">
@@ -1937,14 +1952,14 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <h3 data-number="3.3.1"><span class="header-section-number">3.3.1</span> Independence versus Sufficiency</h3>
 <div class="lookbox">
 <p><strong>Independence versus Sufficiency</strong></p>
-<p>Independence (<span class="math inline">\(Z \bot \hat{Y}\)</span>) and sufficiency (<span class="math inline">\(Z \bot Y | \hat{Y}\)</span>) can only be simultaneously satisfied if the sensitive feature, <span class="math inline">\(Z\)</span> and the target variable <span class="math inline">\(\hat{Y}\)</span> are independent (<span class="math inline">\(Z \bot Y\)</span>).</p>
+<p>Independence (<span class="math inline">\(Z \bot \hat{Y}\)</span>) and sufficiency (<span class="math inline">\(Z \bot Y | \hat{Y}\)</span>) can only be simultaneously satisfied if the sensitive feature, <span class="math inline">\(Z\)</span> and the target variable <span class="math inline">\(Y\)</span> are independent (<span class="math inline">\(Z \bot Y\)</span>).</p>
 </div>
 <p>To prove this we consider the conditional distribution <span class="math inline">\(Z|Y,\hat{Y}\)</span>.</p>
 <div id="eq:IndSuf1">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1953,7 +1968,8 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 &amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z|y) \nonumber\\
 \textrm{Product rule} \quad
 &amp; \Rightarrow \quad \mathbb{P}(z|y) = \frac{\mathbb{P}(z,y)}{\mathbb{P}(y)}\nonumber\\
-&amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \frac{\mathbb{P}(z,y)}{\mathbb{P}(y)}.\end{aligned}\]</span></td>
+&amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \frac{\mathbb{P}(z,y)}{\mathbb{P}(y)}.
+\end{aligned}\]</span></td>
 <td style="text-align: right;">(3.6)</td>
 </tr>
 </tbody>
@@ -1961,19 +1977,20 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 </div>
 <p>Applying Sufficiency, followed by independence gives,</p>
 <div id="eq:IndSuf2">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[\begin{aligned}
 \textrm{Sufficiency: } Z \bot Y | \hat{Y} \quad
 &amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z|\hat{y})\nonumber\\
-\textrm{Independence: } Z \bot \hat{Y} \quad 
+\textrm{Independence: } Z \bot \hat{Y} \quad
 &amp; \Rightarrow \quad \mathbb{P}(z|\hat{y}) = \mathbb{P}(z)\nonumber\\
-&amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z).\end{aligned}\]</span></td>
+&amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z).
+\end{aligned}\]</span></td>
 <td style="text-align: right;">(3.7)</td>
 </tr>
 </tbody>
@@ -1989,10 +2006,10 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 </div>
 <p>To prove this we consider the distribution of <span class="math inline">\(\hat{Y}\)</span>.</p>
 <div id="eq:IndSep1">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2000,17 +2017,18 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 \textrm{Sum rule:} \quad &amp; \Rightarrow \quad \mathbb{P}(\hat{y})
 = \sum_{y\in\mathcal{Y}}  \mathbb{P}(\hat{y}, y).\nonumber\\
 \textrm{Product rule} \quad &amp; \Rightarrow \quad \mathbb{P}(\hat{y})
-= \sum_{y\in\mathcal{Y}} \mathbb{P}(\hat{y}|y) \mathbb{P}(y). \end{aligned}\]</span></td>
+= \sum_{y\in\mathcal{Y}} \mathbb{P}(\hat{y}|y) \mathbb{P}(y).
+\end{aligned}\]</span></td>
 <td style="text-align: right;">(3.8)</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="eq:IndSep2">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2018,7 +2036,8 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 \textrm{Conditioning on }Z \quad \Rightarrow \quad \mathbb{P}(\hat{y}|z)
 = \sum_{y\in\mathcal{Y}} \mathbb{P}(\hat{y}|y, z) \mathbb{P}(y|z).\nonumber\\
 \textrm{Independence: } \hat{Y} \bot Z \quad \Rightarrow \quad \mathbb{P}(\hat{y})
-= \sum_{y\in\mathcal{Y}} \mathbb{P}(\hat{y}|y) \mathbb{P}(y|z). \end{aligned}\]</span></td>
+= \sum_{y\in\mathcal{Y}} \mathbb{P}(\hat{y}|y) \mathbb{P}(y|z).
+\end{aligned}\]</span></td>
 <td style="text-align: right;">(3.9)</td>
 </tr>
 </tbody>
@@ -2026,10 +2045,10 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 </div>
 <p>Equating (3.8) and (3.9) and rearranging gives,</p>
 <div id="eq:IndSep3">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2042,13 +2061,15 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 </div>
 <p>For binary <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mathcal{Y}=\{0,1\}\)</span>. Denoting <span class="math inline">\(\mathbb{P}(y)=p_y\)</span> and <span class="math inline">\(\mathbb{P}(y|z) = q_y\)</span>, then <span class="math inline">\(p_1 = 1-p_0\)</span> and <span class="math inline">\(q_1 = 1-q_0\)</span>. Substituting into (3.10) gives, <span class="math display">\[\begin{aligned}
 &amp; \phantom{[}\mathbb{P}(\hat{y}|Y=0)(p_0-q_0)+\mathbb{P}(\hat{y}|Y=1)[1-p_0-(1-q_0)] = 0 \\
-\Leftrightarrow \quad &amp; [\mathbb{P}(\hat{y}|Y=0)-\mathbb{P}(\hat{y}|Y=1)](p_0-q_0) = 0\end{aligned}\]</span> which is true if and only if, <span class="math display">\[\begin{aligned}
+\Leftrightarrow \quad &amp; [\mathbb{P}(\hat{y}|Y=0)-\mathbb{P}(\hat{y}|Y=1)](p_0-q_0) = 0
+\end{aligned}\]</span> which is true if and only if, <span class="math display">\[\begin{aligned}
 &amp;\textrm{either }
   &amp; \mathbb{P}(\hat{y}|Y=0) = \mathbb{P}(\hat{y}|Y=1) \quad
     &amp; \Leftrightarrow \quad \hat{Y} \bot Y,\\
 &amp; \textrm{or }
   &amp; p_0=q_0 \quad \Leftrightarrow \quad \mathbb{P}(Y=0) = \mathbb{P}(Y=0|z) \quad
-    &amp; \Leftrightarrow \quad Y \bot Z.\end{aligned}\]</span></p>
+    &amp; \Leftrightarrow \quad Y \bot Z.
+\end{aligned}\]</span></p>
 </section>
 <section id="separation-versus-sufficiency" class="level3" data-number="3.3.3">
 <h3 data-number="3.3.3"><span class="header-section-number">3.3.3</span> Separation versus Sufficiency</h3>
@@ -2058,35 +2079,37 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 </div>
 <p>To prove this we consider the conditional distribution <span class="math inline">\(\mathbb{P}(z|y,\hat{y})\)</span>.</p>
 <div id="eq:SepSuf1">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[\begin{aligned}
 \textrm{Separation: } Z \bot \hat{Y} | Y \quad
 &amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z|y) \nonumber\\
-\textrm{Sufficiency: } Z \bot Y | \hat{Y} \quad 
+\textrm{Sufficiency: } Z \bot Y | \hat{Y} \quad
 &amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z|\hat{y}) \nonumber\\
-&amp; \Rightarrow \quad \mathbb{P}(z|y) = \mathbb{P}(z|\hat{y}).\end{aligned}\]</span></td>
+&amp; \Rightarrow \quad \mathbb{P}(z|y) = \mathbb{P}(z|\hat{y}).
+\end{aligned}\]</span></td>
 <td style="text-align: right;">(3.11)</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="eq:SepSuf2">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[\begin{aligned}
 \textrm{Product rule: } \quad\phantom{\Rightarrow} \mathbb{P}(z,y) &amp; = \mathbb{P}(z|y) \mathbb{P}(y)\nonumber\\
-(3.11) \qquad\quad \Rightarrow \quad \mathbb{P}(z,y) &amp; = \mathbb{P}(z|\hat{y}) \mathbb{P}(y).\end{aligned}\]</span></td>
+(3.11) \qquad\quad \Rightarrow \quad \mathbb{P}(z,y) &amp; = \mathbb{P}(z|\hat{y}) \mathbb{P}(y).
+\end{aligned}\]</span></td>
 <td style="text-align: right;">(3.12)</td>
 </tr>
 </tbody>
@@ -2095,12 +2118,13 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <p><span class="math display">\[\begin{aligned}
 \textrm{Sum rule: } \quad \phantom{\Rightarrow}\mathbb{P}(z) &amp; = \sum_{y\in\mathcal{Y}} \mathbb{P}(z,y)\\
 (3.12) \quad\,\, \Rightarrow \quad
-\mathbb{P}(z) &amp; = \sum_{y\in\mathcal{Y}} \mathbb{P}(z|\hat{y}) \mathbb{P}(y)\end{aligned}\]</span> If all events have non-zero probability, we can move <span class="math inline">\(\mathbb{P}(z|\hat{y})\)</span> outside of the summation,</p>
+\mathbb{P}(z) &amp; = \sum_{y\in\mathcal{Y}} \mathbb{P}(z|\hat{y}) \mathbb{P}(y)
+\end{aligned}\]</span> If all events have non-zero probability, we can move <span class="math inline">\(\mathbb{P}(z|\hat{y})\)</span> outside of the summation,</p>
 <div id="eq:SepSuf3">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2121,10 +2145,10 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <p><strong>Predictive Values</strong></p>
 <p>We can write the positive and negative predictive values in terms of the true and false positive rates as follows,</p>
 <div id="eq:PPV">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2137,10 +2161,10 @@ PPV = \frac{p TPR}{p TPR + (1-p)FPR}\]</span></td>
 </div>
 <p>and</p>
 <div id="eq:NPV">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2158,10 +2182,10 @@ NPV = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}\]</span></td>
 <p><strong>Separation versus Sufficiency</strong></p>
 <p>For separation and sufficiency to hold we must have</p>
 <div id="eq:PRT1">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2174,10 +2198,10 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 </div>
 <p>and</p>
 <div id="eq:PRT2">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2218,8 +2242,8 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Comparing</th>
-<th style="text-align: center;" colspan="2">Outcomes</th>
-<th style="text-align: center;" colspan="2">Errors</th>
+<th colspan="2" style="text-align: center;">Outcomes</th>
+<th colspan="2" style="text-align: center;">Errors</th>
 </tr>
 </thead>
 <tbody>
@@ -2241,7 +2265,7 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <td style="text-align: left;">Measures</td>
 <td style="text-align: center;">Disparate impact</td>
 <td style="text-align: center;">Disparate treatment</td>
-<td style="text-align: center;" colspan="2">Disparate mistreatment</td>
+<td colspan="2" style="text-align: center;">Disparate mistreatment</td>
 </tr>
 </tbody>
 </table>
@@ -2334,10 +2358,10 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <p><strong>Lipschitz Continuity (Regression)</strong></p>
 <p>Consider <span class="math inline">\(\hat{y}\)</span>, to be determined by our model function <span class="math inline">\(f\)</span> which maps individuals <span class="math inline">\(\boldsymbol{x}\in\mathcal{X}\)</span> to predictions <span class="math inline">\(\hat{y}\in\mathcal{Y}\)</span>, that is to say <span class="math inline">\(\hat{y}=f(\boldsymbol{x})\)</span> and <span class="math inline">\(f:\mathcal{X}\mapsto\mathcal{Y}\)</span>. The function <span class="math inline">\(f\)</span> is <em>Lipschitz continuous</em> if there exists a real valued, non-negative constant <span class="math inline">\(K\in\mathbb{R}_{\geq 0}\)</span> such that, for every pair of individuals <span class="math inline">\(\boldsymbol{x}_i, \boldsymbol{x}_j \in \mathcal{X}\)</span>,</p>
 <div id="eq:LipContReg">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2361,21 +2385,24 @@ d_{\mathcal{Y}}(f(\boldsymbol{x}_i), f(\boldsymbol{x}_j)) \leq K d_{\mathcal{X}}
 </ul>
 <p>Combining Symmetry with the triangle inequality shows that the metric must return a non-negative value.</p>
 <span class="marginnote"><figure>
-<img src="04_IndividualFairness/figures/Fig_TriangleInequality.png" id="fig:TriIneq" alt="Figure 4.1: Triangle inequality." /><figcaption aria-hidden="true">Figure 4.1: Triangle inequality.</figcaption>
-</figure></span>
+<img src="04_IndividualFairness/figures/Fig_TriangleInequality.png" id="fig:TriIneq" alt="Figure 4.1: Triangle inequality." />
+<figcaption aria-hidden="true">Figure 4.1: Triangle inequality.</figcaption>
+</figure>
 </div>
 </section>
 <section id="individual-fairness-as-randomness" class="level2" data-number="4.2">
 <h2 data-number="4.2"><span class="header-section-number">4.2</span> Individual Fairness as Randomness</h2>
 <p>For classification problems our target variable is discrete, the example falls into one class or another and we treat individuals differently based on their classification. Our job applicant filter either accepts or rejects an applicant, there isn’t anything in between. Then how can a classification model satisfy continuity and thus individual fairness? It can’t. A deterministic classifier indeed cannot satisfy individual fairness by construction because it has a discontinuity at the decision boundary. For example, let’s suppose our job applicant filter outputs a score. We use a threshold <span class="math inline">\(t=0.5\)</span> on the score, so we accept the applicant if their score is greater than or equal to 0.5 and reject them if they score lower. At a score of 0.5 the probability of acceptance ‘jumps’ from zero to one. The threshold <span class="math inline">\(t=0.5\)</span> defines the decision boundary. We will reject an applicant that scores 0.4999 but accept an applicant that scores 0.5 despite them being the same (within error say) according to our model. See Figure <a href="#fig:DiscThreshold" data-reference-type="ref" data-reference="fig:DiscThreshold">4.2</a>.</p>
 <figure>
-<img src="04_IndividualFairness/figures/Fig_Score2ProbDisc.png" id="fig:DiscThreshold" style="width:60.0%" alt="Figure 4.2: Discontinuity in the probability of acceptance as a function of model score (at the threshold t) under a deterministic binary classifier." /><figcaption aria-hidden="true">Figure 4.2: Discontinuity in the probability of acceptance as a function of model score (at the threshold <span class="math inline">\(t\)</span>) under a deterministic binary classifier.</figcaption>
+<img src="04_IndividualFairness/figures/Fig_Score2ProbDisc.png" id="fig:DiscThreshold" style="width:60.0%" alt="Figure 4.2: Discontinuity in the probability of acceptance as a function of model score (at the threshold t) under a deterministic binary classifier." />
+<figcaption aria-hidden="true">Figure 4.2: Discontinuity in the probability of acceptance as a function of model score (at the threshold <span class="math inline">\(t\)</span>) under a deterministic binary classifier.</figcaption>
 </figure>
 <p>If we want our model to be fair at the individual level, we need to remove the discontinuity (close the gap) at our decision boundary. How might we do this? Let’s return to our simple example of the job applicant filter. Let’s assume our binary classifier outputs a score and that score is a continuous function of our features. In this case, the discontinuity in our model mapping is a result of the threshold alone because continuity holds under composition. That is to say, a continuous function of a continuous function is also continuous<span class="sidenote-wrapper"><label for="sn-9" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-9" class="margin-toggle"/><span class="sidenote">More precisely, for <span class="math inline">\(f(x)=g(h(x))\)</span>, if <span class="math inline">\(h(x)\)</span> is continuous at <span class="math inline">\(x=a\)</span> and <span class="math inline">\(g(x)\)</span> is continuous at <span class="math inline">\(x=h(a)\)</span> then <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x=a\)</span>.<br />
 <br />
 </span></span>. Then if we can remove the discontinuity at the threshold our model mapping will be continuous. Rather than imposing a threshold on the model score and rejecting or accepting individuals based on which side of the threshold they fall, we can use the score to determine the probability of acceptance. We then randomly draw a value according to that probability distribution, to determine if the individual is accepted or not. This approach allows the probability of acceptance to be a continuous function of model score. See for example Figure <a href="#fig:ContThreshold" data-reference-type="ref" data-reference="fig:ContThreshold">4.3</a>.</p>
 <figure>
-<img src="04_IndividualFairness/figures/Fig_Score2ProbCont.png" id="fig:ContThreshold" style="width:60.0%" alt="Figure 4.3: Piecewise linear probability of acceptance as a function of model score under a stochastic binary classifier. Predictions are random draws between the thresholds t_1 and t_2." /><figcaption aria-hidden="true">Figure 4.3: Piecewise linear probability of acceptance as a function of model score under a stochastic binary classifier. Predictions are random draws between the thresholds <span class="math inline">\(t_1\)</span> and <span class="math inline">\(t_2\)</span>.</figcaption>
+<img src="04_IndividualFairness/figures/Fig_Score2ProbCont.png" id="fig:ContThreshold" style="width:60.0%" alt="Figure 4.3: Piecewise linear probability of acceptance as a function of model score under a stochastic binary classifier. Predictions are random draws between the thresholds t_1 and t_2." />
+<figcaption aria-hidden="true">Figure 4.3: Piecewise linear probability of acceptance as a function of model score under a stochastic binary classifier. Predictions are random draws between the thresholds <span class="math inline">\(t_1\)</span> and <span class="math inline">\(t_2\)</span>.</figcaption>
 </figure>
 <p>At first glance, this approach might sound bizarre. We are saying that in order to remedy the problem that similar individuals receive different predictions, we must instead turn to a model which can make different predictions for the same individual?! Indeed the definition of <em>consistency</em> in judgement is a debated topic among legal scholars. For some randomness is explicitly forbidden<span class="citation" data-cites="ConsistencyDet"><a href="#ref-ConsistencyDet" role="doc-biblioref">[60]</a></span><span class="marginnote"><span id="ref-ConsistencyDet" class="csl-entry" role="doc-biblioentry">
 <span class="csl-left-margin">[60] </span><span class="csl-right-inline">A. V. Dicey, <span>“The law of the constitution.”</span> 1978.</span>
@@ -2390,10 +2417,10 @@ d_{\mathcal{Y}}(f(\boldsymbol{x}_i), f(\boldsymbol{x}_j)) \leq K d_{\mathcal{X}}
 <p><strong>Lipschitz Continuity (Classification)</strong></p>
 <p>Consider our classification model to be a function <span class="math inline">\(f\)</span>, which maps individuals <span class="math inline">\(\boldsymbol{x}\in\mathcal{X}\)</span> and outcomes <span class="math inline">\(y\in\mathcal{Y}\)</span> to probabilities <span class="math inline">\(p_{\boldsymbol{x}}(y)\)</span>, that is to say <span class="math inline">\(p_{\boldsymbol{x}}(y)=f(\boldsymbol{x}, y)\)</span> and <span class="math inline">\(f:\mathcal{X}\times\mathcal{Y}\mapsto[0,1]\)</span>. For a fixed value of <span class="math inline">\(\boldsymbol{x}\)</span>, <span class="math inline">\(p_{\boldsymbol{x}}(y)=f(\boldsymbol{x}, y) \in \mathcal{P}(\mathcal{Y})\)</span> is a distribution over all possible outcomes <span class="math inline">\(y\in\mathcal{Y}\)</span>. Then the mapping <span class="math inline">\(f\)</span> is <em>Lipschitz continuous</em> if there exists a real valued, non-negative constant <span class="math inline">\(K \in \mathbb{R}_{\geq 0}\)</span> such that,</p>
 <div id="eq:LipContClf">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2412,7 +2439,8 @@ d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i,y), f(\boldsymbol{x}_j,y)) \leq 
 \mathbb{E}_{\hat{Y}\sim f(\boldsymbol{x},Y)}\,\left[\mathcal{L}(\boldsymbol{X}, \boldsymbol{Y}, \boldsymbol{\hat{Y}})\right]\right\}, \\
 \textrm{such that}\quad &amp;
 d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i,y), f(\boldsymbol{x}_j,y)) \leq d_{\mathcal{X}}(\boldsymbol{x}_i, \boldsymbol{x}_j) \\
-\textrm{and}\quad &amp; \quad f(\boldsymbol{x_i},y) \in \mathcal{P}(\mathcal{Y})\qquad\forall\,\boldsymbol{x}_i, \boldsymbol{x}_j \in \boldsymbol{X}.\end{aligned}\]</span></p>
+\textrm{and}\quad &amp; \quad f(\boldsymbol{x_i},y) \in \mathcal{P}(\mathcal{Y})\qquad\forall\,\boldsymbol{x}_i, \boldsymbol{x}_j \in \boldsymbol{X}.
+\end{aligned}\]</span></p>
 </section>
 <section id="similarity-metrics" class="level2" data-number="4.3">
 <h2 data-number="4.3"><span class="header-section-number">4.3</span> Similarity Metrics</h2>
@@ -2551,10 +2579,10 @@ The ability to additively decompose this inequality measure into intergroup and 
 <h3 data-number="5.1.1"><span class="header-section-number">5.1.1</span> Index Calculation</h3>
 <p>Given an array of benefits we can calculate what proportion of the total benefit each individual received by dividing their benefit by the sum of the benefits in the array. If the total benefit is equally divided among the population, each individual receives the mean benefit <span class="math inline">\(\mu\)</span>. <span class="math display">\[B = \sum_{i=1}^n b_i \qquad\textrm{and}\qquad \mu = \frac{B}{n}.\]</span> If we divide the benefits by the total, our benefit array can be interpreted as a probability distribution <span class="math inline">\(p_i=b_i/B\)</span> over <span class="math inline">\(n\)</span> events. If we divide the benefits by the mean benefit (instead of the sum), we calculate <span class="math inline">\(x_i=b_i/\mu\)</span> which tells us how many times the <em>fair</em> (mean) amount each individual received. Notice that,</p>
 <div id="eq:benefit2prob">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2571,10 +2599,10 @@ x_i = \frac{b_i}{\mu} = np_i \qquad\Rightarrow\qquad
 <p><strong>Generalised Entropy Indices</strong></p>
 <p>The generalised entropy index for benefits <span class="math inline">\(b_1, b_2,...,b_n\)</span> with mean benefit <span class="math inline">\(\mu\)</span> can be written as</p>
 <div id="eq:GEI0">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2587,10 +2615,10 @@ I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\sum_{i=1}^n f_{\alpha}(x_i) \quad\textr
 </div>
 <p><span class="math inline">\(x_i\)</span> denotes what proportion of the mean benefit, individual <span class="math inline">\(i\)</span> received. <span class="math inline">\(\alpha\)</span> is a free parameter that determines the strength of the contribution to the index, from different parts of the benefit distribution.</p>
 <div id="eq:GEI">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2614,15 +2642,15 @@ x\ln x &amp; \;\textrm{for}\quad \alpha=1 \\
 </section>
 <section id="special-cases" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2"><span class="header-section-number">5.1.2</span> Special Cases</h3>
-<p>We review some (better known) special cases of the parameter <span class="math inline">\(\alpha\)</span> to aid our intuition about the behaviour of generalised entropy indices. Suppose we have a model that outputs the probability distribution over all possible outcomes <span class="math inline">\(\boldsymbol{P}\)</span>, together with the true outcome <span class="math inline">\(\boldsymbol{y}\)</span>. If we denote <span class="math inline">\(p_i=\mathbb{P}(y_i|\boldsymbol{P}_i)\)</span> as the probability of observing the true outcome, <span class="math inline">\(y_i\)</span> for individual <span class="math inline">\(i\)</span> according to our model. Recall that the cross entropy loss is given by <span class="math display">\[\mathcal{L}(\boldsymbol{P},\boldsymbol{y}) = 
+<p>We review some (better known) special cases of the parameter <span class="math inline">\(\alpha\)</span> to aid our intuition about the behaviour of generalised entropy indices. Suppose we have a model that outputs the probability distribution over all possible outcomes <span class="math inline">\(\boldsymbol{P}\)</span>, together with the true outcome <span class="math inline">\(\boldsymbol{y}\)</span>. If we denote <span class="math inline">\(p_i=\mathbb{P}(y_i|\boldsymbol{P}_i)\)</span> as the probability of observing the true outcome, <span class="math inline">\(y_i\)</span> for individual <span class="math inline">\(i\)</span> according to our model. Recall that the cross entropy loss is given by <span class="math display">\[\mathcal{L}(\boldsymbol{P},\boldsymbol{y}) =
 \mathcal{L}(\boldsymbol{p}) = -\sum_{i=1}^n \ln(p_i).\]</span> The cross-entropy loss is minimised at a value of zero, when all probabilities are unity. The loss is unbounded above, <span class="math inline">\(\mathcal{L}(\boldsymbol{p})\rightarrow\infty\)</span> as <span class="math inline">\(p_i\rightarrow0\)</span> . Notice all probabilities must be greater than zero for the integrand to be defined. We see that generalised entropy indices can be thought of as a subgroup decomposable family of loss functions. The commonly used case for training classifiers is <span class="math inline">\(\alpha=0\)</span>.</p>
 <div class="lookbox">
 <p><strong><span class="math inline">\(I_0\)</span> and Cross Entropy Loss</strong></p>
 <div id="eq:CrossEntropyLoss">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2644,10 +2672,10 @@ x\ln x &amp; \;\textrm{for}\quad \alpha=1 \\
 <div class="lookbox">
 <p><strong><span class="math inline">\(I_2\)</span> and Relative Standard Deviation</strong></p>
 <div id="eq:RelStdDev">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2664,10 +2692,10 @@ x\ln x &amp; \;\textrm{for}\quad \alpha=1 \\
 <div class="lookbox">
 <p><strong><span class="math inline">\(I_2\)</span> and Gini Index</strong></p>
 <div id="eq:Gini">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2685,7 +2713,8 @@ x\ln x &amp; \;\textrm{for}\quad \alpha=1 \\
 <h3 data-number="5.1.3"><span class="header-section-number">5.1.3</span> Behaviour with Respect to Generalisation Parameter <span class="math inline">\(\alpha\)</span></h3>
 <p>We know that inequality indices measure divergence from the uniform distribution and we can think of them as a system for ranking distributions from most fair to least fair. The most fair distribution has an index value of zero and becomes more unfair as the value of the index increases. Note that two distributions that diverge equally from the uniform distribution, need not be the same distribution. For example consider any asymmetric distribution <span class="math inline">\(p(x)\)</span> and its mirror image <span class="math inline">\(p(-x)\)</span> both distributions diverge equally from the uniform distribution. This explains why there a numerous different inequality indices; each breaks ties in different ways. The generalisation parameter <span class="math inline">\(\alpha\)</span> controls the weight applied to the divergence at the different parts of the distribution. In Figure <a href="#fig:fxvaralpha" data-reference-type="ref" data-reference="fig:fxvaralpha">5.1</a>, we plot the function <span class="math inline">\(f_{\alpha}(x)\)</span>, for different choices of <span class="math inline">\(\alpha\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_fxvaralpha.png" id="fig:fxvaralpha" style="width:65.0%" alt="Figure 5.1: f_{\alpha}(x) for varying \alpha." /><figcaption aria-hidden="true">Figure 5.1: <span class="math inline">\(f_{\alpha}(x)\)</span> for varying <span class="math inline">\(\alpha\)</span>.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_fxvaralpha.png" id="fig:fxvaralpha" style="width:65.0%" alt="Figure 5.1: f_{\alpha}(x) for varying \alpha." />
+<figcaption aria-hidden="true">Figure 5.1: <span class="math inline">\(f_{\alpha}(x)\)</span> for varying <span class="math inline">\(\alpha\)</span>.</figcaption>
 </figure>
 <p>We note that the contribution to the index, from individuals that receive the mean benefit, is always zero. As we increase <span class="math inline">\(\alpha\)</span>, the contribution to the index from the upper end of the benefit distribution grows, while the contribution from the lower end decays.</p>
 <section id="for-alpha1" class="level5 unnumbered">
@@ -2717,12 +2746,13 @@ One interpretation of this is that For <span class="math inline">\(\alpha&lt;1\)
 <p>For any partition <span class="math inline">\(G\)</span> of the population into subgroups, the generalised entropy index <span class="math inline">\(I\)</span>, is additively decomposable, into a within-group component <span class="math inline">\(I_{\omega}^G\)</span>, and between-group component <span class="math inline">\(I_{\beta}^G\)</span>, <span class="math display">\[\begin{aligned}
 I(\boldsymbol{b};\alpha)
 = \frac{1}{n}\sum_{i=1}^n f_{\alpha}\left(\frac{b_i}{\mu}\right)
-= I_{\omega}^G(\boldsymbol{b};\alpha) + I_{\beta }^G(\boldsymbol{b};\alpha).\end{aligned}\]</span> The within-group component is the weighted sum of the index measure for each subgroup</p>
+= I_{\omega}^G(\boldsymbol{b};\alpha) + I_{\beta }^G(\boldsymbol{b};\alpha).
+\end{aligned}\]</span> The within-group component is the weighted sum of the index measure for each subgroup</p>
 <div id="eq:GEIomega">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2736,10 +2766,10 @@ I_{\omega}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac
 </div>
 <p>The between-group component is computed as the value of the index in the case where, each individual is assigned the mean benefit of their subgroup,</p>
 <div id="eq:GEIbeta">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2787,7 +2817,8 @@ I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 </div>
 <p>In Figure <a href="#fig:GEI_Imax" data-reference-type="ref" data-reference="fig:GEI_Imax">5.2</a>, we plot the maximal value of the index as a function of <span class="math inline">\(n\)</span> for different values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_GEI_Imaxvaralpha.png" id="fig:GEI_Imax" style="width:65.0%" alt="Figure 5.2: \max[I_{\alpha}(n)] for varying values of \alpha. The maximal value is attained when only a single individual benefits. For \alpha\leq0 the index is unbounded above." /><figcaption aria-hidden="true">Figure 5.2: <span class="math inline">\(\max[I_{\alpha}(n)]\)</span> for varying values of <span class="math inline">\(\alpha\)</span>. The maximal value is attained when only a single individual benefits. For <span class="math inline">\(\alpha\leq0\)</span> the index is unbounded above.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_GEI_Imaxvaralpha.png" id="fig:GEI_Imax" style="width:65.0%" alt="Figure 5.2: \max[I_{\alpha}(n)] for varying values of \alpha. The maximal value is attained when only a single individual benefits. For \alpha\leq0 the index is unbounded above." />
+<figcaption aria-hidden="true">Figure 5.2: <span class="math inline">\(\max[I_{\alpha}(n)]\)</span> for varying values of <span class="math inline">\(\alpha\)</span>. The maximal value is attained when only a single individual benefits. For <span class="math inline">\(\alpha\leq0\)</span> the index is unbounded above.</figcaption>
 </figure>
 <p>The maximal value of the index is always an increasing function of <span class="math inline">\(n\)</span>. For <span class="math inline">\(\alpha=2\)</span>, the maximal value of the index is a linear function of <span class="math inline">\(n\)</span>, <span class="math display">\[\max_{\boldsymbol{b}}[I_{2}(\boldsymbol{b})] = \frac{n-1}{2}.\]</span> For <span class="math inline">\(0&lt;\alpha&lt;1\)</span>, <span class="math display">\[\max_{\boldsymbol{b}}[I_{\alpha}(n)] = \frac{1-n^{-(1-\alpha)}}{\alpha(1-\alpha)}\rightarrow\frac{1}{\alpha(1-\alpha)}
 \quad\textrm{as}\quad n\rightarrow\infty.\]</span> For <span class="math inline">\(0&lt;\alpha&lt;1\)</span>, the index maximum has a fixed upper bound.</p>
@@ -2827,8 +2858,8 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 <caption>Table 5.1: Summary of benefit function definitions corresponding to a variety of notions of fairness<span class="citation" data-cites="IneqIndPaper"><a href="#ref-IneqIndPaper" role="doc-biblioref">[63]</a></span>.</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;" colspan="2">Between-Group Fairness</th>
-<th style="text-align: center;" colspan="4">Benefit Function<sup>b</sup></th>
+<th colspan="2" style="text-align: left;">Between-Group Fairness</th>
+<th colspan="4" style="text-align: center;">Benefit Function<sup>b</sup></th>
 <th style="text-align: left;">Overall Fairness</th>
 </tr>
 </thead>
@@ -2843,7 +2874,7 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 <td style="text-align: left;">Criterion<sup>c</sup></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" rowspan="2">Outcomes</td>
+<td rowspan="2" style="text-align: left;">Outcomes</td>
 <td style="text-align: left;"><span class="math inline">\(= ACR\)</span> (data)</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">0</td>
@@ -2860,7 +2891,7 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 <td style="text-align: left;"><span class="math inline">\(\hat{Y}=1\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;" rowspan="6">Errors</td>
+<td rowspan="6" style="text-align: left;">Errors</td>
 <td style="text-align: left;"><span class="math inline">\(= ACC\)</span></td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
@@ -2927,7 +2958,7 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 <div class="lookbox">
 <p><strong>Index value for Binary Benefits</strong></p>
 <p>For binary benefits, the value of the index is given by <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = I_{\alpha}(\mu)
-= \left\{ 
+= \left\{
 \begin{array}{cl}
 -\ln\mu &amp; \;\textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
@@ -2937,7 +2968,8 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 </div>
 <p>For binary benefits, the index is a monotonic increasing function of the mean benefit. The index is maximal where only one individual benefits. As we increase the proportion of people who benefit from from <span class="math inline">\(1/n\)</span> to <span class="math inline">\(n\)</span>, the distribution of benefits approaches uniform. As the number of individuals grows, so does the maximal value of the index (as shown in section <a href="#sec_GEImax" data-reference-type="ref" data-reference="sec_GEImax">5.1.5</a>). In Figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.3</a>, we plot the value of the index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for a variety of values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_GEI_bmin0_n10.png" id="fig:GEI_bmin0" style="width:65.0%" alt="Figure 5.3: Generalised entropy index as a function of the mean benefit \mu for binary benefits." /><figcaption aria-hidden="true">Figure 5.3: Generalised entropy index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for binary benefits.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_GEI_bmin0_n10.png" id="fig:GEI_bmin0" style="width:65.0%" alt="Figure 5.3: Generalised entropy index as a function of the mean benefit \mu for binary benefits." />
+<figcaption aria-hidden="true">Figure 5.3: Generalised entropy index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for binary benefits.</figcaption>
 </figure>
 <p>For the benefit functions listed in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a> the only way to achieve overall fairness (index value zero) is if every individual under consideration receives a benefit of exactly one. We showed this to be the case for binary benefits above. For the fairness criterion in the last row of Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>, comparing luck, benefits are no longer binary. We can also achieve a zero index value if all individuals receive a benefit of two; but this is only possible in the degenerate case where all predictions are false positives, that is, <span class="math inline">\(\hat{Y}=1\)</span> and <span class="math inline">\(Y=0\)</span>. For each benefit function, the scenarios for which overall fairness is minimal (all individuals under consideration receive exactly one benefit) differs.</p>
 </section>
@@ -2962,13 +2994,13 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 <p>In the case, where <span class="math inline">\(\hat{Y}=1\)</span> is the more advantageous outcome, the least beneficial prediction should be a false negative prediction, where despite presenting low risk, the individual is assigned to the high risk pool. From the perspective of the individual, nothing could be worse. False negative predictions then, should be assigned the minimum possible benefit, that is, <span class="math inline">\(b_{01}=0\)</span>. Thanks to the property of scale invariance (multiplying all the benefits in our matrix by a constant does not change the value of the index), we can choose any non-zero positive value for <span class="math inline">\(b_{11}&gt;b_{01}=0\)</span>. In fact, all other benefits in the matrix should be greater than zero (to choose <span class="math inline">\(b_{00}=b_{01}\)</span> would be to ignore the information provided by <span class="math inline">\(Y\)</span>). We choose <span class="math inline">\(b_{11}=1\)</span>. So, for our 2x2 benefit matrix representing individual fairness, we have two degrees of freedom: <span class="math display">\[\mathrm{benefit}(\hat{y}=i,y=j) = b_{ij} = \left(
 \begin{array}{cc}
 b_{00} &amp; 0 \\
-b_{10} &amp; 1 
+b_{10} &amp; 1
 \end{array}
 \right)\]</span> where <span class="math inline">\(b_{10}&gt;b_{00}&gt;0\)</span>. The remaining benefits in the matrix <span class="math inline">\(b_{00}\)</span> and <span class="math inline">\(b_{10}\)</span> establish how beneficial they are relative a true positive prediction.</p>
 <p>Suppose we restrict ourselves to the case where accurate predictions are equally beneficial (neither lucky nor unlucky), that is <span class="math inline">\(b_{00}=b_{11}=1\)</span>. Then in general, the benefit function that maps predictions to luck is characterised with a single parameter (the false positive benefit). <span class="math display">\[\mathrm{benefit}(\hat{y}=i,y=j) = b_{ij} = \left(
 \begin{array}{cc}
 1   &amp; 0 \\
-b_+ &amp; 1 
+b_+ &amp; 1
 \end{array}
 \right)\]</span> Note that the benefit function equal accuracy, corresponds to the special case <span class="math inline">\(b_+=0\)</span>, where all types of errors are equally unlucky. To make the analysis easier in the case where <span class="math inline">\(\hat{Y}=1\)</span> is the advantageous outcome, we examine the behaviour for the specific case <span class="math inline">\(b_+=2\)</span>, (as suggested in the original paper and specified in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>). Here the false positive benefit is twice as lucky as an accurate prediction.</p>
 <p>The value of our inequality index is computed much like an expected cost. The associated cost matrix is given by, <span class="math display">\[c_{ij} = \mathrm{cost}(\hat{y}=i, y=j) = b_{ij}/\mu.\]</span> The difference here is that the associated cost matrix is not constant, but rather depends on the distribution of benefits. Our choice of parameter <span class="math inline">\(\alpha\)</span>, corresponds to different loss functions. As our model performance changes, so does the mean benefit and thus the associated costs. The mean benefit <span class="math inline">\(\mu\)</span> is always positive and so does not affect the relative size or ordering of the associated costs in the matrix, but can still impact the relative preference of different predictions (as is the case when we define a cost sensitive utility). Crucially, cost sensitive utilities mean that making a more accurate prediction might not always reduce the expected cost.</p>
@@ -2981,10 +3013,10 @@ b_+ &amp; 1
 <div class="lookbox">
 <p><strong>Index value for Equal Luck</strong></p>
 <div id="eq:GEI_acc-mu">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3008,14 +3040,15 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 </div>
 <p>The mean benefit <span class="math inline">\(\mu\)</span> here, gives us an indication of the relative number of false positive to false negative errors, made by the model; it tells us if the model is over or underestimating the target on average. From another point of view, it quantifies the amount of skew in the distribution of luck. Skew describes the extent of asymmetry in a distribution. For negatively skewed distributions, the tail is longer (and thinner) on the left (and vice versa for positively skewed distributions). Therefore, <span class="math inline">\(\mu&lt;1\)</span> indicates more weight on the left (and thus the tail on the right) hence positive skew (and vice versa for <span class="math inline">\(\mu&gt;1\)</span>). Figure <a href="#fig:BenefitMeanSkew" data-reference-type="ref" data-reference="fig:BenefitMeanSkew">5.4</a> provides visual illustrations of benefit distributions with different mean benefits <span class="math inline">\(\mu\)</span>. When the mean benefit is one (as in the centre figure), the distribution has no skew; it is symmetric.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_BenefitMeanSkew.png" id="fig:BenefitMeanSkew" alt="Figure 5.4: Characterisation of benefit distributions with different mean benefits." /><figcaption aria-hidden="true">Figure 5.4: Characterisation of benefit distributions with different mean benefits.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_BenefitMeanSkew.png" id="fig:BenefitMeanSkew" alt="Figure 5.4: Characterisation of benefit distributions with different mean benefits." />
+<figcaption aria-hidden="true">Figure 5.4: Characterisation of benefit distributions with different mean benefits.</figcaption>
 </figure>
 <p>We can see from these equations that for fixed <span class="math inline">\(\mu\)</span>, <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> is a linearly decreasing function of accuracy. We know that for most problems, the accuracy of our model is bounded below by our dataset, <span class="math display">\[0.5 \leq \max[\mathbb{P}(Y=0), \mathbb{P}(Y=1)] &lt; \lambda \leq 1.\]</span> If we can find the maximal value of the index for a given accuracy, this allows us to find an upper bound for the index, based on a dataset with known <span class="math inline">\(Y\)</span>. Before analysing the behaviour of the index as a function of <span class="math inline">\(\mu\)</span>, we note that <span class="math inline">\(\mu\)</span> is also constrained for our classifier. For a model with accuracy <span class="math inline">\(\lambda=n_c/n\)</span>, the total number of benefits <span class="math inline">\(B\)</span>, must satisfy the following bounds, <span class="math display">\[n_c \leq B \leq n_c+2(n-n_c) = 2n-n_c.\]</span> We also know, that the total number of benefits must equate to <span class="math inline">\(n\)</span> times the mean, that is, <span class="math inline">\(B=n\mu\)</span>. Given this, it is straightforward to show that we must have</p>
 <div id="eq:mu_bounds">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3028,11 +3061,13 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 </div>
 <p>As the accuracy of the model <span class="math inline">\(\lambda\)</span> increases, the range of possible values the mean benefit <span class="math inline">\(\mu\)</span> can take, decreases. Our domain is then an isosceles triangle. In Figure <a href="#fig:domain" data-reference-type="ref" data-reference="fig:domain">5.5</a> we provide a visualisation of the domain space. We choose to plot the mean benefit <span class="math inline">\(\mu\)</span> on the horizontal axis, enabling us to visualise the benefit distributions in the natural orientation.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_domain_1.png" id="fig:domain" style="width:60.0%" alt="Figure 5.5: Visualisation of index domain." /><figcaption aria-hidden="true">Figure 5.5: Visualisation of index domain.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_domain_1.png" id="fig:domain" style="width:60.0%" alt="Figure 5.5: Visualisation of index domain." />
+<figcaption aria-hidden="true">Figure 5.5: Visualisation of index domain.</figcaption>
 </figure>
 <p>In Figures <a href="#fig:Imu_varlambda" data-reference-type="ref" data-reference="fig:Imu_varlambda">5.6</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\lambda\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\alpha\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_I_alpha_1-4_varlambda.png" id="fig:Imu_varlambda" alt="Figure 5.6: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \lambda and fixed \alpha." /><figcaption aria-hidden="true">Figure 5.6: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\lambda\)</span> and fixed <span class="math inline">\(\alpha\)</span>.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_I_alpha_1-4_varlambda.png" id="fig:Imu_varlambda" alt="Figure 5.6: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \lambda and fixed \alpha." />
+<figcaption aria-hidden="true">Figure 5.6: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\lambda\)</span> and fixed <span class="math inline">\(\alpha\)</span>.</figcaption>
 </figure>
 <section id="index-maximum" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1"><span class="header-section-number">5.3.1</span> Index maximum</h3>
@@ -3040,10 +3075,10 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 <p><strong>Index turning point</strong></p>
 <p>The index has a maximum turning point at <span class="math inline">\(\mu=\tilde{\mu}\)</span> for <span class="math inline">\(\alpha&gt;0\)</span>.</p>
 <div id="eq:g_alpha">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3057,7 +3092,8 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
 &amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
-\end{array}\right. \end{gathered}\]</span></td>
+\end{array}\right.
+\end{gathered}\]</span></td>
 <td style="text-align: right;">(5.11)</td>
 </tr>
 </tbody>
@@ -3071,13 +3107,14 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 \lambda&lt;\tilde{\mu}&lt;2-\lambda &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
 \textrm{ is maximal at }\mu=\tilde{\mu}=g(\alpha)\lambda.\\
 \tilde{\mu}\geq2-\lambda      &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
-\textrm{ is a strictly increasing function of }\mu.\end{aligned}\]</span></p>
+\textrm{ is a strictly increasing function of }\mu.
+\end{aligned}\]</span></p>
 <p>From equations (5.10) and (5.11), we see that for <span class="math inline">\(\tilde{\mu}\)</span> to fall within the domain of <span class="math inline">\(\mu\)</span> we require,</p>
 <div id="eq:g_bounds">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3091,10 +3128,10 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 </div>
 <p>For convenience, we reformulate the upper bound on <span class="math inline">\(g(\alpha)\)</span> as a bound on <span class="math inline">\(\lambda\)</span>.</p>
 <div id="eq:lambda_tilde">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3108,7 +3145,8 @@ g(\alpha) &lt; \frac{2}{\lambda}-1 \quad\Leftrightarrow\quad
 </div>
 <p>where <span class="math inline">\(g(\alpha)\)</span> is given in equation 5.11. To understand the behaviour of the index better, we need to understand the behaviour of <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span>. We plot <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span> in Figures <a href="#fig:g_alpha" data-reference-type="ref" data-reference="fig:g_alpha">5.7</a>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_g_lambda_tilde_alpha.png" id="fig:g_alpha" alt="Figure 5.7: g(\alpha) and \tilde{\lambda}(\alpha), see equation (5.13)." /><figcaption aria-hidden="true">Figure 5.7: <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span>, see equation (5.13).</figcaption>
+<img src="05_InequalityIndices/figures/Fig_g_lambda_tilde_alpha.png" id="fig:g_alpha" alt="Figure 5.7: g(\alpha) and \tilde{\lambda}(\alpha), see equation (5.13)." />
+<figcaption aria-hidden="true">Figure 5.7: <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span>, see equation (5.13).</figcaption>
 </figure>
 <p>Note that, <span class="math display">\[g(2)=1 \quad\textrm{and}\quad\left\{
 \begin{array}{lcr}
@@ -3123,7 +3161,8 @@ g(\alpha)&gt;1 &amp; \textrm{for} &amp;   \alpha&gt;2.
 &amp; \max_{\alpha&gt;0}[g(\alpha)] = g(\alpha_*) \approx 1.17 \\
 \Rightarrow\quad
 &amp; \min_{\alpha&gt;0}[\tilde{\lambda}(\alpha)]
-= \tilde{\lambda}(\alpha_*) \approx 92.1\%.\end{aligned}\]</span> We can now summarise the behaviour of the index for a given model accuracy, in terms of our metric inputs (<span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span>). <span class="math display">\[\begin{aligned}
+= \tilde{\lambda}(\alpha_*) \approx 92.1\%.
+\end{aligned}\]</span> We can now summarise the behaviour of the index for a given model accuracy, in terms of our metric inputs (<span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span>). <span class="math display">\[\begin{aligned}
 \alpha\leq2 \phantom{\textrm{ and }\lambda&lt;\tilde{\lambda}}
 &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
 \textrm{ is a strictly decreasing function of }\mu,
@@ -3134,7 +3173,8 @@ g(\alpha)&gt;1 &amp; \textrm{for} &amp;   \alpha&gt;2.
 \alpha&gt;2\textrm{ and }\lambda\geq\tilde{\lambda}
 &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
 \textrm{ is a strictly increasing function of }\mu,
-\textrm{ maximal at }\mu=2-\lambda.\end{aligned}\]</span> where <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}\)</span> are given in equations (5.11) and (5.13) respectively. These characteristically different behaviours are indeed observed in Figures <a href="#fig:Imu_varlambda" data-reference-type="ref" data-reference="fig:Imu_varlambda">5.6</a> for different values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span>. We note that in these plots, the accuracy <span class="math inline">\(\lambda\)</span> does exceed the level required, for the index to become a strictly increasing function of <span class="math inline">\(\mu\)</span>. For reference, <span class="math inline">\(\tilde{\lambda}(3)=16/17\approx94.1\%\)</span> and <span class="math inline">\(\tilde{\lambda}(4)=12/13\approx92.3\%\)</span>.</p>
+\textrm{ maximal at }\mu=2-\lambda.
+\end{aligned}\]</span> where <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}\)</span> are given in equations (5.11) and (5.13) respectively. These characteristically different behaviours are indeed observed in Figures <a href="#fig:Imu_varlambda" data-reference-type="ref" data-reference="fig:Imu_varlambda">5.6</a> for different values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span>. We note that in these plots, the accuracy <span class="math inline">\(\lambda\)</span> does exceed the level required, for the index to become a strictly increasing function of <span class="math inline">\(\mu\)</span>. For reference, <span class="math inline">\(\tilde{\lambda}(3)=16/17\approx94.1\%\)</span> and <span class="math inline">\(\tilde{\lambda}(4)=12/13\approx92.3\%\)</span>.</p>
 <p>We are almost there. We now know that, <span class="math display">\[\max_{\mu}\left[I_{\alpha}\left(\mu,\lambda\right)\right]
 = I_{\alpha}\left(\mu_*,\lambda\right) \nonumber\\
 \]</span> where, <span class="math display">\[\mu_* = \left\{
@@ -3172,7 +3212,8 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 </div>
 <p>In Figures <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.8</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\alpha\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\lambda\)</span>. In the final plot, <span class="math inline">\(\lambda=95\%\)</span>; we see that <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> is a strictly increasing function of <span class="math inline">\(\mu\)</span>, for both <span class="math inline">\(\alpha=3\)</span> and <span class="math inline">\(\alpha=4\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_I_lambda_50-95_varalpha.png" id="fig:Imu_varalpha" alt="Figure 5.8: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \alpha and fixed \lambda." /><figcaption aria-hidden="true">Figure 5.8: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\alpha\)</span> and fixed <span class="math inline">\(\lambda\)</span>.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_I_lambda_50-95_varalpha.png" id="fig:Imu_varalpha" alt="Figure 5.8: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \alpha and fixed \lambda." />
+<figcaption aria-hidden="true">Figure 5.8: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\alpha\)</span> and fixed <span class="math inline">\(\lambda\)</span>.</figcaption>
 </figure>
 <p>From Figure <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.8</a>, we can see that both <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span>, have an impact on the relative preference between false positive and false negative errors. As the accuracy of our model increases, the change in behaviour of the index, for different choices of <span class="math inline">\(\alpha\)</span>, becomes more extreme.</p>
 </section>
@@ -3184,10 +3225,10 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 <p>Let us denote the cost of an error as, <span class="math display">\[\Delta I^{\pm}_{\alpha}(\boldsymbol{b})
 = I_{\alpha}(\boldsymbol{b^{\pm}}) - I_{\alpha}(\boldsymbol{b}).\]</span> Here <span class="math inline">\(\boldsymbol{b^{\pm}}\)</span> differs from <span class="math inline">\(\boldsymbol{b}\)</span> by one prediction only, containing one less correct prediction, and one more erroneous one. For <span class="math inline">\(\boldsymbol{b^{+}}\)</span>, the additional error is a false positive. For <span class="math inline">\(\boldsymbol{b^{-}}\)</span>, the additional error is a false negative. An additional false negative error, reduces the total benefits by one; both the accuracy <span class="math inline">\(\lambda\)</span> and the mean benefit <span class="math inline">\(\mu\)</span> are reduced by <span class="math inline">\(1/n\)</span>. An additional false positive error, increases the total benefits by one; the accuracy <span class="math inline">\(\lambda\)</span> is, once again, reduced by <span class="math inline">\(1/n\)</span>, and the mean benefit <span class="math inline">\(\mu\)</span> increases by <span class="math inline">\(1/n\)</span>. Therefore, we can write,</p>
 <div id="eq:DeltaIpm">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3202,7 +3243,8 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 </div>
 <p>The discrete grid of adjacent models we can reach through a small change in the model (given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span>), is shown in Figure <a href="#fig:domain_2" data-reference-type="ref" data-reference="fig:domain_2">5.9</a>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_domain_2.png" id="fig:domain_2" style="width:40.0%" alt="Figure 5.9: Visualisation of the local domain space for given \mu, \lambda and n. In the figure we assume the point (\mu,\lambda) is not on the edge of the domain, where some of the neighbouring points may fall outside it." /><figcaption aria-hidden="true">Figure 5.9: Visualisation of the local domain space for given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span>. In the figure we assume the point <span class="math inline">\((\mu,\lambda)\)</span> is not on the edge of the domain, where some of the neighbouring points may fall outside it.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_domain_2.png" id="fig:domain_2" style="width:40.0%" alt="Figure 5.9: Visualisation of the local domain space for given \mu, \lambda and n. In the figure we assume the point (\mu,\lambda) is not on the edge of the domain, where some of the neighbouring points may fall outside it." />
+<figcaption aria-hidden="true">Figure 5.9: Visualisation of the local domain space for given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span>. In the figure we assume the point <span class="math inline">\((\mu,\lambda)\)</span> is not on the edge of the domain, where some of the neighbouring points may fall outside it.</figcaption>
 </figure>
 <p>Equation 5.9 provides an expression for <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span>. Substituting for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> in the case <span class="math inline">\(\alpha=1\)</span> gives, <span class="math display">\[I_{\alpha}\left(\lambda-\frac{1}{n},\mu\pm\frac{1}{n}\right) =
 \left[1-\left(\frac{\lambda}{\mu}-\frac{1}{n\mu}\right)
@@ -3218,17 +3260,17 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 \left(1\pm\dfrac{\lambda}{\mu}\right)\ln2\mp1
 &amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
-\dfrac{1}{\alpha(\alpha-1)\mu^{\alpha}}\bigg[ 
-\Big((1\pm1\mp\alpha)2^{\alpha-1}-1\Big)\mu \pm 
+\dfrac{1}{\alpha(\alpha-1)\mu^{\alpha}}\bigg[
+\Big((1\pm1\mp\alpha)2^{\alpha-1}-1\Big)\mu \pm
 \alpha(2^{\alpha-1}-1)\lambda\bigg]
 &amp; \;\textrm{for}\quad 0&lt;\alpha\ne1.
 \end{array}\right.\]</span></p>
 <p>From these expressions, we can get a clearer understanding of when the index deviates from simply being a measure of error. In particular, we want to know when an error, is preferable to an accurate prediction; that is, when the index change (resulting from an error) is negative. With a little effort we can show that,</p>
 <div id="eq:DeltaI_neg">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3247,10 +3289,10 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 </div>
 <p>where,</p>
 <div id="eq:h_alpha">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3272,10 +3314,10 @@ h^{\pm}(\alpha) =  \left\{
 <h4 class="unnumbered">False Negative Errors</h4>
 <p>Let’s start by looking at <span class="math inline">\(h^-(\alpha)\)</span>, which we re-write as,</p>
 <div id="eq:h_minus">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3294,7 +3336,8 @@ h^-(\alpha) =  \left\{
 </div>
 <p>Equation (5.17) reveals that <span class="math inline">\(h^-(\alpha)\)</span> is a strictly increasing function of <span class="math inline">\(\alpha\)</span>, for <span class="math inline">\(\alpha&gt;0\)</span> (since <span class="math inline">\(\alpha2^{\alpha-1}\)</span> dominates <span class="math inline">\(\alpha\)</span>). In addition, we can see that <span class="math inline">\(h^-(\alpha)\rightarrow1^-\)</span> as <span class="math inline">\(\alpha\rightarrow\infty\)</span>. In Figure <a href="#fig:DeltaIminus" data-reference-type="ref" data-reference="fig:DeltaIminus">5.10</a> we plot <span class="math inline">\(h^-(\alpha)\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_h_minus_alpha.png" id="fig:DeltaIminus" style="width:65.0%" alt="Figure 5.10: h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)." /><figcaption aria-hidden="true">Figure 5.10: <span class="math inline">\(h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)\)</span>.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_h_minus_alpha.png" id="fig:DeltaIminus" style="width:65.0%" alt="Figure 5.10: h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)." />
+<figcaption aria-hidden="true">Figure 5.10: <span class="math inline">\(h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)\)</span>.</figcaption>
 </figure>
 <p>Earlier we showed that we must have <span class="math inline">\(\mu\geq\lambda\)</span>. Then from equation (5.15), for <span class="math inline">\(\Delta I^-_{\alpha}(\mu,\lambda;n)&lt;0\)</span> we need <span class="math inline">\(h^-(\alpha)&gt;1\)</span>. Since <span class="math inline">\(h^-(\alpha)&lt;1\)</span> for all <span class="math inline">\(\alpha&gt;0\)</span>, we know that making an additional false negative error, never decreases the value of the index. What about false positive errors?</p>
 </section>
@@ -3302,10 +3345,10 @@ h^-(\alpha) =  \left\{
 <h4 class="unnumbered">False Positive Errors</h4>
 <p>We rewrite <span class="math inline">\(h^+(\alpha)\)</span> as,</p>
 <div id="eq:h_plus">
-<table style="width:99%;">
+<table>
 <colgroup>
 <col style="width: 90%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3325,7 +3368,8 @@ h^+(\alpha) =  \left\{
 <p>Equation (5.18) reveals that <span class="math inline">\(h^+(\alpha)\)</span> is a decreasing function of <span class="math inline">\(\alpha\)</span>, since <span class="math inline">\(2^{1-\alpha}\)</span> is a strictly decreasing function of <span class="math inline">\(\alpha\)</span>. In addition, we can see that <span class="math inline">\(h^+(\alpha)\rightarrow1^+\)</span> as <span class="math inline">\(\alpha\rightarrow\infty.\)</span> Earlier we showed that we must have <span class="math inline">\(\mu\leq2-\lambda\)</span>. Then from equation (5.15), for <span class="math inline">\(\Delta I^+_{\alpha}(\mu,\lambda;n)&lt;0\)</span> we need, <span class="math display">\[h^+(\alpha)\lambda &lt; 2-\lambda \quad\Leftrightarrow\quad
 \lambda &lt; \bar{\lambda}(\alpha) = \frac{2}{1+h^+(\alpha)}.\]</span> From what ew know about <span class="math inline">\(h^+(\alpha)\)</span>, we can deduce that <span class="math inline">\(\bar{\lambda}(\alpha)\)</span> is an increasing function of <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\bar{\lambda}(\alpha)\rightarrow1^-\)</span> as <span class="math inline">\(\alpha\rightarrow\infty\)</span>. Since <span class="math inline">\(\bar{\lambda}(\alpha)&lt;1\)</span> for all <span class="math inline">\(\alpha&gt;0\)</span>, we know there are indeed some circumstances, under which a false positive error, decreases the value of the index. In Figures <a href="#fig:DeltaIplus" data-reference-type="ref" data-reference="fig:DeltaIplus">5.11</a>, we plot <span class="math inline">\(h^+(\alpha)\)</span> and <span class="math inline">\(\bar{\lambda}(\alpha)\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_h_plus_lambda_bar_alpha.png" id="fig:DeltaIplus" alt="Figure 5.11: h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad and \quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]." /><figcaption aria-hidden="true">Figure 5.11: <span class="math inline">\(h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad\)</span> and <span class="math inline">\(\quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]\)</span>.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_h_plus_lambda_bar_alpha.png" id="fig:DeltaIplus" alt="Figure 5.11: h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad and \quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]." />
+<figcaption aria-hidden="true">Figure 5.11: <span class="math inline">\(h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad\)</span> and <span class="math inline">\(\quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]\)</span>.</figcaption>
 </figure>
 </section>
 <section id="the-deviation-region" class="level4 unnumbered">
@@ -3334,7 +3378,8 @@ h^+(\alpha) =  \left\{
 &amp; \Delta I^-_{\alpha}(\mu,\lambda;n) &gt; 0 \quad
 \forall\,\mu, \,\lambda, \, n \\
 &amp; \Delta I^+_{\alpha}(\mu,\lambda;n) &lt; 0 \quad\Rightarrow\quad
-\mu &gt; h^+(\alpha) \lambda\end{aligned}\]</span> where, <span class="math display">\[h^+(\alpha) =  \left\{
+\mu &gt; h^+(\alpha) \lambda
+\end{aligned}\]</span> where, <span class="math display">\[h^+(\alpha) =  \left\{
 \begin{array}{cl}
 \dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.2ex}
@@ -3342,7 +3387,8 @@ h^+(\alpha) =  \left\{
 &amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right.\]</span> This is only possible if the accuracy is sufficiently low, <span class="math display">\[\lambda &lt; \bar{\lambda}(\alpha)=\frac{2}{1+h^+(\alpha)}.\]</span> The deviation region is then described as, <span class="math inline">\(\mu&gt;h^+(\alpha)\lambda\)</span>, where <span class="math inline">\(h^+(\alpha)\)</span> is given in equation (5.18). We mark the deviation region on the contour plot for <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> in Figure <a href="#fig:cplot_varalpha" data-reference-type="ref" data-reference="fig:cplot_varalpha">5.12</a>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_ccplot_varalpha.png" id="fig:cplot_varalpha" alt="Figure 5.12: Contour plots showing I_{\alpha}(\mu, \lambda) for different values of \alpha." /><figcaption aria-hidden="true">Figure 5.12: Contour plots showing <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> for different values of <span class="math inline">\(\alpha\)</span>.</figcaption>
+<img src="05_InequalityIndices/figures/Fig_ccplot_varalpha.png" id="fig:cplot_varalpha" alt="Figure 5.12: Contour plots showing I_{\alpha}(\mu, \lambda) for different values of \alpha." />
+<figcaption aria-hidden="true">Figure 5.12: Contour plots showing <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> for different values of <span class="math inline">\(\alpha\)</span>.</figcaption>
 </figure>
 <p>For reference, in Table <a href="#tbl:BeneficialErrorThresholds" data-reference-type="ref" data-reference="tbl:BeneficialErrorThresholds">5.2</a>, we provide some values of <span class="math inline">\(\bar{\lambda}(\alpha)\)</span> and <span class="math inline">\(h^+(\alpha)\)</span>.</p>
 <div id="tbl:BeneficialErrorThresholds">
@@ -3412,7 +3458,7 @@ h^+(\alpha) =  \left\{
 <li><p>In the special case where a accurate predictions are equally beneficial and a false negative yields no benefit, the benefit function might be thought of as a measure of <em>luck</em> (where a false negative error is as unlucky as it gets). In this case <em>luck</em> is characterised with a single parameter (the false positive benefit) <span class="math inline">\(b_+\geq0\)</span> which tells us how lucky it is relative to an accurate prediction. <span class="math display">\[\mathrm{benefit}(\hat{y}=i,y=j) = b_{ij} = \left(
 \begin{array}{cc}
 1   &amp; 0 \\
-b_+ &amp; 1 
+b_+ &amp; 1
 \end{array}
 \right)\]</span></p></li>
 <li><p>The index is computed much like an expected loss on the cost where the cost matrix is given by, <span class="math display">\[c_{ij} = \mathrm{cost}(\hat{y}=i, y=j) = b_{ij}/\mu.\]</span></p></li>
@@ -3481,10 +3527,10 @@ b_+ &amp; 1
 <p>In this section we’re going to use AIF360 to calculate some of the metrics we’ve talked about in the previous section as a means to get started working with it. For calculating the metrics we’ve talked about so far, using AIF360 might seem to add unnecessary overhead as they are reasonably straightforward to code up directly once you have your data in a Pandas DataFrame. But remember, the library contains implementations of more complicated metrics and bias mitigations algorithms that we’ll cover later on in this book. Before we can use the library, we need to install it. Instructions are provided in Appendix <a href="#app_AIF360" data-reference-type="ref" data-reference="app_AIF360">A</a>.</p>
 <section id="statlog-german-credit-data-data-set" class="level4 unnumbered">
 <h4 class="unnumbered">Statlog (German Credit Data) Data Set</h4>
-<p>The Jupyter Notebook, <code>mbml_german.ipynb</code>, contains an example calculating some of the above fairness metrics on both a dataset and model output. It uses the <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">Statlog (German Credit Data) Data Set</a>, in which one thousand loan applicants are classified as representing ‘good’ or ‘bad’ credit risks based on features such as loan term, loan amount, age, gender, marital status and more.</p>
+<p>The Jupyter Notebook, <a href="https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb"><code>mbml_german.ipynb</code></a>, contains an example calculating some of the above fairness metrics on both a dataset and model output. It uses the <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">Statlog (German Credit Data) Data Set</a>, in which one thousand loan applicants are classified as representing ‘good’ or ‘bad’ credit risks based on features such as loan term, loan amount, age, gender, marital status and more.</p>
 <div class="lookbox">
 <p><strong>Exercise: Statlog (German Credit Data) Data Set</strong></p>
-<p>Sections 1-3 in the Jupyter Notebook, <code>mbml_german.ipynb</code>, load the data and perform some exploratory data analysis (EDA), looking at correlation heat maps (using a variety of different measures of association) and comparing distributions of the target for different values of the features. Open the notebook and run the code up to section four. You should be able to answer the following questions by working through the notebook.</p>
+<p>Sections 1-3 in the Jupyter Notebook, <a href="https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb"><code>mbml_german.ipynb</code></a>, load the data and perform some exploratory data analysis (EDA), looking at correlation heat maps (using a variety of different measures of association) and comparing distributions of the target for different values of the features. Open the notebook and run the code up to section four. You should be able to answer the following questions by working through the notebook.</p>
 <ol>
 <li><p>What proportion of the population is classified as male/female?</p></li>
 <li><p>What proportion of the population have good credit vs bad?</p></li>
@@ -3837,7 +3883,7 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;" rowspan="2">Balanced outcomes</td>
+<td rowspan="2" style="text-align: left;">Balanced outcomes</td>
 <td style="text-align: left;">Equal ACR (data)</td>
 <td style="text-align: right;">0.215</td>
 <td style="text-align: right;">3.87 e-03</td>
@@ -3850,7 +3896,7 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <td style="text-align: right;">2.21 e-02</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;" rowspan="5">Balanced errors</td>
+<td rowspan="5" style="text-align: left;">Balanced errors</td>
 <td style="text-align: left;">Equal ERR</td>
 <td style="text-align: right;">0.133</td>
 <td style="text-align: right;">8.81 e-05</td>
@@ -3907,40 +3953,40 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <caption>Table B.1: Summary of performance metrics for a binary classifier</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" colspan="2"></th>
-<th style="text-align: center;" colspan="2">Ground Truth</th>
+<th colspan="2" style="text-align: center;"></th>
+<th colspan="2" style="text-align: center;">Ground Truth</th>
 <th style="text-align: center;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;" colspan="2"></td>
+<td colspan="2" style="text-align: center;"></td>
 <td style="text-align: center;"><span class="math inline">\(y=1\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(y=0\)</span></td>
 <td style="text-align: center;">Metric</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="4">Prediction</td>
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=1\)</span></td>
-<td style="text-align: center;" rowspan="2">True Positive</td>
-<td style="text-align: center;" rowspan="2">False Positive<br>Type I Error</td>
-<td style="text-align: center;" rowspan="2">Positive Predictive Value<sup>a</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=1)\)</span></td>
+<td rowspan="4" style="text-align: center;">Prediction</td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=1\)</span></td>
+<td rowspan="2" style="text-align: center;">True Positive</td>
+<td rowspan="2" style="text-align: center;">False Positive<br>Type I Error</td>
+<td rowspan="2" style="text-align: center;">Positive Predictive Value<sup>a</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=1)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=0\)</span></td>
-<td style="text-align: center;" rowspan="2">False Negative<br>Type II Error</td>
-<td style="text-align: center;" rowspan="2">True Negative</td>
-<td style="text-align: center;" rowspan="2">Negative Predictive Value<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=0)\)</span></td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=0\)</span></td>
+<td rowspan="2" style="text-align: center;">False Negative<br>Type II Error</td>
+<td rowspan="2" style="text-align: center;">True Negative</td>
+<td rowspan="2" style="text-align: center;">Negative Predictive Value<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=0)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" colspan="2" rowspan="2">Metric</td>
-<td style="text-align: center;" rowspan="2">True Positive Rate<sup>b</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=1)\)</span></td>
-<td style="text-align: center;" rowspan="2">True Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=0)\)</span></td>
-<td style="text-align: center;" rowspan="2">Accuracy<br><span class="math inline">\(\mathbb{P}(\hat{y}=y)\)</span></td>
+<td colspan="2" rowspan="2" style="text-align: center;">Metric</td>
+<td rowspan="2" style="text-align: center;">True Positive Rate<sup>b</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=1)\)</span></td>
+<td rowspan="2" style="text-align: center;">True Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=0)\)</span></td>
+<td rowspan="2" style="text-align: center;">Accuracy<br><span class="math inline">\(\mathbb{P}(\hat{y}=y)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
@@ -3959,40 +4005,40 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <caption>Table B.2: Summary of error rate types for a binary classifier</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" colspan="2"></th>
-<th style="text-align: center;" colspan="2">Ground Truth</th>
+<th colspan="2" style="text-align: center;"></th>
+<th colspan="2" style="text-align: center;">Ground Truth</th>
 <th style="text-align: center;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;" colspan="2"></td>
+<td colspan="2" style="text-align: center;"></td>
 <td style="text-align: center;"><span class="math inline">\(y=1\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(y=0\)</span></td>
 <td style="text-align: center;">Error Rate Type</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="4">Prediction</td>
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=1\)</span></td>
-<td style="text-align: center;" rowspan="2">True Positive</td>
-<td style="text-align: center;" rowspan="2">False Positive<br>Type I Error</td>
-<td style="text-align: center;" rowspan="2">False Discovery Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=1)\)</span></td>
+<td rowspan="4" style="text-align: center;">Prediction</td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=1\)</span></td>
+<td rowspan="2" style="text-align: center;">True Positive</td>
+<td rowspan="2" style="text-align: center;">False Positive<br>Type I Error</td>
+<td rowspan="2" style="text-align: center;">False Discovery Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=1)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=0\)</span></td>
-<td style="text-align: center;" rowspan="2">False Negative<br>Type II Error</td>
-<td style="text-align: center;" rowspan="2">True Negative</td>
-<td style="text-align: center;" rowspan="2">False Omission Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=0)\)</span></td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=0\)</span></td>
+<td rowspan="2" style="text-align: center;">False Negative<br>Type II Error</td>
+<td rowspan="2" style="text-align: center;">True Negative</td>
+<td rowspan="2" style="text-align: center;">False Omission Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=0)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" colspan="2" rowspan="2">Error Rate Type</td>
-<td style="text-align: center;" rowspan="2">False Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=1)\)</span></td>
-<td style="text-align: center;" rowspan="2">False Positive Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=0)\)</span></td>
-<td style="text-align: center;" rowspan="2">Error Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y)\)</span></td>
+<td colspan="2" rowspan="2" style="text-align: center;">Error Rate Type</td>
+<td rowspan="2" style="text-align: center;">False Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=1)\)</span></td>
+<td rowspan="2" style="text-align: center;">False Positive Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=0)\)</span></td>
+<td rowspan="2" style="text-align: center;">Error Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
@@ -4008,7 +4054,7 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
-<th style="text-align: center;" colspan="2">Ground Truth</th>
+<th colspan="2" style="text-align: center;">Ground Truth</th>
 <th style="text-align: center;"></th>
 <th style="text-align: center;"></th>
 </tr>
@@ -4022,38 +4068,38 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <td style="text-align: center;">Error rate</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=1\)</span></td>
-<td style="text-align: center;" rowspan="2">True Positive</td>
-<td style="text-align: center;" rowspan="2">False Positive<br>Type I Error</td>
-<td style="text-align: center;" rowspan="2">Positive Predictive Value<sup>a</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=1)\)</span></td>
-<td style="text-align: center;" rowspan="2">False Discovery Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=1)\)</span></td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=1\)</span></td>
+<td rowspan="2" style="text-align: center;">True Positive</td>
+<td rowspan="2" style="text-align: center;">False Positive<br>Type I Error</td>
+<td rowspan="2" style="text-align: center;">Positive Predictive Value<sup>a</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=1)\)</span></td>
+<td rowspan="2" style="text-align: center;">False Discovery Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=1)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=0\)</span></td>
-<td style="text-align: center;" rowspan="2">False Negative<br>Type II Error</td>
-<td style="text-align: center;" rowspan="2">True Negative</td>
-<td style="text-align: center;" rowspan="2">Negative Predictive Value<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=0)\)</span></td>
-<td style="text-align: center;" rowspan="2">False Omission Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=0)\)</span></td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=0\)</span></td>
+<td rowspan="2" style="text-align: center;">False Negative<br>Type II Error</td>
+<td rowspan="2" style="text-align: center;">True Negative</td>
+<td rowspan="2" style="text-align: center;">Negative Predictive Value<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|\hat{y}=0)\)</span></td>
+<td rowspan="2" style="text-align: center;">False Omission Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|\hat{y}=0)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2">Performance</td>
-<td style="text-align: center;" rowspan="2">True Positive Rate<sup>b</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=1)\)</span></td>
-<td style="text-align: center;" rowspan="2">True Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=0)\)</span></td>
-<td style="text-align: center;" rowspan="2">Accuracy<br><span class="math inline">\(\mathbb{P}(\hat{y}=y)\)</span></td>
-<td style="text-align: center;" rowspan="2"></td>
+<td rowspan="2" style="text-align: center;">Performance</td>
+<td rowspan="2" style="text-align: center;">True Positive Rate<sup>b</sup><br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=1)\)</span></td>
+<td rowspan="2" style="text-align: center;">True Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}=y|y=0)\)</span></td>
+<td rowspan="2" style="text-align: center;">Accuracy<br><span class="math inline">\(\mathbb{P}(\hat{y}=y)\)</span></td>
+<td rowspan="2" style="text-align: center;"></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2">Error Rate</td>
-<td style="text-align: center;" rowspan="2">False Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=1)\)</span></td>
-<td style="text-align: center;" rowspan="2">False Positive Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=0)\)</span></td>
-<td style="text-align: center;" rowspan="2"></td>
-<td style="text-align: center;" rowspan="2">Error rate <span class="math inline">\(\mathbb{P}(\hat{y}\neq y)\)</span></td>
+<td rowspan="2" style="text-align: center;">Error Rate</td>
+<td rowspan="2" style="text-align: center;">False Negative Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=1)\)</span></td>
+<td rowspan="2" style="text-align: center;">False Positive Rate<br><span class="math inline">\(\mathbb{P}(\hat{y}\neq y|y=0)\)</span></td>
+<td rowspan="2" style="text-align: center;"></td>
+<td rowspan="2" style="text-align: center;">Error rate <span class="math inline">\(\mathbb{P}(\hat{y}\neq y)\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
@@ -4267,10 +4313,11 @@ def normalised_mutual_information(x, y):
 <p>We can write statistical parity difference as <span class="math display">\[d = \mathbb{P}(\hat{Y}=1 | Z=1) - \mathbb{P}(\hat{Y}=1 | Z=0).\]</span> Let’s rewrite this with advantaged and disadvantaged outcomes and groups to make it more concrete, <span class="math display">\[d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-) \\
   = \frac{\mathbb{P}(y^+, z^+)}{\mathbb{P}(z^+)} - \frac{\mathbb{P}(y^+, z^-)}{\mathbb{P}(z^-)}
   \leq \frac{\mathbb{P}(y^+)}{\mathbb{P}(z^+)}.\]</span> This maximal value occurs when <span class="math display">\[\mathbb{P}(y^+, z^+) = \mathbb{P}(y^+) \quad \text{and} \quad \mathbb{P}(y^+, z^-)=0;\]</span> that is, when all members of the advantaged class, receive the advantaged outcome. We can also write, <span class="math display">\[\begin{aligned}
-d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-) 
+d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-)
   &amp; = \mathbb{P}(y^-|z^-) - \mathbb{P}(y^-|z^+) \\
   &amp; = \frac{\mathbb{P}(y^-, z^-)}{\mathbb{P}(z^-)}
-    - \frac{\mathbb{P}(y^-, z^+)}{\mathbb{P}(z^+)} \leq \frac{\mathbb{P}(y^-)}{\mathbb{P}(z^-)}.\end{aligned}\]</span> Here the maximal value occurs when <span class="math display">\[\mathbb{P}(y^-, z^-) = \mathbb{P}(y^-) \quad \text{and} \quad \mathbb{P}(y^-, z^+)=0;\]</span> that is, when all members of the disadvantaged class, receive the disadvantaged outcome. Thus, <span class="math display">\[d_{max} = \min\left\{ \frac{\mathbb{P}(y^+)}{\mathbb{P}(z^+)},
+    - \frac{\mathbb{P}(y^-, z^+)}{\mathbb{P}(z^+)} \leq \frac{\mathbb{P}(y^-)}{\mathbb{P}(z^-)}.
+\end{aligned}\]</span> Here the maximal value occurs when <span class="math display">\[\mathbb{P}(y^-, z^-) = \mathbb{P}(y^-) \quad \text{and} \quad \mathbb{P}(y^-, z^+)=0;\]</span> that is, when all members of the disadvantaged class, receive the disadvantaged outcome. Thus, <span class="math display">\[d_{max} = \min\left\{ \frac{\mathbb{P}(y^+)}{\mathbb{P}(z^+)},
                       \frac{\mathbb{P}(y^-)}{\mathbb{P}(z^-)} \right\}.\]</span> Note that, <span class="math display">\[\frac{\mathbb{P}(y^+)}{\mathbb{P}(z^+)} = \frac{\mathbb{P}(y^-)}{\mathbb{P}(z^-)} \quad \Leftrightarrow \quad \mathbb{P}(y_+) = \mathbb{P}(z_+);\]</span> that is, when all members of the advantaged class, receive the advantaged outcome and all members of the disadvantaged class, receive the disadvantaged outcome.</p>
 </section>
 <section id="comparing-errors-3" class="level3" data-number="9.1.2">
@@ -4283,7 +4330,8 @@ d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-)
 </div>
 <p>Sufficiency implies <span class="math display">\[\mathbb{P}(y|\hat{y}, z) = \mathbb{P}(y|\hat{y}).\]</span> For the simplest case of a binary classifier where we have a single sensitive binary feature. We can write this requirement as two conditions, <span class="math display">\[\begin{aligned}
 \mathbb{P}(Y=1 | Z=1, \hat{Y}=1) &amp; = \mathbb{P}(Y=1 | Z=0, \hat{Y}=1), \\
-\mathbb{P}(Y=1 | Z=1, \hat{Y}=0) &amp; = \mathbb{P}(Y=1 | Z=0, \hat{Y}=0).\end{aligned}\]</span> Recall that <span class="math inline">\(\mathbb{P}(Y=1 | \hat{Y}=1)\)</span> is the positive predictive value (<span class="math inline">\(PPV\)</span>) of the classifier and <span class="math inline">\(\mathbb{P}(Y=1 | \hat{Y}=0)\)</span> is the false omission rate (<span class="math inline">\(FOR\)</span>). We see then that sufficiency requires the positive predictive value to be the same for all values of the sensitive feature and the false omission rate to be the same for all values of the sensitive feature. Note that the positive predictive value is balanced if and only if the false discovery rate is balanced, so thinking in terms of error metrics only, separation requires the false discovery and false omission rates to be balanced.</p>
+\mathbb{P}(Y=1 | Z=1, \hat{Y}=0) &amp; = \mathbb{P}(Y=1 | Z=0, \hat{Y}=0).
+\end{aligned}\]</span> Recall that <span class="math inline">\(\mathbb{P}(Y=1 | \hat{Y}=1)\)</span> is the positive predictive value (<span class="math inline">\(PPV\)</span>) of the classifier and <span class="math inline">\(\mathbb{P}(Y=1 | \hat{Y}=0)\)</span> is the false omission rate (<span class="math inline">\(FOR\)</span>). We see then that sufficiency requires the positive predictive value to be the same for all values of the sensitive feature and the false omission rate to be the same for all values of the sensitive feature. Note that the positive predictive value is balanced if and only if the false discovery rate is balanced, so thinking in terms of error metrics only, separation requires the false discovery and false omission rates to be balanced.</p>
 </section>
 <section id="incompatibility-of-fairness-criteria" class="level3" data-number="9.1.3">
 <h3 data-number="9.1.3"><span class="header-section-number">D.1.3</span> Incompatibility of Fairness Criteria</h3>
@@ -4301,37 +4349,37 @@ d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-)
 <caption>Table D.1: Confusion matrix</caption>
 <thead>
 <tr class="header">
-<th style="text-align: center;" colspan="2"></th>
-<th style="text-align: center;" colspan="2">Ground Truth</th>
+<th colspan="2" style="text-align: center;"></th>
+<th colspan="2" style="text-align: center;">Ground Truth</th>
 <th style="text-align: center;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;" colspan="2"></td>
+<td colspan="2" style="text-align: center;"></td>
 <td style="text-align: center;"><span class="math inline">\(y=1\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(y=0\)</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="4">Prediction</td>
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=1\)</span></td>
-<td style="text-align: center;" rowspan="2">True Positive<br>(<span class="math inline">\(TP\)</span>)</td>
-<td style="text-align: center;" rowspan="2">False Positive<br>(<span class="math inline">\(FP\)</span>)</td>
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\displaystyle PPV = \frac{TP}{TP+FP}\)</span></td>
+<td rowspan="4" style="text-align: center;">Prediction</td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=1\)</span></td>
+<td rowspan="2" style="text-align: center;">True Positive<br>(<span class="math inline">\(TP\)</span>)</td>
+<td rowspan="2" style="text-align: center;">False Positive<br>(<span class="math inline">\(FP\)</span>)</td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\displaystyle PPV = \frac{TP}{TP+FP}\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\hat{y}=0\)</span></td>
-<td style="text-align: center;" rowspan="2">False Negative<br>(<span class="math inline">\(FN\)</span>)</td>
-<td style="text-align: center;" rowspan="2">True Negative<br>(<span class="math inline">\(TN\)</span>)</td>
-<td style="text-align: center;" rowspan="2"><span class="math inline">\(\displaystyle NPV = \frac{TN}{FN+TN}\)</span></td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\hat{y}=0\)</span></td>
+<td rowspan="2" style="text-align: center;">False Negative<br>(<span class="math inline">\(FN\)</span>)</td>
+<td rowspan="2" style="text-align: center;">True Negative<br>(<span class="math inline">\(TN\)</span>)</td>
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\displaystyle NPV = \frac{TN}{FN+TN}\)</span></td>
 </tr>
 <tr class="odd">
 </tr>
 <tr class="even">
-<td style="text-align: center;" colspan="2"></td>
+<td colspan="2" style="text-align: center;"></td>
 <td style="text-align: center;"><span class="math inline">\(\begin{aligned}
   TPR &amp; = \frac{TP}{TP+FN} \\
 1-TPR &amp; = \frac{FN}{TP+FN} \\
@@ -4347,9 +4395,11 @@ d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-)
 </div>
 <p>where <span class="math inline">\(n= TP+FP+FN+TN\)</span> denotes the total number of data points. Using the equations in the final row of the table we can write, <span class="math display">\[\begin{aligned}
     p TPR &amp; = \frac{TP}{n}, &amp;     (1-p) FPR &amp; = \frac{FP}{n}, \\
-p (1-TPR) &amp; = \frac{FN}{n}, &amp; (1-p) (1-FPR) &amp; = \frac{TP}{n}.\end{aligned}\]</span> Finally, we can substitute these into our expressions for <span class="math inline">\(PPV\)</span> and <span class="math inline">\(NPV\)</span> in the right hand column of Table <a href="#tbl:app_ConfMax" data-reference-type="ref" data-reference="tbl:app_ConfMax">D.1</a> to find the relationships in equations (3.14) and (3.15). <span class="math display">\[\begin{aligned}
+p (1-TPR) &amp; = \frac{FN}{n}, &amp; (1-p) (1-FPR) &amp; = \frac{TP}{n}.
+\end{aligned}\]</span> Finally, we can substitute these into our expressions for <span class="math inline">\(PPV\)</span> and <span class="math inline">\(NPV\)</span> in the right hand column of Table <a href="#tbl:app_ConfMax" data-reference-type="ref" data-reference="tbl:app_ConfMax">D.1</a> to find the relationships in equations (3.14) and (3.15). <span class="math display">\[\begin{aligned}
 PPV &amp; = \frac{p TPR}{p TPR + (1-p)FPR} \\
-NPV &amp; = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}.\end{aligned}\]</span></p>
+NPV &amp; = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}.
+\end{aligned}\]</span></p>
 <div class="lookbox">
 <div id="GF_SepVsSuff">
 <p><strong>Proof: Separation versus Sufficiency</strong></p>
@@ -4364,7 +4414,8 @@ NPV &amp; = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}.\end{aligned}\]</span><
                      = p_a TPR[p_b TPR + (1-p_b)FPR] \\
 &amp;\Leftrightarrow\quad p_b TPR(1-p_a)FPR
                      = p_a TPR(1-p_b)FPR \\
-&amp;\Leftrightarrow\quad TPR(p_b-p_a)FPR = 0.\end{aligned}\]</span> Similarly, <span class="math display">\[\begin{aligned}
+&amp;\Leftrightarrow\quad TPR(p_b-p_a)FPR = 0.
+\end{aligned}\]</span> Similarly, <span class="math display">\[\begin{aligned}
 &amp; NPV_a = NPV_b \\
 &amp; \Leftrightarrow \quad \frac{(1-p_a)(1-FPR)}{p_a(1-TPR) + (1-p_a)(1-FPR)}
 = \frac{(1-p_b)(1-FPR)}{p_b(1-TPR) + (1-p_b)(1-FPR)} \\
@@ -4372,7 +4423,7 @@ NPV &amp; = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}.\end{aligned}\]</span><
 &amp; \qquad\qquad = (1-p_a)(1-FPR)[p_b(1-TPR) + (1-p_b)(1-FPR)] \\
 &amp; \Leftrightarrow \quad (1-p_b)(1-FPR)p_a(1-TPR) = (1-p_a)(1-FPR)p_b(1-TPR).\\
 &amp; \Leftrightarrow \quad (1-FPR)(p_b-p_a)(1-TPR) = 0.
- \end{aligned}\]</span></p>
+\end{aligned}\]</span></p>
 </section>
 </section>
 </section>
@@ -4437,26 +4488,30 @@ f_0(x) = -\ln (x) \quad
 &amp; \Rightarrow \quad f_0(x) \textrm{ strictly decreasing for } x &gt; 0 \\
 &amp; \Rightarrow \quad f&#39;_0(x):(0,n)
                     \rightarrow\left(-\infty,-\frac{1}{n}\right). \\
-f_0(x) = 0 \quad &amp; \Leftrightarrow\quad x = 1.\end{aligned}\]</span> For <span class="math inline">\(\alpha=1\)</span>, <span class="math display">\[\begin{aligned}
+f_0(x) = 0 \quad &amp; \Leftrightarrow\quad x = 1.
+\end{aligned}\]</span> For <span class="math inline">\(\alpha=1\)</span>, <span class="math display">\[\begin{aligned}
 f_1(x) = x\ln x \quad
 &amp; \Rightarrow \quad f&#39;_1(x) = 1 + \ln x = 0 \quad
   \Leftrightarrow\quad x = \frac{1}{e}.\\
 &amp; \Rightarrow \quad f&#39;&#39;_1(x) = \frac{1}{x} &gt; 0 \quad\forall\,x &gt; 0 \\
 &amp; \Rightarrow \quad f_1(x) \textrm{ is minimal at } x=\frac{1}{e} \\
 f_1(x) = 0\quad &amp; \Leftrightarrow\quad x\in\{0,1\}, \qquad
-f_1(x) &gt; 0 \quad\textrm{for}\quad x &gt; 1\end{aligned}\]</span> For <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, <span class="math inline">\(\alpha\notin\{0,1\}\)</span>, <span class="math display">\[\begin{aligned}
+f_1(x) &gt; 0 \quad\textrm{for}\quad x &gt; 1
+\end{aligned}\]</span> For <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, <span class="math inline">\(\alpha\notin\{0,1\}\)</span>, <span class="math display">\[\begin{aligned}
 f_{\alpha}(x) = \frac{x^{\alpha}-1}{\alpha(\alpha-1)} \quad
 &amp; \Rightarrow\quad
 f&#39;_{\alpha}(x) = \frac{x^{\alpha-1}}{\alpha-1} &gt; 0 \quad\forall\quad x&gt;0.\\
 f&#39;_{\alpha}(x)=0 \quad \Leftrightarrow\quad x = 0 \quad
-&amp; \Rightarrow\quad f_{\alpha}(x) \textrm{ strictly increasing for } x &gt; 0.\end{aligned}\]</span> <span class="math display">\[f_{\alpha}(x):[0,n]\rightarrow \left[\frac{-1}{\alpha(\alpha-1)},
+&amp; \Rightarrow\quad f_{\alpha}(x) \textrm{ strictly increasing for } x &gt; 0.
+\end{aligned}\]</span> <span class="math display">\[f_{\alpha}(x):[0,n]\rightarrow \left[\frac{-1}{\alpha(\alpha-1)},
 \frac{n^{\alpha}-1}{\alpha(\alpha-1)}\right].\]</span> <span class="math display">\[\begin{aligned}
 &amp; \alpha&lt;1 \quad\Rightarrow\quad\textrm{gradient is decreasing}\quad
 f&#39;_{\alpha}(x):(0,n]\rightarrow\left(-\infty,
 \frac{-1}{(1-\alpha)n^{1-\alpha}}\right] \\
 &amp; \alpha&gt;1 \quad\Rightarrow\quad\textrm{gradient is increasing}\quad
 f&#39;_{\alpha}(x):(0,n]\rightarrow\left(0,
-\frac{n^{\alpha-1}}{\alpha-1}\right].\end{aligned}\]</span></p>
+\frac{n^{\alpha-1}}{\alpha-1}\right].
+\end{aligned}\]</span></p>
 <div class="lookbox">
 <div id="II_GEIdecomp">
 <p><strong>Proof: Generalised Entropy Index Decomposition</strong></p>
@@ -4464,7 +4519,8 @@ f&#39;_{\alpha}(x):(0,n]\rightarrow\left(0,
 <p>For any partition <span class="math inline">\(G\)</span> of the population into subgroups, the generalised entropy index <span class="math inline">\(I\)</span>, is additively decomposable, into a within-group component <span class="math inline">\(I_{\omega}^G\)</span>, and between-group component <span class="math inline">\(I_{\beta}^G\)</span>, <span class="math display">\[\begin{aligned}
 I(\boldsymbol{b};\alpha)
 = \frac{1}{n}\sum_{i=1}^n f_{\alpha}\left(\frac{b_i}{\mu}\right)
-= I_{\omega}^G(\boldsymbol{b};\alpha) + I_{\beta }^G(\boldsymbol{b};\alpha).\end{aligned}\]</span> The within-group component is the weighted sum of the index measure for each subgroup <span class="math display">\[I_{\omega}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac{\mu_g}{\mu}\right)^{\alpha} I(\boldsymbol{b}_g;\alpha)
+= I_{\omega}^G(\boldsymbol{b};\alpha) + I_{\beta }^G(\boldsymbol{b};\alpha).
+\end{aligned}\]</span> The within-group component is the weighted sum of the index measure for each subgroup <span class="math display">\[I_{\omega}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac{\mu_g}{\mu}\right)^{\alpha} I(\boldsymbol{b}_g;\alpha)
 \qquad \forall \, \alpha.\]</span> The between-group component is computed as the value of the index in the case where, each individual is assigned the mean benefit of their subgroup, <span class="math display">\[I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 \frac{n_g}{n} f_{\alpha}\left(\frac{\mu_g}{\mu}\right).\]</span></p>
 </div>
@@ -4478,16 +4534,18 @@ I_0(\boldsymbol{b})
 \Rightarrow \quad n I_0(\boldsymbol{b})
 &amp; = n \ln \mu - \sum_{i=1}^n \ln b_i \\
 \Rightarrow \quad \sum_{i=1}^n \ln b_i
-&amp; = n [\ln \mu - I_0(\boldsymbol{b})]\end{aligned}\]</span> We can use this to relate the index values for the subgroups to the index value for the population: <span class="math display">\[\begin{aligned}
+&amp; = n [\ln \mu - I_0(\boldsymbol{b})]
+\end{aligned}\]</span> We can use this to relate the index values for the subgroups to the index value for the population: <span class="math display">\[\begin{aligned}
 n [\ln \mu - I_0(\boldsymbol{b})]
 &amp; = \sum_{g=1}^{|G|} n_g [\ln \mu_g - I_0(\boldsymbol{b_g})] \\
 \Rightarrow \quad I_0(\boldsymbol{b})
-&amp; = \ln \mu - 
+&amp; = \ln \mu -
 \sum_{g=1}^{|G|} \frac{n_g}{n} [\ln \mu_g - I_0(\boldsymbol{b_g})] \\
 &amp; = \sum_{g=1}^{|G|} \frac{n_g}{n} I_0(\boldsymbol{b_g})
 + \ln \mu - \sum_{g=1}^{|G|} \frac{n_g}{n} \ln \mu_g \\
 &amp; = \underbrace{\sum_{g=1}^{|G|} \frac{n_g}{n} I_0(\boldsymbol{b_g})}_{\text{within group component}} +
-\underbrace{\sum_{g=1}^{|G|}\frac{n_g}{n}\ln \frac{\mu}{\mu_g} }_{\text{between group component}}\end{aligned}\]</span></p>
+\underbrace{\sum_{g=1}^{|G|}\frac{n_g}{n}\ln \frac{\mu}{\mu_g} }_{\text{between group component}}
+\end{aligned}\]</span></p>
 </section>
 <section id="case-alpha1" class="level3 unnumbered">
 <h3 class="unnumbered">Case: <span class="math inline">\(\alpha=1\)</span></h3>
@@ -4497,26 +4555,29 @@ I_1(\boldsymbol{b}) = T(\boldsymbol{b})
 &amp; = \frac{1}{n\mu} \sum_{i=1}^{n} [b_i \ln b_i - b_i \ln \mu] \\
 &amp; = \frac{1}{n\mu} \sum_{i=1}^{n} b_i \ln b_i - \ln \mu
 \quad \text{since} \quad \frac{1}{n\mu} \sum_{i=1}^{n} b_i = 1 \\
-\Rightarrow \quad \sum_{i=1}^{n} b_i \ln b_i 
-&amp; = n \mu [T(\boldsymbol{b}) + \ln\mu].\end{aligned}\]</span> We can use this to relate the index values for the subgroups to the index value for the population: <span class="math display">\[\begin{aligned}
+\Rightarrow \quad \sum_{i=1}^{n} b_i \ln b_i
+&amp; = n \mu [T(\boldsymbol{b}) + \ln\mu].
+\end{aligned}\]</span> We can use this to relate the index values for the subgroups to the index value for the population: <span class="math display">\[\begin{aligned}
 n \mu [T(\boldsymbol{b}) + \ln\mu]
 &amp; = \sum_{g=1}^{|G|} n_g \mu_g [T(\boldsymbol{b}_g) + \ln\mu_g] \\
 \Rightarrow \quad T(\boldsymbol{b}) &amp; = \sum_{g=1}^{|G|} \frac{n_g}{n}\frac{\mu_g}{\mu} [T(\boldsymbol{b}_g) + \ln\mu_g] - \ln\mu \\
 &amp; = \sum_{g=1}^{|G|} \frac{n_g}{n}\frac{\mu_g}{\mu} T(\boldsymbol{b}_g) + \frac{1}{n}\sum_{g=1}^{|G|} n_g\frac{\mu_g}{\mu} [\ln\mu_g - \ln\mu] \quad \text{since} \quad \sum_{g=1}^{|G|} \frac{n_g}{n}\frac{\mu_g}{\mu} = 1 \\
 &amp; = \underbrace{\sum_{g=1}^{|G|} \frac{n_g}{n}\frac{\mu_g}{\mu} T(\boldsymbol{b_g})}_{\text{within group component}} +
 \underbrace{\frac{1}{n} \sum_{g=1}^{|G|}
-n_g \frac{\mu_g}{\mu} \ln \left(\frac{\mu_g}{\mu}\right)}_{\text{between group component}}.\end{aligned}\]</span></p>
+n_g \frac{\mu_g}{\mu} \ln \left(\frac{\mu_g}{\mu}\right)}_{\text{between group component}}.
+\end{aligned}\]</span></p>
 </section>
 <section id="case-alphanotin01" class="level3 unnumbered">
 <h3 class="unnumbered">Case: <span class="math inline">\(\alpha\notin\{0,1\}\)</span></h3>
 <p>We isolate the summation over <span class="math inline">\(b_i\)</span> in the index calculation, <span class="math display">\[\begin{aligned}
 I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 \sum_{i=1}^n \left[ \left(\frac{b_i}{\mu}\right)^{\alpha}-1 \right] \\
-\Rightarrow \quad n\alpha(\alpha-1) I_{\alpha}(\boldsymbol{b}) 
+\Rightarrow \quad n\alpha(\alpha-1) I_{\alpha}(\boldsymbol{b})
 &amp; = \sum_{i=1}^n \left(\frac{b_i}{\mu}\right)^{\alpha} - n \\
 \Rightarrow \quad \sum_{i=1}^n b_i^{\alpha}
-&amp; = n\mu^{\alpha}[\alpha(\alpha-1)I_{\alpha}(\boldsymbol{b})+1]\end{aligned}\]</span> We can use this to relate the index values for the subgroups to the index value for the population: <span class="math display">\[\begin{aligned}
-&amp; n\mu^{\alpha}[\alpha(\alpha-1)I_{\alpha}(\boldsymbol{b})+1] = 
+&amp; = n\mu^{\alpha}[\alpha(\alpha-1)I_{\alpha}(\boldsymbol{b})+1]
+\end{aligned}\]</span> We can use this to relate the index values for the subgroups to the index value for the population: <span class="math display">\[\begin{aligned}
+&amp; n\mu^{\alpha}[\alpha(\alpha-1)I_{\alpha}(\boldsymbol{b})+1] =
 \sum_{g=1}^{|G|} n_g\mu_g^{\alpha}
 [\alpha(\alpha-1)I_{\alpha}(\boldsymbol{b}_g)+1] \\
 \Rightarrow\quad I_{\alpha}(\boldsymbol{b}_g)
@@ -4532,7 +4593,8 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 - \frac{1}{\alpha(\alpha-1)}  \\
 &amp; = \underbrace{\sum_{g=1}^{|G|} \frac{n_g}{n}
 \left(\frac{\mu_g}{\mu}\right)^{\alpha} I_{\alpha}(\boldsymbol{b}_g)}_{\text{within group component}} + \underbrace{\frac{1}{n\alpha(\alpha-1)}
-\sum_{g=1}^{|G|}n_g\left[\left(\frac{\mu_g}{\mu}\right)^{\alpha}-1\right]}_{\text{between group component}}\end{aligned}\]</span></p>
+\sum_{g=1}^{|G|}n_g\left[\left(\frac{\mu_g}{\mu}\right)^{\alpha}-1\right]}_{\text{between group component}}
+\end{aligned}\]</span></p>
 <div class="lookbox">
 <div id="II_GEImax">
 <p><strong>Proof: Generalised Entropy Index Maximum</strong></p>
@@ -4569,7 +4631,7 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 <p><strong>Index value for Binary Benefits</strong></p>
 </div>
 <p>For binary benefits, the value of the index is given by <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = I_{\alpha}(\mu)
-= \left\{ 
+= \left\{
 \begin{array}{cl}
 - \ln\mu &amp; \quad\textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
@@ -4580,20 +4642,22 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 <p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>) and the remaining <span class="math inline">\(n_-=n-n_c\)</span> predictions are errors (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as, <span class="math display">\[\begin{aligned}
 I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n}\left[(n-n_c)f_{\alpha}(0)
 + n_c f_{\alpha}\left(\frac{1}{\mu}\right)\right]\\
-&amp; = (1-\mu) f_{\alpha}(0) + \mu f_{\alpha}\left(\frac{1}{\mu}\right),\end{aligned}\]</span> since the mean error <span class="math inline">\(\mu=n_c/n\)</span> is exactly the accuracy of our model. From equation (5.3) we know, <span class="math display">\[\begin{aligned}
-(1-\mu)f_{\alpha}(0) &amp; = \left\{ 
+&amp; = (1-\mu) f_{\alpha}(0) + \mu f_{\alpha}\left(\frac{1}{\mu}\right),
+\end{aligned}\]</span> since the mean error <span class="math inline">\(\mu=n_c/n\)</span> is exactly the accuracy of our model. From equation (5.3) we know, <span class="math display">\[\begin{aligned}
+(1-\mu)f_{\alpha}(0) &amp; = \left\{
 \begin{array}{cl}
 0                            &amp; \quad\textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
 \dfrac{\mu-1}{\alpha(\alpha-1)} &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
 \end{array}\right.\\
-\mu f_{\alpha}\left(\dfrac{1}{\mu}\right) &amp; = \left\{ 
+\mu f_{\alpha}\left(\dfrac{1}{\mu}\right) &amp; = \left\{
 \begin{array}{cl}
 -\ln\mu
 &amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-\mu\right)
 &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
-\end{array}\right.\end{aligned}\]</span> Substituting yields the required result.</p>
+\end{array}\right.
+\end{aligned}\]</span> Substituting yields the required result.</p>
 <div class="lookbox">
 <div id="II_Luck">
 <p><strong>Index value for Equal Luck</strong></p>
@@ -4612,33 +4676,34 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n}\left[(n-n_c)f_{\alpha}(0)
 <p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>); <span class="math inline">\(n_+\)</span> false positive predictions (in which case <span class="math inline">\(b=2\)</span>); and the remaining <span class="math inline">\(n-n_c-n_+\)</span> predictions are false negative (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as, <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
 + n_c f_{\alpha}\left(\frac{1}{\mu}\right)
 + n_+ f_{\alpha}\left(\frac{2}{\mu}\right)\right].\]</span> From equation (5.3) we know, <span class="math display">\[\begin{aligned}
-f_{\alpha}(0) &amp; = \left\{ 
+f_{\alpha}(0) &amp; = \left\{
 \begin{array}{cl}
 0                            &amp; \quad\textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
 \dfrac{-1}{\alpha(\alpha-1)} &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1,
 \end{array}\right.\\
-f_{\alpha}\left(\dfrac{1}{\mu}\right) &amp; = \left\{ 
+f_{\alpha}\left(\dfrac{1}{\mu}\right) &amp; = \left\{
 \begin{array}{cl}
 -\dfrac{\ln\mu}{\mu}
 &amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha}}-1\right)
 &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1,
 \end{array}\right. \\
-f_{\alpha}\left(\dfrac{2}{\mu}\right) &amp; = \left\{ 
+f_{\alpha}\left(\dfrac{2}{\mu}\right) &amp; = \left\{
 \begin{array}{cl}
 \dfrac{2(\ln2-\ln\mu)}{\mu}
 &amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{2^{\alpha}}{\mu^{\alpha}}-1\right)
 &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
 \end{array}\right. \\
-\Rightarrow\quad I_{\alpha}(\boldsymbol{b}) &amp; = \left\{ 
+\Rightarrow\quad I_{\alpha}(\boldsymbol{b}) &amp; = \left\{
 \begin{array}{cl}
 -\dfrac{(n_c+2n_+)}{n}\dfrac{\ln\mu}{\mu} + \dfrac{2n_+\ln2}{n\mu}
 &amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{n_c+2^{\alpha}n_+}{n\mu^{\alpha}} - 1\right)
 &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
-\end{array}\right.\end{aligned}\]</span> Let us denote the accuracy of our model with <span class="math inline">\(\lambda\)</span>. We have, <span class="math display">\[\lambda = \frac{n_c}{n} \quad\textrm{and}\quad \mu = \frac{n_c+2n_+}{n} 
+\end{array}\right.
+\end{aligned}\]</span> Let us denote the accuracy of our model with <span class="math inline">\(\lambda\)</span>. We have, <span class="math display">\[\lambda = \frac{n_c}{n} \quad\textrm{and}\quad \mu = \frac{n_c+2n_+}{n}
 \quad\Rightarrow\quad \frac{2n_+}{n} = \mu-\lambda.\]</span> Substituting yields the required result.</p>
 <div class="lookbox">
 <div id="II_IndexTpt">
@@ -4654,7 +4719,8 @@ f_{\alpha}\left(\dfrac{2}{\mu}\right) &amp; = \left\{
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
 &amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
-\end{array}\right.\end{gathered}\]</span></p>
+\end{array}\right.
+\end{gathered}\]</span></p>
 </div>
 <p>We wish to find the maximal value of the index for a given accuracy. We start by looking for turning points. Differentiating equation (5.9), <span class="math display">\[\frac{ \partial I_{\alpha} }{ \partial \mu } = \left\{
 \begin{array}{cl}

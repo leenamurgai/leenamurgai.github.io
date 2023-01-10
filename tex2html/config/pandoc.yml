@@ -9,6 +9,7 @@ input-file: MBML.tex
 
 template: tex2html/tufte/tufte.html5
 standalone: true
+wrap: none
 
 # metadata values specified here are parsed as literal strings, not markdown:
 metadata:
