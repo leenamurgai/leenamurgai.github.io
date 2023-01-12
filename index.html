@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Dr Leena Murgai">
-  <meta name="dcterms.date" content="2023-01-10">
+  <meta name="dcterms.date" content="2023-01-11">
   <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
@@ -32,7 +32,7 @@
 <header>
 <h1 class="title">Mitigating Bias in Machine Learning</h1>
 <p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">Dr Leena Murgai</a></p>
-<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">10 January 2023</a></p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">11 January 2023</a></p>
 <p class="byline"><a href="https://raw.githubusercontent.com/leenamurgai/mitigatingbias.ml/main/profile/mbml_citation.bib" target="_blank" rel="noopener noreferrer">Cite this book</a></p>
 </header>
 <div class="TOC">
@@ -41,7 +41,6 @@
     <div class="shortthickbar"></div>
     <div class="shortthickbar"></div>
 <ul>
-<li><a href="#ch_Notation" id="toc-ch_Notation">Notation and conventions</a></li>
 <li><a href="#part-i-introduction" id="toc-part-i-introduction">Part I Introduction</a></li>
 <li><a href="#ch_Background" id="toc-ch_Background"><span class="toc-section-number">1</span> Context</a>
 <ul>
@@ -79,7 +78,7 @@
 <li><a href="#summary-3" id="toc-summary-3">Summary</a></li>
 <li><a href="#further-work" id="toc-further-work">Further Work</a></li>
 </ul></li>
-<li><a href="#ch_InequalityIndices" id="toc-ch_InequalityIndices"><span class="toc-section-number">5</span> Fairness as Utility</a>
+<li><a href="#ch_UtilityFairness" id="toc-ch_UtilityFairness"><span class="toc-section-number">5</span> Fairness as Utility</a>
 <ul>
 <li><a href="#generalised-entropy-indices" id="toc-generalised-entropy-indices"><span class="toc-section-number">5.1</span> Generalised Entropy Indices</a></li>
 <li><a href="#defining-a-benefit-function" id="toc-defining-a-benefit-function"><span class="toc-section-number">5.2</span> Defining a Benefit Function</a></li>
@@ -87,19 +86,21 @@
 <li><a href="#summary-4" id="toc-summary-4">Summary</a></li>
 <li><a href="#further-work-1" id="toc-further-work-1">Further Work</a></li>
 </ul></li>
-<li><a href="#app_AIF360" id="toc-app_AIF360"><span class="toc-section-number">A</span> AIF360</a>
-<ul>
-<li><a href="#app_AIF360_GF" id="toc-app_AIF360_GF"><span class="toc-section-number">A.1</span> Group Fairness</a></li>
-<li><a href="#app_AIF360_IF" id="toc-app_AIF360_IF"><span class="toc-section-number">A.2</span> Individual Fairness</a></li>
-<li><a href="#app_AIF360_II" id="toc-app_AIF360_II"><span class="toc-section-number">A.3</span> Inequality Indices</a></li>
-</ul></li>
+<li><a href="#part-iii-mitigating-bias" id="toc-part-iii-mitigating-bias">Part III Mitigating Bias</a></li>
+<li><a href="#app_Notation" id="toc-app_Notation"><span class="toc-section-number">A</span> Notation and Conventions</a></li>
 <li><a href="#app_Metrics" id="toc-app_Metrics"><span class="toc-section-number">B</span> Performance Metrics</a></li>
 <li><a href="#app_ProbRules" id="toc-app_ProbRules"><span class="toc-section-number">C</span> Rules of Probability</a></li>
 <li><a href="#app_Solutions" id="toc-app_Solutions"><span class="toc-section-number">D</span> Proofs and Code</a>
 <ul>
 <li><a href="#sec_app_GFSolutions" id="toc-sec_app_GFSolutions"><span class="toc-section-number">D.1</span> Group Fairness</a></li>
 <li><a href="#sec_app_IFSolutions" id="toc-sec_app_IFSolutions"><span class="toc-section-number">D.2</span> Individual Fairness</a></li>
-<li><a href="#sec_app_IISolutions" id="toc-sec_app_IISolutions"><span class="toc-section-number">D.3</span> Fairness as Utility</a></li>
+<li><a href="#sec_app_IISolutions" id="toc-sec_app_IISolutions"><span class="toc-section-number">D.3</span> Utility as Fairness</a></li>
+</ul></li>
+<li><a href="#app_AIF360" id="toc-app_AIF360"><span class="toc-section-number">E</span> AIF360</a>
+<ul>
+<li><a href="#app_AIF360_GF" id="toc-app_AIF360_GF"><span class="toc-section-number">E.1</span> Group Fairness</a></li>
+<li><a href="#app_AIF360_IF" id="toc-app_AIF360_IF"><span class="toc-section-number">E.2</span> Individual Fairness</a></li>
+<li><a href="#app_AIF360_II" id="toc-app_AIF360_II"><span class="toc-section-number">E.3</span> Utility as Fairness</a></li>
 </ul></li>
 <li><a href="#bibliography" id="toc-bibliography">References</a></li>
 </ul>
@@ -113,7 +114,6 @@
   </button>
   <div class="content">
     <ul>
-    <li><a href="#ch_Notation" id="toc-ch_Notation">Notation and conventions</a></li>
     <li><a href="#part-i-introduction" id="toc-part-i-introduction">Part I Introduction</a></li>
     <li><a href="#ch_Background" id="toc-ch_Background"><span class="toc-section-number">1</span> Context</a>
     <ul>
@@ -151,7 +151,7 @@
     <li><a href="#summary-3" id="toc-summary-3">Summary</a></li>
     <li><a href="#further-work" id="toc-further-work">Further Work</a></li>
     </ul></li>
-    <li><a href="#ch_InequalityIndices" id="toc-ch_InequalityIndices"><span class="toc-section-number">5</span> Fairness as Utility</a>
+    <li><a href="#ch_UtilityFairness" id="toc-ch_UtilityFairness"><span class="toc-section-number">5</span> Fairness as Utility</a>
     <ul>
     <li><a href="#generalised-entropy-indices" id="toc-generalised-entropy-indices"><span class="toc-section-number">5.1</span> Generalised Entropy Indices</a></li>
     <li><a href="#defining-a-benefit-function" id="toc-defining-a-benefit-function"><span class="toc-section-number">5.2</span> Defining a Benefit Function</a></li>
@@ -159,102 +159,26 @@
     <li><a href="#summary-4" id="toc-summary-4">Summary</a></li>
     <li><a href="#further-work-1" id="toc-further-work-1">Further Work</a></li>
     </ul></li>
-    <li><a href="#app_AIF360" id="toc-app_AIF360"><span class="toc-section-number">A</span> AIF360</a>
-    <ul>
-    <li><a href="#app_AIF360_GF" id="toc-app_AIF360_GF"><span class="toc-section-number">A.1</span> Group Fairness</a></li>
-    <li><a href="#app_AIF360_IF" id="toc-app_AIF360_IF"><span class="toc-section-number">A.2</span> Individual Fairness</a></li>
-    <li><a href="#app_AIF360_II" id="toc-app_AIF360_II"><span class="toc-section-number">A.3</span> Inequality Indices</a></li>
-    </ul></li>
+    <li><a href="#part-iii-mitigating-bias" id="toc-part-iii-mitigating-bias">Part III Mitigating Bias</a></li>
+    <li><a href="#app_Notation" id="toc-app_Notation"><span class="toc-section-number">A</span> Notation and Conventions</a></li>
     <li><a href="#app_Metrics" id="toc-app_Metrics"><span class="toc-section-number">B</span> Performance Metrics</a></li>
     <li><a href="#app_ProbRules" id="toc-app_ProbRules"><span class="toc-section-number">C</span> Rules of Probability</a></li>
     <li><a href="#app_Solutions" id="toc-app_Solutions"><span class="toc-section-number">D</span> Proofs and Code</a>
     <ul>
     <li><a href="#sec_app_GFSolutions" id="toc-sec_app_GFSolutions"><span class="toc-section-number">D.1</span> Group Fairness</a></li>
     <li><a href="#sec_app_IFSolutions" id="toc-sec_app_IFSolutions"><span class="toc-section-number">D.2</span> Individual Fairness</a></li>
-    <li><a href="#sec_app_IISolutions" id="toc-sec_app_IISolutions"><span class="toc-section-number">D.3</span> Fairness as Utility</a></li>
+    <li><a href="#sec_app_IISolutions" id="toc-sec_app_IISolutions"><span class="toc-section-number">D.3</span> Utility as Fairness</a></li>
+    </ul></li>
+    <li><a href="#app_AIF360" id="toc-app_AIF360"><span class="toc-section-number">E</span> AIF360</a>
+    <ul>
+    <li><a href="#app_AIF360_GF" id="toc-app_AIF360_GF"><span class="toc-section-number">E.1</span> Group Fairness</a></li>
+    <li><a href="#app_AIF360_IF" id="toc-app_AIF360_IF"><span class="toc-section-number">E.2</span> Individual Fairness</a></li>
+    <li><a href="#app_AIF360_II" id="toc-app_AIF360_II"><span class="toc-section-number">E.3</span> Utility as Fairness</a></li>
     </ul></li>
     <li><a href="#bibliography" id="toc-bibliography">References</a></li>
     </ul>
   </div>
 </div>
-<section id="ch_Notation" class="level1 unnumbered">
-<h1 class="unnumbered">Notation and conventions</h1>
-<section id="mathematical-notation" class="level3 unnumbered">
-<h3 class="unnumbered">Mathematical notation</h3>
-<ul>
-<li><p><span class="math inline">\(\mathbb{P}(A)\)</span> denotes probability of event <span class="math inline">\(A\)</span></p></li>
-<li><p><span class="math inline">\(\mathbb{E}\)</span> denotes expectation</p></li>
-<li><p><span class="math inline">\(\forall\)</span> means for all</p></li>
-<li><p><span class="math inline">\(|\)</span> means such that</p></li>
-<li><p><span class="math inline">\(\in\)</span> means a member of</p></li>
-<li><p><span class="math inline">\(\Rightarrow\)</span> means implies</p></li>
-<li><p><span class="math inline">\(\Leftrightarrow\)</span> means if and only if</p></li>
-<li><p>square brackets are inclusive, round brackets are not, for example, <span class="math display">\[x \in [a, b) \quad \Leftrightarrow \quad a \leq x &lt; b\]</span></p></li>
-<li><p><span class="math inline">\(\rightarrow\)</span> means tends to. We use a superscript <span class="math inline">\(+\)</span> or <span class="math inline">\(-\)</span> to indicate if the limiting value is approached from above or below respectively,</p>
-<ul>
-<li><p><span class="math inline">\(y(x)\rightarrow0^+\)</span> as <span class="math inline">\(x\rightarrow\infty\,\Rightarrow\,y(x)\)</span> tends to 0 from above as <span class="math inline">\(x\)</span> tends to infinity.</p></li>
-<li><p><span class="math inline">\(y(x)\rightarrow0^-\)</span> as <span class="math inline">\(x\rightarrow\infty\,\Rightarrow\,y(x)\)</span> tends to 0 from below as <span class="math inline">\(x\)</span> tends to infinity.</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="typographical-conventions" class="level3 unnumbered">
-<h3 class="unnumbered">Typographical conventions</h3>
-<p>In this book we mostly follow mathematical typographical conventions for variables. All variables are in italic. We use:</p>
-<ul>
-<li><p>lowercase letters for scalar variables, e.g. <span class="math inline">\(a\)</span>,</p></li>
-<li><p>uppercase letters for random variables, e.g. <span class="math inline">\(X\)</span>.</p></li>
-<li><p>lowercase bold typeface letters for (column) vectors, e.g. <span class="math inline">\(\boldsymbol{y}\)</span>,</p></li>
-<li><p>uppercase bold typeface letters for matrices and vectors of random variables, e.g. <span class="math inline">\(\boldsymbol{X}\)</span>.</p></li>
-</ul>
-<p>Notice we have overloaded our notation slightly for matrices and random variables. If it is not clear from the context which we mean, it will be stated explicitly.</p>
-<p>We may also use tensor notation where convenient. For the elements of a matrix <span class="math inline">\(\boldsymbol{X}\)</span> we use <span class="math inline">\(x_{ij}\)</span> where <span class="math inline">\(i\)</span> refers to the row and <span class="math inline">\(j\)</span> to the column. Similarly for the elements of a vector <span class="math inline">\(\boldsymbol{y}\)</span>, we use <span class="math inline">\(y_i\)</span> where <span class="math inline">\(i\)</span> refers to the row. For the transpose we use T in the superscript so that <span class="math inline">\(\boldsymbol{y}^T\)</span> would be a row vector. We also use <span class="math inline">\(\boldsymbol{x}_i\)</span> to denote the <span class="math inline">\(i\)</span>th row of the matrix <span class="math inline">\(\boldsymbol{X}\)</span>.</p>
-</section>
-<section id="data" class="level3 unnumbered">
-<h3 class="unnumbered">Data</h3>
-<p>We will use <span class="math inline">\(\boldsymbol{X}\)</span> to denote the (non-sensitive) feature matrix and <span class="math inline">\(\boldsymbol{Z}\)</span> to denote the sensitive feature matrix (features like gender and race for example). We use <span class="math inline">\(\boldsymbol{y}\)</span> to denote the target variable vector (a column vector with <span class="math inline">\(n\)</span> elements, each corresponding to an sample) and <span class="math inline">\(\boldsymbol{\hat{y}}(\boldsymbol{X},\boldsymbol{Z})\)</span> to denote the predicted target variable output by our model, which is a function of the features. We shall use <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(\mathcal{Z}\)</span> to denote the set of possible values our feature vectors <span class="math inline">\(\boldsymbol{x}\)</span> and <span class="math inline">\(\boldsymbol{z}\)</span> can take respectively and <span class="math inline">\(\mathcal{Y}\)</span> to denote the set of all possible values our outcome <span class="math inline">\(y\)</span> can take. When more appropriate we will use set notation to denote our set of data points which we write as <span class="math inline">\((\boldsymbol{X}, \boldsymbol{Z}, Y)=\{\boldsymbol{x}_i, \boldsymbol{z}_i, y_i\}_{i=1}^n\)</span></p>
-<p>We shall use the same notation for our target and model output for both discrete (classification) and continuous (regression) variables. In the case where the target variable is discrete and derived from a continuous classifier (that is, one where we find the classification by applying a threshold to an underlying score), we denote the underlying score as <span class="math inline">\(\boldsymbol{p}(\boldsymbol{X},\boldsymbol{Z})\)</span> (if <span class="math inline">\(y\)</span> is a binary variable) in which case we can write, <span class="math display">\[\hat{y}_i(\boldsymbol{X},\boldsymbol{Z})
-= H\left( p_i(\boldsymbol{X},\boldsymbol{Z}) - \tau \right) \quad
-  \forall \,\, i\]</span> where <span class="math inline">\(H(x)\)</span> is the Heaviside step function: <span class="math display">\[H(x) = \left\{
-\begin{array}{rl}
-1 &amp; \textrm{if} \quad x &gt; 0 \\
-0 &amp; \textrm{otherwise}
-\end{array}
-\right.\]</span> and <span class="math inline">\(\tau\)</span> is the threshold.</p>
-<p>Note that if there was a single sensitive feature (rather than multiple) we would use <span class="math inline">\(\boldsymbol{z}\)</span> (rather than <span class="math inline">\(\boldsymbol{Z}\)</span>) to denote it (since it would be a vector) and if the target was multi-class rather binary we would use <span class="math inline">\(\boldsymbol{P}\)</span> (rather than <span class="math inline">\(\boldsymbol{p}\)</span>) for the score since we would need a score for each class. If we have <span class="math inline">\(n\)</span> examples, <span class="math inline">\(m_x\)</span> non-sensitive features, and <span class="math inline">\(m_z\)</span> sensitive features then, <span class="math inline">\(\boldsymbol{X}\)</span> is an <span class="math inline">\(n \times m_x\)</span> matrix, <span class="math inline">\(\boldsymbol{Z}\)</span> is an <span class="math inline">\(n \times m_z\)</span> and <span class="math inline">\(\boldsymbol{y}\)</span> and <span class="math inline">\(\boldsymbol{p}\)</span> are vectors with <span class="math inline">\(n\)</span> elements. If <span class="math inline">\(\boldsymbol{y}\)</span> was a multi-class target variable with <span class="math inline">\(c\)</span> possible classes, then <span class="math inline">\(\boldsymbol{P}\)</span> would be an <span class="math inline">\(n \times c\)</span> matrix.</p>
-<p>For binary sensitive and target variables <span class="math inline">\(\boldsymbol{z}\)</span> and <span class="math inline">\(\boldsymbol{y}\)</span>, we will set the advantaged group and advantageous target class to have the value one, the disadvantaged group and disadvantageous target class will then take the value zero.</p>
-</section>
-<section id="random-variables" class="level3 unnumbered">
-<h3 class="unnumbered">Random variables</h3>
-<p>Following the typographical conventions described above, we use <span class="math inline">\(\boldsymbol{X}\)</span>, <span class="math inline">\(\boldsymbol{Z}\)</span> (or <span class="math inline">\(Z\)</span> for a single sensitive feature), <span class="math inline">\(Y\)</span>, <span class="math inline">\(\hat{Y}\)</span> and <span class="math inline">\(P\)</span> (or <span class="math inline">\(\boldsymbol{P}\)</span> for multi-class), to denote the the random variables corresponding to our non-sensitive features, sensitive features, target variable, model predicted target variable and model probability function respectively.</p>
-<section id="special-values" class="level4 unnumbered">
-<h4 class="unnumbered">Special values</h4>
-<p>We will occasionally use <span class="math inline">\(+\)</span> or <span class="math inline">\(-\)</span> in the subscript of a binary variable to respectively denote the advantaged or disadvantaged outcome (or class). For example,</p>
-<ul>
-<li><p><span class="math inline">\(Y = y_+\)</span> is the advantageous outcome</p></li>
-<li><p><span class="math inline">\(Y = y_-\)</span> is the disadvantageous outcome</p></li>
-<li><p><span class="math inline">\(Z = z_+\)</span> is the advantaged (privileged) class</p></li>
-<li><p><span class="math inline">\(Z = z_-\)</span> is the disadvantaged (unprivileged) class</p></li>
-</ul>
-<p>For brevity and readability, we shall (on occasion) omit the random variable in the event descriptor of a probability term (if it is obvious which random variable we are referring to). For example, for a binary target variable we might write, <span class="math display">\[\mathbb{P}(Y=y_+) = \mathbb{P}(y_+).\]</span></p>
-</section>
-</section>
-<section id="probability-density-functions" class="level3 unnumbered">
-<h3 class="unnumbered">Probability density functions</h3>
-<p>As a shorthand we will use <span class="math inline">\(f_X\)</span> to denote the probability density function for the random variable <span class="math inline">\(X\)</span>. Note then that for a discrete random variable <span class="math inline">\(X\)</span>, we can write, <span class="math display">\[\mathbb{P}(X=x) = f_{X}(x),\]</span> while for a continuous random variable we have <span class="math display">\[\mathbb{P}(a&lt;X&lt;b) = \int_a^b f_X(x) \, \mathrm{d}x.\]</span></p>
-</section>
-<section id="expectations" class="level3 unnumbered">
-<h3 class="unnumbered">Expectations</h3>
-<p>We denote the expectation as, <span class="math display">\[\mathbb{E}[g(X)] = \sum_{x\in\mathcal{X}} g(x)f_X(x) = \int_{x\in\mathcal{X}} g(x)f_X(x) \, \mathrm{d}x\]</span> where we take the expectation of a multivariate function, we will use a subscript to indicate the variable the expectation is taken over, e.g. <span class="math inline">\(\mathbb{E}_X[g(X,Y)]\)</span>.</p>
-</section>
-<section id="naming-conventions" class="level3 unnumbered">
-<h3 class="unnumbered">Naming conventions</h3>
-<ul>
-<li><p><span class="math inline">\(n\)</span> for number of examples or data points</p></li>
-<li><p><span class="math inline">\(d\)</span> for differences</p></li>
-<li><p><span class="math inline">\(r\)</span> for rates</p></li>
-</ul>
-</section>
-</section>
 <section id="part-i-introduction" class="level1 unnumbered">
 <h1 class="unnumbered">Part I Introduction</h1>
 <p>Welcome to Mitigating Bias in Machine Learning. If you’ve made it here chances are you’ve worked with models and have some awareness of the problem of biased machine learning algorithms. You might be a student with a foundational course in machine learning under your belt, or a Data Scientist or Machine Learning Engineer, concerned about the impact your models might have on the world.</p>
@@ -1583,8 +1507,8 @@
 </section>
 <section id="part-ii-measuring-bias" class="level1 unnumbered">
 <h1 class="unnumbered">Part II Measuring Bias</h1>
-<p>“To measure is to know. If you cannot measure, you cannot improve it." Lord Kelvin.</p>
-<p>“When a measure becomes a target, it ceases to be a measure." Goodhart’s Law</p>
+<p>“To measure is to know. If you cannot measure, you cannot improve." Lord Kelvin.</p>
+<p>“When a measure becomes a target, it ceases to be a measure." Goodhart’s Law.</p>
 </section>
 <section id="ch_GroupFairness" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Group Fairness</h1>
@@ -1599,7 +1523,7 @@
 </div>
 <p>The term <em>group fairness</em> is used to describe a class of metrics that are used to measure discrimination or bias across specific subgroups of a population, in a given decision process (algorithmic or otherwise). In this chapter we will introduce group fairness metrics in a structured way, and familiarise ourselves with the terminology for well known metrics. We will compare and analyse the different categories of groups fairness metrics in terms of their assumptions, interpretation and potential implications. We’ll prove that the different classes of metrics cannot be satisfied simultaneously except in some degenerate cases. The goal of this chapter, is to develop a deeper understanding of different group fairness metrics, that will enable us to make more educated decisions about which metrics might offer particularly valuable insights for a given problem.</p>
 <p>At the implementation level, all group fairness metrics indicate the extent to which, some <em>statistical property</em> differs between different <em>subgroups</em> of a population. The <em>subgroups</em> are typically determined by the values of <em>protected characteristics</em> such as gender or ethnicity. We might also describe these as <em>sensitive features</em>. Partitions of the population could be defined by a single feature or logical conjunctions of multiple sensitive features if we are interested in <em>intersectional fairness</em>. For example, if we were considering both race and gender simultaneously, one group of the partition might be Black women, another White men, and so on (more about this later). The <em>statistical property</em> we’ll be interested in comparing will depend on our beliefs about what fairness should mean in the context of the problem.</p>
-<p>We broadly classify group fairness criteria into two types; those comparing <em>outcomes</em> across groups and those comparing <em>errors</em>. We discussed examples of both in chapter <a href="#ch_Background" data-reference-type="ref" data-reference="ch_Background">1</a>. Recall that in section <a href="#sec_SimpsParadox" data-reference-type="ref" data-reference="sec_SimpsParadox">1.4</a>, we compared outcomes (acceptance rates) for male and female applicants to Berkeley as an example of Simpson’s rule. In section <a href="#sec_harms" data-reference-type="ref" data-reference="sec_harms">1.5</a>, we discussed Gender Shades, a project that compared the errors (or equivalently accuracy) of a set of gender recognition systems, across subgroups defined by skin tone and gender. We’ll see how in general group fairness criterion can be understood as independence constraints on the joint distributions of the non-sensitive features <span class="math inline">\(X\)</span>, sensitive features, <span class="math inline">\(Z\)</span>, the target variable <span class="math inline">\(Y\)</span> and predicted target <span class="math inline">\(\hat{Y}\)</span> (or rather <span class="math inline">\(P\)</span> for a classification problem where we want our fairness criteria to hold for all thresholds). For brevity, we will express all constraints in terms of <span class="math inline">\(\hat{Y}\)</span>, but keep in mind that for classification problems we might want to instead impose it on the score <span class="math inline">\(P\)</span>. We will introduce the necessary mathematical notation as required throughout this book. A helpful summary is provided in the preamble on page .</p>
+<p>We broadly classify group fairness criteria into two types; those comparing <em>outcomes</em> across groups and those comparing <em>errors</em>. We discussed examples of both in chapter <a href="#ch_Background" data-reference-type="ref" data-reference="ch_Background">1</a>. Recall that in section <a href="#sec_SimpsParadox" data-reference-type="ref" data-reference="sec_SimpsParadox">1.4</a>, we compared outcomes (acceptance rates) for male and female applicants to Berkeley as an example of Simpson’s rule. In section <a href="#sec_harms" data-reference-type="ref" data-reference="sec_harms">1.5</a>, we discussed Gender Shades, a project that compared the errors (or equivalently accuracy) of a set of gender recognition systems, across subgroups defined by skin tone and gender. We’ll see how in general group fairness criterion can be understood as independence constraints on the joint distributions of the non-sensitive features <span class="math inline">\(X\)</span>, sensitive features, <span class="math inline">\(Z\)</span>, the target variable <span class="math inline">\(Y\)</span> and predicted target <span class="math inline">\(\hat{Y}\)</span> (or rather <span class="math inline">\(P\)</span> for a classification problem where we want our fairness criteria to hold for all thresholds). For brevity, we will express all constraints in terms of <span class="math inline">\(\hat{Y}\)</span>, but keep in mind that for classification problems we might want to instead impose it on the score <span class="math inline">\(P\)</span>. We will introduce the necessary mathematical notation as required throughout this book. A summary is provided in appendix <a href="#app_Notation" data-reference-type="ref" data-reference="app_Notation">A</a>.</p>
 <section id="sec_BalOut" class="level2" data-number="3.1">
 <h2 data-number="3.1"><span class="header-section-number">3.1</span> Comparing Outcomes</h2>
 <p>First we look at fairness constraints on the relationship between the sensitive features <span class="math inline">\(Z\)</span>, and the predicted target <span class="math inline">\(\hat{Y}\)</span> (or rather <span class="math inline">\(Y\)</span> if we are interested in understanding our data rather than our model output). We’ll discuss two fairness criteria. In the first we require the outcome <span class="math inline">\(\hat{Y}\)</span>, to be marginally (unconditionally) independent of the sensitive features <span class="math inline">\(Z\)</span>. In the second we are essentially trying to establish cause; we require the outcome <span class="math inline">\(\hat{Y}\)</span> to be independent of the sensitive features <span class="math inline">\(Z\)</span> when conditioned on all other (non-sensitive) features <span class="math inline">\(X\)</span>. We’ll describe the latter as the twin test, that is <span class="math inline">\(\hat{Y}\)</span> and <span class="math inline">\(Z\)</span> being independent ceteris paribus (all else, or rather all other variables <span class="math inline">\(X\)</span>, being equal).</p>
@@ -2509,7 +2433,7 @@ d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i,y), f(\boldsymbol{x}_j,y)) \leq 
 </ul>
 </section>
 </section>
-<section id="ch_InequalityIndices" class="level1" data-number="5">
+<section id="ch_UtilityFairness" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Fairness as Utility</h1>
 <div class="chapsumm">
 <p><strong>This chapter at a glance</strong></p>
@@ -2713,7 +2637,7 @@ x\ln x &amp; \;\textrm{for}\quad \alpha=1 \\
 <h3 data-number="5.1.3"><span class="header-section-number">5.1.3</span> Behaviour with Respect to Generalisation Parameter <span class="math inline">\(\alpha\)</span></h3>
 <p>We know that inequality indices measure divergence from the uniform distribution and we can think of them as a system for ranking distributions from most fair to least fair. The most fair distribution has an index value of zero and becomes more unfair as the value of the index increases. Note that two distributions that diverge equally from the uniform distribution, need not be the same distribution. For example consider any asymmetric distribution <span class="math inline">\(p(x)\)</span> and its mirror image <span class="math inline">\(p(-x)\)</span> both distributions diverge equally from the uniform distribution. This explains why there a numerous different inequality indices; each breaks ties in different ways. The generalisation parameter <span class="math inline">\(\alpha\)</span> controls the weight applied to the divergence at the different parts of the distribution. In Figure <a href="#fig:fxvaralpha" data-reference-type="ref" data-reference="fig:fxvaralpha">5.1</a>, we plot the function <span class="math inline">\(f_{\alpha}(x)\)</span>, for different choices of <span class="math inline">\(\alpha\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_fxvaralpha.png" id="fig:fxvaralpha" style="width:65.0%" alt="Figure 5.1: f_{\alpha}(x) for varying \alpha." />
+<img src="05_UtilityFairness/figures/Fig_fxvaralpha.png" id="fig:fxvaralpha" style="width:65.0%" alt="Figure 5.1: f_{\alpha}(x) for varying \alpha." />
 <figcaption aria-hidden="true">Figure 5.1: <span class="math inline">\(f_{\alpha}(x)\)</span> for varying <span class="math inline">\(\alpha\)</span>.</figcaption>
 </figure>
 <p>We note that the contribution to the index, from individuals that receive the mean benefit, is always zero. As we increase <span class="math inline">\(\alpha\)</span>, the contribution to the index from the upper end of the benefit distribution grows, while the contribution from the lower end decays.</p>
@@ -2817,7 +2741,7 @@ I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 </div>
 <p>In Figure <a href="#fig:GEI_Imax" data-reference-type="ref" data-reference="fig:GEI_Imax">5.2</a>, we plot the maximal value of the index as a function of <span class="math inline">\(n\)</span> for different values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_GEI_Imaxvaralpha.png" id="fig:GEI_Imax" style="width:65.0%" alt="Figure 5.2: \max[I_{\alpha}(n)] for varying values of \alpha. The maximal value is attained when only a single individual benefits. For \alpha\leq0 the index is unbounded above." />
+<img src="05_UtilityFairness/figures/Fig_GEI_Imaxvaralpha.png" id="fig:GEI_Imax" style="width:65.0%" alt="Figure 5.2: \max[I_{\alpha}(n)] for varying values of \alpha. The maximal value is attained when only a single individual benefits. For \alpha\leq0 the index is unbounded above." />
 <figcaption aria-hidden="true">Figure 5.2: <span class="math inline">\(\max[I_{\alpha}(n)]\)</span> for varying values of <span class="math inline">\(\alpha\)</span>. The maximal value is attained when only a single individual benefits. For <span class="math inline">\(\alpha\leq0\)</span> the index is unbounded above.</figcaption>
 </figure>
 <p>The maximal value of the index is always an increasing function of <span class="math inline">\(n\)</span>. For <span class="math inline">\(\alpha=2\)</span>, the maximal value of the index is a linear function of <span class="math inline">\(n\)</span>, <span class="math display">\[\max_{\boldsymbol{b}}[I_{2}(\boldsymbol{b})] = \frac{n-1}{2}.\]</span> For <span class="math inline">\(0&lt;\alpha&lt;1\)</span>, <span class="math display">\[\max_{\boldsymbol{b}}[I_{\alpha}(n)] = \frac{1-n^{-(1-\alpha)}}{\alpha(1-\alpha)}\rightarrow\frac{1}{\alpha(1-\alpha)}
@@ -2968,7 +2892,7 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 </div>
 <p>For binary benefits, the index is a monotonic increasing function of the mean benefit. The index is maximal where only one individual benefits. As we increase the proportion of people who benefit from from <span class="math inline">\(1/n\)</span> to <span class="math inline">\(n\)</span>, the distribution of benefits approaches uniform. As the number of individuals grows, so does the maximal value of the index (as shown in section <a href="#sec_GEImax" data-reference-type="ref" data-reference="sec_GEImax">5.1.5</a>). In Figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.3</a>, we plot the value of the index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for a variety of values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_GEI_bmin0_n10.png" id="fig:GEI_bmin0" style="width:65.0%" alt="Figure 5.3: Generalised entropy index as a function of the mean benefit \mu for binary benefits." />
+<img src="05_UtilityFairness/figures/Fig_GEI_bmin0_n10.png" id="fig:GEI_bmin0" style="width:65.0%" alt="Figure 5.3: Generalised entropy index as a function of the mean benefit \mu for binary benefits." />
 <figcaption aria-hidden="true">Figure 5.3: Generalised entropy index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for binary benefits.</figcaption>
 </figure>
 <p>For the benefit functions listed in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a> the only way to achieve overall fairness (index value zero) is if every individual under consideration receives a benefit of exactly one. We showed this to be the case for binary benefits above. For the fairness criterion in the last row of Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>, comparing luck, benefits are no longer binary. We can also achieve a zero index value if all individuals receive a benefit of two; but this is only possible in the degenerate case where all predictions are false positives, that is, <span class="math inline">\(\hat{Y}=1\)</span> and <span class="math inline">\(Y=0\)</span>. For each benefit function, the scenarios for which overall fairness is minimal (all individuals under consideration receive exactly one benefit) differs.</p>
@@ -3040,7 +2964,7 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 </div>
 <p>The mean benefit <span class="math inline">\(\mu\)</span> here, gives us an indication of the relative number of false positive to false negative errors, made by the model; it tells us if the model is over or underestimating the target on average. From another point of view, it quantifies the amount of skew in the distribution of luck. Skew describes the extent of asymmetry in a distribution. For negatively skewed distributions, the tail is longer (and thinner) on the left (and vice versa for positively skewed distributions). Therefore, <span class="math inline">\(\mu&lt;1\)</span> indicates more weight on the left (and thus the tail on the right) hence positive skew (and vice versa for <span class="math inline">\(\mu&gt;1\)</span>). Figure <a href="#fig:BenefitMeanSkew" data-reference-type="ref" data-reference="fig:BenefitMeanSkew">5.4</a> provides visual illustrations of benefit distributions with different mean benefits <span class="math inline">\(\mu\)</span>. When the mean benefit is one (as in the centre figure), the distribution has no skew; it is symmetric.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_BenefitMeanSkew.png" id="fig:BenefitMeanSkew" alt="Figure 5.4: Characterisation of benefit distributions with different mean benefits." />
+<img src="05_UtilityFairness/figures/Fig_BenefitMeanSkew.png" id="fig:BenefitMeanSkew" alt="Figure 5.4: Characterisation of benefit distributions with different mean benefits." />
 <figcaption aria-hidden="true">Figure 5.4: Characterisation of benefit distributions with different mean benefits.</figcaption>
 </figure>
 <p>We can see from these equations that for fixed <span class="math inline">\(\mu\)</span>, <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> is a linearly decreasing function of accuracy. We know that for most problems, the accuracy of our model is bounded below by our dataset, <span class="math display">\[0.5 \leq \max[\mathbb{P}(Y=0), \mathbb{P}(Y=1)] &lt; \lambda \leq 1.\]</span> If we can find the maximal value of the index for a given accuracy, this allows us to find an upper bound for the index, based on a dataset with known <span class="math inline">\(Y\)</span>. Before analysing the behaviour of the index as a function of <span class="math inline">\(\mu\)</span>, we note that <span class="math inline">\(\mu\)</span> is also constrained for our classifier. For a model with accuracy <span class="math inline">\(\lambda=n_c/n\)</span>, the total number of benefits <span class="math inline">\(B\)</span>, must satisfy the following bounds, <span class="math display">\[n_c \leq B \leq n_c+2(n-n_c) = 2n-n_c.\]</span> We also know, that the total number of benefits must equate to <span class="math inline">\(n\)</span> times the mean, that is, <span class="math inline">\(B=n\mu\)</span>. Given this, it is straightforward to show that we must have</p>
@@ -3061,12 +2985,12 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 </div>
 <p>As the accuracy of the model <span class="math inline">\(\lambda\)</span> increases, the range of possible values the mean benefit <span class="math inline">\(\mu\)</span> can take, decreases. Our domain is then an isosceles triangle. In Figure <a href="#fig:domain" data-reference-type="ref" data-reference="fig:domain">5.5</a> we provide a visualisation of the domain space. We choose to plot the mean benefit <span class="math inline">\(\mu\)</span> on the horizontal axis, enabling us to visualise the benefit distributions in the natural orientation.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_domain_1.png" id="fig:domain" style="width:60.0%" alt="Figure 5.5: Visualisation of index domain." />
+<img src="05_UtilityFairness/figures/Fig_domain_1.png" id="fig:domain" style="width:60.0%" alt="Figure 5.5: Visualisation of index domain." />
 <figcaption aria-hidden="true">Figure 5.5: Visualisation of index domain.</figcaption>
 </figure>
 <p>In Figures <a href="#fig:Imu_varlambda" data-reference-type="ref" data-reference="fig:Imu_varlambda">5.6</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\lambda\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\alpha\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_I_alpha_1-4_varlambda.png" id="fig:Imu_varlambda" alt="Figure 5.6: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \lambda and fixed \alpha." />
+<img src="05_UtilityFairness/figures/Fig_I_alpha_1-4_varlambda.png" id="fig:Imu_varlambda" alt="Figure 5.6: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \lambda and fixed \alpha." />
 <figcaption aria-hidden="true">Figure 5.6: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\lambda\)</span> and fixed <span class="math inline">\(\alpha\)</span>.</figcaption>
 </figure>
 <section id="index-maximum" class="level3" data-number="5.3.1">
@@ -3145,7 +3069,7 @@ g(\alpha) &lt; \frac{2}{\lambda}-1 \quad\Leftrightarrow\quad
 </div>
 <p>where <span class="math inline">\(g(\alpha)\)</span> is given in equation 5.11. To understand the behaviour of the index better, we need to understand the behaviour of <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span>. We plot <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span> in Figures <a href="#fig:g_alpha" data-reference-type="ref" data-reference="fig:g_alpha">5.7</a>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_g_lambda_tilde_alpha.png" id="fig:g_alpha" alt="Figure 5.7: g(\alpha) and \tilde{\lambda}(\alpha), see equation (5.13)." />
+<img src="05_UtilityFairness/figures/Fig_g_lambda_tilde_alpha.png" id="fig:g_alpha" alt="Figure 5.7: g(\alpha) and \tilde{\lambda}(\alpha), see equation (5.13)." />
 <figcaption aria-hidden="true">Figure 5.7: <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span>, see equation (5.13).</figcaption>
 </figure>
 <p>Note that, <span class="math display">\[g(2)=1 \quad\textrm{and}\quad\left\{
@@ -3212,7 +3136,7 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 </div>
 <p>In Figures <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.8</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\alpha\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\lambda\)</span>. In the final plot, <span class="math inline">\(\lambda=95\%\)</span>; we see that <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> is a strictly increasing function of <span class="math inline">\(\mu\)</span>, for both <span class="math inline">\(\alpha=3\)</span> and <span class="math inline">\(\alpha=4\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_I_lambda_50-95_varalpha.png" id="fig:Imu_varalpha" alt="Figure 5.8: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \alpha and fixed \lambda." />
+<img src="05_UtilityFairness/figures/Fig_I_lambda_50-95_varalpha.png" id="fig:Imu_varalpha" alt="Figure 5.8: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \alpha and fixed \lambda." />
 <figcaption aria-hidden="true">Figure 5.8: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\alpha\)</span> and fixed <span class="math inline">\(\lambda\)</span>.</figcaption>
 </figure>
 <p>From Figure <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.8</a>, we can see that both <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span>, have an impact on the relative preference between false positive and false negative errors. As the accuracy of our model increases, the change in behaviour of the index, for different choices of <span class="math inline">\(\alpha\)</span>, becomes more extreme.</p>
@@ -3243,7 +3167,7 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 </div>
 <p>The discrete grid of adjacent models we can reach through a small change in the model (given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span>), is shown in Figure <a href="#fig:domain_2" data-reference-type="ref" data-reference="fig:domain_2">5.9</a>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_domain_2.png" id="fig:domain_2" style="width:40.0%" alt="Figure 5.9: Visualisation of the local domain space for given \mu, \lambda and n. In the figure we assume the point (\mu,\lambda) is not on the edge of the domain, where some of the neighbouring points may fall outside it." />
+<img src="05_UtilityFairness/figures/Fig_domain_2.png" id="fig:domain_2" style="width:40.0%" alt="Figure 5.9: Visualisation of the local domain space for given \mu, \lambda and n. In the figure we assume the point (\mu,\lambda) is not on the edge of the domain, where some of the neighbouring points may fall outside it." />
 <figcaption aria-hidden="true">Figure 5.9: Visualisation of the local domain space for given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span>. In the figure we assume the point <span class="math inline">\((\mu,\lambda)\)</span> is not on the edge of the domain, where some of the neighbouring points may fall outside it.</figcaption>
 </figure>
 <p>Equation 5.9 provides an expression for <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span>. Substituting for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> in the case <span class="math inline">\(\alpha=1\)</span> gives, <span class="math display">\[I_{\alpha}\left(\lambda-\frac{1}{n},\mu\pm\frac{1}{n}\right) =
@@ -3336,7 +3260,7 @@ h^-(\alpha) =  \left\{
 </div>
 <p>Equation (5.17) reveals that <span class="math inline">\(h^-(\alpha)\)</span> is a strictly increasing function of <span class="math inline">\(\alpha\)</span>, for <span class="math inline">\(\alpha&gt;0\)</span> (since <span class="math inline">\(\alpha2^{\alpha-1}\)</span> dominates <span class="math inline">\(\alpha\)</span>). In addition, we can see that <span class="math inline">\(h^-(\alpha)\rightarrow1^-\)</span> as <span class="math inline">\(\alpha\rightarrow\infty\)</span>. In Figure <a href="#fig:DeltaIminus" data-reference-type="ref" data-reference="fig:DeltaIminus">5.10</a> we plot <span class="math inline">\(h^-(\alpha)\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_h_minus_alpha.png" id="fig:DeltaIminus" style="width:65.0%" alt="Figure 5.10: h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)." />
+<img src="05_UtilityFairness/figures/Fig_h_minus_alpha.png" id="fig:DeltaIminus" style="width:65.0%" alt="Figure 5.10: h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)." />
 <figcaption aria-hidden="true">Figure 5.10: <span class="math inline">\(h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)\)</span>.</figcaption>
 </figure>
 <p>Earlier we showed that we must have <span class="math inline">\(\mu\geq\lambda\)</span>. Then from equation (5.15), for <span class="math inline">\(\Delta I^-_{\alpha}(\mu,\lambda;n)&lt;0\)</span> we need <span class="math inline">\(h^-(\alpha)&gt;1\)</span>. Since <span class="math inline">\(h^-(\alpha)&lt;1\)</span> for all <span class="math inline">\(\alpha&gt;0\)</span>, we know that making an additional false negative error, never decreases the value of the index. What about false positive errors?</p>
@@ -3368,7 +3292,7 @@ h^+(\alpha) =  \left\{
 <p>Equation (5.18) reveals that <span class="math inline">\(h^+(\alpha)\)</span> is a decreasing function of <span class="math inline">\(\alpha\)</span>, since <span class="math inline">\(2^{1-\alpha}\)</span> is a strictly decreasing function of <span class="math inline">\(\alpha\)</span>. In addition, we can see that <span class="math inline">\(h^+(\alpha)\rightarrow1^+\)</span> as <span class="math inline">\(\alpha\rightarrow\infty.\)</span> Earlier we showed that we must have <span class="math inline">\(\mu\leq2-\lambda\)</span>. Then from equation (5.15), for <span class="math inline">\(\Delta I^+_{\alpha}(\mu,\lambda;n)&lt;0\)</span> we need, <span class="math display">\[h^+(\alpha)\lambda &lt; 2-\lambda \quad\Leftrightarrow\quad
 \lambda &lt; \bar{\lambda}(\alpha) = \frac{2}{1+h^+(\alpha)}.\]</span> From what ew know about <span class="math inline">\(h^+(\alpha)\)</span>, we can deduce that <span class="math inline">\(\bar{\lambda}(\alpha)\)</span> is an increasing function of <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\bar{\lambda}(\alpha)\rightarrow1^-\)</span> as <span class="math inline">\(\alpha\rightarrow\infty\)</span>. Since <span class="math inline">\(\bar{\lambda}(\alpha)&lt;1\)</span> for all <span class="math inline">\(\alpha&gt;0\)</span>, we know there are indeed some circumstances, under which a false positive error, decreases the value of the index. In Figures <a href="#fig:DeltaIplus" data-reference-type="ref" data-reference="fig:DeltaIplus">5.11</a>, we plot <span class="math inline">\(h^+(\alpha)\)</span> and <span class="math inline">\(\bar{\lambda}(\alpha)\)</span>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_h_plus_lambda_bar_alpha.png" id="fig:DeltaIplus" alt="Figure 5.11: h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad and \quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]." />
+<img src="05_UtilityFairness/figures/Fig_h_plus_lambda_bar_alpha.png" id="fig:DeltaIplus" alt="Figure 5.11: h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad and \quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]." />
 <figcaption aria-hidden="true">Figure 5.11: <span class="math inline">\(h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad\)</span> and <span class="math inline">\(\quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]\)</span>.</figcaption>
 </figure>
 </section>
@@ -3387,7 +3311,7 @@ h^+(\alpha) =  \left\{
 &amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right.\]</span> This is only possible if the accuracy is sufficiently low, <span class="math display">\[\lambda &lt; \bar{\lambda}(\alpha)=\frac{2}{1+h^+(\alpha)}.\]</span> The deviation region is then described as, <span class="math inline">\(\mu&gt;h^+(\alpha)\lambda\)</span>, where <span class="math inline">\(h^+(\alpha)\)</span> is given in equation (5.18). We mark the deviation region on the contour plot for <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> in Figure <a href="#fig:cplot_varalpha" data-reference-type="ref" data-reference="fig:cplot_varalpha">5.12</a>.</p>
 <figure>
-<img src="05_InequalityIndices/figures/Fig_ccplot_varalpha.png" id="fig:cplot_varalpha" alt="Figure 5.12: Contour plots showing I_{\alpha}(\mu, \lambda) for different values of \alpha." />
+<img src="05_UtilityFairness/figures/Fig_ccplot_varalpha.png" id="fig:cplot_varalpha" alt="Figure 5.12: Contour plots showing I_{\alpha}(\mu, \lambda) for different values of \alpha." />
 <figcaption aria-hidden="true">Figure 5.12: Contour plots showing <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> for different values of <span class="math inline">\(\alpha\)</span>.</figcaption>
 </figure>
 <p>For reference, in Table <a href="#tbl:BeneficialErrorThresholds" data-reference-type="ref" data-reference="tbl:BeneficialErrorThresholds">5.2</a>, we provide some values of <span class="math inline">\(\bar{\lambda}(\alpha)\)</span> and <span class="math inline">\(h^+(\alpha)\)</span>.</p>
@@ -3503,444 +3427,236 @@ b_+ &amp; 1
 </ul>
 </section>
 </section>
-<section id="app_AIF360" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">A</span> AIF360</h1>
-<ol>
-<li><p>In this book we will use Python in Jupyter notebooks from the <a href="https://www.anaconda.com//products/individual">Anaconda Python distribution platform</a>. If you don’t already have it download and install it.</p></li>
-<li><p>Create an environment named <code>mbml</code>. Using the command line interface (CLI):</p>
-<pre><code>\$ conda create --name mbml python=3.7</code></pre></li>
-<li><p>Activate your new environment:</p>
-<pre><code>$ conda activate mbml</code></pre></li>
-<li><p>This book is a work in progress. As part of analysing the metrics and methods it uses code that is not yet available with the library<span class="sidenote-wrapper"><label for="sn-10" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-10" class="margin-toggle"/><span class="sidenote">If you’re interested, here is the <a href="https://github.com/Trusted-AI/AIF360/pull/214">open pull request</a>.<br />
-<br />
-</span></span>. Once it is merged, you will just be able to just pip install the aif360 library. Until then you must clone this <a href="https://github.com/leenamurgai/AIF360">fork of AIF360</a>:</p>
-<pre><code>$ git clone https://github.com/leenamurgai/AIF360.git</code></pre></li>
-<li><p>Download the notebook <code>mbml_german.ipynb</code> from <a href="https://git.manning.com/agileauthor/murgai/-/blob/master/code/mbml_german.ipynb">Manning’s GitLab repository</a> and save it in the "AIF360/examples" folder.</p></li>
-<li><p>You should now be able to open and run the notebook from the CLI as you usually would:</p>
-<pre><code>$ jupyter notebook mbml_german.ipynb</code></pre></li>
-</ol>
-<section id="app_AIF360_GF" class="level2" data-number="6.1">
-<h2 data-number="6.1"><span class="header-section-number">A.1</span> Group Fairness</h2>
-<section id="comparing-outcomes-2" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1"><span class="header-section-number">A.1.1</span> Comparing Outcomes</h3>
-<p>Now that we have covered some measures of fairness, let’s dive into calculating them. In this book we are going to use IBM’s <a href="https://aif360.mybluemix.net/resources">AI Fairness 360 (AIF360)</a>. AIF360 is currently the most comprehensive open source library available for measuring and mitigating bias in machine learning models. The Python package includes an extensive set of metrics for datasets and models to test for biases, explanations for these metrics, and algorithms to mitigate bias in datasets and models many of which we will cover in this book. The system has been designed to be extensible, adopted software engineering best practices to maintain code quality, and is well <a href="https://aif360.readthedocs.io/en/latest/index.html">documented</a>. The package implements techniques from at-least eight published papers and includes over 71 bias detection metrics and nine bias mitigation algorithms. These techniques can all be called in a standard way, similar to scikit-learn’s fit/transform/predict paradigm.</p>
-<p>In this section we’re going to use AIF360 to calculate some of the metrics we’ve talked about in the previous section as a means to get started working with it. For calculating the metrics we’ve talked about so far, using AIF360 might seem to add unnecessary overhead as they are reasonably straightforward to code up directly once you have your data in a Pandas DataFrame. But remember, the library contains implementations of more complicated metrics and bias mitigations algorithms that we’ll cover later on in this book. Before we can use the library, we need to install it. Instructions are provided in Appendix <a href="#app_AIF360" data-reference-type="ref" data-reference="app_AIF360">A</a>.</p>
-<section id="statlog-german-credit-data-data-set" class="level4 unnumbered">
-<h4 class="unnumbered">Statlog (German Credit Data) Data Set</h4>
-<p>The Jupyter Notebook, <a href="https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb"><code>mbml_german.ipynb</code></a>, contains an example calculating some of the above fairness metrics on both a dataset and model output. It uses the <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">Statlog (German Credit Data) Data Set</a>, in which one thousand loan applicants are classified as representing ‘good’ or ‘bad’ credit risks based on features such as loan term, loan amount, age, gender, marital status and more.</p>
-<div class="lookbox">
-<p><strong>Exercise: Statlog (German Credit Data) Data Set</strong></p>
-<p>Sections 1-3 in the Jupyter Notebook, <a href="https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb"><code>mbml_german.ipynb</code></a>, load the data and perform some exploratory data analysis (EDA), looking at correlation heat maps (using a variety of different measures of association) and comparing distributions of the target for different values of the features. Open the notebook and run the code up to section four. You should be able to answer the following questions by working through the notebook.</p>
-<ol>
-<li><p>What proportion of the population is classified as male/female?</p></li>
-<li><p>What proportion of the population have good credit vs bad?</p></li>
-<li><p>How many continuous variables are there? What are they? Do any of them appear to be related? If so how?</p></li>
-<li><p>How many categorical variables are there? What are they? Do any of them appear to be related? If so how?</p></li>
-</ol>
-</div>
+<section id="part-iii-mitigating-bias" class="level1 unnumbered">
+<h1 class="unnumbered">Part III Mitigating Bias</h1>
+<p>Coming soon...</p>
 </section>
-<section id="calculating-independence-metrics" class="level4 unnumbered">
-<h4 class="unnumbered">Calculating Independence Metrics</h4>
-<p>In order to calculate our metrics on the data using AIF360, we must have it in the correct format; that is, in a Pandas DataFrame (<code>data_df</code>) containing only numeric data types. In code listing A.1, we calculate the rate at which male and female applicants are classified as being good credit risks (<code>base_rate</code>) along with the difference (<code>mean_difference</code>) and the ratio (<code>disparate_impact</code>) of these rates.</p>
-<div id="lst:AIF360metric" class="listing">
-<p>Listing A.1: Calculating independence metrics for the data using AIF360</p>
-<pre><code># Create a DataFrame to store results in
-outcomes_df = pd.DataFrame(columns=[`female&#39;, `male&#39;,
-                                    `difference&#39;, `ratio&#39;],
-                           index=[`data&#39;, `model&#39;,
-                                  `train data&#39;, `train model&#39;,
-                                  `test data&#39;, `test model&#39;])
-
-# Define privileged and unprivileged groups
-privileged_groups = [{`sex_male&#39;:1}]
-unprivileged_groups = [{`sex_male&#39;:0}]
-
-# Create an instance of BinaryLabelDataset
-data_ds = BinaryLabelDataset(df = data_df,
-    label_names = [`goodcredit&#39;],
-    protected_attribute_names = [`sex&#39;])
-
-# Create an instance of BinaryLabelDatasetMetric
-data_metric = BinaryLabelDatasetMetric(data_ds,
-    privileged_groups = privileged_groups,
-    unprivileged_groups = unprivileged_groups)
-
-# Compute the metrics with data_metric and store them in outcomes_df
-outcomes_df.at[`data&#39;, `female&#39;] = data_metric.base_rate(privileged=0)
-outcomes_df.at[`data&#39;, `male&#39;] = data_metric.base_rate(privileged=1)
-outcomes_df.at[`data&#39;, `difference&#39;] = data_metric.mean_difference()
-outcomes_df.at[`data&#39;, `ratio&#39;] = data_metric.disparate_impact()</code></pre>
-</div>
-<p>In the notebook we look at these metrics on both the data and the model output for three different sets of the data (the full dataset, the train set and the test set) with two different models (one trained on the full dataset and another trained only on a subset of the data - the training set). In code listing A.1, we create a DataFrame to display the results in (<code>outcomes_df</code>) and populate the first row of it. First we define our privileged and unprivileged groups.</p>
-<div class="lookbox">
-<p><strong>Defining privileged and unprivileged groups</strong></p>
-<p>The format for these is a list of dictionaries. Each dictionary in the list defines a group, the key being a feature and the value being the value of the feature for members of the group. The key, value pairs in the dictionaries are joined with an intersection (AND operator) and the dictionaries in the list are joined with a union (OR operator). So for example,</p>
-<pre><code>[{`sex&#39;: 1, `age&gt;=30&#39;: 1}, {`sex&#39;: 0}]</code></pre>
-<p>corresponds to individuals such that,</p>
-<pre><code>(data_df[`sex&#39;]==1 AND data_df[`age&gt;=30&#39;]==1)  OR (data_df[`sex&#39;]==0)</code></pre>
-</div>
-<p>Next we create a <a href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.datasets.BinaryLabelDataset.html#aif360.datasets.BinaryLabelDataset"><code>BinaryLabelDataset</code></a> object (<code>data_ds</code>) which in turn is used to create a <a href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.BinaryLabelDatasetMetric.html#aif360.metrics.BinaryLabelDatasetMetric"><code>BinaryLabelDatasetMetric</code></a> object (<code>data_metric</code>). We then calculate the fairness metrics from <code>data_metric</code> and store the results in <code>outcomes_df</code>.</p>
-<div class="lookbox">
-<p><strong>Exercise: Multiple sensitive features</strong></p>
-<p>Calculate independence metrics (base rates, difference and ratio) for the full dataset in the case where the privileged group is males age 30 and over, and the unprivileged group is females under the age of 30. Do this two ways, using AIF360 and using Pandas. Compare your results to make sure they match.</p>
-</div>
-<p>Once we have trained a model and made predictions, similar code can be written to calculate independence metrics on the model predictions for the full dataset. Code listing A.2 shows how we do this using the predictions from the trained model <code>clf</code>.</p>
-<div id="lst:AIF360metric1" class="listing">
-<p>Listing A.2: Calculating independence metrics for the model using AIF360</p>
-<pre><code># Create a DataFrame with the features and model predicted target
-model_df = pd.concat([X, pd.Series(clf.predict(X), name=`goodcredit&#39;)],
-	axis=1)
-
-# Create an instance of BinaryLabelDataset
-model_ds = BinaryLabelDataset(df = model_df,
-    label_names = [`goodcredit&#39;],
-    protected_attribute_names = [`sex_male&#39;])
-
-# Create an instance of BinaryLabelDatasetMetric
-model_metric = BinaryLabelDatasetMetric(model_ds,
-    privileged_groups = privileged_groups,
-    unprivileged_groups = unprivileged_groups)
-
-# Compute the metrics with model_metric and store them in outcomes_df
-outcomes_df.at[`model&#39;, `female&#39;] = model_metric.base_rate(privileged=0)
-outcomes_df.at[`model&#39;, `male&#39;] = model_metric.base_rate(privileged=1)
-outcomes_df.at[`model&#39;, `difference&#39;] = model_metric.mean_difference()
-outcomes_df.at[`model&#39;, `ratio&#39;] = model_metric.disparate_impact()</code></pre>
-</div>
-<p>Table <a href="#tbl:app_IndependenceMetrics" data-reference-type="ref" data-reference="tbl:app_IndependenceMetrics">A.1</a> shows the results of the calculations stored in <code>outcomes_df</code> from the notebook. From Table <a href="#tbl:app_IndependenceMetrics" data-reference-type="ref" data-reference="tbl:app_IndependenceMetrics">A.1</a> we note some variation in the rates at which men and women are predicted to present good credit risks for the model versus the data. In particular, the model acceptance rates are higher for both male and female applicants than those observed in the data. There are particularly big differences when we compare results for the test data versus the model on the test data (test model), which is not surprising since the mean difference and impact ratio for the train data and test data are markedly different. In addition we are aware that our model is overfitting. Without intervention, our model appears to be reducing the bias present in the data for the test set (as measured by our independence metrics).</p>
-<div id="tbl:app_IndependenceMetrics">
+<section id="app_Notation" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">A</span> Notation and Conventions</h1>
 <table>
-<caption>Table A.1: Acceptance rates for the Statlog (German Credit) Data Set.</caption>
+<caption>Typographical conventions.</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Female</th>
-<th style="text-align: right;">Male</th>
-<th style="text-align: right;">Difference</th>
-<th style="text-align: right;">Ratio</th>
+<th style="text-align: center;">Letter case &amp;/ Typeface</th>
+<th style="text-align: left;">Denotes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Data</td>
-<td style="text-align: right;">0.648</td>
-<td style="text-align: right;">0.723</td>
-<td style="text-align: right;">-0.0748</td>
-<td style="text-align: right;">0.897</td>
+<td style="text-align: center;">Lowercase</td>
+<td style="text-align: left;">Scalar variables, e.g. <span class="math inline">\(a\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Model<sup>a</sup></td>
-<td style="text-align: right;">0.674</td>
-<td style="text-align: right;">0.749</td>
-<td style="text-align: right;">-0.0751</td>
-<td style="text-align: right;">0.900</td>
+<td style="text-align: center;">Uppercase</td>
+<td style="text-align: left;">Random variables, e.g. <span class="math inline">\(X\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Train data</td>
-<td style="text-align: right;">0.659</td>
-<td style="text-align: right;">0.719</td>
-<td style="text-align: right;">-0.0601</td>
-<td style="text-align: right;">0.916</td>
+<td style="text-align: center;">Lowercase bold</td>
+<td style="text-align: left;">Vectors, e.g. <span class="math inline">\(\boldsymbol{y}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Train model<sup>b</sup></td>
-<td style="text-align: right;">0.667</td>
-<td style="text-align: right;">0.731</td>
-<td style="text-align: right;">-0.0647</td>
-<td style="text-align: right;">0.911</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Test data</td>
-<td style="text-align: right;">0.607</td>
-<td style="text-align: right;">0.741</td>
-<td style="text-align: right;">-0.1345</td>
-<td style="text-align: right;">0.819</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Test model<sup>b</sup></td>
-<td style="text-align: right;">0.705</td>
-<td style="text-align: right;">0.820</td>
-<td style="text-align: right;">-0.1152</td>
-<td style="text-align: right;">0.860</td>
+<td style="text-align: center;">Uppercase bold</td>
+<td style="text-align: left;">Matrices and vectors of random variables e.g. <span class="math inline">\(\boldsymbol{X}\)</span></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="tablenotes">
-<p><sup>a</sup>Model trained on the full dataset.</p>
-<p><sup>b</sup>Model trained on the train dataset only.</p>
-</div>
-<div class="lookbox">
-<p><strong>Exercise: Twin test</strong></p>
-<p>Implement the twin test (described in section <a href="#sec_CondIndep" data-reference-type="ref" data-reference="sec_CondIndep">3.1.2</a>) for the model trained on the full dataset. Calculate the causal mean difference between male and female applicants using 2000 data points (1000 male and 1000 female applicants) i.e. the full dataset together with the ‘twin’ of the opposite gender.</p>
-</div>
-</section>
-</section>
-<section id="comparing-errors-2" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2"><span class="header-section-number">A.1.2</span> Comparing Errors</h3>
-<p>In order to calculate balanced error metrics with AIF360, we need to create an object of type <a href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.ClassificationMetric.html"><code>ClassificationMetric</code></a>. Returning to our example working with the German Credit Data, code listing A.3 calculates a series of balanced error metrics and populates the DataFrame <code>errors_df</code> with them. Note that <code>data_ds</code> and <code>model_ds</code> were created, and <code>privileged_groups</code> and <code>unprivileged_groups</code> were defined in earlier code listings.</p>
-<div id="lst:AIF360metric2" class="listing">
-<p>Listing A.3: Calculating balanced error metrics with AIF360</p>
-<pre><code># Create a DataFrame to store results in
-errors_df = pd.DataFrame(columns=[`female&#39;, `male&#39;,
-                                  `difference&#39;, `ratio&#39;],
-                         index=[`ERR&#39;, `FPR&#39;, `FNR&#39;, `FDR&#39;, `FOR&#39;])
-
-# Create an instance of ClassificationMetric
-clf_metric = ClassificationMetric(data_ds,
-    model_ds,
-    privileged_groups = privileged_groups,
-    unprivileged_groups = unprivileged_groups)
-
-# Compute the metrics with clf_metric and store them in errors_df
-# Error rates for the unprivileged group
-errors_df.at[`ERR&#39;, `female&#39;] = clf_metric.error_rate(privileged=False)
-errors_df.at[`FPR&#39;, `female&#39;] =
-    clf_metric.false_positive_rate(privileged=False)
-errors_df.at[`FNR&#39;, `female&#39;] =
-    clf_metric.false_negative_rate(privileged=False)
-errors_df.at[`FDR&#39;, `female&#39;] =
-    clf_metric.false_discovery_rate(privileged=False)
-errors_df.at[`FOR&#39;, `female&#39;] =
-    clf_metric.false_omission_rate(privileged=False)
-
-# Error rates for the privileged group
-errors_df.at[`ERR&#39;, `male&#39;] = clf_metric.error_rate(privileged=True)
-errors_df.at[`FPR&#39;, `male&#39;] =
-    clf_metric.false_positive_rate(privileged=True)
-errors_df.at[`FNR&#39;, `male&#39;] =
-    clf_metric.false_negative_rate(privileged=True)
-errors_df.at[`FDR&#39;, `male&#39;] =
-    clf_metric.false_discovery_rate(privileged=True)
-errors_df.at[`FOR&#39;, `male&#39;] =
-    clf_metric.false_omission_rate(privileged=True)
-
-# Differences in error rates
-errors_df.at[`ERR&#39;, `difference&#39;] = clf_metric.error_rate_difference()
-errors_df.at[`FPR&#39;, `difference&#39;] =
-    clf_metric.false_positive_rate_difference()
-errors_df.at[`FNR&#39;, `difference&#39;] =
-    clf_metric.false_negative_rate_difference()
-errors_df.at[`FDR&#39;, `difference&#39;] =
-    clf_metric.false_discovery_rate_difference()
-errors_df.at[`FOR&#39;, `difference&#39;] =
-    clf_metric.false_omission_rate_difference()
-
-# Ratios of error rates
-errors_df.at[`ERR&#39;, `ratio&#39;] = clf_metric.error_rate_ratio()
-errors_df.at[`FPR&#39;, `ratio&#39;] = clf_metric.false_positive_rate_ratio()
-errors_df.at[`FNR&#39;, `ratio&#39;] = clf_metric.false_negative_rate_ratio()
-errors_df.at[`FDR&#39;, `ratio&#39;] = clf_metric.false_discovery_rate_ratio()
-errors_df.at[`FOR&#39;, `ratio&#39;] = clf_metric.false_omission_rate_ratio()
-
-display(errors_df)</code></pre>
-</div>
-<p>The DataFrame <code>error_df</code> is shown in Table <a href="#tbl:app_BalancedErrorMetrics" data-reference-type="ref" data-reference="tbl:app_BalancedErrorMetrics">A.2</a>.</p>
-<div id="tbl:app_BalancedErrorMetrics">
 <table>
-<caption>Table A.2: Error metrics for the Statlog (German Credit Data) Data Set.</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Error metric<sup>a</sup></th>
-<th style="text-align: right;">Female</th>
-<th style="text-align: right;">Male</th>
-<th style="text-align: right;">Difference</th>
-<th style="text-align: right;">Ratio</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">ERR</td>
-<td style="text-align: right;">0.246</td>
-<td style="text-align: right;">0.180</td>
-<td style="text-align: right;">0.066</td>
-<td style="text-align: right;">1.37</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">FPR</td>
-<td style="text-align: right;">0.458</td>
-<td style="text-align: right;">0.472</td>
-<td style="text-align: right;">-0.014</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">FNR</td>
-<td style="text-align: right;">0.108</td>
-<td style="text-align: right;">0.078</td>
-<td style="text-align: right;">0.030</td>
-<td style="text-align: right;">1.39</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">FDR</td>
-<td style="text-align: right;">0.250</td>
-<td style="text-align: right;">0.152</td>
-<td style="text-align: right;">0.098</td>
-<td style="text-align: right;">1.65</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">FOR</td>
-<td style="text-align: right;">0.235</td>
-<td style="text-align: right;">0.296</td>
-<td style="text-align: right;">-0.061</td>
-<td style="text-align: right;">0.79</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tablenotes">
-<p><sup>a</sup>We abbreviate error rate (ERR), false positive rate (FPR), false negative rate (FNR), false discovery rate (FDR) and false omission rate (FOR). See appendix <a href="#app_Metrics" data-reference-type="ref" data-reference="app_Metrics">B</a> for detailed descriptions of confusion matrix metrics.</p>
-</div>
-<p>This time we just look at the metrics for the model trained on the training set and calculated on the test set. We note that the overall error rate is 37% higher for female applicants. The false negative rate is 39% higher for female applicants, that is for female applicants we more often incorrectly predict that they represent bad credit risks when they are in fact good credit risks. We also note that the false discovery rate is 65% higher for female applicants which means that when we do predict women to be credit worthy they are more often not. The false omission rate is 21% lower for female applicants which means we are more often correct when we predict that they are not credit worthy. Our findings are not surprising given the difference in prevalence of credit worthy male and female applicants between our training and test sets shown in Table <a href="#tbl:app_IndependenceMetrics" data-reference-type="ref" data-reference="tbl:app_IndependenceMetrics">A.1</a>.</p>
-<p>Recall that when we compared fairness metrics under the independence criterion, it appeared that our model was reducing the level of bias in the data. Note that comparing balanced error metrics (in addition to independence metrics) gives us a richer understanding of the behaviour of our model in relation to protected groups.</p>
-</section>
-</section>
-<section id="app_AIF360_IF" class="level2" data-number="6.2">
-<h2 data-number="6.2"><span class="header-section-number">A.2</span> Individual Fairness</h2>
-<section id="consistency" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1"><span class="header-section-number">A.2.1</span> Consistency</h3>
-<div class="lookbox">
-<p><strong>Exercise: Consistency score</strong></p>
-<p>Use AIF360 to calculate consistency for the Statlog (German Credit) data and your model from chapter 3 which classified loan applicants as presenting good or bad credit risks. See section 7 of the jupyter notebook <a href="https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb"><code>mbml_german.ipynb</code></a></p>
-</div>
-<p>The consistency metric in AIF360 uses Euclidean distance by default, but does allow the user to specify their own distance metric.</p>
-</section>
-</section>
-<section id="app_AIF360_II" class="level2" data-number="6.3">
-<h2 data-number="6.3"><span class="header-section-number">A.3</span> Inequality Indices</h2>
-<p>Now that we have some understanding of how inequality indices behave, we return to the German credit dataset. Code listing A.4 shows how to calculate the generalised entropy index with AIF360 for the benefit function in Table <a href="#tbl:app_GEI-bfs" data-reference-type="ref" data-reference="tbl:app_GEI-bfs">A.3</a> corresponding to equal false positive rates.</p>
-<div id="lst:AIF360gei" class="listing">
-<p>Listing A.4: Calculating the generalised entropy index with AIF360</p>
-<pre><code># Import the necessary classes
-from aif360.datasets import BinaryLabelDataset
-from aif360.metrics import BinaryLabelDatasetMetric
-from aif360.metrics import ClassificationMetric
-from sklearn.ensemble import GradientBoostingClassifier
-
-# Define the target, sensitive features and advantaged and disadvantaged groups
-label_names = [`goodcredit&#39;]
-protected_attribute_names = [`male&#39;]
-privileged_groups = [{`male&#39;:1}]
-unprivileged_groups = [{`male&#39;:0}]
-
-# Define our model
-clf = GradientBoostingClassifier(max_depth=7, max_features=`auto&#39;,
-    min_samples_leaf=20)
-
-# Fit the model to the training data
-clf.fit(X_train, y_train)
-
-# Create a DataFrame with the features and model predicted target
-model_df = pd.concat([X_test, pd.Series(clf.predict(X_test),
-    name=`goodcredit&#39;, index=X_test.index)], axis=1)
-                                
-# Create an instance of BinaryLabelDataset for the data
-data_ds = BinaryLabelDataset(df=pd.concat([X_test, y_test],
-    axis=1), label_names=label_names,
-    protected_attribute_names=protected_attribute_names)
-
-# Create an instance of BinaryLabelDatasetMetric for the data
-data_metric = BinaryLabelDatasetMetric(data_ds,
-    privileged_groups=privileged_groups,
-    unprivileged_groups=unprivileged_groups)
-
-# Create an instance of BinaryLabelDataset for the model
-model_ds = BinaryLabelDataset(df=model_df,
-    label_names=label_names,
-    protected_attribute_names=protected_attribute_names)
-
-# Create an instance of BinaryLabelDatasetMetric for the model
-model_metric = BinaryLabelDatasetMetric(model_ds,
-    privileged_groups=privileged_groups,
-    unprivileged_groups=unprivileged_groups)
-
-# Create an instance of ClassificationMetric
-clf_metric = ClassificationMetric(data_ds, model_ds,
-    privileged_groups=privileged_groups,
-    unprivileged_groups=unprivileged_groups)
-
-# Define the benefit function
-FPR_bf = {`TN&#39;:1, `FP&#39;:0} # equal false positive rate benefit
-
-# Calculate the generalised entropy index for our chosen benefit function
-gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
-</div>
-<div class="lookbox">
-<p><strong>Exercise: Benefits array sizes</strong></p>
-<p>Calculate the size of the benefits arrays for each of the benefit functions corresponding to balanced error group fairness metrics in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>. Why are they not the the same size for all the benefit functions?</p>
-</div>
-<p>We compute the generalised entropy index and its between group component (with only 2 groups, male and females) for a range of benefit functions shown in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>. The results are displayed in Table <a href="#tbl:app_GEI-bfs" data-reference-type="ref" data-reference="tbl:app_GEI-bfs">A.3</a>.</p>
-<div id="tbl:app_GEI-bfs">
-<table>
-<caption>Table A.3: Generalised entropy index and the between group component with <span class="math inline">\(\alpha=2\)</span> computed for the German credit dataset with two groups (male and female) for a variety of benefit functions.</caption>
+<caption>Common expressions.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Type</th>
-<th style="text-align: left;">Benefit function<sup>a</sup></th>
-<th style="text-align: right;"><span class="math inline">\(I(\boldsymbol{b})\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(I_{\beta}(\boldsymbol{b})\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(I_{\beta}(\boldsymbol{b})/I(\boldsymbol{b})\)</span></th>
+<th style="text-align: center;">Expression</th>
+<th style="text-align: left;">Denotes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td rowspan="2" style="text-align: left;">Balanced outcomes</td>
-<td style="text-align: left;">Equal ACR (data)</td>
-<td style="text-align: right;">0.215</td>
-<td style="text-align: right;">3.87 e-03</td>
-<td style="text-align: right;">1.80 e-02</td>
+<td rowspan="6" style="text-align: left;">Symbols</td>
+<td style="text-align: center;"><span class="math inline">\(\forall\)</span></td>
+<td style="text-align: left;">For all</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Equal ACR (model)</td>
-<td style="text-align: right;">0.117</td>
-<td style="text-align: right;">2.60 e-03</td>
-<td style="text-align: right;">2.21 e-02</td>
+<td style="text-align: center;"><span class="math inline">\(|\)</span></td>
+<td style="text-align: left;">Such that</td>
 </tr>
 <tr class="odd">
-<td rowspan="5" style="text-align: left;">Balanced errors</td>
-<td style="text-align: left;">Equal ERR</td>
-<td style="text-align: right;">0.133</td>
-<td style="text-align: right;">8.81 e-05</td>
-<td style="text-align: right;">6.63 e-04</td>
+<td style="text-align: center;"><span class="math inline">\(\in\)</span></td>
+<td style="text-align: left;">Is a member of</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Equal FPR</td>
-<td style="text-align: right;">0.571</td>
-<td style="text-align: right;">2.87 e-02</td>
-<td style="text-align: right;">5.02 e-02</td>
+<td style="text-align: center;"><span class="math inline">\(\Rightarrow\)</span></td>
+<td style="text-align: left;">Implies</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Equal FNR</td>
-<td style="text-align: right;">0.038</td>
-<td style="text-align: right;">7.88 e-06</td>
-<td style="text-align: right;">2.05 e-04</td>
+<td style="text-align: center;"><span class="math inline">\(\Leftrightarrow\)</span></td>
+<td style="text-align: left;">If and only if</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Equal FDR</td>
-<td style="text-align: right;">0.123</td>
-<td style="text-align: right;">8.02 e-05</td>
-<td style="text-align: right;">6.52 e-04</td>
+<td style="text-align: center;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: left;">Tends to</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Equal FOR</td>
-<td style="text-align: right;">0.179</td>
-<td style="text-align: right;">1.01 e-02</td>
-<td style="text-align: right;">5.67 e-02</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"><span class="math inline">\(x\rightarrow a^{\pm}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(x\)</span> tends to <span class="math inline">\(a\)</span> from above (+) or below (-)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Balanced benefits</td>
-<td style="text-align: left;">Unified approach</td>
-<td style="text-align: right;">0.080</td>
-<td style="text-align: right;">4.13 e-06</td>
-<td style="text-align: right;">5.15 e-05</td>
+<td style="text-align: left;">Brackets</td>
+<td style="text-align: center;"><span class="math inline">\(x \in [a,b)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(a\leq x&lt;b\)</span> (inclusive and exclusive parenthesis)</td>
+</tr>
+<tr class="odd">
+<td rowspan="2" style="text-align: left;">Sets</td>
+<td style="text-align: center;"><span class="math inline">\(\cup\)</span></td>
+<td style="text-align: left;">Union, logical OR</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\cap\)</span></td>
+<td style="text-align: left;">Intersection, logical AND</td>
 </tr>
 </tbody>
 </table>
-</div>
+<table>
+<caption>Special functions.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Heaviside step function</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \phantom{\delta(x)&#39;=} H(x) = \left\{
+\begin{array}{rl}
+1 &amp; \textrm{if} \quad x &gt; 0 \\
+0 &amp; \textrm{otherwise}
+\end{array}
+\right.\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Delta function</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \delta(x) = H&#39;(x) = \left\{
+\begin{array}{cl}
+\infty &amp; \textrm{if} \quad x=0 \\
+0 &amp; \textrm{otherwise}
+\end{array}
+\right.\)</span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Data, model and metrics: notation and conventions.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Type</th>
+<th style="text-align: center;">Expression</th>
+<th style="text-align: left;">Denotes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2" style="text-align: left;">Data size</td>
+<td style="text-align: center;"><span class="math inline">\(n\)</span></td>
+<td style="text-align: left;">Number of data points / individuals</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(m\)</span></td>
+<td style="text-align: left;">Number of features (predictive model input size)</td>
+</tr>
+<tr class="odd">
+<td rowspan="4" style="text-align: left;">Random variables</td>
+<td style="text-align: center;"><span class="math inline">\(\boldsymbol{X}\)</span> <span class="math inline">\(\in\mathcal{X}\)</span></td>
+<td style="text-align: left;">Features: <span class="math inline">\(\boldsymbol{X}\)</span> <span class="math inline">\(=(X_1,...,X_m)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\boldsymbol{Z}\)</span> <span class="math inline">\(\in\mathcal{Z}\)</span></td>
+<td style="text-align: left;">Sensitive features: gender, race, etc.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(Y\in\mathcal{Y}\)</span></td>
+<td style="text-align: left;">Target</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\hat{Y}=f(\boldsymbol{X})\)</span></td>
+<td style="text-align: left;">Model predictions <span class="math inline">\(\hat{y}\)</span> are a function <span class="math inline">\(f\)</span> of the features <span class="math inline">\(\boldsymbol{x}\)</span></td>
+</tr>
+<tr class="odd">
+<td rowspan="5" style="text-align: left;">Data</td>
+<td style="text-align: center;"><span class="math inline">\(\boldsymbol{X}\)</span>, <span class="math inline">\(\boldsymbol{Z}\)</span>, <span class="math inline">\(\boldsymbol{y}\)</span></td>
+<td style="text-align: left;">Data for all <span class="math inline">\(n\)</span> individuals</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\boldsymbol{x}_i\)</span>, <span class="math inline">\(\boldsymbol{z}_i\)</span>, <span class="math inline">\(y_i\)</span></td>
+<td style="text-align: left;">Data for individual <span class="math inline">\(i\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x_{ij}\)</span>, <span class="math inline">\(z_{ij}\)</span></td>
+<td style="text-align: left;">The element of matrix <span class="math inline">\(\boldsymbol{X}\)</span> at row and column indices <span class="math inline">\(i, j\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(p(\boldsymbol{x})\)</span></td>
+<td style="text-align: left;">Regression</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(H(p(\boldsymbol{x})-\tau)\)</span></td>
+<td style="text-align: left;">Deterministic binary classification</td>
+</tr>
+<tr class="even">
+<td rowspan="2" style="text-align: left;">Special values</td>
+<td style="text-align: center;"><span class="math inline">\(Y = y_{\pm}\)</span></td>
+<td style="text-align: left;">Advantageous (+) or disadvantageous (-) outcome</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(Z = z_{\pm}\)</span></td>
+<td style="text-align: left;">Privileged / advantaged (+) or disadvantaged (-) class</td>
+</tr>
+<tr class="even">
+<td rowspan="2" style="text-align: left;">Metrics</td>
+<td style="text-align: center;"><span class="math inline">\(d\)</span></td>
+<td style="text-align: left;">Difference</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(r\)</span></td>
+<td style="text-align: left;">Rate / ratio</td>
+</tr>
+<tr class="even">
+<td rowspan="4" style="text-align: left;">Probability</td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{P}(A)\)</span></td>
+<td style="text-align: left;">Probability of event <span class="math inline">\(A\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(f_X(x)\)</span></td>
+<td style="text-align: left;">Probability density function for the random variable <span class="math inline">\(X\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Discrete <span class="math inline">\(X\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mathbb{P}(x)=\mathbb{P}(X=x)=f_{X}(x)\)</span><sup>a</sup></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Continuous <span class="math inline">\(X\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mathbb{P}(a\leq X&lt;b)=\int_a^b f_X(x) \, \mathrm{d}x\)</span></td>
+</tr>
+<tr class="even">
+<td rowspan="3" style="text-align: left;">Expectation</td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{E}[X)\)</span></td>
+<td style="text-align: left;">Expected value of random variable <span class="math inline">\(X\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\mathbb{E}[g(X)]\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \sum_{x\in\mathcal{X}} g(x)f_X(x)
+= \int_{x\in\mathcal{X}} g(x)f_X(x) \, \mathrm{d}x\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\mathbb{E}_X[g(X,Y)]\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \sum_{x\in\mathcal{X}} g(x,y)f_X(x)
+= \int_{x\in\mathcal{X}} g(x,y)f_X(x) \, \mathrm{d}x\)</span></td>
+</tr>
+</tbody>
+</table>
 <div class="tablenotes">
-<p><sup>a</sup>See Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a> for benefit function definitions.</p>
+<p><sup>a</sup>For readability, when it is clear from the context, we shall omit the random variable in the event descriptor, for example, <span class="math inline">\(\mathbb{P}(X=x)=\mathbb{P}(x)\)</span>.</p>
 </div>
-<p>Given the variability of the value of the index and its between group component, we also look at the between group component as a proportion of the index. We note that in all cases, the between group component is a relatively small part of the overall unfairness (5% or less) - this makes sense given that there are only two groups (males and females) and one thousand data points.</p>
-</section>
 </section>
 <section id="app_Metrics" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">B</span> Performance Metrics</h1>
@@ -4118,41 +3834,18 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <div id="tbl:app_ProbRules">
 <table>
 <caption>Table C.1: Rules of probability</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Rule</strong></th>
+<th style="text-align: left;"><strong>Continuous Variables</strong></th>
+<th style="text-align: left;"><strong>Discrete Variables</strong></th>
+</tr>
+</thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Rule</strong></td>
-<td style="text-align: left;"><strong>Continuous Variables</strong></td>
-<td style="text-align: left;"><strong>Discrete Variables</strong></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Sum rule</strong></td>
 <td style="text-align: left;"><span class="math inline">\(\displaystyle f_{X}(x) = \int_{y\in\mathcal{Y}} f_{X,Y}(x,y) \, \mathrm{d}y\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(\displaystyle \mathbb{P}(x) = \sum_{y\in\mathcal{Y}} \mathbb{P}(x,y)\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Product rule</strong></td>
@@ -4160,29 +3853,9 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <td style="text-align: left;"><span class="math inline">\(\mathbb{P}(x,y) = \mathbb{P}(y|x) \mathbb{P}(x)\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"><strong>Bayes’ rule</strong></td>
 <td style="text-align: left;"><span class="math inline">\(\displaystyle f_{Y|X}(x,y) = \frac{f_{X|Y}(x,y) f_Y(y)}{f_X(x)}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(\displaystyle \mathbb{P}(y|x) = \frac{\mathbb{P}(x|y)\mathbb{P}(y)}{\mathbb{P}(x)}\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Independence</strong></td>
@@ -4190,19 +3863,9 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><span class="math inline">\(X\bot Y\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(f_{Y|X}(x,y) = f_Y(y)\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(\mathbb{P}(y|x) = \mathbb{P}(y)\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">From the product rule</td>
@@ -4210,34 +3873,14 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <td style="text-align: left;"><span class="math inline">\(\mathbb{P}(x,y) = \mathbb{P}(x) \mathbb{P}(y)\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"><strong>Conditional Independence</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(X \bot Y | Z\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(f_{Y|X,Z}(x,y,z) = f_{Y|Z}(y,z)\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(\mathbb{P}(y|x,z) = \mathbb{P}(y|z)\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Using the product rule</td>
@@ -4245,19 +3888,9 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <td style="text-align: left;"><span class="math inline">\(\mathbb{P}(x,y|z) = \mathbb{P}(y|x,z)\mathbb{P}(x|z)\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Substituting for <span class="math inline">\(Y|X,Z\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(\phantom{f_{X,Y|Z}(x,y,z)} = f_{Y|Z}(y,z)f_{X|Z}(x,y)\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(\phantom{\mathbb{P}(x,y|z)} = \mathbb{P}(y|z)\mathbb{P}(x|z)\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -4267,7 +3900,7 @@ gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
 <h1 data-number="9"><span class="header-section-number">D</span> Proofs and Code</h1>
 <section id="sec_app_GFSolutions" class="level2" data-number="9.1">
 <h2 data-number="9.1"><span class="header-section-number">D.1</span> Group Fairness</h2>
-<section id="comparing-outcomes-3" class="level3" data-number="9.1.1">
+<section id="comparing-outcomes-2" class="level3" data-number="9.1.1">
 <h3 data-number="9.1.1"><span class="header-section-number">D.1.1</span> Comparing Outcomes</h3>
 <div class="lookbox">
 <div id="GF_NPI">
@@ -4320,7 +3953,7 @@ d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-)
 \end{aligned}\]</span> Here the maximal value occurs when <span class="math display">\[\mathbb{P}(y^-, z^-) = \mathbb{P}(y^-) \quad \text{and} \quad \mathbb{P}(y^-, z^+)=0;\]</span> that is, when all members of the disadvantaged class, receive the disadvantaged outcome. Thus, <span class="math display">\[d_{max} = \min\left\{ \frac{\mathbb{P}(y^+)}{\mathbb{P}(z^+)},
                       \frac{\mathbb{P}(y^-)}{\mathbb{P}(z^-)} \right\}.\]</span> Note that, <span class="math display">\[\frac{\mathbb{P}(y^+)}{\mathbb{P}(z^+)} = \frac{\mathbb{P}(y^-)}{\mathbb{P}(z^-)} \quad \Leftrightarrow \quad \mathbb{P}(y_+) = \mathbb{P}(z_+);\]</span> that is, when all members of the advantaged class, receive the advantaged outcome and all members of the disadvantaged class, receive the disadvantaged outcome.</p>
 </section>
-<section id="comparing-errors-3" class="level3" data-number="9.1.2">
+<section id="comparing-errors-2" class="level3" data-number="9.1.2">
 <h3 data-number="9.1.2"><span class="header-section-number">D.1.2</span> Comparing Errors</h3>
 <div class="lookbox">
 <div id="GF_Suff">
@@ -4462,7 +4095,7 @@ def model_prediction(model_score, t1=0.45, t2=0.55):
 </div>
 </section>
 <section id="sec_app_IISolutions" class="level2" data-number="9.3">
-<h2 data-number="9.3"><span class="header-section-number">D.3</span> Fairness as Utility</h2>
+<h2 data-number="9.3"><span class="header-section-number">D.3</span> Utility as Fairness</h2>
 <div class="lookbox">
 <p><strong><span class="math inline">\(I_2\)</span> and Relative Standard Deviation</strong></p>
 <p><span class="math display">\[\frac{\sigma}{\mu} = \sqrt{2I_2(\boldsymbol{b})}.\]</span></p>
@@ -4755,6 +4388,445 @@ g(\alpha) = \left\{
 &amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
 \end{array}\right\}&lt;0 \quad\forall\,\alpha&gt;0.\]</span></p>
 </section>
+</section>
+</section>
+<section id="app_AIF360" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">E</span> AIF360</h1>
+<ol>
+<li><p>In this book we will use Python in Jupyter notebooks from the <a href="https://www.anaconda.com//products/individual">Anaconda Python distribution platform</a>. If you don’t already have it download and install it.</p></li>
+<li><p>Create an environment named <code>mbml</code>. Using the command line interface (CLI):</p>
+<pre><code>\$ conda create --name mbml python=3.7</code></pre></li>
+<li><p>Activate your new environment:</p>
+<pre><code>$ conda activate mbml</code></pre></li>
+<li><p>This book is a work in progress. As part of analysing the metrics and methods it uses code that is not yet available with the library<span class="sidenote-wrapper"><label for="sn-10" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-10" class="margin-toggle"/><span class="sidenote">If you’re interested, here is the <a href="https://github.com/Trusted-AI/AIF360/pull/214">open pull request</a>.<br />
+<br />
+</span></span>. Once it is merged, you will just be able to just pip install the aif360 library. Until then you must clone this <a href="https://github.com/leenamurgai/AIF360">fork of AIF360</a>:</p>
+<pre><code>$ git clone https://github.com/leenamurgai/AIF360.git</code></pre></li>
+<li><p>Download the notebook <code>mbml_german.ipynb</code> from <a href="https://git.manning.com/agileauthor/murgai/-/blob/master/code/mbml_german.ipynb">Manning’s GitLab repository</a> and save it in the "AIF360/examples" folder.</p></li>
+<li><p>You should now be able to open and run the notebook from the CLI as you usually would:</p>
+<pre><code>$ jupyter notebook mbml_german.ipynb</code></pre></li>
+</ol>
+<section id="app_AIF360_GF" class="level2" data-number="10.1">
+<h2 data-number="10.1"><span class="header-section-number">E.1</span> Group Fairness</h2>
+<section id="comparing-outcomes-3" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1"><span class="header-section-number">E.1.1</span> Comparing Outcomes</h3>
+<p>Now that we have covered some measures of fairness, let’s dive into calculating them. In this book we are going to use IBM’s <a href="https://aif360.mybluemix.net/resources">AI Fairness 360 (AIF360)</a>. AIF360 is currently the most comprehensive open source library available for measuring and mitigating bias in machine learning models. The Python package includes an extensive set of metrics for datasets and models to test for biases, explanations for these metrics, and algorithms to mitigate bias in datasets and models many of which we will cover in this book. The system has been designed to be extensible, adopted software engineering best practices to maintain code quality, and is well <a href="https://aif360.readthedocs.io/en/latest/index.html">documented</a>. The package implements techniques from at-least eight published papers and includes over 71 bias detection metrics and nine bias mitigation algorithms. These techniques can all be called in a standard way, similar to scikit-learn’s fit/transform/predict paradigm.</p>
+<p>In this section we’re going to use AIF360 to calculate some of the metrics we’ve talked about in the previous section as a means to get started working with it. For calculating the metrics we’ve talked about so far, using AIF360 might seem to add unnecessary overhead as they are reasonably straightforward to code up directly once you have your data in a Pandas DataFrame. But remember, the library contains implementations of more complicated metrics and bias mitigations algorithms that we’ll cover later on in this book. Before we can use the library, we need to install it. Instructions are provided in Appendix <a href="#app_AIF360" data-reference-type="ref" data-reference="app_AIF360">E</a>.</p>
+<section id="statlog-german-credit-data-data-set" class="level4 unnumbered">
+<h4 class="unnumbered">Statlog (German Credit Data) Data Set</h4>
+<p>The Jupyter Notebook, <a href="https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb"><code>mbml_german.ipynb</code></a>, contains an example calculating some of the above fairness metrics on both a dataset and model output. It uses the <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">Statlog (German Credit Data) Data Set</a>, in which one thousand loan applicants are classified as representing ‘good’ or ‘bad’ credit risks based on features such as loan term, loan amount, age, gender, marital status and more.</p>
+<div class="lookbox">
+<p><strong>Exercise: Statlog (German Credit Data) Data Set</strong></p>
+<p>Sections 1-3 in the Jupyter Notebook, <a href="https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb"><code>mbml_german.ipynb</code></a>, load the data and perform some exploratory data analysis (EDA), looking at correlation heat maps (using a variety of different measures of association) and comparing distributions of the target for different values of the features. Open the notebook and run the code up to section four. You should be able to answer the following questions by working through the notebook.</p>
+<ol>
+<li><p>What proportion of the population is classified as male/female?</p></li>
+<li><p>What proportion of the population have good credit vs bad?</p></li>
+<li><p>How many continuous variables are there? What are they? Do any of them appear to be related? If so how?</p></li>
+<li><p>How many categorical variables are there? What are they? Do any of them appear to be related? If so how?</p></li>
+</ol>
+</div>
+</section>
+<section id="calculating-independence-metrics" class="level4 unnumbered">
+<h4 class="unnumbered">Calculating Independence Metrics</h4>
+<p>In order to calculate our metrics on the data using AIF360, we must have it in the correct format; that is, in a Pandas DataFrame (<code>data_df</code>) containing only numeric data types. In code listing E.1, we calculate the rate at which male and female applicants are classified as being good credit risks (<code>base_rate</code>) along with the difference (<code>mean_difference</code>) and the ratio (<code>disparate_impact</code>) of these rates.</p>
+<div id="lst:AIF360metric" class="listing">
+<p>Listing E.1: Calculating independence metrics for the data using AIF360</p>
+<pre><code># Create a DataFrame to store results in
+outcomes_df = pd.DataFrame(columns=[`female&#39;, `male&#39;,
+                                    `difference&#39;, `ratio&#39;],
+                           index=[`data&#39;, `model&#39;,
+                                  `train data&#39;, `train model&#39;,
+                                  `test data&#39;, `test model&#39;])
+
+# Define privileged and unprivileged groups
+privileged_groups = [{`sex_male&#39;:1}]
+unprivileged_groups = [{`sex_male&#39;:0}]
+
+# Create an instance of BinaryLabelDataset
+data_ds = BinaryLabelDataset(df = data_df,
+    label_names = [`goodcredit&#39;],
+    protected_attribute_names = [`sex&#39;])
+
+# Create an instance of BinaryLabelDatasetMetric
+data_metric = BinaryLabelDatasetMetric(data_ds,
+    privileged_groups = privileged_groups,
+    unprivileged_groups = unprivileged_groups)
+
+# Compute the metrics with data_metric and store them in outcomes_df
+outcomes_df.at[`data&#39;, `female&#39;] = data_metric.base_rate(privileged=0)
+outcomes_df.at[`data&#39;, `male&#39;] = data_metric.base_rate(privileged=1)
+outcomes_df.at[`data&#39;, `difference&#39;] = data_metric.mean_difference()
+outcomes_df.at[`data&#39;, `ratio&#39;] = data_metric.disparate_impact()</code></pre>
+</div>
+<p>In the notebook we look at these metrics on both the data and the model output for three different sets of the data (the full dataset, the train set and the test set) with two different models (one trained on the full dataset and another trained only on a subset of the data - the training set). In code listing E.1, we create a DataFrame to display the results in (<code>outcomes_df</code>) and populate the first row of it. First we define our privileged and unprivileged groups.</p>
+<div class="lookbox">
+<p><strong>Defining privileged and unprivileged groups</strong></p>
+<p>The format for these is a list of dictionaries. Each dictionary in the list defines a group, the key being a feature and the value being the value of the feature for members of the group. The key, value pairs in the dictionaries are joined with an intersection (AND operator) and the dictionaries in the list are joined with a union (OR operator). So for example,</p>
+<pre><code>[{`sex&#39;: 1, `age&gt;=30&#39;: 1}, {`sex&#39;: 0}]</code></pre>
+<p>corresponds to individuals such that,</p>
+<pre><code>(data_df[`sex&#39;]==1 AND data_df[`age&gt;=30&#39;]==1)  OR (data_df[`sex&#39;]==0)</code></pre>
+</div>
+<p>Next we create a <a href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.datasets.BinaryLabelDataset.html#aif360.datasets.BinaryLabelDataset"><code>BinaryLabelDataset</code></a> object (<code>data_ds</code>) which in turn is used to create a <a href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.BinaryLabelDatasetMetric.html#aif360.metrics.BinaryLabelDatasetMetric"><code>BinaryLabelDatasetMetric</code></a> object (<code>data_metric</code>). We then calculate the fairness metrics from <code>data_metric</code> and store the results in <code>outcomes_df</code>.</p>
+<div class="lookbox">
+<p><strong>Exercise: Multiple sensitive features</strong></p>
+<p>Calculate independence metrics (base rates, difference and ratio) for the full dataset in the case where the privileged group is males age 30 and over, and the unprivileged group is females under the age of 30. Do this two ways, using AIF360 and using Pandas. Compare your results to make sure they match.</p>
+</div>
+<p>Once we have trained a model and made predictions, similar code can be written to calculate independence metrics on the model predictions for the full dataset. Code listing E.2 shows how we do this using the predictions from the trained model <code>clf</code>.</p>
+<div id="lst:AIF360metric1" class="listing">
+<p>Listing E.2: Calculating independence metrics for the model using AIF360</p>
+<pre><code># Create a DataFrame with the features and model predicted target
+model_df = pd.concat([X, pd.Series(clf.predict(X), name=`goodcredit&#39;)],
+	axis=1)
+
+# Create an instance of BinaryLabelDataset
+model_ds = BinaryLabelDataset(df = model_df,
+    label_names = [`goodcredit&#39;],
+    protected_attribute_names = [`sex_male&#39;])
+
+# Create an instance of BinaryLabelDatasetMetric
+model_metric = BinaryLabelDatasetMetric(model_ds,
+    privileged_groups = privileged_groups,
+    unprivileged_groups = unprivileged_groups)
+
+# Compute the metrics with model_metric and store them in outcomes_df
+outcomes_df.at[`model&#39;, `female&#39;] = model_metric.base_rate(privileged=0)
+outcomes_df.at[`model&#39;, `male&#39;] = model_metric.base_rate(privileged=1)
+outcomes_df.at[`model&#39;, `difference&#39;] = model_metric.mean_difference()
+outcomes_df.at[`model&#39;, `ratio&#39;] = model_metric.disparate_impact()</code></pre>
+</div>
+<p>Table <a href="#tbl:app_IndependenceMetrics" data-reference-type="ref" data-reference="tbl:app_IndependenceMetrics">E.1</a> shows the results of the calculations stored in <code>outcomes_df</code> from the notebook. From Table <a href="#tbl:app_IndependenceMetrics" data-reference-type="ref" data-reference="tbl:app_IndependenceMetrics">E.1</a> we note some variation in the rates at which men and women are predicted to present good credit risks for the model versus the data. In particular, the model acceptance rates are higher for both male and female applicants than those observed in the data. There are particularly big differences when we compare results for the test data versus the model on the test data (test model), which is not surprising since the mean difference and impact ratio for the train data and test data are markedly different. In addition we are aware that our model is overfitting. Without intervention, our model appears to be reducing the bias present in the data for the test set (as measured by our independence metrics).</p>
+<div id="tbl:app_IndependenceMetrics">
+<table>
+<caption>Table E.1: Acceptance rates for the Statlog (German Credit) Data Set.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Female</th>
+<th style="text-align: right;">Male</th>
+<th style="text-align: right;">Difference</th>
+<th style="text-align: right;">Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Data</td>
+<td style="text-align: right;">0.648</td>
+<td style="text-align: right;">0.723</td>
+<td style="text-align: right;">-0.0748</td>
+<td style="text-align: right;">0.897</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Model<sup>a</sup></td>
+<td style="text-align: right;">0.674</td>
+<td style="text-align: right;">0.749</td>
+<td style="text-align: right;">-0.0751</td>
+<td style="text-align: right;">0.900</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Train data</td>
+<td style="text-align: right;">0.659</td>
+<td style="text-align: right;">0.719</td>
+<td style="text-align: right;">-0.0601</td>
+<td style="text-align: right;">0.916</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Train model<sup>b</sup></td>
+<td style="text-align: right;">0.667</td>
+<td style="text-align: right;">0.731</td>
+<td style="text-align: right;">-0.0647</td>
+<td style="text-align: right;">0.911</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Test data</td>
+<td style="text-align: right;">0.607</td>
+<td style="text-align: right;">0.741</td>
+<td style="text-align: right;">-0.1345</td>
+<td style="text-align: right;">0.819</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Test model<sup>b</sup></td>
+<td style="text-align: right;">0.705</td>
+<td style="text-align: right;">0.820</td>
+<td style="text-align: right;">-0.1152</td>
+<td style="text-align: right;">0.860</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tablenotes">
+<p><sup>a</sup>Model trained on the full dataset.</p>
+<p><sup>b</sup>Model trained on the train dataset only.</p>
+</div>
+<div class="lookbox">
+<p><strong>Exercise: Twin test</strong></p>
+<p>Implement the twin test (described in section <a href="#sec_CondIndep" data-reference-type="ref" data-reference="sec_CondIndep">3.1.2</a>) for the model trained on the full dataset. Calculate the causal mean difference between male and female applicants using 2000 data points (1000 male and 1000 female applicants) i.e. the full dataset together with the ‘twin’ of the opposite gender.</p>
+</div>
+</section>
+</section>
+<section id="comparing-errors-3" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2"><span class="header-section-number">E.1.2</span> Comparing Errors</h3>
+<p>In order to calculate balanced error metrics with AIF360, we need to create an object of type <a href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.ClassificationMetric.html"><code>ClassificationMetric</code></a>. Returning to our example working with the German Credit Data, code listing E.3 calculates a series of balanced error metrics and populates the DataFrame <code>errors_df</code> with them. Note that <code>data_ds</code> and <code>model_ds</code> were created, and <code>privileged_groups</code> and <code>unprivileged_groups</code> were defined in earlier code listings.</p>
+<div id="lst:AIF360metric2" class="listing">
+<p>Listing E.3: Calculating balanced error metrics with AIF360</p>
+<pre><code># Create a DataFrame to store results in
+errors_df = pd.DataFrame(columns=[`female&#39;, `male&#39;,
+                                  `difference&#39;, `ratio&#39;],
+                         index=[`ERR&#39;, `FPR&#39;, `FNR&#39;, `FDR&#39;, `FOR&#39;])
+
+# Create an instance of ClassificationMetric
+clf_metric = ClassificationMetric(data_ds,
+    model_ds,
+    privileged_groups = privileged_groups,
+    unprivileged_groups = unprivileged_groups)
+
+# Compute the metrics with clf_metric and store them in errors_df
+# Error rates for the unprivileged group
+errors_df.at[`ERR&#39;, `female&#39;] = clf_metric.error_rate(privileged=False)
+errors_df.at[`FPR&#39;, `female&#39;] =
+    clf_metric.false_positive_rate(privileged=False)
+errors_df.at[`FNR&#39;, `female&#39;] =
+    clf_metric.false_negative_rate(privileged=False)
+errors_df.at[`FDR&#39;, `female&#39;] =
+    clf_metric.false_discovery_rate(privileged=False)
+errors_df.at[`FOR&#39;, `female&#39;] =
+    clf_metric.false_omission_rate(privileged=False)
+
+# Error rates for the privileged group
+errors_df.at[`ERR&#39;, `male&#39;] = clf_metric.error_rate(privileged=True)
+errors_df.at[`FPR&#39;, `male&#39;] =
+    clf_metric.false_positive_rate(privileged=True)
+errors_df.at[`FNR&#39;, `male&#39;] =
+    clf_metric.false_negative_rate(privileged=True)
+errors_df.at[`FDR&#39;, `male&#39;] =
+    clf_metric.false_discovery_rate(privileged=True)
+errors_df.at[`FOR&#39;, `male&#39;] =
+    clf_metric.false_omission_rate(privileged=True)
+
+# Differences in error rates
+errors_df.at[`ERR&#39;, `difference&#39;] = clf_metric.error_rate_difference()
+errors_df.at[`FPR&#39;, `difference&#39;] =
+    clf_metric.false_positive_rate_difference()
+errors_df.at[`FNR&#39;, `difference&#39;] =
+    clf_metric.false_negative_rate_difference()
+errors_df.at[`FDR&#39;, `difference&#39;] =
+    clf_metric.false_discovery_rate_difference()
+errors_df.at[`FOR&#39;, `difference&#39;] =
+    clf_metric.false_omission_rate_difference()
+
+# Ratios of error rates
+errors_df.at[`ERR&#39;, `ratio&#39;] = clf_metric.error_rate_ratio()
+errors_df.at[`FPR&#39;, `ratio&#39;] = clf_metric.false_positive_rate_ratio()
+errors_df.at[`FNR&#39;, `ratio&#39;] = clf_metric.false_negative_rate_ratio()
+errors_df.at[`FDR&#39;, `ratio&#39;] = clf_metric.false_discovery_rate_ratio()
+errors_df.at[`FOR&#39;, `ratio&#39;] = clf_metric.false_omission_rate_ratio()
+
+display(errors_df)</code></pre>
+</div>
+<p>The DataFrame <code>error_df</code> is shown in Table <a href="#tbl:app_BalancedErrorMetrics" data-reference-type="ref" data-reference="tbl:app_BalancedErrorMetrics">E.2</a>.</p>
+<div id="tbl:app_BalancedErrorMetrics">
+<table>
+<caption>Table E.2: Error metrics for the Statlog (German Credit Data) Data Set.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Error metric<sup>a</sup></th>
+<th style="text-align: right;">Female</th>
+<th style="text-align: right;">Male</th>
+<th style="text-align: right;">Difference</th>
+<th style="text-align: right;">Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ERR</td>
+<td style="text-align: right;">0.246</td>
+<td style="text-align: right;">0.180</td>
+<td style="text-align: right;">0.066</td>
+<td style="text-align: right;">1.37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FPR</td>
+<td style="text-align: right;">0.458</td>
+<td style="text-align: right;">0.472</td>
+<td style="text-align: right;">-0.014</td>
+<td style="text-align: right;">0.97</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FNR</td>
+<td style="text-align: right;">0.108</td>
+<td style="text-align: right;">0.078</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">1.39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FDR</td>
+<td style="text-align: right;">0.250</td>
+<td style="text-align: right;">0.152</td>
+<td style="text-align: right;">0.098</td>
+<td style="text-align: right;">1.65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FOR</td>
+<td style="text-align: right;">0.235</td>
+<td style="text-align: right;">0.296</td>
+<td style="text-align: right;">-0.061</td>
+<td style="text-align: right;">0.79</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tablenotes">
+<p><sup>a</sup>We abbreviate error rate (ERR), false positive rate (FPR), false negative rate (FNR), false discovery rate (FDR) and false omission rate (FOR). See appendix <a href="#app_Metrics" data-reference-type="ref" data-reference="app_Metrics">B</a> for detailed descriptions of confusion matrix metrics.</p>
+</div>
+<p>This time we just look at the metrics for the model trained on the training set and calculated on the test set. We note that the overall error rate is 37% higher for female applicants. The false negative rate is 39% higher for female applicants, that is for female applicants we more often incorrectly predict that they represent bad credit risks when they are in fact good credit risks. We also note that the false discovery rate is 65% higher for female applicants which means that when we do predict women to be credit worthy they are more often not. The false omission rate is 21% lower for female applicants which means we are more often correct when we predict that they are not credit worthy. Our findings are not surprising given the difference in prevalence of credit worthy male and female applicants between our training and test sets shown in Table <a href="#tbl:app_IndependenceMetrics" data-reference-type="ref" data-reference="tbl:app_IndependenceMetrics">E.1</a>.</p>
+<p>Recall that when we compared fairness metrics under the independence criterion, it appeared that our model was reducing the level of bias in the data. Note that comparing balanced error metrics (in addition to independence metrics) gives us a richer understanding of the behaviour of our model in relation to protected groups.</p>
+</section>
+</section>
+<section id="app_AIF360_IF" class="level2" data-number="10.2">
+<h2 data-number="10.2"><span class="header-section-number">E.2</span> Individual Fairness</h2>
+<section id="consistency" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1"><span class="header-section-number">E.2.1</span> Consistency</h3>
+<div class="lookbox">
+<p><strong>Exercise: Consistency score</strong></p>
+<p>Use AIF360 to calculate consistency for the Statlog (German Credit) data and your model from chapter 3 which classified loan applicants as presenting good or bad credit risks. See section 7 of the jupyter notebook <a href="https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb"><code>mbml_german.ipynb</code></a></p>
+</div>
+<p>The consistency metric in AIF360 uses Euclidean distance by default, but does allow the user to specify their own distance metric.</p>
+</section>
+</section>
+<section id="app_AIF360_II" class="level2" data-number="10.3">
+<h2 data-number="10.3"><span class="header-section-number">E.3</span> Utility as Fairness</h2>
+<p>Now that we have some understanding of how inequality indices behave, we return to the German credit dataset. Code listing E.4 shows how to calculate the generalised entropy index with AIF360 for the benefit function in Table <a href="#tbl:app_GEI-bfs" data-reference-type="ref" data-reference="tbl:app_GEI-bfs">E.3</a> corresponding to equal false positive rates.</p>
+<div id="lst:AIF360gei" class="listing">
+<p>Listing E.4: Calculating the generalised entropy index with AIF360</p>
+<pre><code># Import the necessary classes
+from aif360.datasets import BinaryLabelDataset
+from aif360.metrics import BinaryLabelDatasetMetric
+from aif360.metrics import ClassificationMetric
+from sklearn.ensemble import GradientBoostingClassifier
+
+# Define the target, sensitive features and advantaged and disadvantaged groups
+label_names = [`goodcredit&#39;]
+protected_attribute_names = [`male&#39;]
+privileged_groups = [{`male&#39;:1}]
+unprivileged_groups = [{`male&#39;:0}]
+
+# Define our model
+clf = GradientBoostingClassifier(max_depth=7, max_features=`auto&#39;,
+    min_samples_leaf=20)
+
+# Fit the model to the training data
+clf.fit(X_train, y_train)
+
+# Create a DataFrame with the features and model predicted target
+model_df = pd.concat([X_test, pd.Series(clf.predict(X_test),
+    name=`goodcredit&#39;, index=X_test.index)], axis=1)
+                                
+# Create an instance of BinaryLabelDataset for the data
+data_ds = BinaryLabelDataset(df=pd.concat([X_test, y_test],
+    axis=1), label_names=label_names,
+    protected_attribute_names=protected_attribute_names)
+
+# Create an instance of BinaryLabelDatasetMetric for the data
+data_metric = BinaryLabelDatasetMetric(data_ds,
+    privileged_groups=privileged_groups,
+    unprivileged_groups=unprivileged_groups)
+
+# Create an instance of BinaryLabelDataset for the model
+model_ds = BinaryLabelDataset(df=model_df,
+    label_names=label_names,
+    protected_attribute_names=protected_attribute_names)
+
+# Create an instance of BinaryLabelDatasetMetric for the model
+model_metric = BinaryLabelDatasetMetric(model_ds,
+    privileged_groups=privileged_groups,
+    unprivileged_groups=unprivileged_groups)
+
+# Create an instance of ClassificationMetric
+clf_metric = ClassificationMetric(data_ds, model_ds,
+    privileged_groups=privileged_groups,
+    unprivileged_groups=unprivileged_groups)
+
+# Define the benefit function
+FPR_bf = {`TN&#39;:1, `FP&#39;:0} # equal false positive rate benefit
+
+# Calculate the generalised entropy index for our chosen benefit function
+gei = clf_metric.generalized_entropy_index(benefit_function=FPR_bf)</code></pre>
+</div>
+<div class="lookbox">
+<p><strong>Exercise: Benefits array sizes</strong></p>
+<p>Calculate the size of the benefits arrays for each of the benefit functions corresponding to balanced error group fairness metrics in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>. Why are they not the the same size for all the benefit functions?</p>
+</div>
+<p>We compute the generalised entropy index and its between group component (with only 2 groups, male and females) for a range of benefit functions shown in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>. The results are displayed in Table <a href="#tbl:app_GEI-bfs" data-reference-type="ref" data-reference="tbl:app_GEI-bfs">E.3</a>.</p>
+<div id="tbl:app_GEI-bfs">
+<table>
+<caption>Table E.3: Generalised entropy index and the between group component with <span class="math inline">\(\alpha=2\)</span> computed for the German credit dataset with two groups (male and female) for a variety of benefit functions.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Benefit function<sup>a</sup></th>
+<th style="text-align: right;"><span class="math inline">\(I(\boldsymbol{b})\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(I_{\beta}(\boldsymbol{b})\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(I_{\beta}(\boldsymbol{b})/I(\boldsymbol{b})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2" style="text-align: left;">Balanced outcomes</td>
+<td style="text-align: left;">Equal ACR (data)</td>
+<td style="text-align: right;">0.215</td>
+<td style="text-align: right;">3.87 e-03</td>
+<td style="text-align: right;">1.80 e-02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Equal ACR (model)</td>
+<td style="text-align: right;">0.117</td>
+<td style="text-align: right;">2.60 e-03</td>
+<td style="text-align: right;">2.21 e-02</td>
+</tr>
+<tr class="odd">
+<td rowspan="5" style="text-align: left;">Balanced errors</td>
+<td style="text-align: left;">Equal ERR</td>
+<td style="text-align: right;">0.133</td>
+<td style="text-align: right;">8.81 e-05</td>
+<td style="text-align: right;">6.63 e-04</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Equal FPR</td>
+<td style="text-align: right;">0.571</td>
+<td style="text-align: right;">2.87 e-02</td>
+<td style="text-align: right;">5.02 e-02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Equal FNR</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">7.88 e-06</td>
+<td style="text-align: right;">2.05 e-04</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Equal FDR</td>
+<td style="text-align: right;">0.123</td>
+<td style="text-align: right;">8.02 e-05</td>
+<td style="text-align: right;">6.52 e-04</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Equal FOR</td>
+<td style="text-align: right;">0.179</td>
+<td style="text-align: right;">1.01 e-02</td>
+<td style="text-align: right;">5.67 e-02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Balanced benefits</td>
+<td style="text-align: left;">Unified approach</td>
+<td style="text-align: right;">0.080</td>
+<td style="text-align: right;">4.13 e-06</td>
+<td style="text-align: right;">5.15 e-05</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tablenotes">
+<p><sup>a</sup>See Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a> for benefit function definitions.</p>
+</div>
+<p>Given the variability of the value of the index and its between group component, we also look at the between group component as a proportion of the index. We note that in all cases, the between group component is a relatively small part of the overall unfairness (5% or less) - this makes sense given that there are only two groups (males and females) and one thousand data points.</p>
 </section>
 </section>
 <section id="bibliography" class="level1 unnumbered">

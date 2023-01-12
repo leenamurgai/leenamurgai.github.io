@@ -14,12 +14,12 @@ fullwidthfigures:
   #- 02_EthicalDevelopment/figures/Fig_RatesDrugUseSaleRace.jpg
   - 02_EthicalDevelopment/figures/Fig_Workflow.png
   - 02_EthicalDevelopment/figures/Fig_Taxonomy.png
-  - 05_InequalityIndices/figures/Fig_GEI_bmin0_n10n50.png
-  - 05_InequalityIndices/figures/Fig_I_alpha_1-4_varlambda
-  - 05_InequalityIndices/figures/Fig_g_lambda_tilde_alpha.png
-  - 05_InequalityIndices/figures/Fig_I_lambda_50-95_varalpha.png
-  - 05_InequalityIndices/figures/Fig_h_plus_lambda_bar_alpha.png
-  - 05_InequalityIndices/figures/Fig_ccplot_varalpha.png
+  - 05_UtilityFairness/figures/Fig_GEI_bmin0_n10n50.png
+  - 05_UtilityFairness/figures/Fig_I_alpha_1-4_varlambda
+  - 05_UtilityFairness/figures/Fig_g_lambda_tilde_alpha.png
+  - 05_UtilityFairness/figures/Fig_I_lambda_50-95_varalpha.png
+  - 05_UtilityFairness/figures/Fig_h_plus_lambda_bar_alpha.png
+  - 05_UtilityFairness/figures/Fig_ccplot_varalpha.png
 
 marginfigures:
   - 04_IndividualFairness/figures/Fig_TriangleInequality.png
@@ -45,10 +45,11 @@ linebreak_lines:
 
 #######################################################################################
 appendix_lettermap:
-  AIF360: 'A'
+  Notation and Conventions: 'A'
   Performance Metrics: 'B'
   Rules of Probability: 'C'
   Proofs and Code: 'D'
+  AIF360: 'E'
 
 labels_pre_post:
 # Labels

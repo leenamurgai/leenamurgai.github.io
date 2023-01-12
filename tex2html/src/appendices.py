@@ -35,6 +35,7 @@ def letter_appendices(html_file_in, html_file_out, appendix_lettermap, labels_pr
     ref_start_str = '<a href="#'
     ref_end_str = '</a>'
 
+    #print('Test: ', appendix_lettermap)
     # Iterate over the lines in the html to get what we need to know what to replace
     for line in lines:
         for title in appendix_lettermap:
@@ -45,8 +46,8 @@ def letter_appendices(html_file_in, html_file_out, appendix_lettermap, labels_pr
                 n_apps_left -= 1
         find_linked_app_refs(line, ref_start_str, ref_end_str, app_label_prefixes, linked_app_refs)
     
-    # print(number2lettermap)
-    
+    # print('Test: ', number2lettermap)
+    # print('Test: ', n_apps_left)
     # Tell me if you don't find all the titles in appendix_lettermap
     if n_apps_left > 0:
         print("WARNING: Looks like we didn't find all the appendices - check appendix_lettermap keys")

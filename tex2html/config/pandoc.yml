@@ -30,7 +30,7 @@ css:
 
 # Note that these take files, not their contents:
 #include-before-body: []
-#include-after-body: [99_BackMatter/References.html]
+#include-after-body: [99_References/References.html]
 #include-in-header: [tex2html/css/includes.css]
 
 resource-path: ["tex2html/csl/" ]
@@ -67,7 +67,7 @@ filters:                      # Filters are run in the order specified.         
 # --------------------------- # ------------------------------------------------------- #
   
 # citeproc: true     # Built-in citation processing
-bibliography: 99_BackMatter/References.bib
+bibliography: 99_References/References.bib
 csl: ieee
 
 log-file: tex2html/log/log.json

@@ -101,7 +101,7 @@ def find_eqn_num(line, number_start_index):
             chap_num = num
             num = ''
             i+=1
-    print('Eqn ref in eqn: ', chap_num+'.'+num)
+    #print('Eqn ref in eqn: ', chap_num+'.'+num)
     return chap_num+'.'+num
 
 ####
