@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Dr Leena Murgai">
-  <meta name="dcterms.date" content="2023-01-11">
+  <meta name="dcterms.date" content="2023-01-13">
   <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
@@ -32,7 +32,7 @@
 <header>
 <h1 class="title">Mitigating Bias in Machine Learning</h1>
 <p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">Dr Leena Murgai</a></p>
-<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">11 January 2023</a></p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">13 January 2023</a></p>
 <p class="byline"><a href="https://raw.githubusercontent.com/leenamurgai/mitigatingbias.ml/main/profile/mbml_citation.bib" target="_blank" rel="noopener noreferrer">Cite this book</a></p>
 </header>
 <div class="TOC">
@@ -1571,13 +1571,13 @@ f_{\hat{Y},Z}(\hat{y},z) \log \frac{f_{\hat{Y},Z}(\hat{y},z)}
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
-r_{\text{npi}} = \frac{I(\hat{Y},Z)}{\sqrt{H(\hat{Y})H(Z)}},\]</span></td>
+r_{\text{npi}} = \frac{I(\hat{Y},Z)}{\sqrt{S(\hat{Y})S(Z)}},\]</span></td>
 <td style="text-align: right;">(3.2)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>where <span class="math inline">\(H\)</span> is the entropy,</p>
+<p>where <span class="math inline">\(S\)</span> is the entropy,</p>
 <div id="eq:entropyY">
 <table>
 <colgroup>
@@ -1587,7 +1587,7 @@ r_{\text{npi}} = \frac{I(\hat{Y},Z)}{\sqrt{H(\hat{Y})H(Z)}},\]</span></td>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
-H(Y) = -\int_{y \in \mathcal{Y}} f_Y(y) \log f_Y(y)\,\mathrm{d}y,\]</span></td>
+S(Y) = -\int_{y \in \mathcal{Y}} f_Y(y) \log f_Y(y)\,\mathrm{d}y,\]</span></td>
 <td style="text-align: right;">(3.3)</td>
 </tr>
 </tbody>
@@ -1603,14 +1603,14 @@ H(Y) = -\int_{y \in \mathcal{Y}} f_Y(y) \log f_Y(y)\,\mathrm{d}y,\]</span></td>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
-H(Z) = -\sum_{z \in \mathcal{Z}} \mathbb{P}(z) \log \mathbb{P}(z),\]</span></td>
+S(Z) = -\sum_{z \in \mathcal{Z}} \mathbb{P}(z) \log \mathbb{P}(z),\]</span></td>
 <td style="text-align: right;">(3.4)</td>
 </tr>
 </tbody>
 </table>
 </div>
 <p>In the above equation we assume a continuous target variable, for classification problems we can replace the integrals in equations (3.1) and (3.4) with summations. <a href="#GF_NPI">Implemention</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
-<p>A simple relaxation of independence requires only the mean predicted target variable (rather than the full distribution) to be equal for all values of the sensitive feature, that is, <span class="math display">\[\mathbb{E}(\hat{Y} | Z=a) = \mathbb{E}(\hat{Y} | Z=b).\]</span> We could measure the extent of the disparity by taking the ratio or the difference of the expectations; the latter is more commonly used. The <strong>mean difference</strong> (illustrated in Figure <a href="#fig:distributions" data-reference-type="ref" data-reference="fig:distributions">3.1</a>) which (as the name suggests) looks at the difference between the mean predictions for different partitions of the population based on the sensitive feature <span class="math inline">\(Z\)</span>, <span class="math display">\[d = \mathbb{E}(\hat{Y} | Z=a) - \mathbb{E}(\hat{Y} | Z \ne a).\]</span></p>
+<p>A simple relaxation of independence requires only the mean predicted target variable (rather than the full distribution) to be equal for all values of the sensitive feature, for example, <span class="math display">\[\mathbb{E}(\hat{Y} | Z=0) = \mathbb{E}(\hat{Y} | Z=1).\]</span> We could measure the extent of the disparity by taking the ratio or the difference of the expectations; the latter is more commonly used. The <strong>mean difference</strong> (illustrated in Figure <a href="#fig:distributions" data-reference-type="ref" data-reference="fig:distributions">3.1</a>) which (as the name suggests) looks at the difference between the mean predictions for different partitions of the population based on the sensitive feature <span class="math inline">\(Z\)</span>, <span class="math display">\[d = \mathbb{E}(\hat{Y} | Z=0) - \mathbb{E}(\hat{Y} | Z=1).\]</span></p>
 <figure>
 <img src="03_GroupFairness/figures/Fig_distributions.png" id="fig:distributions" alt="Figure 3.1: Visualisation of the mean difference for a continuous target variable." />
 <figcaption aria-hidden="true">Figure 3.1: Visualisation of the mean difference for a continuous target variable.</figcaption>
@@ -1684,11 +1684,10 @@ d_{\max} = \min\left\{ \frac{\mathbb{P}(\hat{Y}=1)}{\mathbb{P}(Z=1)},
 <p>The <strong>elift ratio</strong><span class="citation" data-cites="Pedreschi"><a href="#ref-Pedreschi" role="doc-biblioref">[54]</a></span><span class="marginnote"><span id="ref-Pedreschi" class="csl-entry" role="doc-biblioentry">
 <span class="csl-left-margin">[54] </span><span class="csl-right-inline">D. Pedreschi, S. Ruggieri, and F. Turini, <span>“Discrimination-aware data mining,”</span> in <em>Proceedings of the ACM SIGKDD international conference on knowledge discovery and data mining</em>, 2008, pp. 560–568. doi: <a href="https://doi.org/10.1145/1401890.1401959">10.1145/1401890.1401959</a>.</span>
 </span>
-</span> is similar to the impact ratio but instead of comparing acceptance rates for protected groups to each other, we compare them to the overall/mean acceptance rate: <span class="math display">\[r_{\text{elift}} = \frac{\mathbb{P}(\hat{Y}=1 | Z=0)}{\mathbb{P}(\hat{Y}=1)}.\]</span></p>
-<p>In theory, any measure of association suitable for the data types can be used as a metric to understand the magnitude of discrimination in our data or predictions. The <strong>odds ratio</strong> (popular in natural, social and biomedical sciences) is the ratio of the odds of a positive prediction for each group. We can write it as: <span class="math display">\[r_{\text{odds}}
-= \frac{\mathbb{P}(\hat{Y}=1 | Z=1)\mathbb{P}(\hat{Y}=0 | Z=0)}
-       {\mathbb{P}(\hat{Y}=0 | Z=1)\mathbb{P}(\hat{Y}=1 | Z=0)}
-= \frac{n_{11}n_{00}}{n_{10}n_{01}}.\]</span> The odds ratio is equal to one when there is no discrimination. In the case where <span class="math inline">\(\hat{Y}=1\)</span> in the advantaged outcome and <span class="math inline">\(Z=1\)</span> is the privileged group, the odds ratio is always greater than or equal to one. Recall that the odds ratio is not a collapsible measure (see section <a href="#sec_collapsibility" data-reference-type="ref" data-reference="sec_collapsibility">1.4.3</a>).</p>
+</span> is similar to the impact ratio but instead of comparing acceptance rates for protected groups to each other, we compare them to the overall/mean acceptance rate: <span class="math display">\[\frac{\mathbb{P}(\hat{Y}=1 | Z=0)}{\mathbb{P}(\hat{Y}=1)}.\]</span></p>
+<p>In theory, any measure of association suitable for the data types can be used as a metric to understand the magnitude of discrimination in our data or predictions. The <strong>odds ratio</strong> (popular in natural, social and biomedical sciences) is the ratio of the odds of a positive prediction for each group. We can write it as: <span class="math display">\[\frac{\mathbb{P}(\hat{Y}=1 | Z=1)\mathbb{P}(\hat{Y}=0 | Z=0)}
+         {\mathbb{P}(\hat{Y}=0 | Z=1)\mathbb{P}(\hat{Y}=1 | Z=0)}
+  = \frac{n_{11}n_{00}}{n_{10}n_{01}}.\]</span> The odds ratio is equal to one when there is no discrimination. In the case where <span class="math inline">\(\hat{Y}=1\)</span> in the advantaged outcome and <span class="math inline">\(Z=1\)</span> is the privileged group, the odds ratio is always greater than or equal to one. Recall that the odds ratio is not a collapsible measure (see section <a href="#sec_collapsibility" data-reference-type="ref" data-reference="sec_collapsibility">1.4.3</a>).</p>
 <p>As mentioned earlier, independence metrics can be evaluated on both the data and the model. A common problem in machine learning is that existing biases in the data can be exaggerated if protected groups are minorities in the population. By comparing metrics for the data with those of our model output, we can understand if our model is inadvertently introducing biases that do not originate from the data.</p>
 <p>It might seem intuitive already, that independence can only be satisfied by a model (optimising for predictive performance), if the target variable <span class="math inline">\(Y\)</span> and sensitive feature <span class="math inline">\(Z\)</span> are in fact independent<span class="sidenote-wrapper"><label for="sn-5" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-5" class="margin-toggle"/><span class="sidenote">We’ll prove this to be true in section <a href="#sec_Impossible" data-reference-type="ref" data-reference="sec_Impossible">3.3</a>, for the case where our variables are binary.<br />
 <br />
@@ -1703,20 +1702,19 @@ d_{\max} = \min\left\{ \frac{\mathbb{P}(\hat{Y}=1)}{\mathbb{P}(Z=1)},
 f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <p>Suppose we wish to establish a causal connection between the decision or outcome and an individual’s membership in some protected group. Typically, in a human decision process which is subjective, proving a causal connection difficult (a problem addressed by judicial systems). In the case where a decision is made purely on the basis of a deterministic algorithm (which one has access to and need only be in the form of a black box), making this causal connection is easier. Imagine a ‘counterfactual’ world in which for every individual in this world (say John Doe) there exists an identical twin in the counterfactual world which differers only by the sensitive feature (say Jane Doe). If a deterministic model produces predictions that are different for for John and Jane, we have established the individual’s sensitive feature as the reason.</p>
 <p>With this approach, establishing cause with a model becomes straight forward. We conduct a randomized experiment, sampling for <span class="math inline">\(X\)</span>. The individuals for which we check the model output need not exist, we can simply fabricate them, and compare the target distributions. What if the model is not deterministic but rather makes randomised predictions for a given <span class="math inline">\(X\)</span>? This makes things a bit more complicated because neither John nor Jane Doe get the same model prediction at every trial, so it’s not enough to check the outcome for a single John and Jane for each Doe. This makes the test computationally more expensive. We need to compute the target <span class="math inline">\(\hat{Y}\)</span> a sufficiently large number of times to obtain the distribution for each value of <span class="math inline">\(X\)</span>. For a dataset, the twin test is less reliable. Without access to the (potentially human and thus non-deterministic) algorithm by which it was produced, we have no way of producing counterfactual twins that don’t exist, making sample size a potential issue.</p>
-<p>The counterfactual approach to establishing the fairness of our model, we can consider all independence metrics described above have natural extensions which are conditioned on <span class="math inline">\(X\)</span> as well as <span class="math inline">\(Z\)</span>. So for example we define the <strong>causal mean difference</strong> as <span class="math display">\[d = \mathbb{E}(\hat{Y} | Z=1, X=x) - \mathbb{E}(\hat{Y} | Z=0, X=x).\]</span> and the <strong>observed mean difference</strong> as <span class="math display">\[d = \mathbb{E}(Y | Z=1, X=x) - \mathbb{E}(Y | Z=0, X=x).\]</span></p>
+<p>The counterfactual approach to establishing the fairness of our model, we can consider all independence metrics described above have natural extensions which are conditioned on <span class="math inline">\(X\)</span> as well as <span class="math inline">\(Z\)</span>. So for example we define the <strong>causal mean difference</strong> as <span class="math display">\[\mathbb{E}(\hat{Y} | Z=1, X=x) - \mathbb{E}(\hat{Y} | Z=0, X=x).\]</span> and the <strong>observed mean difference</strong> as <span class="math display">\[\mathbb{E}(Y | Z=1, X=x) - \mathbb{E}(Y | Z=0, X=x).\]</span></p>
 </section>
 </section>
 <section id="sec_BalErr" class="level2" data-number="3.2">
 <h2 data-number="3.2"><span class="header-section-number">3.2</span> Comparing Errors</h2>
 <p>In this section we learn about fairness criteria which seek to compare model errors across groups, rather than outcomes. A fundamental assumption here is that the training data is fair and just. In this context, ensuring fairness across subgroups requires the models errors (or equivalently predictive performance), to be independent of protected characteristics, that is, <span class="math inline">\((\hat{Y}-Y) \bot Z\)</span>. We discussed earlier in the chapter how independence and twin test constraints have been interpreted as avoiding disparate impact and disparate treatment respectively. Analogously, criteria on model errors have been described as avoiding <strong>disparate mistreatment</strong><span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[49]</a></span>.</p>
-<p>A relaxation of this criterion compares only the mean error for the groups (rather than the full distributions). <span class="math display">\[\mu_{\text{err}} = \mathbb{E}(\hat{Y} - Y).\]</span> The mean error tells us if essentially if our model is over or underestimating the target <span class="math inline">\(Y\)</span> (or score <span class="math inline">\(P\)</span> for classification) on average. For classification problems it provides a measure of the number of false positives compared to false negatives. If <span class="math inline">\(\mu\)</span> is positive there are more false positives and vice versa. Another way to look at the mean error is a measure of luck or opportunity. Depending on whether it is preferable to have a model under or overestimate <span class="math inline">\(Y\)</span> determines which direction is lucky (given greater opportunity) versus unlucky.</p>
+<p>A relaxation of this criterion compares only the mean error <span class="math inline">\(\mathbb{E}(\hat{Y} - Y)\)</span> for the groups (rather than the full distributions). This essentially tells us if essentially if our model is over or underestimating the target <span class="math inline">\(Y\)</span> (or score <span class="math inline">\(P\)</span> for classification) on average. For classification problems it provides a measure of the number of false positives compared to false negatives. If <span class="math inline">\(\mu\)</span> is positive there are more false positives and vice versa. Another way to look at the mean error is a measure of luck or opportunity. Depending on whether it is preferable to have a model under or overestimate <span class="math inline">\(Y\)</span> determines which direction is lucky (given greater opportunity) versus unlucky.</p>
 <p>For regression, a relaxation of this criterion compares only the mean error. <strong>Balanced residuals</strong><span class="citation" data-cites="BalRes"><a href="#ref-BalRes" role="doc-biblioref">[55]</a></span><span class="marginnote"><span id="ref-BalRes" class="csl-entry" role="doc-biblioentry">
 <span class="csl-left-margin">[55] </span><span class="csl-right-inline">T. Calders, A. Karim, F. Kamiran, W. Ali, and X. Zhang, <span>“Controlling attribute effect in linear regression,”</span> 2013. doi: <a href="https://doi.org/10.1109/ICDM.2013.114">10.1109/ICDM.2013.114</a>.</span>
 </span>
 </span> takes the difference of the mean errors, <span class="math display">\[d_{\text{err}} = \mathbb{E}(\hat{Y} - Y | Z=1) - \mathbb{E}(\hat{Y} - Y | Z=0).\]</span> This can be calculated for <span class="math inline">\(n=n_0+n_1\)</span> data points as, <span class="math display">\[d_{\text{err}} = \frac{1}{n_1}\sum_{i|z_i=1}(\hat{y}_i-y_i).
                - \frac{1}{n_0}\sum_{i|z_i=0}(\hat{y}_i-y_i)\]</span></p>
-<p>For a classification problem a relaxation of this criterion compares only the error rates (or equivalently accuracy) for all groups. To derive a measure of fairness from this criterion we could (as before) take the difference, or the ratio. The <strong>error rate difference</strong> is given by, <span class="math display">\[d_{\text{err}} = \mathbb{P}(\hat{Y}\neq Y | Z=1) - \mathbb{P}(\hat{Y}\neq Y | Z=0).\]</span> The <strong>error rate ratio</strong> is given by <span class="math display">\[r_{\text{err}} = \frac{\mathbb{P}(\hat{Y}\neq Y | Z=0)}
-                      {\mathbb{P}(\hat{Y}\neq Y | Z=1)}.\]</span> For a binary classifier, false positives and false negatives will typically have different implications and associated costs which are ignored when comparing error rates. Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a> summarises terminology for the different types of error rates for a binary classification model. Table <a href="#tbl:CMPerfMetrics" data-reference-type="ref" data-reference="tbl:CMPerfMetrics">3.3</a> summarises terminology for the equivalent predictive performance metrics.</p>
+<p>For a classification problem a relaxation of this criterion compares only the error rates (or equivalently accuracy) for all groups. To derive a measure of fairness from this criterion we could (as before) take the difference, or the ratio. The <strong>error rate difference</strong> is given by, <span class="math display">\[\mathbb{P}(\hat{Y}\neq Y | Z=1) - \mathbb{P}(\hat{Y}\neq Y | Z=0).\]</span> The <strong>error rate ratio</strong> is given by <span class="math display">\[\frac{\mathbb{P}(\hat{Y}\neq Y | Z=0)}{\mathbb{P}(\hat{Y}\neq Y | Z=1)}.\]</span> For a binary classifier, false positives and false negatives will typically have different implications and associated costs which are ignored when comparing error rates. Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a> summarises terminology for the different types of error rates for a binary classification model. Table <a href="#tbl:CMPerfMetrics" data-reference-type="ref" data-reference="tbl:CMPerfMetrics">3.3</a> summarises terminology for the equivalent predictive performance metrics.</p>
 <div id="tbl:CMErrMetrics">
 <table>
 <caption>Table 3.2: Summary of error rate metrics for a binary classifier</caption>
@@ -1828,12 +1826,12 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 \mathbb{P}(\hat{Y}=1 | Z=1, Y=0) &amp; = \mathbb{P}(\hat{Y}=1 | Z=0, Y=0).
 \end{aligned}\]</span> Recall that <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=1)\)</span> is the true positive rate (<span class="math inline">\(TPR\)</span>) of the classifier and <span class="math inline">\(\mathbb{P}(\hat{Y}=1 | Y=0)\)</span> is the false positive rate (<span class="math inline">\(FPR\)</span>). We see then that separation requires the true positive rate, and the false positive rate, to be the same for all values of the sensitive feature.</p>
 <p>Let’s think about what this means in the context of a recidivism risk predictor used in sentencing. Separation requires the proportion of (false positive) errors among those that did not in fact reoffend, and (false negative) errors among those that did to be the same across protected groups. This was essentially Propublica’s criticism of COMPAS, that the model overestimated the risk presented by Black defendants (demonstrated by their higher false positive rate) and underestimated the risk presented by White defendants (demonstrated by their higher false negative rate).</p>
-<p>Two related metrics are the average odds difference and average odds error. The <strong>average odds difference</strong> measures the magnitude of unfairness as the average of the difference in true positive rate and false positive rate, <span class="math display">\[d_{\text{av-odds}} = \frac{1}{2}
-[ TPR_{Z=0} - TPR_{Z=1} + FPR_{Z=0} - FPR_{Z=1} ].\]</span> The <strong>average odds error</strong> measures the magnitude of unfairness as the average of the absolute difference in true positive rate and false positive rate, <span class="math display">\[d_{\text{av-odds-err}} = \frac{1}{2}
+<p>Two related metrics are the average odds difference and average odds error. The <strong>average odds difference</strong> measures the magnitude of unfairness as the average of the difference in true positive rate and false positive rate, <span class="math display">\[\frac{1}{2}
+[ TPR_{Z=0} - TPR_{Z=1} + FPR_{Z=0} - FPR_{Z=1} ].\]</span> The <strong>average odds error</strong> measures the magnitude of unfairness as the average of the absolute difference in true positive rate and false positive rate, <span class="math display">\[\frac{1}{2}
 [ |TPR_{Z=0} - TPR_{Z=1}| + |FPR_{Z=0} - FPR_{Z=1}| ].\]</span></p>
 <p>A relaxed version of equalised odds, called <strong>equal opportunity</strong><span class="citation" data-cites="EqOfOp"><a href="#ref-EqOfOp" role="doc-biblioref">[56]</a></span>, requires only the true positive rates to be the same across all groups, assuming a positive prediction is the advantageous or lucky outcome<span class="sidenote-wrapper"><label for="sn-6" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-6" class="margin-toggle"/><span class="sidenote">Recall Rawl’s second principle of justice as fairness (fair equality of opportunity) discussed in section <a href="#sec_FairnessJustice" data-reference-type="ref" data-reference="sec_FairnessJustice">1.2</a>.<br />
 <br />
-</span></span>. If the reverse is true (i.e. the negative prediction is the advantageous outcome), we would instead want the true negative rates to be equal. For our recidivism risk predictor, this would mean ensuring that for defendants which did not reoffend have the same probability of being flagged low risk. Said another way, we want defendants that were in fact low risk to be given equal opportunity to be marked low risk across protected groups. A metric which uses this as a criterion to measure unfairness is <strong>equal opportunity difference</strong> which takes the difference in true positive rates across groups, that is, <span class="math display">\[d_{\text{eq-op}} = TPR_{Z=0} - TPR_{Z=1}.\]</span></p>
+</span></span>. If the reverse is true (i.e. the negative prediction is the advantageous outcome), we would instead want the true negative rates to be equal. For our recidivism risk predictor, this would mean ensuring that for defendants which did not reoffend have the same probability of being flagged low risk. Said another way, we want defendants that were in fact low risk to be given equal opportunity to be marked low risk across protected groups. A metric which uses this as a criterion to measure unfairness is <strong>equal opportunity difference</strong> which takes the difference in true positive rates across groups, that is, <span class="math display">\[TPR_{Z=0} - TPR_{Z=1}.\]</span></p>
 </section>
 <section id="sufficiency-and-calibration-by-group" class="level4 unnumbered">
 <h4 class="unnumbered">Sufficiency and Calibration by Group</h4>
@@ -2101,7 +2099,7 @@ NPV = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}\]</span></td>
 </div>
 <p>where <span class="math inline">\(p=\mathbb{P}(Y=1)\)</span>. <a href="#GF_PredVal">Proof</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
 </div>
-<p>For separation to hold the true positive rate (<span class="math inline">\(TPR\)</span>) and false positive rate (<span class="math inline">\(FPR\)</span>) must be constant across all values of the sensitive features. For sufficiency to hold the positive predictive value (<span class="math inline">\(PPV\)</span>) and negative predictive value (<span class="math inline">\(NPV\)</span>) must be constant across all values of the sensitive features. For brevity we shall denote <span class="math inline">\(p_z=\mathbb{P}(Y=1|Z=z)\)</span>.</p>
+<p>For separation to hold the true positive rate (<span class="math inline">\(TPR\)</span>) and false positive rate (<span class="math inline">\(FPR\)</span>) must be constant across all values of the sensitive features. For sufficiency to hold the positive predictive value (<span class="math inline">\(PPV\)</span>) and negative predictive value (<span class="math inline">\(NPV\)</span>) must be constant across all values of the sensitive features. For brevity we shall denote <span class="math inline">\(p_a=\mathbb{P}(Y=1|Z=a)\)</span>.</p>
 <div class="lookbox">
 <p><strong>Separation versus Sufficiency</strong></p>
 <p>For separation and sufficiency to hold we must have</p>
@@ -2197,6 +2195,71 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 </section>
 <section id="comparing-outcomes" class="level3 unnumbered">
 <h3 class="unnumbered">Comparing Outcomes</h3>
+<table>
+<caption>Group fairness metrics comparing outcomes.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Criterion</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="9" style="text-align: left;">Independence<br><span class="math inline">\(\hat{Y}\bot Z\)</span></td>
+<td style="text-align: left;">Mutual information</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle I(\hat{Y},Z)=\sum_{z\in\mathcal{Z}}\,\,\int_{\hat{y} \in \mathcal{Y}} f_{\hat{Y},Z}(\hat{y},z) \log \frac{f_{\hat{Y},Z}(\hat{y},z)} {f_{\hat{Y}}(\hat{y})\mathbb{P}(z)}\,\mathrm{d}\hat{y}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Normalised prejudice index</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle r_{\text{npi}} = \frac{I(\hat{Y},Z)}{\sqrt{S(\hat{Y})S(Z)}}, \quad S(Z) = -\sum_{z\in\mathcal{Z}} \mathbb{P}(z)\log\mathbb{P}(z)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mean difference</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle d
+    = \mathbb{E}(\hat{Y} | Z=0) - \mathbb{E}(\hat{Y} | Z=1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Statistical parity<sup>a</sup></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mathbb{P}(\hat{Y}=1 | Z=1) = \mathbb{P}(\hat{Y}=1 | Z=0)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Risk difference<sup>b</sup></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle d = \mathbb{P}(\hat{Y}=1 | Z=0) - \mathbb{P}(\hat{Y}=1 | Z=1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Normalised difference</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \bar{d} = \frac{d}{d_{\max}}, \quad d_{\max} = \min\left\{ \frac{\mathbb{P}(\hat{Y}=1)}{\mathbb{P}(Z=1)}, \frac{\mathbb{P}(\hat{Y}=0)}{\mathbb{P}(Z=0)} \right\}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Risk ratio<sup>c</sup></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle r = \frac{\mathbb{P}(\hat{Y}=1 | Z=0)}{\mathbb{P}(\hat{Y}=1 | Z=1)}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Elift ratio</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \frac{\mathbb{P}(\hat{Y}=1 | Z=0)}{\mathbb{P}(\hat{Y}=1)}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Odds ratio</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \frac{\mathbb{P}(\hat{Y}=1 | Z=1)\mathbb{P}(\hat{Y}=0 | Z=0)}
+       {\mathbb{P}(\hat{Y}=0 | Z=1)\mathbb{P}(\hat{Y}=1 | Z=0)}\)</span></td>
+</tr>
+<tr class="even">
+<td rowspan="2" style="text-align: left;">Twin test<br><span class="math inline">\(\hat{Y}\bot Z|X\)</span></td>
+<td style="text-align: left;">Causal mean difference</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mathbb{E}(\hat{Y} | Z=1, X=x) - \mathbb{E}(\hat{Y} | Z=0, X=x)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Observed mean difference</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \mathbb{E}(Y | Z=1, X=x) - \mathbb{E}(Y | Z=0, X=x)\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="tablenotes">
+<p><sup>a</sup>Also called, demographic parity and parity impact.</p>
+<p><sup>b</sup>Also called, discrimination score and statistical parity difference.</p>
+<p><sup>c</sup>Also called, impact ratio and disparate impact ratio.</p>
+</div>
 <section id="independence-hatybot-z" class="level4 unnumbered">
 <h4 class="unnumbered">Independence (<span class="math inline">\(\hat{Y}\bot Z\)</span>)</h4>
 <ul>
@@ -2221,19 +2284,74 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <li><p>Criteria comparing errors assume that the data is fair.</p></li>
 <li><p>Unlike criteria comparing outcomes, criteria comparing errors do not preclude the theoretically perfect solution, <span class="math inline">\(\hat{Y}=Y\)</span>.</p></li>
 </ul>
+<table>
+<caption>Group fairness metrics comparing errors.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Criterion</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Error<br><span class="math inline">\((\hat{Y}-Y)\bot Z\)</span></td>
+<td style="text-align: left;">Balanced residuals</td>
+<td style="text-align: left;"><span class="math inline">\(d_{\text{err}} = \mathbb{E}(\hat{Y} - Y | Z=1) - \mathbb{E}(\hat{Y} - Y | Z=0)\)</span></td>
+</tr>
+<tr class="even">
+<td rowspan="2" style="text-align: left;">Error rate</td>
+<td style="text-align: left;">Error rate difference</td>
+<td style="text-align: left;"><span class="math inline">\(\mathbb{P}(\hat{Y}\neq Y | Z=1) - \mathbb{P}(\hat{Y}\neq Y | Z=0)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Error rate ratio</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \frac{\mathbb{P}(\hat{Y}\neq Y | Z=0)}{\mathbb{P}(\hat{Y}\neq Y | Z=1)}\)</span></td>
+</tr>
+<tr class="even">
+<td rowspan="5" style="text-align: left;">Separation<br><span class="math inline">\(\hat{Y}\bot Z|Y\)</span></td>
+<td style="text-align: left;">Equalised odds</td>
+<td style="text-align: left;"><span class="math inline">\(TPR_{Z=0} = TPR_{Z=1}\)</span> and <span class="math inline">\(TNR_{Z=0} = TNR_{Z=1}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Average odds difference</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{1}{2}
+    [ TPR_{Z=0} - TPR_{Z=1} + FPR_{Z=0} - FPR_{Z=1} ]\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Average odds error</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{1}{2}
+    [ |TPR_{Z=0} - TPR_{Z=1}| + |FPR_{Z=0} - FPR_{Z=1}| ]\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Equal opportunity</td>
+<td style="text-align: left;"><span class="math inline">\(TPR_{Z=0} = TPR_{Z=1}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Equal opportunity difference</td>
+<td style="text-align: left;"><span class="math inline">\(TPR_{Z=0} - TPR_{Z=1}\)</span></td>
+</tr>
+<tr class="odd">
+<td rowspan="2" style="text-align: left;">Sufficiency<br><span class="math inline">\(Y\bot Z|\hat{Y}\)</span></td>
+<td style="text-align: left;">Equally sufficient</td>
+<td style="text-align: left;"><span class="math inline">\(PPV_{Z=0} = PPV_{Z=1}\)</span> and <span class="math inline">\(NPV_{Z=0} = NPV_{Z=1}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Calibration by group</td>
+<td style="text-align: left;"><span class="math inline">\(\mathbb{P}(Y=1 | P=p, Z=z) = p \quad \forall \, p, z\)</span></td>
+</tr>
+</tbody>
+</table>
 <section id="separation-hatybot-zy" class="level4 unnumbered">
 <h4 class="unnumbered">Separation (<span class="math inline">\(\hat{Y}\bot Z|Y\)</span>)</h4>
 <ul>
 <li><p>Separation, allows for dependence between the predicted target variable and the sensitive feature but only to the extent that it exists between the actual target variable and the sensitive feature.</p></li>
-<li><p>For a binary classification model, separation requires the probability of of an error for a given target, to be equal across protected groups.</p></li>
-<li><p>For a binary classification model, sufficiency requires both the false positive rate and false negative rate to be independent of protected group membership.</p></li>
 </ul>
 </section>
 <section id="sufficiency-ybot-zhaty-and-calibration-by-group" class="level4 unnumbered">
 <h4 class="unnumbered">Sufficiency (<span class="math inline">\(Y\bot Z|\hat{Y}\)</span>) and Calibration by Group</h4>
 <ul>
 <li><p>For a binary classification model, sufficiency requires the probability of of an error for a given prediction to be equal across protected groups.</p></li>
-<li><p>For a binary classification model, sufficiency requires both the positive predictive value and negative predictive value to be independent of protected group membership.</p></li>
 <li><p>A model that is calibrated by group satisfies sufficiency.</p></li>
 <li><p>Sufficiency is is a weaker model constraint compared to separation as it is satisfied implicitly through the training process.</p></li>
 </ul>
@@ -3858,9 +3976,7 @@ b_+ &amp; 1
 <td style="text-align: left;"><span class="math inline">\(\displaystyle \mathbb{P}(y|x) = \frac{\mathbb{P}(x|y)\mathbb{P}(y)}{\mathbb{P}(x)}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Independence</strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td colspan="3" style="text-align: left;"><strong>Independence</strong></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(X\bot Y\)</span></td>
@@ -3873,9 +3989,7 @@ b_+ &amp; 1
 <td style="text-align: left;"><span class="math inline">\(\mathbb{P}(x,y) = \mathbb{P}(x) \mathbb{P}(y)\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Conditional Independence</strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td colspan="3" style="text-align: left;"><strong>Conditional Independence</strong></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(X \bot Y | Z\)</span></td>

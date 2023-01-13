@@ -70,13 +70,13 @@ caption {
     margin-bottom: 0;
     padding: 0;
 }
-/* Specific Tables */
+/* Specific Tables
 div[id="tbl:app_ProbRules"] table { 
   border: none;
 }
 div[id="tbl:app_ProbRules"] td { 
   border: none;
-}
+} */
 
 
 /* Headers */

@@ -42,6 +42,11 @@ linebreak_lines:
   True Negative (<: 'True Negative<br>(<'
   Accuracy <: 'Accuracy<br><'
   Error Rate <: 'Error Rate<br><'
+  Independence <: 'Independence<br><'
+  Twin test <: 'Twin test<br><'
+  Error <: 'Error<br><'
+  Separation <: 'Separation<br><'
+  Sufficiency <: 'Sufficiency<br><'
 
 #######################################################################################
 appendix_lettermap:
