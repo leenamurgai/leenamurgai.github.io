@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Dr Leena Murgai">
-  <meta name="dcterms.date" content="2023-01-14">
+  <meta name="dcterms.date" content="2023-01-17">
   <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
@@ -32,7 +32,7 @@
 <header>
 <h1 class="title">Mitigating Bias in Machine Learning</h1>
 <p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">Dr Leena Murgai</a></p>
-<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">14 January 2023</a></p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">17 January 2023</a></p>
 <p class="byline"><a href="https://raw.githubusercontent.com/leenamurgai/mitigatingbias.ml/main/profile/mbml_citation.bib" target="_blank" rel="noopener noreferrer">Cite this book</a></p>
 </header>
 <div class="TOC">
@@ -1529,7 +1529,7 @@
 <p>First we look at fairness constraints on the relationship between the sensitive features <span class="math inline">\(Z\)</span>, and the predicted target <span class="math inline">\(\hat{Y}\)</span> (or rather <span class="math inline">\(Y\)</span> if we are interested in understanding our data rather than our model output). We’ll discuss two fairness criteria. In the first we require the outcome <span class="math inline">\(\hat{Y}\)</span>, to be marginally (unconditionally) independent of the sensitive features <span class="math inline">\(Z\)</span>. In the second we are essentially trying to establish cause; we require the outcome <span class="math inline">\(\hat{Y}\)</span> to be independent of the sensitive features <span class="math inline">\(Z\)</span> when conditioned on all other (non-sensitive) features <span class="math inline">\(X\)</span>. We’ll describe the latter as the twin test, that is <span class="math inline">\(\hat{Y}\)</span> and <span class="math inline">\(Z\)</span> being independent ceteris paribus (all else, or rather all other variables <span class="math inline">\(X\)</span>, being equal).</p>
 <section id="independence" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1"><span class="header-section-number">3.1.1</span> Independence</h3>
-<p>Of all fairness criteria, independence is undoubtedly the most well known. It requires the target variable to be unconditionally (marginally) <em>independent</em> of the sensitive feature, that is, <span class="math inline">\(\hat{Y} \bot Z\)</span>. This is true if and only if (<span class="math inline">\(\iff\)</span>), the probability distribution of the target variable <span class="math inline">\(f_{\hat{Y}}(y)\)</span>, is the same for all values of the sensitive feature <span class="math inline">\(Z\)</span>; that is, <span class="math inline">\(f_{\hat{Y}|Z}(y)=f_{\hat{Y}}(y)\)</span>. For a discrete target variable we require <span class="math display">\[\hat{Y} \bot Z \quad \iff \quad \mathbb{P}(\hat{Y}=\hat{y}|Z=z) = \mathbb{P}(\hat{Y}=\hat{y}) \quad \forall \quad y \in \mathcal{Y}, \quad z \in \mathcal{Z},\]</span> or <span class="math inline">\(\mathbb{P}(\hat{y}|z)=\mathbb{P}(\hat{y})\)</span> in our abbreviated notation.</p>
+<p>Of all fairness criteria, independence is undoubtedly the most well known. It requires the target variable to be unconditionally (marginally) <em>independent</em> of the sensitive feature, that is, <span class="math inline">\(\hat{Y} \bot Z\)</span>. This is true if and only if (<span class="math inline">\(\Leftrightarrow\)</span>), the probability distribution of the target variable <span class="math inline">\(f_{\hat{Y}}(y)\)</span>, is the same for all values of the sensitive feature <span class="math inline">\(Z\)</span>; that is, <span class="math inline">\(f_{\hat{Y}|Z}(y)=f_{\hat{Y}}(y)\)</span>. For a discrete target variable we require <span class="math display">\[\hat{Y} \bot Z \quad \Leftrightarrow \quad \mathbb{P}(\hat{Y}=\hat{y}|Z=z) = \mathbb{P}(\hat{Y}=\hat{y}) \quad \forall \quad y \in \mathcal{Y}, \quad z \in \mathcal{Z},\]</span> or <span class="math inline">\(\mathbb{P}(\hat{y}|z)=\mathbb{P}(\hat{y})\)</span> in our abbreviated notation.</p>
 <p>Recall that for the 1973 Berkeley admissions example in section <a href="#sec_SimpsParadox" data-reference-type="ref" data-reference="sec_SimpsParadox">1.4</a>, we looked at independence criterion, by comparing acceptance rates across the sensitive feature gender. Independence has been interpreted as addressing disparate impact<span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[49]</a></span><span class="marginnote"><span id="ref-DispMistreat" class="csl-entry" role="doc-biblioentry">
 <span class="csl-left-margin">[49] </span><span class="csl-right-inline">M. B. Zafar, I. Valera, M. Gomez Rodriguez, and K. P. Gummadi, <span>“Fairness beyond disparate treatment &amp; disparate impact,”</span> <em>Proceedings of the 26th International Conference on World Wide Web</em>, 2017, doi: <a href="https://doi.org/10.1145/3038912.3052660">10.1145/3038912.3052660</a>.</span>
 </span>
@@ -1698,7 +1698,7 @@ d_{\max} = \min\left\{ \frac{\mathbb{P}(\hat{Y}=1)}{\mathbb{P}(Z=1)},
 </section>
 <section id="sec_CondIndep" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2"><span class="header-section-number">3.1.2</span> The Twin Test</h3>
-<p>The twin test tries to establish cause (of differing treatment across protected groups), by conditioning on all other features. Because of this, it has been interpreted as avoiding disparate treatment<span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[49]</a></span>. While legally speaking such proof is not required to establish liability (as discussed in section <a href="#sec_AppLaw" data-reference-type="ref" data-reference="sec_AppLaw">1.3.2</a>), the twin test provides a useful tool for evaluating feature specific discrimination in models. In this case, our fairness criterion requires the predicted target variable to be independent of the sensitive features when conditioned on all other features. This is true, if and only if, the probability distribution of <span class="math inline">\(Y\)</span> conditioned on <span class="math inline">\(X\)</span> is the same, for all values of the sensitive feature <span class="math inline">\(Z\)</span>; <span class="math display">\[\hat{Y} \bot Z | X \quad \iff \quad
+<p>The twin test tries to establish cause (of differing treatment across protected groups), by conditioning on all other features. Because of this, it has been interpreted as avoiding disparate treatment<span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[49]</a></span>. While legally speaking such proof is not required to establish liability (as discussed in section <a href="#sec_AppLaw" data-reference-type="ref" data-reference="sec_AppLaw">1.3.2</a>), the twin test provides a useful tool for evaluating feature specific discrimination in models. In this case, our fairness criterion requires the predicted target variable to be independent of the sensitive features when conditioned on all other features. This is true, if and only if, the probability distribution of <span class="math inline">\(Y\)</span> conditioned on <span class="math inline">\(X\)</span> is the same, for all values of the sensitive feature <span class="math inline">\(Z\)</span>; <span class="math display">\[\hat{Y} \bot Z | X \quad \Leftrightarrow \quad
 f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <p>Suppose we wish to establish a causal connection between the decision or outcome and an individual’s membership in some protected group. Typically, in a human decision process which is subjective, proving a causal connection difficult (a problem addressed by judicial systems). In the case where a decision is made purely on the basis of a deterministic algorithm (which one has access to and need only be in the form of a black box), making this causal connection is easier. Imagine a ‘counterfactual’ world in which for every individual in this world (say John Doe) there exists an identical twin in the counterfactual world which differers only by the sensitive feature (say Jane Doe). If a deterministic model produces predictions that are different for for John and Jane, we have established the individual’s sensitive feature as the reason.</p>
 <p>With this approach, establishing cause with a model becomes straight forward. We conduct a randomized experiment, sampling for <span class="math inline">\(X\)</span>. The individuals for which we check the model output need not exist, we can simply fabricate them, and compare the target distributions. What if the model is not deterministic but rather makes randomised predictions for a given <span class="math inline">\(X\)</span>? This makes things a bit more complicated because neither John nor Jane Doe get the same model prediction at every trial, so it’s not enough to check the outcome for a single John and Jane for each Doe. This makes the test computationally more expensive. We need to compute the target <span class="math inline">\(\hat{Y}\)</span> a sufficiently large number of times to obtain the distribution for each value of <span class="math inline">\(X\)</span>. For a dataset, the twin test is less reliable. Without access to the (potentially human and thus non-deterministic) algorithm by which it was produced, we have no way of producing counterfactual twins that don’t exist, making sample size a potential issue.</p>
@@ -1887,10 +1887,10 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[\begin{aligned}
 \textrm{Independence: } Z \bot \hat{Y} \quad
-&amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z|y) \nonumber\\
+&amp; \Rightarrow\quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z|y) \nonumber\\
 \textrm{Product rule} \quad
-&amp; \Rightarrow \quad \mathbb{P}(z|y) = \frac{\mathbb{P}(z,y)}{\mathbb{P}(y)}\nonumber\\
-&amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \frac{\mathbb{P}(z,y)}{\mathbb{P}(y)}.
+&amp; \Rightarrow\quad \mathbb{P}(z|y) = \frac{\mathbb{P}(z,y)}{\mathbb{P}(y)}\nonumber\\
+&amp; \Rightarrow\quad \mathbb{P}(z|y,\hat{y}) = \frac{\mathbb{P}(z,y)}{\mathbb{P}(y)}.
 \end{aligned}\]</span></td>
 <td style="text-align: right;">(3.6)</td>
 </tr>
@@ -1908,10 +1908,10 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[\begin{aligned}
 \textrm{Sufficiency: } Z \bot Y | \hat{Y} \quad
-&amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z|\hat{y})\nonumber\\
+&amp; \Rightarrow\quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z|\hat{y})\nonumber\\
 \textrm{Independence: } Z \bot \hat{Y} \quad
-&amp; \Rightarrow \quad \mathbb{P}(z|\hat{y}) = \mathbb{P}(z)\nonumber\\
-&amp; \Rightarrow \quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z).
+&amp; \Rightarrow\quad \mathbb{P}(z|\hat{y}) = \mathbb{P}(z)\nonumber\\
+&amp; \Rightarrow\quad \mathbb{P}(z|y,\hat{y}) = \mathbb{P}(z).
 \end{aligned}\]</span></td>
 <td style="text-align: right;">(3.7)</td>
 </tr>
@@ -2671,11 +2671,11 @@ I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\sum_{i=1}^n f_{\alpha}(x_i) \quad\textr
 <td style="text-align: center;"><span class="math display">\[
 f_{\alpha}(x) = \left\{
 \begin{array}{cl}
--\ln x &amp; \;\textrm{for}\quad \alpha=0 \\
-x\ln x &amp; \;\textrm{for}\quad \alpha=1 \\
+-\ln x &amp; \textrm{for}\quad \alpha=0 \\
+x\ln x &amp; \textrm{for}\quad \alpha=1 \\
 \rule{0em}{3.5ex}
 \dfrac{x^{\alpha}-1}{\alpha(\alpha-1)}
-       &amp; \;\textrm{for}\quad \alpha\in\mathbb{R},\,\alpha\notin\{0,1\}.
+       &amp; \textrm{for}\quad \alpha\in\mathbb{R},\,\alpha\notin\{0,1\}.
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.3)</td>
 </tr>
@@ -2856,9 +2856,9 @@ I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 <p><strong>Generalised Entropy Index Maximum</strong></p>
 <p><span class="math display">\[\max_{\boldsymbol{b}}[I_{\alpha}(\boldsymbol{b})] = \left\{
 \begin{array}{cl}
-\ln n &amp; \;\textrm{for}\quad\alpha=1 \\
+\ln n &amp; \textrm{for}\quad\alpha=1 \\
 \dfrac{n^{\alpha-1}-1}{\alpha(\alpha-1)}
-      &amp; \;\textrm{for}\quad0&lt;\alpha\ne1
+      &amp; \textrm{for}\quad\alpha&gt;0
 \end{array}\right.\]</span> <a href="#II_GEImax">Proof</a> in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
 <p>In Figure <a href="#fig:GEI_Imax" data-reference-type="ref" data-reference="fig:GEI_Imax">5.2</a>, we plot the maximal value of the index as a function of <span class="math inline">\(n\)</span> for different values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
@@ -2872,10 +2872,10 @@ I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 = \sum_{g=1}^{|G|}\frac{n_g}{n} f_{\alpha}\left(\frac{\mu_g}{\mu}\right)
 = \frac{1}{|G|}\sum_{g=1}^{|G|} f_{\alpha}\left(\frac{\mu_g}{\mu}\right);\]</span> which looks exactly like the formula for the index, given in equation (5.2). Therefore, just as the index has a maximal value, so does the between-group component, <span class="math display">\[\max_{\boldsymbol{b}}\left[I^G_{\beta}(\boldsymbol{b};\alpha)\right] = \left\{
 \begin{array}{cl}
-\ln(|G|) &amp; \;\textrm{for}\quad\alpha=1\\
+\ln(|G|) &amp; \textrm{for}\quad\alpha=1\\
 \rule{0em}{4.2ex}
 \dfrac{|G|^{\alpha-1}-1}{\alpha(\alpha-1)}
-&amp; \;\textrm{for}\quad0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad\alpha&gt;0.
 \end{array}\right.\]</span> This further confirms our earlier observation, that the number of subgroups in a partition <span class="math inline">\(|G|\)</span>, greatly influences the size of the between-group component as a proportion of the index, assuming the groups to be equal in size.</p>
 </section>
 </section>
@@ -3006,10 +3006,10 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 <p>For binary benefits, the value of the index is given by <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = I_{\alpha}(\mu)
 = \left\{
 \begin{array}{cl}
--\ln\mu &amp; \;\textrm{for}\quad\alpha=1 \\
+-\ln\mu &amp; \textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-1\right)
-&amp; \;\textrm{for}\quad0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad\alpha&gt;0.
 \end{array}\right.\]</span> <a href="#II_Binary">Proof</a> in in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
 <p>For binary benefits, the index is a monotonic increasing function of the mean benefit. The index is maximal where only one individual benefits. As we increase the proportion of people who benefit from from <span class="math inline">\(1/n\)</span> to <span class="math inline">\(n\)</span>, the distribution of benefits approaches uniform. As the number of individuals grows, so does the maximal value of the index (as shown in section <a href="#sec_GEImax" data-reference-type="ref" data-reference="sec_GEImax">5.1.5</a>). In Figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.3</a>, we plot the value of the index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for a variety of values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
@@ -3070,12 +3070,12 @@ b_+ &amp; 1
 I_{\alpha}\left(\mu,\lambda\right) = \left\{
 \begin{array}{cl}
 \left(1-\dfrac{\lambda}{\mu}\right)\ln2-\ln\mu
-&amp; \;\textrm{for}\quad\alpha = 1 \\
+&amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.5ex}
 \dfrac{1}{\alpha(\alpha-1)}
 \left[ \left(\dfrac{2}{\mu}\right)^{\alpha-1}
 - \dfrac{(2^{\alpha-1}-1)}{\mu^{\alpha}}\lambda - 1 \right]
-&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad \alpha&gt;0.
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.9)</td>
 </tr>
@@ -3119,7 +3119,7 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 <h3 data-number="5.3.1"><span class="header-section-number">5.3.1</span> Index maximum</h3>
 <div class="lookbox">
 <p><strong>Index turning point</strong></p>
-<p>The index has a maximum turning point at <span class="math inline">\(\mu=\tilde{\mu}\)</span> for <span class="math inline">\(\alpha&gt;0\)</span>.</p>
+<p>The index has exactly one turning point (a maxima) for <span class="math inline">\(\alpha&gt;0\)</span>, at <span class="math inline">\(\mu=\tilde{\mu}\)</span> where, <span class="math inline">\(\tilde{\mu} = g(\alpha)\lambda\)</span> and,</p>
 <div id="eq:g_alpha">
 <table>
 <colgroup>
@@ -3128,18 +3128,14 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 </colgroup>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math display">\[\begin{gathered}
-\frac{ \partial I_{\alpha} }{ \partial \mu } = 0 \quad\Leftrightarrow\quad
-\mu=\tilde{\mu} \nonumber\\
-\textrm{where}\quad \tilde{\mu} = g(\alpha)\lambda
-\quad\textrm{and}\quad g(\alpha) = \left\{
+<td style="text-align: center;"><span class="math display">\[
+\quad g(\alpha) = \left\{
 \begin{array}{cl}
-\ln2 &amp; \;\textrm{for}\quad\alpha = 1 \\
+\ln2 &amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
-\end{array}\right.
-\end{gathered}\]</span></td>
+&amp; \textrm{for}\quad \alpha&gt;0
+\end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.11)</td>
 </tr>
 </tbody>
@@ -3148,11 +3144,11 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 <p><a href="#II_IndexTpt">Proof</a> in in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
 <p>Let’s summarise what we know about the behaviour of the index as a function of <span class="math inline">\(\mu\)</span>. <span class="math display">\[\begin{aligned}
-\tilde{\mu}\leq\lambda        &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
+\tilde{\mu}\leq\lambda &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
 \textrm{ is a strictly decreasing function of }\mu.\\
 \lambda&lt;\tilde{\mu}&lt;2-\lambda &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
 \textrm{ is maximal at }\mu=\tilde{\mu}=g(\alpha)\lambda.\\
-\tilde{\mu}\geq2-\lambda      &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
+\tilde{\mu}\geq2-\lambda &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
 \textrm{ is a strictly increasing function of }\mu.
 \end{aligned}\]</span></p>
 <p>From equations (5.10) and (5.11), we see that for <span class="math inline">\(\tilde{\mu}\)</span> to fall within the domain of <span class="math inline">\(\mu\)</span> we require,</p>
@@ -3202,7 +3198,7 @@ g(\alpha)&gt;1 &amp; \textrm{for} &amp;   \alpha&gt;2.
 \quad\Rightarrow\quad\tilde{\lambda}(\alpha) \rightarrow 1^-
 \quad\textrm{as}\quad \alpha\rightarrow\infty.\]</span> Differentiating <span class="math inline">\(g(\alpha)\)</span> in equation (5.11) gives, <span class="math display">\[g&#39;(\alpha) = \frac{\alpha(\alpha-1)\ln2 - (2^{\alpha-1}-1)}
                   {[(\alpha-1)2^{\alpha-1}]^2}=0
-\quad\Leftrightarrow\quad \alpha = \alpha_*\]</span> where <span class="math inline">\(\alpha_*\)</span> satisfies <span class="math display">\[\alpha_*(\alpha_*-1)\ln2 = 2^{\alpha_*-1}-1 \quad\textrm{and}\quad \alpha_*\ne1.\]</span> <span class="math inline">\(g&#39;(\alpha)\)</span> has exactly one root <span class="math inline">\(\alpha=\alpha_*\)</span> (somewhere between 4 and 5) which can be found numerically. <span class="math display">\[g&#39;&#39;(\alpha_*) = \frac{2-\alpha_*\ln2}{(\alpha_*-1)2^{\alpha_*-1}} &lt; 0.\]</span> Thus <span class="math inline">\(g(\alpha)\)</span> is maximal at <span class="math inline">\(\alpha=\alpha_*\)</span>. For reference, <span class="math display">\[\begin{aligned}
+\quad\Leftrightarrow\quad \alpha = \alpha_*\]</span> where <span class="math inline">\(\alpha_*\)</span> satisfies <span class="math display">\[\alpha_*(\alpha_*-1)\ln2 = 2^{\alpha_*-1}-1.\]</span> <span class="math inline">\(g&#39;(\alpha)\)</span> has exactly one root <span class="math inline">\(\alpha=\alpha_*\)</span> (somewhere between 4 and 5) which can be found numerically. <span class="math display">\[g&#39;&#39;(\alpha_*) = \frac{2-\alpha_*\ln2}{(\alpha_*-1)2^{\alpha_*-1}} &lt; 0.\]</span> Thus <span class="math inline">\(g(\alpha)\)</span> is maximal at <span class="math inline">\(\alpha=\alpha_*\)</span>. For reference, <span class="math display">\[\begin{aligned}
 \alpha_* \approx 4.72 \quad\Rightarrow\quad
 &amp; \max_{\alpha&gt;0}[g(\alpha)] = g(\alpha_*) \approx 1.17 \\
 \Rightarrow\quad
@@ -3235,26 +3231,26 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 <p><strong>Equal Luck Generalised Entropy Index Maximum Value</strong></p>
 <p>We can write the maximal value of the generalised entropy index as a function of <span class="math inline">\(\lambda\)</span>, <span class="math display">\[\max_{\mu}\left[I_{\alpha}\left(\mu,\lambda\right)\right] = \left\{
 \begin{array}{cl}
--\ln\lambda &amp; \;\textrm{for}\quad \alpha=1 \\
+-\ln\lambda &amp; \textrm{for}\quad \alpha=1 \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\lambda^{\alpha-1}} - 1 \right)
-&amp; \;\textrm{for}\quad 0&lt;\alpha\leq2, \quad \alpha\ne1 \\
+&amp; \textrm{for}\quad 0&lt;\alpha\leq2 \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)}\left[\dfrac{2^{\alpha-1}}
 {\alpha g^{\alpha-1}(\alpha)\lambda^{\alpha-1}} - 1 \right]
-&amp; \;\textrm{for}\quad \alpha&gt;2,\quad \lambda&lt;\tilde{\lambda}(\alpha) \\
+&amp; \textrm{for}\quad \alpha&gt;2,\,\lambda&lt;\tilde{\lambda}(\alpha) \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)}
 \left(\dfrac{1}{(2-\lambda)^{\alpha-1}} - 1 \right)
-&amp; \;\textrm{for}\quad \alpha&gt;2,\quad \lambda\geq\tilde{\lambda}(\alpha).
-\end{array}\right.\]</span> where <span class="math display">\[\tilde{\lambda}(\alpha) = \frac{2}{1+g(\alpha)}
+&amp; \textrm{for}\quad \alpha&gt;2,\,\lambda\geq\tilde{\lambda}(\alpha)
+\end{array}\right.\]</span> where, <span class="math display">\[\tilde{\lambda}(\alpha) = \frac{2}{1+g(\alpha)}
 \quad\textrm{and}\quad g(\alpha) = \left\{
 \begin{array}{cl}
-\ln2 &amp; \;\textrm{for}\quad\alpha = 1 \\
+\ln2 &amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
-\end{array}\right..\]</span></p>
+&amp; \textrm{for}\quad \alpha&gt;0
+\end{array}\right.\]</span></p>
 </div>
 <p>In Figures <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.8</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\alpha\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\lambda\)</span>. In the final plot, <span class="math inline">\(\lambda=95\%\)</span>; we see that <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> is a strictly increasing function of <span class="math inline">\(\mu\)</span>, for both <span class="math inline">\(\alpha=3\)</span> and <span class="math inline">\(\alpha=4\)</span>.</p>
 <figure>
@@ -3295,7 +3291,7 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 <p>Equation 5.9 provides an expression for <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span>. Substituting for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> in the case <span class="math inline">\(\alpha=1\)</span> gives, <span class="math display">\[I_{\alpha}\left(\lambda-\frac{1}{n},\mu\pm\frac{1}{n}\right) =
 \left[1-\left(\frac{\lambda}{\mu}-\frac{1}{n\mu}\right)
 \left(1\pm\frac{1}{n\mu}\right)^{-1}\right]\ln2-\ln\mu
-- \ln\left(1\pm\frac{1}{n\mu}\right).\]</span> For <span class="math inline">\(0&lt;\alpha\ne1\)</span>, we get, <span class="math display">\[I_{\alpha}\left(\lambda-\frac{1}{n},\mu\pm\frac{1}{n}\right) =
+- \ln\left(1\pm\frac{1}{n\mu}\right).\]</span> For <span class="math inline">\(\alpha&gt;0\)</span>, we get, <span class="math display">\[I_{\alpha}\left(\lambda-\frac{1}{n},\mu\pm\frac{1}{n}\right) =
 \frac{1}{\alpha(\alpha-1)} \left[ \left(\frac{2}{\mu}\right)^{\alpha-1}
 \left(1\pm\frac{1}{n\mu}\right)^{1-\alpha}
 - \frac{(2^{\alpha-1}-1)}{\mu^{\alpha-1}}
@@ -3304,12 +3300,12 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 \left(\frac{1}{n\mu}\right) + \mathrm{O}\left(\frac{1}{n\mu}\right)^2\]</span> where, <span class="math display">\[\xi_{\alpha}(\mu,\lambda) = \left\{
 \begin{array}{cl}
 \left(1\pm\dfrac{\lambda}{\mu}\right)\ln2\mp1
-&amp; \;\textrm{for}\quad\alpha = 1 \\
+&amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)\mu^{\alpha}}\bigg[
 \Big((1\pm1\mp\alpha)2^{\alpha-1}-1\Big)\mu \pm
 \alpha(2^{\alpha-1}-1)\lambda\bigg]
-&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad \alpha&gt;0.
 \end{array}\right.\]</span></p>
 <p>From these expressions, we can get a clearer understanding of when the index deviates from simply being a measure of error. In particular, we want to know when an error, is preferable to an accurate prediction; that is, when the index change (resulting from an error) is negative. With a little effort we can show that,</p>
 <div id="eq:DeltaI_neg">
@@ -3345,10 +3341,10 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 <td style="text-align: center;"><span class="math display">\[
 h^{\pm}(\alpha) =  \left\{
 \begin{array}{cl}
-\dfrac{\ln2}{1\mp\ln2} &amp; \;\textrm{for}\quad\alpha = 1 \\
+\dfrac{\ln2}{1\mp\ln2} &amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1\mp1)2^{\alpha-1}\pm1}
-&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \textrm{for}\quad \alpha&gt;0
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.16)</td>
 </tr>
@@ -3370,10 +3366,10 @@ h^{\pm}(\alpha) =  \left\{
 <td style="text-align: center;"><span class="math display">\[
 h^-(\alpha) =  \left\{
 \begin{array}{cl}
-\dfrac{\ln2}{1+\ln2} \approx 0.41 &amp; \;\textrm{for}\quad\alpha = 1 \\
+\dfrac{\ln2}{1+\ln2} \approx 0.41 &amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 1-\dfrac{\alpha-1}{\alpha2^{\alpha-1}-1}
-&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \textrm{for}\quad \alpha&gt;0
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.17)</td>
 </tr>
@@ -3401,10 +3397,10 @@ h^-(\alpha) =  \left\{
 <td style="text-align: center;"><span class="math display">\[
 h^+(\alpha) =  \left\{
 \begin{array}{cl}
-\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \;\textrm{for}\quad\alpha = 1 \\
+\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.2ex}
 \dfrac{\alpha(1-2^{1-\alpha})}{(\alpha-2)+2^{1-\alpha}}
-&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad \alpha&gt;0.
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.18)</td>
 </tr>
@@ -3427,10 +3423,10 @@ h^+(\alpha) =  \left\{
 \mu &gt; h^+(\alpha) \lambda
 \end{aligned}\]</span> where, <span class="math display">\[h^+(\alpha) =  \left\{
 \begin{array}{cl}
-\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \;\textrm{for}\quad\alpha = 1 \\
+\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.2ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-2)2^{\alpha-1}+1}
-&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \textrm{for}\quad \alpha&gt;0
 \end{array}\right.\]</span> This is only possible if the accuracy is sufficiently low, <span class="math display">\[\lambda &lt; \bar{\lambda}(\alpha)=\frac{2}{1+h^+(\alpha)}.\]</span> The deviation region is then described as, <span class="math inline">\(\mu&gt;h^+(\alpha)\lambda\)</span>, where <span class="math inline">\(h^+(\alpha)\)</span> is given in equation (5.18). We mark the deviation region on the contour plot for <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> in Figure <a href="#fig:cplot_varalpha" data-reference-type="ref" data-reference="fig:cplot_varalpha">5.12</a>.</p>
 <figure>
 <img src="05_UtilityFairness/figures/Fig_ccplot_varalpha.png" id="fig:cplot_varalpha" alt="Figure 5.12: Contour plots showing I_{\alpha}(\mu, \lambda) for different values of \alpha." />
@@ -3537,12 +3533,12 @@ b_+ &amp; 1
 <li><p>There are other loss functions, hinge loss for SVM for example.</p></li>
 <li><p>It looks like all of these indices are convex with respect to <span class="math inline">\(\hat{y}\)</span>, since <span class="math inline">\(f_{\alpha}&#39;&#39;(x)=x^{\alpha-2}\)</span>. From equation (5.3) <span class="math display">\[f_{\alpha}&#39;(x) = \left\{
 \begin{array}{cl}
--\dfrac{1}{x} &amp; \;\textrm{for}\quad \alpha=0 \\
+-\dfrac{1}{x} &amp; \textrm{for}\quad \alpha=0 \\
 \rule{0em}{2.6ex}
-1+\ln x       &amp; \;\textrm{for}\quad \alpha=1 \\
+1+\ln x       &amp; \textrm{for}\quad \alpha=1 \\
 \rule{0em}{3.7ex}
 \dfrac{x^{\alpha-1}}{\alpha-1}
-              &amp; \;\textrm{for}\quad \alpha\in\mathbb{R},\,\alpha\notin\{0,1\}.
+              &amp; \textrm{for}\quad \alpha\in\mathbb{R}.
 \end{array}\right.\]</span></p></li>
 <li><p>For <span class="math inline">\(\alpha=1/2\)</span>, the between group component as a proportion of the utility is maximised. This is exciting! Could this be a utility function that somehow prioritises between-group fairness and if so how? Why does this happen? What’s special about <span class="math inline">\(\alpha=1/2\)</span>?</p></li>
 <li><p>Is it worth generalising the value of <span class="math inline">\(b_+\)</span>. Can we choose these more intentionally based on our relative preference of false positives to false negatives? What do we believe our index surface should look like?</p></li>
@@ -4460,18 +4456,13 @@ f_{\alpha}\left(\dfrac{2}{\mu}\right) &amp; = \left\{
 <div id="II_IndexTpt">
 <p><strong>Index turning point</strong></p>
 </div>
-<p>The index has a maximum turning point at <span class="math inline">\(\mu=\tilde{\mu}\)</span> for <span class="math inline">\(\alpha&gt;0\)</span>. <span class="math display">\[\begin{gathered}
-\frac{ \partial I_{\alpha} }{ \partial \mu } = 0 \quad\Leftrightarrow\quad
-\mu=\tilde{\mu} \nonumber\\
-\textrm{where}\quad \tilde{\mu} = g(\alpha)\lambda
-\quad\textrm{and}\quad g(\alpha) = \left\{
+<p>The index has exactly one turning point (a maxima) for <span class="math inline">\(\alpha&gt;0\)</span>, at <span class="math inline">\(\mu=\tilde{\mu}\)</span> where, <span class="math inline">\(\tilde{\mu} = g(\alpha)\lambda\)</span> and, <span class="math display">\[\quad g(\alpha) = \left\{
 \begin{array}{cl}
-\ln2 &amp; \quad\textrm{for}\quad\alpha = 1 \\
+\ln2 &amp; \;\textrm{for}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
-\end{array}\right.
-\end{gathered}\]</span></p>
+&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
+\end{array}\right.\]</span></p>
 </div>
 <p>We wish to find the maximal value of the index for a given accuracy. We start by looking for turning points. Differentiating equation (5.9), <span class="math display">\[\frac{ \partial I_{\alpha} }{ \partial \mu } = \left\{
 \begin{array}{cl}
