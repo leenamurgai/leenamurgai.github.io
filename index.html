@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Dr Leena Murgai">
-  <meta name="dcterms.date" content="2023-01-17">
+  <meta name="dcterms.date" content="2023-02-01">
   <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
@@ -32,7 +32,7 @@
 <header>
 <h1 class="title">Mitigating Bias in Machine Learning</h1>
 <p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">Dr Leena Murgai</a></p>
-<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">17 January 2023</a></p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer"> 1 February 2023</a></p>
 <p class="byline"><a href="https://raw.githubusercontent.com/leenamurgai/mitigatingbias.ml/main/profile/mbml_citation.bib" target="_blank" rel="noopener noreferrer">Cite this book</a></p>
 </header>
 <div class="TOC">
@@ -66,7 +66,7 @@
 <li><a href="#sec_BalOut" id="toc-sec_BalOut"><span class="toc-section-number">3.1</span> Comparing Outcomes</a></li>
 <li><a href="#sec_BalErr" id="toc-sec_BalErr"><span class="toc-section-number">3.2</span> Comparing Errors</a></li>
 <li><a href="#sec_Impossible" id="toc-sec_Impossible"><span class="toc-section-number">3.3</span> Incompatibility Between Fairness Criteria</a></li>
-<li><a href="#weaknesses-of-group-fairness-metrics" id="toc-weaknesses-of-group-fairness-metrics"><span class="toc-section-number">3.4</span> Weaknesses of Group Fairness Metrics</a></li>
+<li><a href="#concluding-remarks" id="toc-concluding-remarks"><span class="toc-section-number">3.4</span> Concluding Remarks</a></li>
 <li><a href="#summary-2" id="toc-summary-2">Summary</a></li>
 </ul></li>
 <li><a href="#ch_IndividualFairness" id="toc-ch_IndividualFairness"><span class="toc-section-number">4</span> Individual Fairness</a>
@@ -76,7 +76,6 @@
 <li><a href="#similarity-metrics" id="toc-similarity-metrics"><span class="toc-section-number">4.3</span> Similarity Metrics</a></li>
 <li><a href="#measuring-individual-fairness-in-practice" id="toc-measuring-individual-fairness-in-practice"><span class="toc-section-number">4.4</span> Measuring Individual Fairness in Practice</a></li>
 <li><a href="#summary-3" id="toc-summary-3">Summary</a></li>
-<li><a href="#further-work" id="toc-further-work">Further Work</a></li>
 </ul></li>
 <li><a href="#ch_UtilityFairness" id="toc-ch_UtilityFairness"><span class="toc-section-number">5</span> Fairness as Utility</a>
 <ul>
@@ -84,7 +83,6 @@
 <li><a href="#defining-a-benefit-function" id="toc-defining-a-benefit-function"><span class="toc-section-number">5.2</span> Defining a Benefit Function</a></li>
 <li><a href="#fairness-as-utility" id="toc-fairness-as-utility"><span class="toc-section-number">5.3</span> Fairness as Utility</a></li>
 <li><a href="#summary-4" id="toc-summary-4">Summary</a></li>
-<li><a href="#further-work-1" id="toc-further-work-1">Further Work</a></li>
 </ul></li>
 <li><a href="#part-iii-mitigating-bias" id="toc-part-iii-mitigating-bias">Part III Mitigating Bias</a></li>
 <li><a href="#app_Notation" id="toc-app_Notation"><span class="toc-section-number">A</span> Notation and Conventions</a></li>
@@ -139,7 +137,7 @@
     <li><a href="#sec_BalOut" id="toc-sec_BalOut"><span class="toc-section-number">3.1</span> Comparing Outcomes</a></li>
     <li><a href="#sec_BalErr" id="toc-sec_BalErr"><span class="toc-section-number">3.2</span> Comparing Errors</a></li>
     <li><a href="#sec_Impossible" id="toc-sec_Impossible"><span class="toc-section-number">3.3</span> Incompatibility Between Fairness Criteria</a></li>
-    <li><a href="#weaknesses-of-group-fairness-metrics" id="toc-weaknesses-of-group-fairness-metrics"><span class="toc-section-number">3.4</span> Weaknesses of Group Fairness Metrics</a></li>
+    <li><a href="#concluding-remarks" id="toc-concluding-remarks"><span class="toc-section-number">3.4</span> Concluding Remarks</a></li>
     <li><a href="#summary-2" id="toc-summary-2">Summary</a></li>
     </ul></li>
     <li><a href="#ch_IndividualFairness" id="toc-ch_IndividualFairness"><span class="toc-section-number">4</span> Individual Fairness</a>
@@ -149,7 +147,6 @@
     <li><a href="#similarity-metrics" id="toc-similarity-metrics"><span class="toc-section-number">4.3</span> Similarity Metrics</a></li>
     <li><a href="#measuring-individual-fairness-in-practice" id="toc-measuring-individual-fairness-in-practice"><span class="toc-section-number">4.4</span> Measuring Individual Fairness in Practice</a></li>
     <li><a href="#summary-3" id="toc-summary-3">Summary</a></li>
-    <li><a href="#further-work" id="toc-further-work">Further Work</a></li>
     </ul></li>
     <li><a href="#ch_UtilityFairness" id="toc-ch_UtilityFairness"><span class="toc-section-number">5</span> Fairness as Utility</a>
     <ul>
@@ -157,7 +154,6 @@
     <li><a href="#defining-a-benefit-function" id="toc-defining-a-benefit-function"><span class="toc-section-number">5.2</span> Defining a Benefit Function</a></li>
     <li><a href="#fairness-as-utility" id="toc-fairness-as-utility"><span class="toc-section-number">5.3</span> Fairness as Utility</a></li>
     <li><a href="#summary-4" id="toc-summary-4">Summary</a></li>
-    <li><a href="#further-work-1" id="toc-further-work-1">Further Work</a></li>
     </ul></li>
     <li><a href="#part-iii-mitigating-bias" id="toc-part-iii-mitigating-bias">Part III Mitigating Bias</a></li>
     <li><a href="#app_Notation" id="toc-app_Notation"><span class="toc-section-number">A</span> Notation and Conventions</a></li>
@@ -183,9 +179,9 @@
 <h1 class="unnumbered">Part I Introduction</h1>
 <p>Welcome to Mitigating Bias in Machine Learning. If you’ve made it here chances are you’ve worked with models and have some awareness of the problem of biased machine learning algorithms. You might be a student with a foundational course in machine learning under your belt, or a Data Scientist or Machine Learning Engineer, concerned about the impact your models might have on the world.</p>
 <p>In this book we are going to learn and analyse a whole host of techniques for measuring and mitigating bias in machine learning models. We’re going to compare them, in order to understand their strengths and weaknesses. Mathematics is an important part of modelling, and we won’t shy away from it. Where possible, we will aim to take a mathematically rigorous approach to answering questions.</p>
-<p>Mathematics, just like code, can contain bugs. In this book, each has been used to verify the other. The analysis in this book, was completed using Python. The Jupyter Notebooks are available on GitHub, for those who would like to see/use them. That said, this book is intended to be self contained, and does not contain code. We will focuses on the concepts, rather than the implementation.</p>
+<p>Mathematics, just like code, can contain bugs. In this book, each has been used to verify the other. The analysis in this book, was completed using Python. The <a href="https://github.com/leenamurgai/mitigatingbias.ml/tree/main/code">Jupyter Notebooks</a> are available on GitHub, for those who would like to see/use them. That said, this book is intended to be self contained, and does not contain code. We will focus on the concepts, rather than the implementation.</p>
 <p>Mitigating Bias in Machine Learning is ultimately about fairness. The goal of this book is to understand how we, as practising model developers, might build fairer predictive systems and avoid causing harm (sometimes that might mean not building something at all). There are many facets to solving a problem like this, not all of them involve equations and code. The first two chapters (part I) are dedicated to discussing these.</p>
-<p>In a sense, over the course of the book, we will zoom in on the problem. In chapter 1, we’ll look at it from a broader perspective (philosophical, political, legal, technical and social). In chapter two we take a more practical view on the problem of ethical development (how to build and organise the development of models, with a view to reducing ethical risk).</p>
+<p>In a sense, over the course of the book, we will zoom in on the problem, or rather narrow our perspective. In chapter 1, we’ll discuss philosophical, political, legal, technical and social perspectives. In chapter two we take a more practical view on the problem of ethical development (how to build and organise the development of models, with a view to reducing ethical risk).</p>
 <p>In part II we will talk about how we quantify different notions of fairness.</p>
 <p>In part III, we will look at methods for mitigating bias through model interventions and analyse their impact.</p>
 <p>Let’s get started.</p>
@@ -202,7 +198,7 @@
 <li><p>The different types of harm caused by biased systems</p></li>
 </ul>
 </div>
-<p>The goal of this chapter is to shed light on the problem of bias in in machine learning, from a variety of different perspectives, in an effort to provide context. The word <em>bias</em> can mean many things but in this book, we use it interchangeably with the term <em>unfairness</em>. We’ll talk about why later.</p>
+<p>The goal of this chapter is to provide context by shedding light on the problem of bias in in machine learning, from a variety of different perspectives. The word <em>bias</em> can mean many things but in this book, we use it interchangeably with the term <em>unfairness</em>. We’ll talk about why later.</p>
 <p>Perhaps the biggest challenge in developing <em>sociotechnical systems</em> is that they inevitably involve questions which are social, philosophical, political, and legal in nature; questions to which there is often no definitive answer but rather competing viewpoints and trade-offs to be made. As we’ll see, this does not change when we attempt to quantify the problem. There are many measures of fairness that each defined in a different way, and they cannot all be satisfied simultaneously. The problem of bias in sociotechnical systems is very much an interdisciplinary one and, in this chapter, we discuss them as such. We will make connections between concepts and language from the various subjects over the course of this book.</p>
 <p>In this chapter we shall discuss some philosophical theories of fairness in sociopolitical systems and consider how they might relate to model training and fairness criteria. We’ll take a legal perspective, looking at anti-discrimination laws in the US as an example. We’ll discuss the history, practical application of them and tensions that exist in their interpretation. Data can be misleading. Correlation does not imply causation and so domain knowledge in building machine learning systems is important. We will discuss the technical difficulty in identifying bias in static data through illustrative examples of Simpson’s paradox. Finally, why is it important to consider the fairness of our models? What happens if we don’t? We’ll finish the chapter by discussing some of the different types of harm caused by biased machine learning systems - some of which are difficult if not impossible to quantify.</p>
 <p>Let’s start by describing the types of problems we are interested in.</p>
@@ -1707,14 +1703,16 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 </section>
 <section id="sec_BalErr" class="level2" data-number="3.2">
 <h2 data-number="3.2"><span class="header-section-number">3.2</span> Comparing Errors</h2>
-<p>In this section we learn about fairness criteria which seek to compare model errors across groups, rather than outcomes. A fundamental assumption here is that the training data is fair and just. In this context, ensuring fairness across subgroups requires the models errors (or equivalently predictive performance), to be independent of protected characteristics, that is, <span class="math inline">\((\hat{Y}-Y) \bot Z\)</span>. We discussed earlier in the chapter how independence and twin test constraints have been interpreted as avoiding disparate impact and disparate treatment respectively. Analogously, criteria on model errors have been described as avoiding <strong>disparate mistreatment</strong><span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[49]</a></span>.</p>
-<p>A relaxation of this criterion compares only the mean error <span class="math inline">\(\mathbb{E}(\hat{Y} - Y)\)</span> for the groups (rather than the full distributions). This essentially tells us if essentially if our model is over or underestimating the target <span class="math inline">\(Y\)</span> (or score <span class="math inline">\(P\)</span> for classification) on average. For classification problems it provides a measure of the number of false positives compared to false negatives. If <span class="math inline">\(\mu\)</span> is positive there are more false positives and vice versa. Another way to look at the mean error is a measure of luck or opportunity. Depending on whether it is preferable to have a model under or overestimate <span class="math inline">\(Y\)</span> determines which direction is lucky (given greater opportunity) versus unlucky.</p>
-<p>For regression, a relaxation of this criterion compares only the mean error. <strong>Balanced residuals</strong><span class="citation" data-cites="BalRes"><a href="#ref-BalRes" role="doc-biblioref">[55]</a></span><span class="marginnote"><span id="ref-BalRes" class="csl-entry" role="doc-biblioentry">
+<p>In this section we learn about fairness criteria which compare model errors across groups, rather than outcomes. A fundamental assumption here is that the training data is fair and just and that there exists a ground truth to compare our model to. We discussed earlier in the chapter how independence and twin test constraints have been interpreted as avoiding disparate impact and disparate treatment respectively. Analogously, criteria on model errors have been described as avoiding <strong>disparate mistreatment</strong><span class="citation" data-cites="DispMistreat"><a href="#ref-DispMistreat" role="doc-biblioref">[49]</a></span> in the literature.</p>
+<section id="independent-errors" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1"><span class="header-section-number">3.2.1</span> Independent Errors</h3>
+<p>Independence in errors (or equivalently predictive performance), is the next strongest fairness criterion after independence, <span class="math inline">\((\hat{Y}-Y) \bot Z\)</span>.</p>
+<p>A relaxation of this criterion compares only the mean error <span class="math inline">\(\mathbb{E}(\hat{Y} - Y)\)</span> for the groups (rather than the full distributions). This essentially tells us if essentially if our model is over or underestimating the target <span class="math inline">\(Y\)</span> (or score <span class="math inline">\(P\)</span> for classification) on average. For classification problems it provides a measure of the number of false positives compared to false negatives. If <span class="math inline">\(\mu\)</span> is positive there are more false positives and vice versa. Another way to look at the mean error is a measure of luck or opportunity. Depending on whether it is preferable to have a model under or overestimate <span class="math inline">\(Y\)</span> determines which direction is lucky (given greater opportunity) versus unlucky. For regression models <strong>Balanced residuals</strong><span class="citation" data-cites="BalRes"><a href="#ref-BalRes" role="doc-biblioref">[55]</a></span><span class="marginnote"><span id="ref-BalRes" class="csl-entry" role="doc-biblioentry">
 <span class="csl-left-margin">[55] </span><span class="csl-right-inline">T. Calders, A. Karim, F. Kamiran, W. Ali, and X. Zhang, <span>“Controlling attribute effect in linear regression,”</span> 2013. doi: <a href="https://doi.org/10.1109/ICDM.2013.114">10.1109/ICDM.2013.114</a>.</span>
 </span>
 </span> takes the difference of the mean errors, <span class="math display">\[d_{\text{err}} = \mathbb{E}(\hat{Y} - Y | Z=1) - \mathbb{E}(\hat{Y} - Y | Z=0).\]</span> This can be calculated for <span class="math inline">\(n=n_0+n_1\)</span> data points as, <span class="math display">\[d_{\text{err}} = \frac{1}{n_1}\sum_{i|z_i=1}(\hat{y}_i-y_i).
                - \frac{1}{n_0}\sum_{i|z_i=0}(\hat{y}_i-y_i)\]</span></p>
-<p>For a classification problem a relaxation of this criterion compares only the error rates (or equivalently accuracy) for all groups. To derive a measure of fairness from this criterion we could (as before) take the difference, or the ratio. The <strong>error rate difference</strong> is given by, <span class="math display">\[\mathbb{P}(\hat{Y}\neq Y | Z=1) - \mathbb{P}(\hat{Y}\neq Y | Z=0).\]</span> The <strong>error rate ratio</strong> is given by <span class="math display">\[\frac{\mathbb{P}(\hat{Y}\neq Y | Z=0)}{\mathbb{P}(\hat{Y}\neq Y | Z=1)}.\]</span> For a binary classifier, false positives and false negatives will typically have different implications and associated costs which are ignored when comparing error rates. Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a> summarises terminology for the different types of error rates for a binary classification model. Table <a href="#tbl:CMPerfMetrics" data-reference-type="ref" data-reference="tbl:CMPerfMetrics">3.3</a> summarises terminology for the equivalent predictive performance metrics.</p>
+<p>For a classification problem a relaxation of this criterion compares only the error rates (or equivalently accuracy) for all groups. The direction of the error is effectively assumed to be inconsequential. To derive a measure of fairness from this criterion we could (as before) take the difference, or the ratio. The <strong>error rate difference</strong> is given by, <span class="math display">\[\mathbb{P}(\hat{Y}\neq Y | Z=1) - \mathbb{P}(\hat{Y}\neq Y | Z=0).\]</span> The <strong>error rate ratio</strong> is given by <span class="math display">\[\frac{\mathbb{P}(\hat{Y}\neq Y | Z=0)}{\mathbb{P}(\hat{Y}\neq Y | Z=1)}.\]</span> For a binary classifier, false positives and false negatives will typically have different implications and associated costs which are ignored when comparing error rates. Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a> summarises terminology for the different types of error rates for a binary classification model. Table <a href="#tbl:CMPerfMetrics" data-reference-type="ref" data-reference="tbl:CMPerfMetrics">3.3</a> summarises terminology for the equivalent predictive performance metrics.</p>
 <div id="tbl:CMErrMetrics">
 <table>
 <caption>Table 3.2: Summary of error rate metrics for a binary classifier</caption>
@@ -1810,8 +1808,9 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <p><sup>b</sup> True Positive Rate = Recall</p>
 </div>
 <p>Fairness criteria that compare error distributions (or equivalently predictive performance metrics) across groups can be broken down into conditional independence constraints on the joint distributions of the sensitive features, <span class="math inline">\(Z\)</span>, the target feature <span class="math inline">\(Y\)</span> and predicted target <span class="math inline">\(\hat{Y}\)</span>. <em>Separation</em> conditions on <span class="math inline">\(Y\)</span> (the columns of the confusion matrix) requiring the false negative and false positive (or equivalently the true positive and true negative) rates to be independent of protected group membership. <em>Sufficiency</em> conditions on <span class="math inline">\(\hat{Y}\)</span> (the rows of the confusion matrix) requiring the false discovery and false omission (or equivalently positive predictive value and negative predictive value) rates to be independent of protected group membership. Let’s take a closer look at them.</p>
-<section id="separation" class="level4 unnumbered">
-<h4 class="unnumbered">Separation</h4>
+</section>
+<section id="separation" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2"><span class="header-section-number">3.2.2</span> Separation</h3>
 <p>Separation requires the predicted target variable to be independent of the sensitive feature, conditioned on the target variable, that is, <span class="math inline">\(\hat{Y} \bot (Z|Y)\)</span>. We can say that the predicted target <span class="math inline">\(\hat{Y}\)</span>, is <em>separated</em> from the sensitive feature <span class="math inline">\(Z\)</span>, by the target variable <span class="math inline">\(Y\)</span>. The corresponding graphical model for separation criteria is shown in Figure <a href="#fig:separation" data-reference-type="ref" data-reference="fig:separation">3.2</a>.</p>
 <figure>
 <img src="03_GroupFairness/figures/Fig_separation.png" id="fig:separation" style="width:50.0%" alt="Figure 3.2: Graphical model for separation." />
@@ -1833,19 +1832,27 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <br />
 </span></span>. If the reverse is true (i.e. the negative prediction is the advantageous outcome), we would instead want the true negative rates to be equal. For our recidivism risk predictor, this would mean ensuring that for defendants which did not reoffend have the same probability of being flagged low risk. Said another way, we want defendants that were in fact low risk to be given equal opportunity to be marked low risk across protected groups. A metric which uses this as a criterion to measure unfairness is <strong>equal opportunity difference</strong> which takes the difference in true positive rates across groups, that is, <span class="math display">\[TPR_{Z=0} - TPR_{Z=1}.\]</span></p>
 </section>
-<section id="sufficiency-and-calibration-by-group" class="level4 unnumbered">
-<h4 class="unnumbered">Sufficiency and Calibration by Group</h4>
+<section id="sufficiency" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3"><span class="header-section-number">3.2.3</span> Sufficiency</h3>
 <p><em>Sufficiency</em> requires the sensitive feature <span class="math inline">\(Z\)</span> and target variable <span class="math inline">\(Y\)</span> to be independent, conditional on the predicted target variable <span class="math inline">\(\hat{Y}\)</span>, that is, <span class="math inline">\(Y \bot (Z|\hat{Y})\)</span>. We can say that the predicted target <span class="math inline">\(\hat{Y}\)</span> is <em>sufficient</em> for the sensitive feature <span class="math inline">\(Z\)</span>. That is to say, given <span class="math inline">\(\hat{Y}\)</span>, <span class="math inline">\(Z\)</span> provides no additional information. The corresponding graphical model for sufficiency criteria is shown in Figure <a href="#fig:sufficiency" data-reference-type="ref" data-reference="fig:sufficiency">3.3</a>.</p>
 <figure>
 <img src="03_GroupFairness/figures/Fig_sufficiency.png" id="fig:sufficiency" style="width:50.0%" alt="Figure 3.3: Graphical model for sufficiency." />
 <figcaption aria-hidden="true">Figure 3.3: Graphical model for sufficiency.</figcaption>
 </figure>
-<p>Comparing sufficiency to separation we note that <span class="math inline">\(Y\)</span> and <span class="math inline">\(\hat{Y}\)</span> are reversed in the graphical model and conditional independence constraint. It should hopefully be straightforward to see then that sufficiency requires the false omission rate and false discovery rate (see Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a>) to be equal across protected groups.</p>
+<p>It should hopefully be straightforward to see that sufficiency requires the false omission rate and false discovery rate (see Table <a href="#tbl:CMErrMetrics" data-reference-type="ref" data-reference="tbl:CMErrMetrics">3.2</a>) to be equal across protected groups.</p>
 <div class="lookbox">
 <p><strong>Sufficiency</strong></p>
 <p>Sufficiency is satisfied if and only if the false omission rate and false discovery rate are equal for all groups. <a href="#GF_Suff">Proof</a> in appendix <a href="#sec_app_GFSolutions" data-reference-type="ref" data-reference="sec_app_GFSolutions">D.1</a>.</p>
 </div>
 <p>Sufficiency requires the probability of of an error for a given prediction to be the same across protected groups. Let’s think about what this means for our binary recidivism risk calculator. Sufficiency requires that for a given prediction (high/low risk), the probability of error (predicting high risk for those that did not reoffend/predicting low risk for those that did) is independent of protected group membership.</p>
+<p>Comparing sufficiency to separation we note that <span class="math inline">\(Y\)</span> and <span class="math inline">\(\hat{Y}\)</span> are reversed in the graphical models (and conditional independence constraints). In the graphical model for separation, the data is upstream of the model output; for sufficiency, we assume the model is upstream of the data. In reality of course, the world is more complicated. In the previous chapter we discussed the machine learning cycle - specifically the fact that including a model in the decision making process impacts future data, which, when used to retrain our model, creates feedback loops. In imposing both separation and sufficiency (by requiring independent errors), we accept that our causal model is more complicated - like that shown in Figure <a href="#fig:SepSuf" data-reference-type="ref" data-reference="fig:SepSuf">3.4</a> a).</p>
+<figure>
+<img src="03_GroupFairness/figures/Fig_SepSuf.png" id="fig:SepSuf" style="width:90.0%" alt="Figure 3.4: Alternative causal models." />
+<figcaption aria-hidden="true">Figure 3.4: Alternative causal models.</figcaption>
+</figure>
+<p>We tend to think of sensitive features as immutable facts, but in reality they are not. Over time, we can expect a progressive society to become more inclusive, recognising more subgroups that previously did not exist. If we accept that environmental factors, and even our target or prediction, can affect the sensitive categories we fall into, the graph then perhaps begins to look more like Figure <a href="#fig:SepSuf" data-reference-type="ref" data-reference="fig:SepSuf">3.4</a> b), at which point, there’s little value to be found in graphical models, because everything is connected. But it’s worth realising just how much more complicated reality typically is, especially when decisions that can shape lives are at stake.</p>
+<section id="sufficiency-and-calibration-by-group" class="level4 unnumbered">
+<h4 class="unnumbered">Sufficiency and Calibration by Group</h4>
 <p>As one might expect, satisfying separation or sufficiency does not require as great a sacrifice of utility as independence (assuming <span class="math inline">\(Y\not\perp Z\)</span>). Neither separation nor sufficiency are necessarily satisfied by the utility optimal solution. Of the two sufficiency, imposes a weaker constraint on our model. To understand why, we explore another interpretation of sufficiency which intuitively explains why it might be satisfied implicitly through the training process<span class="citation" data-cites="ImplicitFairness"><a href="#ref-ImplicitFairness" role="doc-biblioref">[57]</a></span><span class="marginnote"><span id="ref-ImplicitFairness" class="csl-entry" role="doc-biblioentry">
 <span class="csl-left-margin">[57] </span><span class="csl-right-inline">L. T. Liu, M. Simchowitz, and M. Hardt, <span>“The implicit fairness criterion of unconstrained learning.”</span> 2019.Available: <a href="https://arxiv.org/abs/1808.10013">https://arxiv.org/abs/1808.10013</a></span>
 </span>
@@ -1856,15 +1863,8 @@ f_{\hat{Y}|X}(\hat{y}, z; x) = f_{\hat{Y}|X}(\hat{y}; x).\]</span></p>
 <span class="csl-left-margin">[58] </span><span class="csl-right-inline">J. Dressel and H. Farid, <span>“The accuracy, fairness, and limits of predicting recidivism,”</span> <em>Science Advances</em>, vol. 4, no. 1, p. eaao5580, 2018, doi: <a href="https://doi.org/10.1126/sciadv.aao5580">10.1126/sciadv.aao5580</a>.</span>
 </span>
 </span>.</p>
-<p>There are some nice properties of separation and sufficiency criteria. Note that unlike criteria comparing outcomes they do not preclude the theoretically perfect solution, <span class="math inline">\(\hat{Y}=Y\)</span>. The criteria also preclude large differences in error rates for different groups that are typical when disadvantaged classes are minorities suffering from low support. It’s worth reiterating that unlike independence, separation and sufficiency criteria assume that the relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> prescribed by the training data is fair. Depending on the context of the problem one might wish to prioritise equalising one type of error over another. For example, in pretrial risk assessment we might choose to prioritise ensuring equal false positive rates if we believe that it is preferable to set free a guilty defendant than incarcerate an innocent one. As another example, let’s take the infamous <a href="https://en.wikipedia.org/wiki/Stop-and-frisk_in_New_York_City">NYPD stop-and-frisk program</a> where pedestrians were stopped, interrogated and searched on ‘reasonable’ suspicion of carrying contraband. In this case we might want to ensure false discovery rates are equal across groups to ensure we are not disproportionately targeting particular minority groups.</p>
-<div class="lookbox">
-<p><strong>Stop-and-frisk</strong></p>
-<ul>
-<li><p>Why might we choose to compare false discovery rates for stop-and-frisk, rather than say false omission, false negative or false positive rates?</p></li>
-<li><p>Is it fair if false discovery rates are similar?</p></li>
-<li><p>How might we go about measuring the false omission rate if we wanted to compare them?</p></li>
-</ul>
-</div>
+<p>There are some obvious advantages of comparing errors rather than outcomes. Note that unlike criteria comparing outcomes they do not preclude the theoretically perfect solution, <span class="math inline">\(\hat{Y}=Y\)</span>. The criteria also preclude large differences in error rates for different groups that are typical when disadvantaged classes are minorities suffering from low support. It’s worth reiterating that criteria comparing errors assume that the relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> prescribed by the training data is fair. Depending on the context of the problem one might prioritise equalising one type of error over another. For example, in pretrial risk assessment we might choose to prioritise ensuring equal false positive rates if we believe that it is preferable to set free a guilty defendant than incarcerate an innocent one. As another example, let’s take the infamous <a href="https://en.wikipedia.org/wiki/Stop-and-frisk_in_New_York_City">NYPD stop-and-frisk program</a> where pedestrians were stopped, interrogated and searched on ‘reasonable’ suspicion of carrying contraband. In this case we might want to ensure false discovery rates are equal across groups to ensure we are not disproportionately targeting particular minority groups.</p>
+</section>
 </section>
 </section>
 <section id="sec_Impossible" class="level2" data-number="3.3">
@@ -2144,10 +2144,65 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 </ol>
 </section>
 </section>
-<section id="weaknesses-of-group-fairness-metrics" class="level2" data-number="3.4">
-<h2 data-number="3.4"><span class="header-section-number">3.4</span> Weaknesses of Group Fairness Metrics</h2>
-<p>In the previous section, we saw how satisfying multiple group fairness criteria is in general not possible except in some degenerate cases - we must choose between them. But even if we do, equalising statistical properties at the <em>group level</em>, don’t guarantee fair treatment at an <em>individual level</em>. Let’s return to our applicant filter with the sensitive feature gender. Independence requires that acceptance rates are equal for male and female applicants. Suppose model acceptance rates are lower for female applicants. To ensure we satisfy the independence fairness criterion, we could just randomly select female applicants that were rejected and instead accept them until the acceptance rates matched. In fact this kind of approach can be used to satisfy any group fairness criterion. Clearly this method will likely result in some <em>undeserving</em> female applicants being accepted. Although this approach would be able to satisfy the fairness criterion, the resulting algorithm would likely be considered unfair.</p>
-<p>It’s worth noting that although the approach of randomly selecting female applicants to accept might seem unnecessarily naive, there can be cases, (particularly when there are multiple protected characteristics that intersect) where protected groups are so small that models simply do not have enough training data to be able to make accurate predictions for them. In such cases a model could conceivably be, not much better than guessing for individuals in those groups. Even if we supposedly take a smarter approach of say, choosing the individuals closest to the decision boundary (rather than choosing them randomly) this would be equivalent to choosing a different acceptance threshold for women, in which case we would be using a different criterion to determine acceptance for male and female applicants (which are in all other respects similar). This could be viewed as unfair, despite satisfying independence. In the next chapter we’ll talk about <em>individual fairness</em>.</p>
+<section id="concluding-remarks" class="level2" data-number="3.4">
+<h2 data-number="3.4"><span class="header-section-number">3.4</span> Concluding Remarks</h2>
+<p>We’ve seen that in general, for a binary classifier, there are only a few cases in which it is possible to satisfy more than one of the three group fairness criterion simultaneously. It’s a useful exercise to summarise our findings, because this will provide some clues as to how we might go about improving our model/s of fairness. Table <a href="#tbl:Compatibility" data-reference-type="ref" data-reference="tbl:Compatibility">3.4</a> provides such a summary.</p>
+<div id="tbl:Compatibility">
+<table>
+<caption>Table 3.4: Group fairness metrics compatibility summary.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Comparing</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Criterion</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Strong</td>
+<td rowspan="4" style="text-align: left;"><span class="math inline">\(\displaystyle \hat{Y}\bot Z\quad
+\left\{ \rule[-3.3em]{0pt}{7em} \right.\)</span></td>
+<td style="text-align: left;">Outcomes</td>
+<td style="text-align: left;">Independence</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \hat{Y}\bot Z\)</span></td>
+<td style="text-align: left;"></td>
+<td rowspan="2" style="text-align: left;"><span class="math inline">\(\displaystyle
+\left.\rule[-1.3em]{0pt}{2.8em} \right\}\quad\hat{Y}\bot Y\)</span> or <span class="math inline">\(\displaystyle |Y|&gt;|Z|\)</span></td>
+</tr>
+<tr class="even">
+<td rowspan="2" style="text-align: center;"><span class="math inline">\(\displaystyle \Bigg\uparrow\)</span></td>
+<td style="text-align: left;">Errors</td>
+<td style="text-align: left;">Separation</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \hat{Y}\bot Z|Y\)</span></td>
+<td rowspan="3" style="text-align: left;"><span class="math inline">\(\displaystyle
+\left.\rule[-2.5em]{0pt}{5.4em} \right\}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle \hat{Y}=Y\)</span> or <span class="math inline">\(\displaystyle \hat{Y} = 1-Y\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Weak</td>
+<td style="text-align: left;">Errors</td>
+<td style="text-align: left;">Sufficiency</td>
+<td style="text-align: left;"><span class="math inline">\(\displaystyle Y\bot Z|\hat{Y}\)</span></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>There are two types of fairness metrics, those comparing outcomes or predictions <span class="math inline">\(\hat{Y}\)</span>, and those comparing errors. We can further bisect the latter into separation and sufficiency. The criteria are ordered from strong to weak; by this we are referring to the trade-off with utility in satisfying it. Independence or statistical parity is the strongest criterion. There is a larger gap between separation and sufficiency, because separation imposes a more similar constraint to independence. We still want the sensitive feature to be independent of the prediction, but only when conditioned on the actual outcome <span class="math inline">\(Y\)</span>. Sufficiency is almost implicitly satisfied just by training or calibrating our model. All three criteria compare some joint distribution over the prediction, target and sensitive feature. The brackets either side of the table show which sets of criteria can be satisfied and how.</p>
+<p>Independence and sufficiency (at the top and bottom of Table <a href="#tbl:Compatibility" data-reference-type="ref" data-reference="tbl:Compatibility">3.4</a> respectively) are the furthest apart; they can only be satisfied if the actual outcome <span class="math inline">\(Y\)</span> is independent of <span class="math inline">\(Z\)</span>. This says that all sensitive subgroups must be equally represented in both the accepted and rejected groups in the data. But if <span class="math inline">\(Y\)</span> is independent of <span class="math inline">\(Z\)</span>, we can satisfy all three criteria. It makes sense that the gold standard for fairness is representation, because fairness is aspirational.</p>
+<p>Separation and sufficiency are the next closest together. If we could only satisfy two of the three criteria, these are the ones we’d choose, because together they give us independent errors. This is only possible, if the target and prediction are exactly the same, or exactly the opposite; that is, if the error is always exactly zero, or exactly one. This makes sense, because independent errors, does not prohibit the target <span class="math inline">\(Y\)</span> or prediction <span class="math inline">\(\hat{Y}\)</span> from depending on <span class="math inline">\(Z\)</span>. Rather, it’s okay for them to depend on <span class="math inline">\(Z\)</span>, as long as their difference doesn’t. For a binary target, there are only two ways of satisfying this constraint.</p>
+<p>Lastly, we can satisfy independence and separation if the prediction <span class="math inline">\(\hat{Y}\)</span> is independent of the target (which sounds like a terrible model) or if the target <span class="math inline">\(Y\)</span> has more degrees of freedom than <span class="math inline">\(Z\)</span>. So for a binary sensitive feature, we need three or more possible outcomes, to satisfy both independence and separation. Note that if we have infinitely possible outcomes, as in the case of a continuous target, we can definitely satisfy both these criteria, because <span class="math inline">\(Z\)</span> is certainly finite in size (limited to a finite number of subgroups). Furthermore, if the target is continuous, that would help us to satisfy independence of errors, without requiring equal representation. So increasing the degrees of freedom in our target seems like a promising path.</p>
+<p>There is one particular issue with group fairness metrics. That is, that <strong>equalising statistical properties at the group level, does not guarantee fair treatment at an individual level</strong>. Let’s return to our applicant filter with the sensitive feature gender. Independence requires that acceptance rates are equal for male and female applicants. Suppose model acceptance rates are lower for female applicants. To ensure we satisfy the independence fairness criterion, we could just randomly select female applicants that were rejected and instead accept them until the acceptance rates matched. In fact this kind of approach can be used to satisfy any group fairness criterion. Clearly this method will likely result in some <em>undeserving</em> female applicants being accepted. Although this approach would be able to satisfy the fairness criterion, the resulting algorithm would likely be considered unfair.</p>
+<p>It’s worth noting that although the approach of randomly selecting female applicants to accept might seem unnecessarily naive, there can be cases, (particularly when there are multiple protected characteristics that intersect) where protected groups are so small that models simply do not have enough training data to be able to make accurate predictions for them. In such cases a model could conceivably be, not much better than guessing for individuals in those groups. Even if we supposedly take a smarter approach of say, choosing the individuals closest to the decision boundary (rather than choosing them randomly) this would be equivalent to choosing a different acceptance threshold for women, in which case we would be using a different criterion to determine acceptance for male and female applicants (which are in all other respects similar), which could be viewed as unfair, despite satisfying independence. In the next chapter we’ll talk about <em>individual fairness</em> which resolves these difficulties by specifying the modelling problem in such a way that the notions of fairness and utility are entirely orthogonal.</p>
 </section>
 <section id="summary-2" class="level2 unnumbered">
 <h2 class="unnumbered">Summary</h2>
@@ -2160,7 +2215,7 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 </ul>
 <div id="tbl:GFairSumm">
 <table>
-<caption>Table 3.4: Group fairness metrics summary.</caption>
+<caption>Table 3.5: Group fairness metrics summary.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Comparing</th>
@@ -2197,7 +2252,7 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <h3 class="unnumbered">Comparing Outcomes</h3>
 <div id="tbl:GFOutSumm">
 <table>
-<caption>Table 3.5: Group fairness metrics comparing outcomes.</caption>
+<caption>Table 3.6: Group fairness metrics comparing outcomes.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Category</th>
@@ -2288,7 +2343,7 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 </ul>
 <div id="tbl:GFErrSumm">
 <table>
-<caption>Table 3.6: Group fairness metrics comparing errors.</caption>
+<caption>Table 3.7: Group fairness metrics comparing errors.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Category</th>
@@ -2352,8 +2407,8 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <li><p>Separation, allows for dependence between the predicted target variable and the sensitive feature but only to the extent that it exists between the actual target variable and the sensitive feature.</p></li>
 </ul>
 </section>
-<section id="sufficiency-ybot-zhaty-and-calibration-by-group" class="level4 unnumbered">
-<h4 class="unnumbered">Sufficiency (<span class="math inline">\(Y\bot Z|\hat{Y}\)</span>) and Calibration by Group</h4>
+<section id="sufficiency-ybot-zhaty" class="level4 unnumbered">
+<h4 class="unnumbered">Sufficiency (<span class="math inline">\(Y\bot Z|\hat{Y}\)</span>)</h4>
 <ul>
 <li><p>For a binary classification model, sufficiency requires the probability of of an error for a given prediction to be equal across protected groups.</p></li>
 <li><p>A model that is calibrated by group satisfies sufficiency.</p></li>
@@ -2370,9 +2425,10 @@ FPR (p_a-p_b) TPR = 0\]</span></td>
 <li><p>In the case where <span class="math inline">\(Y\)</span> is binary, separation and sufficiency can only be satisfied simultaneously if the sensitive feature is independent of the target variable, or the model has an accuracy of 100% (<span class="math inline">\(\hat{Y}=Y\)</span>) or the model has an accuracy of 0% (<span class="math inline">\(\hat{Y}=1-Y\)</span>).</p></li>
 </ul>
 </section>
-<section id="weaknesses-of-group-fairness" class="level3 unnumbered">
-<h3 class="unnumbered">Weaknesses of Group Fairness</h3>
+<section id="concluding-remarks-1" class="level3 unnumbered">
+<h3 class="unnumbered">Concluding remarks</h3>
 <ul>
+<li><p>We need more degrees of freedom in the target variable. Would ensure we are always able to satisfy independent errors.</p></li>
 <li><p>Equalising statistical properties at the <em>group level</em>, don’t guarantee fair treatment at an <em>individual level</em>.</p></li>
 </ul>
 </section>
@@ -2527,31 +2583,6 @@ d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i,y), f(\boldsymbol{x}_j,y)) \leq 
 <li><p>For a classification model to satisfy individual fairness (continuity) we must turn to a probabilistic model which maps individuals to distributions over outcomes. The continuity requirement then applies to the change in distribution of outcomes relative to the similarity of individuals. Predictions must be randomised, based on the model output distributions.</p></li>
 <li><p>The metric consistency is given by <span class="math display">\[yNN = 1 - \frac{1}{n} \sum_{i=1}^n \left| \hat{y}_i -
 \frac{1}{k}\sum_{j|x_j\in kNN(\boldsymbol{x}_i)} \hat{y}_j \right|.\]</span> It uses <span class="math inline">\(k\)</span>-Nearest Neighbours to measure the consistency of model classifications locally in input space in an effort to quantify individual fairness in a dataset. Values close to one indicate that similar inputs are treated similarly.</p></li>
-</ul>
-</section>
-<section id="further-work" class="level2 unnumbered">
-<h2 class="unnumbered">Further Work</h2>
-<ul>
-<li><p>What exactly is individual fairness? Why do we care about the size of the gradient but not the direction?</p></li>
-<li><p>If individual fairness is treating similar people similarly then that should imply that the distribution of errors/luck/risk is the same for everyone?</p></li>
-<li><p>If the gradient is zero, then we treat everyone the same (we map everyone to the same distribution of outcomes). We are in the maximum equality scenario. Notice that individual fairness does not care what distribution we map everyone too, only how this map changes for similar individuals.</p></li>
-<li><p>As we increase the allowed gradient, optimising for utility fits the data as best it can within the constraint. By maximising utility we rank people for the task and hope the data contains enough information to be able to find a pattern.</p></li>
-<li><p>The calculation of individual fairness, ignores the ground truth target and looks only at the features.</p></li>
-<li><p>We know that individual fairness accepts that there is uncertainty in our predictions and even advocates randomised predictions. Where does this uncertainty come from?</p>
-<ol>
-<li><p><strong>Misrepresentation of the population</strong> Our map won’t work well for under-represented groups. This is a hard problem. We might be able to find under-represented groups in our training data but if some types of people just aren’t there at all, we have no way of knowing by looking at the data. Maybe the answer is to just ignore this - if they are not there then they are not there.</p>
-<ul>
-<li><p>The connection between fairness and uncertainty is an interesting one. It points to the importance of representation in predictions.</p></li>
-<li><p>There a talk about something to do with this, about fairness in recommendations where you make several (say <span class="math inline">\(k\)</span>) recommendations and you have a disadvantaged group. It turns out that always making sure that one of the recommendations is from the disadvantaged group has a surprising impact if I recall.</p></li>
-</ul></li>
-<li><p><strong>Errors in our feature matrix</strong> These could be anything from human errors in filling in forms to systematic discrimination.</p>
-<ul>
-<li><p>If we accept that our data (feature matrix) is not perfect and contains errors, then the larger the change in predictions (with respect to similarity) the larger the expected error in the prediction.</p></li>
-<li><p>It seems like individual fairness is some measure of the error (on the population, not our sample dataset). Where the change in prediction with respect to similarity is large, we expect the error distribution to be wider.</p></li>
-<li><p>Utility does not take into account uncertainty in prediction because it assumes we have the ground truth. In this sense, we can think of Utility as trying to fit to the data and individual fairness as trying to minimise changes (between individuals) in the distribution of error.</p></li>
-<li><p>In <span class="citation" data-cites="ZemelLearnFairReps"><a href="#ref-ZemelLearnFairReps" role="doc-biblioref">[62]</a></span>, they talk about learning fair respresentations. I should re-read this paper. I think I recall that it suffers from overfitting.</p></li>
-</ul></li>
-</ol></li>
 </ul>
 </section>
 </section>
@@ -3285,8 +3316,8 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 </div>
 <p>The discrete grid of adjacent models we can reach through a small change in the model (given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span>), is shown in Figure <a href="#fig:domain_2" data-reference-type="ref" data-reference="fig:domain_2">5.9</a>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_domain_2.png" id="fig:domain_2" style="width:40.0%" alt="Figure 5.9: Visualisation of the local domain space for given \mu, \lambda and n. In the figure we assume the point (\mu,\lambda) is not on the edge of the domain, where some of the neighbouring points may fall outside it." />
-<figcaption aria-hidden="true">Figure 5.9: Visualisation of the local domain space for given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span>. In the figure we assume the point <span class="math inline">\((\mu,\lambda)\)</span> is not on the edge of the domain, where some of the neighbouring points may fall outside it.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_domain_2.png" id="fig:domain_2" style="width:40.0%" alt="Figure 5.9: Visualisation of the local domain space for given \mu, \lambda and n (assuming the point (\mu,\lambda) is not on an edge)." />
+<figcaption aria-hidden="true">Figure 5.9: Visualisation of the local domain space for given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span> (assuming the point <span class="math inline">\((\mu,\lambda)\)</span> is not on an edge).</figcaption>
 </figure>
 <p>Equation 5.9 provides an expression for <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span>. Substituting for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> in the case <span class="math inline">\(\alpha=1\)</span> gives, <span class="math display">\[I_{\alpha}\left(\lambda-\frac{1}{n},\mu\pm\frac{1}{n}\right) =
 \left[1-\left(\frac{\lambda}{\mu}-\frac{1}{n\mu}\right)
@@ -3525,24 +3556,6 @@ b_+ &amp; 1
 <li><p>The threshold on skew <span class="math inline">\(\mu\)</span> for which a false positive is deemed fairer than an accurate prediction, is a decreasing function of <span class="math inline">\(\alpha\)</span>.</p></li>
 </ul>
 </section>
-</section>
-<section id="further-work-1" class="level2 unnumbered">
-<h2 class="unnumbered">Further Work</h2>
-<ul>
-<li><p>Is there something special about <span class="math inline">\(\alpha=0\)</span> that I’m missing? I’ve read that a lateral shift in the cost matrix does not change the location of the minima (should prove this). Is this true for all values of <span class="math inline">\(\alpha\)</span>?</p></li>
-<li><p>There are other loss functions, hinge loss for SVM for example.</p></li>
-<li><p>It looks like all of these indices are convex with respect to <span class="math inline">\(\hat{y}\)</span>, since <span class="math inline">\(f_{\alpha}&#39;&#39;(x)=x^{\alpha-2}\)</span>. From equation (5.3) <span class="math display">\[f_{\alpha}&#39;(x) = \left\{
-\begin{array}{cl}
--\dfrac{1}{x} &amp; \textrm{for}\quad \alpha=0 \\
-\rule{0em}{2.6ex}
-1+\ln x       &amp; \textrm{for}\quad \alpha=1 \\
-\rule{0em}{3.7ex}
-\dfrac{x^{\alpha-1}}{\alpha-1}
-              &amp; \textrm{for}\quad \alpha\in\mathbb{R}.
-\end{array}\right.\]</span></p></li>
-<li><p>For <span class="math inline">\(\alpha=1/2\)</span>, the between group component as a proportion of the utility is maximised. This is exciting! Could this be a utility function that somehow prioritises between-group fairness and if so how? Why does this happen? What’s special about <span class="math inline">\(\alpha=1/2\)</span>?</p></li>
-<li><p>Is it worth generalising the value of <span class="math inline">\(b_+\)</span>. Can we choose these more intentionally based on our relative preference of false positives to false negatives? What do we believe our index surface should look like?</p></li>
-</ul>
 </section>
 </section>
 <section id="part-iii-mitigating-bias" class="level1 unnumbered">
@@ -4348,9 +4361,9 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 </div>
 <p><span class="math display">\[\max_{\boldsymbol{b}}[I_{\alpha}(\boldsymbol{b})] = \left\{
 \begin{array}{cl}
-\ln n &amp; \quad\textrm{for}\quad\alpha=1 \\
+\ln n &amp; \textrm{for}\quad\alpha=1 \\
 \dfrac{n^{\alpha-1}-1}{\alpha(\alpha-1)}
-      &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1
+      &amp; \textrm{for}\quad\alpha&gt;0
 \end{array}\right.\]</span></p>
 </div>
 </section>
@@ -4380,10 +4393,10 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 <p>For binary benefits, the value of the index is given by <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = I_{\alpha}(\mu)
 = \left\{
 \begin{array}{cl}
-- \ln\mu &amp; \quad\textrm{for}\quad\alpha=1 \\
+- \ln\mu &amp; \textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-1\right)
-&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad\alpha&gt;0.
 \end{array}\right.\]</span></p>
 </div>
 <p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>) and the remaining <span class="math inline">\(n_-=n-n_c\)</span> predictions are errors (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as, <span class="math display">\[\begin{aligned}
@@ -4393,16 +4406,16 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n}\left[(n-n_c)f_{\alpha}(0)
 \end{aligned}\]</span> since the mean error <span class="math inline">\(\mu=n_c/n\)</span> is exactly the accuracy of our model. From equation (5.3) we know, <span class="math display">\[\begin{aligned}
 (1-\mu)f_{\alpha}(0) &amp; = \left\{
 \begin{array}{cl}
-0                            &amp; \quad\textrm{for}\quad\alpha=1 \\
+0                            &amp; \textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
-\dfrac{\mu-1}{\alpha(\alpha-1)} &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+\dfrac{\mu-1}{\alpha(\alpha-1)} &amp; \textrm{for}\quad\alpha&gt;0.
 \end{array}\right.\\
 \mu f_{\alpha}\left(\dfrac{1}{\mu}\right) &amp; = \left\{
 \begin{array}{cl}
 -\ln\mu
-&amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
+&amp; \textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-\mu\right)
-&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad\alpha&gt;0.
 \end{array}\right.
 \end{aligned}\]</span> Substituting yields the required result.</p>
 <div class="lookbox">
@@ -4412,12 +4425,12 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n}\left[(n-n_c)f_{\alpha}(0)
 <p><span class="math display">\[I_{\alpha}\left(\mu,\lambda\right) = \left\{
 \begin{array}{cl}
 \left(1-\dfrac{\lambda}{\mu}\right)\ln2-\ln\mu
-&amp; \quad\textrm{for}\quad\alpha = 1 \\
+&amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.5ex}
 \dfrac{1}{\alpha(\alpha-1)}
 \left[ \left(\dfrac{2}{\mu}\right)^{\alpha-1}
 - \dfrac{(2^{\alpha-1}-1)}{\mu^{\alpha}}\lambda - 1 \right]
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad \alpha&gt;0.
 \end{array}\right.\]</span></p>
 </div>
 <p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>); <span class="math inline">\(n_+\)</span> false positive predictions (in which case <span class="math inline">\(b=2\)</span>); and the remaining <span class="math inline">\(n-n_c-n_+\)</span> predictions are false negative (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as, <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
@@ -4425,30 +4438,30 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n}\left[(n-n_c)f_{\alpha}(0)
 + n_+ f_{\alpha}\left(\frac{2}{\mu}\right)\right].\]</span> From equation (5.3) we know, <span class="math display">\[\begin{aligned}
 f_{\alpha}(0) &amp; = \left\{
 \begin{array}{cl}
-0                            &amp; \quad\textrm{for}\quad\alpha=1 \\
+0                            &amp; \textrm{for}\quad\alpha=1 \\
 \rule{0em}{4ex}
-\dfrac{-1}{\alpha(\alpha-1)} &amp; \quad\textrm{for}\quad0&lt;\alpha\ne1,
+\dfrac{-1}{\alpha(\alpha-1)} &amp; \textrm{for}\quad\alpha&gt;0,
 \end{array}\right.\\
 f_{\alpha}\left(\dfrac{1}{\mu}\right) &amp; = \left\{
 \begin{array}{cl}
 -\dfrac{\ln\mu}{\mu}
-&amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
+&amp; \textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha}}-1\right)
-&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1,
+&amp; \textrm{for}\quad\alpha&gt;0,
 \end{array}\right. \\
 f_{\alpha}\left(\dfrac{2}{\mu}\right) &amp; = \left\{
 \begin{array}{cl}
 \dfrac{2(\ln2-\ln\mu)}{\mu}
-&amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
+&amp; \textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{2^{\alpha}}{\mu^{\alpha}}-1\right)
-&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad\alpha&gt;0.
 \end{array}\right. \\
 \Rightarrow\quad I_{\alpha}(\boldsymbol{b}) &amp; = \left\{
 \begin{array}{cl}
 -\dfrac{(n_c+2n_+)}{n}\dfrac{\ln\mu}{\mu} + \dfrac{2n_+\ln2}{n\mu}
-&amp; \quad\textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
+&amp; \textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{n_c+2^{\alpha}n_+}{n\mu^{\alpha}} - 1\right)
-&amp; \quad\textrm{for}\quad0&lt;\alpha\ne1.
+&amp; \textrm{for}\quad\alpha&gt;0.
 \end{array}\right.
 \end{aligned}\]</span> Let us denote the accuracy of our model with <span class="math inline">\(\lambda\)</span>. We have, <span class="math display">\[\lambda = \frac{n_c}{n} \quad\textrm{and}\quad \mu = \frac{n_c+2n_+}{n}
 \quad\Rightarrow\quad \frac{2n_+}{n} = \mu-\lambda.\]</span> Substituting yields the required result.</p>
@@ -4458,43 +4471,43 @@ f_{\alpha}\left(\dfrac{2}{\mu}\right) &amp; = \left\{
 </div>
 <p>The index has exactly one turning point (a maxima) for <span class="math inline">\(\alpha&gt;0\)</span>, at <span class="math inline">\(\mu=\tilde{\mu}\)</span> where, <span class="math inline">\(\tilde{\mu} = g(\alpha)\lambda\)</span> and, <span class="math display">\[\quad g(\alpha) = \left\{
 \begin{array}{cl}
-\ln2 &amp; \;\textrm{for}\quad\alpha = 1 \\
+\ln2 &amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-&amp; \;\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \textrm{for}\quad \alpha&gt;0
 \end{array}\right.\]</span></p>
 </div>
 <p>We wish to find the maximal value of the index for a given accuracy. We start by looking for turning points. Differentiating equation (5.9), <span class="math display">\[\frac{ \partial I_{\alpha} }{ \partial \mu } = \left\{
 \begin{array}{cl}
 \dfrac{1}{\mu^2} \left( \lambda\ln2 - \mu \right)
-&amp; \quad\textrm{for}\quad\alpha = 1 \\
+&amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 \dfrac{\alpha(2^{\alpha-1}-1)\lambda - (\alpha-1)2^{\alpha-1}\mu}
 {\alpha(\alpha-1)\mu^{\alpha+1}}
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \textrm{for}\quad \alpha&gt;0
 \end{array}\right.\]</span> <span class="math display">\[\frac{ \partial I_{\alpha} }{ \partial \mu } = 0 \quad\Leftrightarrow\quad
 \mu = \tilde{\mu} = g(\alpha)\lambda \quad\textrm{where}\quad
 g(\alpha) = \left\{
 \begin{array}{cl}
-\ln2 &amp; \quad\textrm{for}\quad\alpha = 1 \\
+\ln2 &amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \textrm{for}\quad \alpha&gt;0
 \end{array}\right.\]</span> <span class="math display">\[\frac{ \partial^2 I_{\alpha} }{ \partial \mu^2 } =\left\{
 \begin{array}{cl}
 \dfrac{1}{\mu^3} \left[\mu-\lambda2\ln2\right]
-&amp; \quad\textrm{for}\quad\alpha = 1 \\
+&amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 \dfrac{2^{\alpha-1}}{\mu^{\alpha+2}}
 \left[\mu-\dfrac{(\alpha+1)(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-      \lambda\right] &amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
+      \lambda\right] &amp; \textrm{for}\quad \alpha&gt;0
 \end{array}\right.\]</span> <span class="math display">\[\Rightarrow\quad\left.\frac{ \partial^2 I_{\alpha} }{ \partial \mu^2 }\right|_{\mu=\tilde{\mu}} = \left\{
 \begin{array}{cl}
 -\dfrac{\ln2}{\tilde{\mu}^3} \lambda
-&amp; \quad\textrm{for}\quad\alpha = 1 \\
+&amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 -\dfrac{(2^{\alpha-1}-1)}{\tilde{\mu}^{\alpha+2}(\alpha-1)} \lambda
-&amp; \quad\textrm{for}\quad 0&lt;\alpha\ne1
+&amp; \textrm{for}\quad \alpha&gt;0
 \end{array}\right\}&lt;0 \quad\forall\,\alpha&gt;0.\]</span></p>
 </section>
 </section>

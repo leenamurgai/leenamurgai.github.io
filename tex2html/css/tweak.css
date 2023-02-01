@@ -70,14 +70,18 @@ caption {
     margin-bottom: 0;
     padding: 0;
 }
-/* Specific Tables
-div[id="tbl:app_ProbRules"] table { 
+/* Specific Tables */
+div[id="tbl:Compatibility"] table,
+div[id="tbl:Compatibility"] td,
+div[id="tbl:Compatibility"] th { 
   border: none;
 }
-div[id="tbl:app_ProbRules"] td { 
-  border: none;
-} */
-
+div[id="tbl:SimpPara"] td[rowspan] {
+    vertical-align: bottom;
+}
+div[id="tbl:Compatibility"] td[rowspan] {
+    vertical-align: middle;
+}
 
 /* Headers */
 h4 {
