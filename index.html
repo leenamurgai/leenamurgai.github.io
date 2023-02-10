@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Dr Leena Murgai">
-  <meta name="dcterms.date" content="2023-02-01">
+  <meta name="dcterms.date" content="2023-02-09">
   <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
@@ -32,7 +32,7 @@
 <header>
 <h1 class="title">Mitigating Bias in Machine Learning</h1>
 <p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">Dr Leena Murgai</a></p>
-<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer"> 1 February 2023</a></p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer"> 9 February 2023</a></p>
 <p class="byline"><a href="https://raw.githubusercontent.com/leenamurgai/mitigatingbias.ml/main/profile/mbml_citation.bib" target="_blank" rel="noopener noreferrer">Cite this book</a></p>
 </header>
 <div class="TOC">
@@ -84,7 +84,6 @@
 <li><a href="#fairness-as-utility" id="toc-fairness-as-utility"><span class="toc-section-number">5.3</span> Fairness as Utility</a></li>
 <li><a href="#summary-4" id="toc-summary-4">Summary</a></li>
 </ul></li>
-<li><a href="#part-iii-mitigating-bias" id="toc-part-iii-mitigating-bias">Part III Mitigating Bias</a></li>
 <li><a href="#app_Notation" id="toc-app_Notation"><span class="toc-section-number">A</span> Notation and Conventions</a></li>
 <li><a href="#app_Metrics" id="toc-app_Metrics"><span class="toc-section-number">B</span> Performance Metrics</a></li>
 <li><a href="#app_ProbRules" id="toc-app_ProbRules"><span class="toc-section-number">C</span> Rules of Probability</a></li>
@@ -155,7 +154,6 @@
     <li><a href="#fairness-as-utility" id="toc-fairness-as-utility"><span class="toc-section-number">5.3</span> Fairness as Utility</a></li>
     <li><a href="#summary-4" id="toc-summary-4">Summary</a></li>
     </ul></li>
-    <li><a href="#part-iii-mitigating-bias" id="toc-part-iii-mitigating-bias">Part III Mitigating Bias</a></li>
     <li><a href="#app_Notation" id="toc-app_Notation"><span class="toc-section-number">A</span> Notation and Conventions</a></li>
     <li><a href="#app_Metrics" id="toc-app_Metrics"><span class="toc-section-number">B</span> Performance Metrics</a></li>
     <li><a href="#app_ProbRules" id="toc-app_ProbRules"><span class="toc-section-number">C</span> Rules of Probability</a></li>
@@ -2607,7 +2605,7 @@ d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i,y), f(\boldsymbol{x}_j,y)) \leq 
 <li><p><strong>Index calculation:</strong> There are lots of indices available that each rank inequality in different ways, which one should we use?</p></li>
 <li><p><strong>Benefit function:</strong> How do we map our predictions to benefits?</p></li>
 </ol>
-<p>Inspired by the work of Speicher, Heidari et al.<span class="citation" data-cites="IneqIndPaper"><a href="#ref-IneqIndPaper" role="doc-biblioref">[63]</a></span> (here on in referred to as the <em>original paper</em>), we discuss these questions, specifically for algorithmic classifiers. Following their work, we focus our attention on <em>generalised entropy indices</em>, a special family of inequality indices that are <em>subgroup decomposable</em> into a <em>between-group</em> component and a <em>within-group</em> component. We show how generalised entropy indices can be viewed as the class of <em>subgroup decomposable loss functions</em>. We analyse the effect of the generalisation parameter <span class="math inline">\(\alpha\)</span> and show that for <span class="math inline">\(\alpha=0\)</span>, the index is a linear function of the cross entropy loss. We show that in the special case <span class="math inline">\(\alpha=1/2\)</span>, the contribution to the total loss from the between-group component is maximal. For the benefit function proposed in the original paper, which we describe as <em>equal luck</em>, we provide an analytical account of the index’s behaviour as a function of the generalisation parameter <span class="math inline">\(\alpha\)</span>, model accuracy <span class="math inline">\(\lambda\)</span>, and mean error <span class="math inline">\(\mu\)</span>.</p>
+<p>Inspired by the work of Speicher, Heidari et al.<span class="citation" data-cites="IneqIndPaper"><a href="#ref-IneqIndPaper" role="doc-biblioref">[63]</a></span> (here on in referred to as the <em>original paper</em>), we discuss these questions, specifically for algorithmic classifiers. Following their work, we focus our attention on <em>generalised entropy indices</em>, a special family of inequality indices that are <em>subgroup decomposable</em> into a <em>between-group</em> component and a <em>within-group</em> component. We show how generalised entropy indices can be viewed as the class of <em>subgroup decomposable loss functions</em>. We analyse the effect of the generalisation parameter <span class="math inline">\(\alpha\)</span> and show that for <span class="math inline">\(\alpha=0\)</span>, the index is a linear function of the cross entropy loss. We show that in the special case <span class="math inline">\(\alpha=1/2\)</span>, the contribution to the total loss from the between-group component is maximised. For the benefit function proposed in the original paper, which we describe as <em>equal luck</em>, we provide an analytical account of the index’s behaviour as a function of the generalisation parameter <span class="math inline">\(\alpha\)</span>, model accuracy <span class="math inline">\(\lambda\)</span>, and mean error <span class="math inline">\(\mu\)</span>.</p>
 <section id="properties-of-inequality-indices" class="level4 unnumbered">
 <h4 class="unnumbered">Properties of Inequality Indices</h4>
 <p>Before getting into the particular family of indices we’ll focus on in this chapter, we mention some more general properties of inequality indices that describe their behaviour. To do this it will help to introduce some notation. We denote the benefits received by each individual, in our population size <span class="math inline">\(n\)</span>, as the vector <span class="math inline">\(b=(b_1, b_2,...,b_n)\)</span>. We use <span class="math inline">\((b_{(1)}, b_{(2)},...,b_{(n)})\)</span> to denote the benefit vector, <span class="math inline">\(\boldsymbol{b}\)</span> sorted in ascending order. We denote our inequality measure with <span class="math inline">\(I\)</span> where <span class="math inline">\(I:\mathbb{R}^n_{\geq 0}\mapsto\mathbb{R}_{\geq 0}\)</span>; that is, the inequality measure maps a vector of <span class="math inline">\(n\)</span> non-negative, real valued benefits <span class="math inline">\(\boldsymbol{b}\)</span> to a positive real number <span class="math inline">\(I(\boldsymbol{b})\geq0\)</span>.</p>
@@ -2630,7 +2628,10 @@ d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i,y), f(\boldsymbol{x}_j,y)) \leq 
 </section>
 <section id="generalised-entropy-indices" class="level2" data-number="5.1">
 <h2 data-number="5.1"><span class="header-section-number">5.1</span> Generalised Entropy Indices</h2>
-<p>On the question of which index, we narrow our scope, to a family of inequality metrics known as <em>generalised entropy indices</em>. This family of indices are <em>additively decomposable</em>, over partitions of a population. In particular, for any given partition of the population into distinct subgroups, generalised entropy indices can be decomposed as, the sum of a <em>between-group</em> (or <em>intergroup</em>) component, and a <em>within-group</em> (or <em>intragroup</em>) component.</p>
+<p>In our analysis, we consider the one parameter family of inequality metrics known as <em>generalised entropy indices</em>. These represent the (entire) class of inequality measures that are <em>additively decomposable</em><span class="citation" data-cites="Shorrocks"><a href="#ref-Shorrocks" role="doc-biblioref">[64]</a></span><span class="marginnote"><span id="ref-Shorrocks" class="csl-entry" role="doc-biblioentry">
+<span class="csl-left-margin">[64] </span><span class="csl-right-inline">A. F. Shorrocks, <span>“The class of additively decomposable inequality measures,”</span> <em>Econometrica: Journal of the Econometric Society</em>, vol. 48, no. 613–625, 1980.</span>
+</span>
+</span>. This means that for any given partition of a population into distinct subgroups, generalised entropy indices can be decomposed as, the sum of a <em>between-group</em> (or <em>intergroup</em>) component, and a <em>within-group</em> (or <em>intragroup</em>) component.</p>
 <section id="between-group-component" class="level5 unnumbered">
 <h5 class="unnumbered">Between-group component</h5>
 <p>The between-group component is computed as the value of the index, assuming all individuals receive the mean benefit, of the partition to which they belong. Essentially, it measures the contribution to the inequality index, from differences in the average benefit between the subgroups (akin to the notion of group fairness we discussed in chapter <a href="#ch_GroupFairness" data-reference-type="ref" data-reference="ch_GroupFairness">3</a>, except here, the relative sizes of the subgroups matter). If all the groups have the same mean benefit the between-group component is zero.</p>
@@ -2638,7 +2639,7 @@ d_{\mathcal{P}(\mathcal{Y})}(f(\boldsymbol{x}_i,y), f(\boldsymbol{x}_j,y)) \leq 
 <section id="within-group-component" class="level5 unnumbered">
 <h5 class="unnumbered">Within-group component</h5>
 <p>The within-group component is computed as a weighted sum of the index value for each subgroup, and can be thought of as measuring the contribution to overall (individual) unfairness, arising from variation in benefits between individuals in the subgroups. For a within-group component to be zero, we require every individual in the subgroup to have exactly the same benefit.<br />
-The ability to additively decompose this inequality measure into intergroup and intragroup components, is arguably where its value lies. The group fairness measures in chapter <a href="#ch_GroupFairness" data-reference-type="ref" data-reference="ch_GroupFairness">3</a>, make pairwise comparisons of groups. Thanks to their property of additive decomposability, generalised entropy indices have the advantage of providing a principled way of aggregating the fairness measures over any number of subgroups of the population. Historically, much of the research and development of techniques for reducing algorithmic bias, has focussed on improving group fairness metrics. Generalised entropy indices then, provide a simple way to see when trade-offs between the different notions of fairness (between-group and within-group) might occur.</p>
+The ability to additively decompose these inequality measures into intergroup and intragroup components, is arguably where their value lies. The group fairness measures in chapter <a href="#ch_GroupFairness" data-reference-type="ref" data-reference="ch_GroupFairness">3</a>, make pairwise comparisons of groups. Thanks to their property of additive decomposability, generalised entropy indices have the advantage of providing a principled way of aggregating the fairness measures over any number of subgroups of the population. Historically, much of the research and development of techniques for reducing algorithmic bias, has focussed on improving group fairness metrics. Generalised entropy indices then, provide a simple way to see when trade-offs between the different notions of fairness (between-group and within-group) might occur.</p>
 </section>
 <section id="properties-of-generalised-entropy-indices" class="level4 unnumbered">
 <h4 class="unnumbered">Properties of Generalised Entropy Indices</h4>
@@ -2654,24 +2655,6 @@ The ability to additively decompose this inequality measure into intergroup and 
 </section>
 <section id="index-calculation" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1"><span class="header-section-number">5.1.1</span> Index Calculation</h3>
-<p>Given an array of benefits we can calculate what proportion of the total benefit each individual received by dividing their benefit by the sum of the benefits in the array. If the total benefit is equally divided among the population, each individual receives the mean benefit <span class="math inline">\(\mu\)</span>. <span class="math display">\[B = \sum_{i=1}^n b_i \qquad\textrm{and}\qquad \mu = \frac{B}{n}.\]</span> If we divide the benefits by the total, our benefit array can be interpreted as a probability distribution <span class="math inline">\(p_i=b_i/B\)</span> over <span class="math inline">\(n\)</span> events. If we divide the benefits by the mean benefit (instead of the sum), we calculate <span class="math inline">\(x_i=b_i/\mu\)</span> which tells us how many times the <em>fair</em> (mean) amount each individual received. Notice that,</p>
-<div id="eq:benefit2prob">
-<table>
-<colgroup>
-<col style="width: 90%" />
-<col style="width: 10%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math display">\[
-x_i = \frac{b_i}{\mu} = np_i \qquad\Rightarrow\qquad
-\boldsymbol{b} = n\mu \boldsymbol{p}\]</span></td>
-<td style="text-align: right;">(5.1)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>where <span class="math inline">\(p_i\)</span> is the proportion of the total benefit ascribed to individual <span class="math inline">\(i\)</span>. This will be useful when we look at some special cases.</p>
 <div class="lookbox">
 <p><strong>Generalised Entropy Indices</strong></p>
 <p>The generalised entropy index for benefits <span class="math inline">\(b_1, b_2,...,b_n\)</span> with mean benefit <span class="math inline">\(\mu\)</span> can be written as</p>
@@ -2685,7 +2668,7 @@ x_i = \frac{b_i}{\mu} = np_i \qquad\Rightarrow\qquad
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\sum_{i=1}^n f_{\alpha}(x_i) \quad\textrm{where}\quad x_i = \frac{b_i}{\mu}.\]</span></td>
-<td style="text-align: right;">(5.2)</td>
+<td style="text-align: right;">(5.1)</td>
 </tr>
 </tbody>
 </table>
@@ -2702,24 +2685,56 @@ I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\sum_{i=1}^n f_{\alpha}(x_i) \quad\textr
 <td style="text-align: center;"><span class="math display">\[
 f_{\alpha}(x) = \left\{
 \begin{array}{cl}
--\ln x &amp; \textrm{for}\quad \alpha=0 \\
-x\ln x &amp; \textrm{for}\quad \alpha=1 \\
+-\ln x &amp; \textrm{if}\quad \alpha=0 \\
+x\ln x &amp; \textrm{if}\quad \alpha=1 \\
 \rule{0em}{3.5ex}
 \dfrac{x^{\alpha}-1}{\alpha(\alpha-1)}
-       &amp; \textrm{for}\quad \alpha\in\mathbb{R},\,\alpha\notin\{0,1\}.
+       &amp; \textrm{if}\quad \alpha\in\mathbb{R}.
 \end{array}\right.\]</span></td>
-<td style="text-align: right;">(5.3)</td>
+<td style="text-align: right;">(5.2)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Notice that the index can be written as, <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = \mathbb{E}\left[f_{\alpha}\left(\frac{b}{\mu}\right)\right] = \mathbb{E}\left[f_{\alpha}(np)\right].\]</span> The index has a minimal value of zero when all individuals receive the mean benefit, <span class="math inline">\(b_i=\mu\)</span>, or equivalently when <span class="math inline">\(p_i=1/n\)</span>. Here we see the conceptual connection between <em>uncertainty</em> and <em>fairness</em>; something we discussed in the previous chapter on <em>individual fairness</em>.</p>
-<p>For <span class="math inline">\(\alpha\leq0\)</span> the index is undefined for zero benefits (since <span class="math inline">\(f_{\alpha}(x)\rightarrow\infty\)</span> as <span class="math inline">\(x\rightarrow0\)</span>), making it unsuitable for measuring inequality where zero benefits are possible.</p>
+<p>Given an array of benefits we can calculate what proportion of the total benefit each individual received by dividing their benefit by the sum of the benefits in the array. If the total benefit is equally divided among the population, each individual receives the mean benefit <span class="math inline">\(\mu\)</span>. <span class="math display">\[B = \sum_{i=1}^n b_i \qquad\textrm{and}\qquad \mu = \frac{B}{n}.\]</span> If we divide the benefits by the total, our benefit array can be interpreted as a probability distribution <span class="math inline">\(p_i=b_i/B\)</span> over <span class="math inline">\(n\)</span> events. If we divide the benefits by the mean benefit (instead of the sum), we calculate <span class="math inline">\(x_i=b_i/\mu\)</span> which tells us how many times the <em>fair</em> (mean) amount each individual received. Notice that,</p>
+<div id="eq:benefit2prob">
+<table>
+<colgroup>
+<col style="width: 90%" />
+<col style="width: 10%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math display">\[
+x_i = \frac{b_i}{\mu} = np_i \qquad\Rightarrow\qquad
+\boldsymbol{b} = n\mu \boldsymbol{p}\]</span></td>
+<td style="text-align: right;">(5.3)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>where <span class="math inline">\(p_i\)</span> is the proportion of the total benefit ascribed to individual <span class="math inline">\(i\)</span>. Since <span class="math inline">\(0\leq p_i\leq1\)</span>, we know that <span class="math inline">\(x\in[0,n]\)</span>. Notice also that the index can be written as, <span class="math display">\[I_{\alpha}(\boldsymbol{b})
+= \mathbb{E}\left[f_{\alpha}\left(\frac{b}{\mu}\right)\right]
+= \mathbb{E}\left[f_{\alpha}(np)\right]\]</span> For <span class="math inline">\(\alpha\leq0\)</span> the index is undefined for zero benefits (since <span class="math inline">\(f_{\alpha}(x)\rightarrow\infty\)</span> as <span class="math inline">\(x\rightarrow0\)</span>), making it unsuitable for measuring inequality where zero benefits are possible.</p>
+<p>We know that inequality indices measure divergence from the uniform distribution and we can think of them as a system for ranking distributions from most fair to least fair. The most fair (and least uncertain) distribution, where everyone receives the mean benefit, has an index value of zero. In this case the benefit distribution has all of its weight at the mean <span class="math inline">\(\mu\)</span>, and we can say with certainty that <span class="math inline">\(b=\mu\)</span>. We can write the distribution of benefits in this case as <span class="math inline">\(\delta(b-\mu)\)</span> where <span class="math inline">\(\delta\)</span> the <em>delta function</em> (see appendix <a href="#app_Notation" data-reference-type="ref" data-reference="app_Notation">A</a>). To understand the role of the generalisation parameter in ranking, consider two closely related distributions with the same mean. The first distribution <span class="math inline">\(p(b)\)</span> is skewed, and the second is its reflection in the mean <span class="math inline">\(p(\mu-x)\)</span>, as illustrated in Figure <a href="#fig:MirrorDist" data-reference-type="ref" data-reference="fig:MirrorDist">5.1</a>.</p>
+<figure>
+<img src="05_UtilityFairness/figures/Fig_MirrorDistributions.png" id="fig:MirrorDist" style="width:65.0%" alt="Figure 5.1: Comparing benefit distributions" />
+<figcaption aria-hidden="true">Figure 5.1: Comparing benefit distributions</figcaption>
+</figure>
+<p>Which distribution of benefits is preferred? The generalisation parameter <span class="math inline">\(\alpha\)</span> determines the weight <span class="math inline">\(f_{\alpha}(b/\mu)\)</span> applied to different parts of the distribution in calculating it’s ranking.</p>
+<p>From equation (5.2) we can show that, <span class="math display">\[f_{\alpha}&#39;(x) = \left\{
+\begin{array}{cl}
+-1/x                    &amp; \textrm{if}\quad \alpha=0 \\
+1+\ln x                 &amp; \textrm{if}\quad \alpha=1 \\
+x^{\alpha-1}/(\alpha-1) &amp; \textrm{if}\quad \alpha\in\mathbb{R}
+\end{array}\right\}
+\qquad\textrm{and}\qquad
+f_{\alpha}&#39;&#39;(x) = x^{\alpha-2}.\]</span> Note that since <span class="math inline">\(x&gt;0, \;f&#39;&#39;_{\alpha}(x)&gt;0\;\forall\;\alpha\)</span>, thus <span class="math inline">\(f_{\alpha}(x)\)</span> is convex.</p>
 </section>
 <section id="special-cases" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2"><span class="header-section-number">5.1.2</span> Special Cases</h3>
-<p>We review some (better known) special cases of the parameter <span class="math inline">\(\alpha\)</span> to aid our intuition about the behaviour of generalised entropy indices. Suppose we have a model that outputs the probability distribution over all possible outcomes <span class="math inline">\(\boldsymbol{P}\)</span>, together with the true outcome <span class="math inline">\(\boldsymbol{y}\)</span>. If we denote <span class="math inline">\(p_i=\mathbb{P}(y_i|\boldsymbol{P}_i)\)</span> as the probability of observing the true outcome, <span class="math inline">\(y_i\)</span> for individual <span class="math inline">\(i\)</span> according to our model. Recall that the cross entropy loss is given by <span class="math display">\[\mathcal{L}(\boldsymbol{P},\boldsymbol{y}) =
+<p>Let’s review some familiar special cases of the parameter <span class="math inline">\(\alpha\)</span> starting with zero. Suppose we have the results of a classification model on a sample of <span class="math inline">\(n\)</span> individuals <span class="math inline">\(\boldsymbol{P}\)</span> together with the true outcome, a <span class="math inline">\(\boldsymbol{y}\)</span>. Let <span class="math inline">\(p_i=\mathbb{P}(y_i|\boldsymbol{P}_i)\)</span> denote the probability of observing the true outcome, <span class="math inline">\(y_i\)</span> for individual <span class="math inline">\(i\)</span> according to our model. Recall that the cross entropy loss is given by <span class="math display">\[\mathcal{L}(\boldsymbol{P},\boldsymbol{y}) =
 \mathcal{L}(\boldsymbol{p}) = -\sum_{i=1}^n \ln(p_i).\]</span> The cross-entropy loss is minimised at a value of zero, when all probabilities are unity. The loss is unbounded above, <span class="math inline">\(\mathcal{L}(\boldsymbol{p})\rightarrow\infty\)</span> as <span class="math inline">\(p_i\rightarrow0\)</span> . Notice all probabilities must be greater than zero for the integrand to be defined. We see that generalised entropy indices can be thought of as a subgroup decomposable family of loss functions. The commonly used case for training classifiers is <span class="math inline">\(\alpha=0\)</span>.</p>
 <div class="lookbox">
 <p><strong><span class="math inline">\(I_0\)</span> and Cross Entropy Loss</strong></p>
@@ -2742,7 +2757,21 @@ x\ln x &amp; \textrm{for}\quad \alpha=1 \\
 <p>Recall that entropy is calculated as follows, <span class="math display">\[\mathrm{entropy}(\boldsymbol{p}) = -\sum_{i=1}^n p_i\ln(p_i),\]</span> where <span class="math inline">\(p_i\)</span> is the probability of the <span class="math inline">\(i\)</span>th possible event. One interpretation of entropy is as a measure of uncertainty which is inversely related to equality. The most uncertain distribution is the most equal, the <em>uniform distribution</em>. It assigns every possible outcome, the same probability. The least uncertain distribution is most unequal, the <em>delta distribution</em>, where one outcome occurs with probability one, and all others have zero probability. For a uniform distribution with <span class="math inline">\(n\)</span> possible events, each event occurs with probability of <span class="math inline">\(\frac{1}{n}\)</span>, in which case entropy has a maximal value of <span class="math display">\[\max_{\boldsymbol{p}}\{\mathrm{entropy}\} = \ln(n).\]</span> For the delta distribution, the entropy is minimal with a value of zero.</p>
 <div class="lookbox">
 <p><strong><span class="math inline">\(I_1\)</span> and Entropy</strong></p>
-<p><span class="math display">\[I_1(\boldsymbol{b}) = I_1(n\mu\boldsymbol{p}) = \max_{\boldsymbol{p}}\{\mathrm{entropy}\} - \mathrm{entropy}(\boldsymbol{p}).\]</span></p>
+<div id="eq:Entropy">
+<table>
+<colgroup>
+<col style="width: 90%" />
+<col style="width: 10%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math display">\[
+I_1(\boldsymbol{b}) = I_1(n\mu\boldsymbol{p}) = \max_{\boldsymbol{p}}\{\mathrm{entropy}\} - \mathrm{entropy}(\boldsymbol{p}).\]</span></td>
+<td style="text-align: right;">(5.5)</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <p>For <span class="math inline">\(\alpha=1\)</span>, the generalised entropy index, is also known as the Theil index.</p>
 <p>In the special case <span class="math inline">\(\alpha=2\)</span>, the generalised entropy index is a monotonic increasing function of the <em>relative standard deviation</em> (the standard deviation divided by the mean, also known as the coefficient of variation).</p>
@@ -2758,14 +2787,14 @@ x\ln x &amp; \textrm{for}\quad \alpha=1 \\
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 \frac{\sigma}{\mu} = \sqrt{2I_2(\boldsymbol{b})}.\]</span></td>
-<td style="text-align: right;">(5.5)</td>
+<td style="text-align: right;">(5.6)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>The standard deviation <span class="math inline">\(\sigma\)</span> tells us how spread out (around the mean) the distribution of benefits is. So for <span class="math inline">\(\alpha=2\)</span>, the index is a monotonic increasing function of the spread and a monotonic decreasing function of the mean benefit.</p>
-<p>Recall that the Gini Index is calculated as <span class="math display">\[\mathrm{Gini}(\boldsymbol{p}) = 1 - \sum_{i=1}^n p_i^2\]</span> <span class="math inline">\(I_2\)</span> is also related to the Gini index.</p>
+<p>Recall that the Gini index is calculated as <span class="math display">\[\mathrm{Gini}(\boldsymbol{p}) = 1 - \sum_{i=1}^n p_i^2\]</span> <span class="math inline">\(I_2\)</span> is also related to the Gini index.</p>
 <div class="lookbox">
 <p><strong><span class="math inline">\(I_2\)</span> and Gini Index</strong></p>
 <div id="eq:Gini">
@@ -2779,32 +2808,50 @@ x\ln x &amp; \textrm{for}\quad \alpha=1 \\
 <td style="text-align: center;"><span class="math display">\[
 \frac{2}{n} \left[ I_2(\boldsymbol{b}) + n^2\right]
 = 1 - \mathrm{Gini}(\boldsymbol{p})\]</span></td>
-<td style="text-align: right;">(5.6)</td>
+<td style="text-align: right;">(5.7)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<p>The Atkinson index, which can be written as <span class="math display">\[A_{\epsilon} = 1 - \frac{1}{\mu} \left(\frac{1}{n}\sum_{i=1}^n b_i^{1-\epsilon}\right)^{1/(1-\epsilon)},\]</span> is related to the generalised entropy index as follows.</p>
+<div class="lookbox">
+<p><strong><span class="math inline">\(I_{\alpha}\)</span> and the Atkinson Index <span class="math inline">\(A_{\epsilon}\)</span></strong></p>
+<div id="eq:Atkinson">
+<table>
+<colgroup>
+<col style="width: 90%" />
+<col style="width: 10%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math display">\[
+1 + \alpha(\alpha-1)I_{\alpha}(\boldsymbol{b})
+= \left[ 1 - A_{\epsilon}(\boldsymbol{b})\right]^{\alpha}\]</span></td>
+<td style="text-align: right;">(5.8)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>where <span class="math inline">\(\epsilon=1-\alpha\geq0\)</span>.</p>
+</div>
 </section>
 <section id="behaviour-with-respect-to-generalisation-parameter-alpha" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3"><span class="header-section-number">5.1.3</span> Behaviour with Respect to Generalisation Parameter <span class="math inline">\(\alpha\)</span></h3>
-<p>We know that inequality indices measure divergence from the uniform distribution and we can think of them as a system for ranking distributions from most fair to least fair. The most fair distribution has an index value of zero and becomes more unfair as the value of the index increases. Note that two distributions that diverge equally from the uniform distribution, need not be the same distribution. For example consider any asymmetric distribution <span class="math inline">\(p(x)\)</span> and its mirror image <span class="math inline">\(p(-x)\)</span> both distributions diverge equally from the uniform distribution. This explains why there a numerous different inequality indices; each breaks ties in different ways. The generalisation parameter <span class="math inline">\(\alpha\)</span> controls the weight applied to the divergence at the different parts of the distribution. In Figure <a href="#fig:fxvaralpha" data-reference-type="ref" data-reference="fig:fxvaralpha">5.1</a>, we plot the function <span class="math inline">\(f_{\alpha}(x)\)</span>, for different choices of <span class="math inline">\(\alpha\)</span>.</p>
+<p>In Figure <a href="#fig:fxvaralpha" data-reference-type="ref" data-reference="fig:fxvaralpha">5.2</a>, we plot the function <span class="math inline">\(f_{\alpha}(x)\)</span>, for different choices of <span class="math inline">\(\alpha\)</span>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_fxvaralpha.png" id="fig:fxvaralpha" style="width:65.0%" alt="Figure 5.1: f_{\alpha}(x) for varying \alpha." />
-<figcaption aria-hidden="true">Figure 5.1: <span class="math inline">\(f_{\alpha}(x)\)</span> for varying <span class="math inline">\(\alpha\)</span>.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_fxvaralpha.png" id="fig:fxvaralpha" style="width:65.0%" alt="Figure 5.2: f_{\alpha}(x) for varying \alpha." />
+<figcaption aria-hidden="true">Figure 5.2: <span class="math inline">\(f_{\alpha}(x)\)</span> for varying <span class="math inline">\(\alpha\)</span>.</figcaption>
 </figure>
 <p>We note that the contribution to the index, from individuals that receive the mean benefit, is always zero. As we increase <span class="math inline">\(\alpha\)</span>, the contribution to the index from the upper end of the benefit distribution grows, while the contribution from the lower end decays.</p>
 <section id="for-alpha1" class="level5 unnumbered">
 <h5 class="unnumbered">For <span class="math inline">\(\alpha&lt;1\)</span>:</h5>
-<p>A fixed transfer in benefit (from rich to poor) at the low end of the distribution (where the <span class="math inline">\(f_{\alpha}(x)\)</span> is steeply declining), decreases the the value of the index more than at the top end (where the <span class="math inline">\(f_{\alpha}(x)\)</span> is flatter).</p>
+<p>A fixed transfer in benefit (from rich to poor) at the low end of the distribution (where <span class="math inline">\(f_{\alpha}(x)\)</span> is steeply declining), decreases the the value of the index more than at the top end (where <span class="math inline">\(f_{\alpha}(x)\)</span> is flatter).</p>
 </section>
 <section id="for-alpha1-1" class="level5 unnumbered">
 <h5 class="unnumbered">For <span class="math inline">\(\alpha&gt;1\)</span>:</h5>
 <p>The reverse is true. A fixed transfer in benefit (from rich to poor) at the upper end of the distribution (where the <span class="math inline">\(f_{\alpha}(x)\)</span> is steeply increasing), decreases the the value of the index more than at the lower end (where the <span class="math inline">\(f_{\alpha}(x)\)</span> is flatter).<br />
-One interpretation of this is that For <span class="math inline">\(\alpha&lt;1\)</span>, the index prioritises equality for the poor, while for <span class="math inline">\(\alpha&gt;1\)</span> equality is prioritised for the rich. In essence, the parameter <span class="math inline">\(\alpha\)</span> controls the associated ranking of distributions by the index. Recall that Rawls’ maximin principle as the requirement that, <em>social and economic inequalities must be of the greatest benefit to the least-advantaged members of society</em>. As <span class="math inline">\(\alpha\rightarrow-\infty\)</span>, the associated rankings of distributions correspond to those generated by maximin principle<span class="citation" data-cites="Shorrocks"><a href="#ref-Shorrocks" role="doc-biblioref">[64]</a></span><span class="marginnote"><span id="ref-Shorrocks" class="csl-entry" role="doc-biblioentry">
-<span class="csl-left-margin">[64] </span><span class="csl-right-inline">A. F. Shorrocks, <span>“The class of additively decomposable inequality measures,”</span> <em>Econometrica: Journal of the Econometric Society</em>, vol. 48, no. 613–625, 1980.</span>
-</span>
-</span>.</p>
+One interpretation of this is that For <span class="math inline">\(\alpha&lt;1\)</span>, the index prioritises equality for the poor, while for <span class="math inline">\(\alpha&gt;1\)</span> equality is prioritised for the rich. Recall that Rawls’ maximin principle as the requirement that, <em>social and economic inequalities must be of the greatest benefit to the least-advantaged members of society</em>. As <span class="math inline">\(\alpha\rightarrow-\infty\)</span>, the associated rankings of distributions correspond to those generated by maximin principle<span class="citation" data-cites="Shorrocks"><a href="#ref-Shorrocks" role="doc-biblioref">[64]</a></span>.</p>
 <div class="lookbox">
 <p><strong>Behaviour of <span class="math inline">\(f_{\alpha}(x)\)</span></strong></p>
 <ul>
@@ -2836,7 +2883,7 @@ I(\boldsymbol{b};\alpha)
 <td style="text-align: center;"><span class="math display">\[
 I_{\omega}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac{\mu_g}{\mu}\right)^{\alpha} I(\boldsymbol{b}_g;\alpha)
 \qquad \forall \, \alpha.\]</span></td>
-<td style="text-align: right;">(5.7)</td>
+<td style="text-align: right;">(5.9)</td>
 </tr>
 </tbody>
 </table>
@@ -2853,28 +2900,28 @@ I_{\omega}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac
 <td style="text-align: center;"><span class="math display">\[
 I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 \frac{n_g}{n} f_{\alpha}\left(\frac{\mu_g}{\mu}\right).\]</span></td>
-<td style="text-align: right;">(5.8)</td>
+<td style="text-align: right;">(5.10)</td>
 </tr>
 </tbody>
 </table>
 </div>
 <p><a href="#II_GEIdecomp">Proof</a> in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
-<p>We describe the value of the index on the population as <em>overall unfairness</em>. There are several observations to be made from the functional forms of the indices in equations (5.7) and 5.8.</p>
+<p>We describe the value of the index on the population as <em>overall unfairness</em>. There are several noteworthy observations to be made from the functional forms of the indices in equations (5.9) and 5.10.</p>
 <section id="observation-1." class="level5 unnumbered">
 <h5 class="unnumbered">Observation 1.</h5>
 <p>The contribution to the between-group component, from each subgroup, is weighted by the size of the subgroup. This serves to favour more prevalent groups in the data. It could be argued then, that the between-group component of the index (as an approach to measuring group fairness) is more aligned with utilitarian principles than those described in chapter <a href="#ch_GroupFairness" data-reference-type="ref" data-reference="ch_GroupFairness">3</a> which do not account for group sizes. Arguably, this is intentional since aggregating as we do to calculate utility, can hide adverse impacts on underrepresented groups. Ignoring group sizes makes them less reliant on the assumption of representativeness of the data (with respect to those groups).</p>
 </section>
 <section id="observation-2." class="level5 unnumbered">
 <h5 class="unnumbered">Observation 2.</h5>
-<p>The subgroups, greatly influences the size of the relative contributions from the between-group and within-group components of the inequality index. Notice that to calculate the between-group component, we first average the benefits over each group to get their means. We then calculate the value of the index on the means. For large groups, <span class="math inline">\(\mu_g/\mu\)</span> is going to be close to unity thus <span class="math inline">\(f_{\alpha}(\mu_g/\mu)\)</span> close to zero. Consider partitioning our population into subgroups of equal sizes. At one extreme, we have only a single group. In this case, the contribution from the between-group component is zero, and the index is equal to the within-group component. As the number of subgroups in the partition increases, the subgroups get smaller and the relative contribution to the index from the between-group component increases. Eventually, we have <span class="math inline">\(n\)</span> groups, each composed of a single individual. In this case, the within-group component is zero, and the index is equal to the between-group component. For two sub-groups</p>
+<p>The number of subgroups, greatly influences the size of the relative contributions from the between-group and within-group components of the inequality index. Notice that to calculate the between-group component, we first average the benefits over each group to get their means. We then calculate the value of the index on the means. The fewer subgroups, the fewer elements there are to sum in the between-group component. For large groups, <span class="math inline">\(\mu_g/\mu\)</span> is close to unity and <span class="math inline">\(f_{\alpha}(\mu_g/\mu)\)</span> is close to zero. Consider partitioning our population into subgroups of equal sizes. At one extreme, we have only a single group. In this case, the contribution from the between-group component is zero, and the index is equal to the within-group component. As the number of subgroups in the partition increases, the subgroups get smaller and the relative contribution to the index from the between-group component increases. Eventually, we have <span class="math inline">\(n\)</span> groups, each composed of a single individual. In this case, the within-group component is zero, and the index is equal to the between-group component.</p>
 </section>
 <section id="observation-3." class="level5 unnumbered">
 <h5 class="unnumbered">Observation 3.</h5>
 <p>For the values <span class="math inline">\(\alpha=0\)</span> and <span class="math inline">\(\alpha=1\)</span>, the within-group component is a true weighted average of the index values for the subgroups, since the coefficients sum to one. For <span class="math inline">\(\alpha\in(0,1)\)</span> the coefficients sum to less than unity, For <span class="math inline">\(\alpha&gt;1\)</span>, the coefficients sum to more than unity. The sum of the coefficients is minimised for <span class="math inline">\(\alpha=1/2\)</span>.</p>
 <div class="lookbox">
 <p><strong>Relative contribution from the Between and Within-group Components</strong></p>
-<p>By substituting for <span class="math inline">\(f_{\alpha}\)</span> in the between group component, equation (5.8), it’s straightforward to prove that for <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, <span class="math inline">\(\alpha\notin\{0,1\}\)</span>, the sum of coefficients is linearly dependent on between-group component. In particular, <span class="math display">\[\sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac{\mu_g}{\mu}\right)^{\alpha}
+<p>By substituting for <span class="math inline">\(f_{\alpha}\)</span> in the between group component, equation (5.10), it’s straightforward to prove that for <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, <span class="math inline">\(\alpha\notin\{0,1\}\)</span>, the sum of coefficients is linearly dependent on between-group component. In particular, <span class="math display">\[\sum_{g=1}^{|G|} \frac{n_g}{n} \left(\frac{\mu_g}{\mu}\right)^{\alpha}
 = 1 + \alpha(\alpha-1) I_{\beta}^{G}(\boldsymbol{b}; \alpha).\]</span> The relative contribution to the index from the between-group component is maximised when <span class="math inline">\(\alpha=1/2\)</span>, in which case the sum of the coefficients of the within-group component are given by, <span class="math display">\[\sum_{g=1}^{|G|} \frac{n_g}{n} \sqrt{\frac{\mu_g}{\mu}}
 = 1 - \frac{1}{2} I_{\beta}^{G}(\boldsymbol{b}; \alpha).\]</span></p>
 </div>
@@ -2887,26 +2934,26 @@ I_{\beta}^G(\boldsymbol{b};\alpha) = \sum_{g=1}^{|G|}
 <p><strong>Generalised Entropy Index Maximum</strong></p>
 <p><span class="math display">\[\max_{\boldsymbol{b}}[I_{\alpha}(\boldsymbol{b})] = \left\{
 \begin{array}{cl}
-\ln n &amp; \textrm{for}\quad\alpha=1 \\
+\ln n &amp; \textrm{if}\quad\alpha=1 \\
 \dfrac{n^{\alpha-1}-1}{\alpha(\alpha-1)}
-      &amp; \textrm{for}\quad\alpha&gt;0
+      &amp; \textrm{if}\quad\alpha&gt;0
 \end{array}\right.\]</span> <a href="#II_GEImax">Proof</a> in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
-<p>In Figure <a href="#fig:GEI_Imax" data-reference-type="ref" data-reference="fig:GEI_Imax">5.2</a>, we plot the maximal value of the index as a function of <span class="math inline">\(n\)</span> for different values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
+<p>In Figure <a href="#fig:GEI_Imax" data-reference-type="ref" data-reference="fig:GEI_Imax">5.3</a>, we plot the maximal value of the index as a function of <span class="math inline">\(n\)</span> for different values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_GEI_Imaxvaralpha.png" id="fig:GEI_Imax" style="width:65.0%" alt="Figure 5.2: \max[I_{\alpha}(n)] for varying values of \alpha. The maximal value is attained when only a single individual benefits. For \alpha\leq0 the index is unbounded above." />
-<figcaption aria-hidden="true">Figure 5.2: <span class="math inline">\(\max[I_{\alpha}(n)]\)</span> for varying values of <span class="math inline">\(\alpha\)</span>. The maximal value is attained when only a single individual benefits. For <span class="math inline">\(\alpha\leq0\)</span> the index is unbounded above.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_GEI_Imaxvaralpha.png" id="fig:GEI_Imax" style="width:65.0%" alt="Figure 5.3: \max[I_{\alpha}(n)] for varying values of \alpha. The maximal value is attained when only a single individual benefits. For \alpha\leq0 the index is unbounded above." />
+<figcaption aria-hidden="true">Figure 5.3: <span class="math inline">\(\max[I_{\alpha}(n)]\)</span> for varying values of <span class="math inline">\(\alpha\)</span>. The maximal value is attained when only a single individual benefits. For <span class="math inline">\(\alpha\leq0\)</span> the index is unbounded above.</figcaption>
 </figure>
 <p>The maximal value of the index is always an increasing function of <span class="math inline">\(n\)</span>. For <span class="math inline">\(\alpha=2\)</span>, the maximal value of the index is a linear function of <span class="math inline">\(n\)</span>, <span class="math display">\[\max_{\boldsymbol{b}}[I_{2}(\boldsymbol{b})] = \frac{n-1}{2}.\]</span> For <span class="math inline">\(0&lt;\alpha&lt;1\)</span>, <span class="math display">\[\max_{\boldsymbol{b}}[I_{\alpha}(n)] = \frac{1-n^{-(1-\alpha)}}{\alpha(1-\alpha)}\rightarrow\frac{1}{\alpha(1-\alpha)}
 \quad\textrm{as}\quad n\rightarrow\infty.\]</span> For <span class="math inline">\(0&lt;\alpha&lt;1\)</span>, the index maximum has a fixed upper bound.</p>
-<p>Interestingly, looking at the maximal value of the generalised entropy index (as a function of <span class="math inline">\(n\)</span>), also gives us some insight into the relative size of the between and within-group components, as we change the number of subgroups. Suppose we partition our population, into <span class="math inline">\(|G|\)</span> equally sized subgroups. Recall from equation (5.8), we can write our between-group component as, <span class="math display">\[I_{\beta}^G(\boldsymbol{b};\alpha)
+<p>Interestingly, looking at the maximal value of the generalised entropy index (as a function of <span class="math inline">\(n\)</span>), also gives us some insight into the relative size of the between and within-group components, as we change the number of subgroups. Suppose we partition our population, into <span class="math inline">\(|G|\)</span> equally sized subgroups. Recall from equation (5.10), we can write our between-group component as, <span class="math display">\[I_{\beta}^G(\boldsymbol{b};\alpha)
 = \sum_{g=1}^{|G|}\frac{n_g}{n} f_{\alpha}\left(\frac{\mu_g}{\mu}\right)
-= \frac{1}{|G|}\sum_{g=1}^{|G|} f_{\alpha}\left(\frac{\mu_g}{\mu}\right);\]</span> which looks exactly like the formula for the index, given in equation (5.2). Therefore, just as the index has a maximal value, so does the between-group component, <span class="math display">\[\max_{\boldsymbol{b}}\left[I^G_{\beta}(\boldsymbol{b};\alpha)\right] = \left\{
+= \frac{1}{|G|}\sum_{g=1}^{|G|} f_{\alpha}\left(\frac{\mu_g}{\mu}\right);\]</span> which looks exactly like the formula for the index, given in equation (5.1). Therefore, just as the index has a maximal value, so does the between-group component, <span class="math display">\[\max_{\boldsymbol{b}}\left[I^G_{\beta}(\boldsymbol{b};\alpha)\right] = \left\{
 \begin{array}{cl}
-\ln(|G|) &amp; \textrm{for}\quad\alpha=1\\
+\ln(|G|) &amp; \textrm{if}\quad\alpha=1\\
 \rule{0em}{4.2ex}
 \dfrac{|G|^{\alpha-1}-1}{\alpha(\alpha-1)}
-&amp; \textrm{for}\quad\alpha&gt;0.
+&amp; \textrm{if}\quad\alpha&gt;0.
 \end{array}\right.\]</span> This further confirms our earlier observation, that the number of subgroups in a partition <span class="math inline">\(|G|\)</span>, greatly influences the size of the between-group component as a proportion of the index, assuming the groups to be equal in size.</p>
 </section>
 </section>
@@ -3037,16 +3084,16 @@ For a binary classifier, all algorithmic predictions (where the ground truth is 
 <p>For binary benefits, the value of the index is given by <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = I_{\alpha}(\mu)
 = \left\{
 \begin{array}{cl}
--\ln\mu &amp; \textrm{for}\quad\alpha=1 \\
+-\ln\mu &amp; \textrm{if}\quad\alpha=1 \\
 \rule{0em}{4ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha-1}}-1\right)
-&amp; \textrm{for}\quad\alpha&gt;0.
+&amp; \textrm{if}\quad\alpha&gt;0.
 \end{array}\right.\]</span> <a href="#II_Binary">Proof</a> in in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
-<p>For binary benefits, the index is a monotonic increasing function of the mean benefit. The index is maximal where only one individual benefits. As we increase the proportion of people who benefit from from <span class="math inline">\(1/n\)</span> to <span class="math inline">\(n\)</span>, the distribution of benefits approaches uniform. As the number of individuals grows, so does the maximal value of the index (as shown in section <a href="#sec_GEImax" data-reference-type="ref" data-reference="sec_GEImax">5.1.5</a>). In Figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.3</a>, we plot the value of the index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for a variety of values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
+<p>For binary benefits, the index is a monotonic increasing function of the mean benefit. The index is maximal where only one individual benefits. As we increase the proportion of people who benefit from from <span class="math inline">\(1/n\)</span> to <span class="math inline">\(n\)</span>, the distribution of benefits approaches uniform. As the number of individuals grows, so does the maximal value of the index (as shown in section <a href="#sec_GEImax" data-reference-type="ref" data-reference="sec_GEImax">5.1.5</a>). In Figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.4</a>, we plot the value of the index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for a variety of values of <span class="math inline">\(\alpha&gt;0\)</span>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_GEI_bmin0_n10.png" id="fig:GEI_bmin0" style="width:65.0%" alt="Figure 5.3: Generalised entropy index as a function of the mean benefit \mu for binary benefits." />
-<figcaption aria-hidden="true">Figure 5.3: Generalised entropy index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for binary benefits.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_GEI_bmin0_n10.png" id="fig:GEI_bmin0" style="width:65.0%" alt="Figure 5.4: Generalised entropy index as a function of the mean benefit \mu for binary benefits." />
+<figcaption aria-hidden="true">Figure 5.4: Generalised entropy index as a function of the mean benefit <span class="math inline">\(\mu\)</span> for binary benefits.</figcaption>
 </figure>
 <p>For the benefit functions listed in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a> the only way to achieve overall fairness (index value zero) is if every individual under consideration receives a benefit of exactly one. We showed this to be the case for binary benefits above. For the fairness criterion in the last row of Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>, comparing luck, benefits are no longer binary. We can also achieve a zero index value if all individuals receive a benefit of two; but this is only possible in the degenerate case where all predictions are false positives, that is, <span class="math inline">\(\hat{Y}=1\)</span> and <span class="math inline">\(Y=0\)</span>. For each benefit function, the scenarios for which overall fairness is minimal (all individuals under consideration receive exactly one benefit) differs.</p>
 </section>
@@ -3101,24 +3148,24 @@ b_+ &amp; 1
 I_{\alpha}\left(\mu,\lambda\right) = \left\{
 \begin{array}{cl}
 \left(1-\dfrac{\lambda}{\mu}\right)\ln2-\ln\mu
-&amp; \textrm{for}\quad\alpha = 1 \\
+&amp; \textrm{if}\quad\alpha = 1 \\
 \rule{0em}{4.5ex}
 \dfrac{1}{\alpha(\alpha-1)}
 \left[ \left(\dfrac{2}{\mu}\right)^{\alpha-1}
 - \dfrac{(2^{\alpha-1}-1)}{\mu^{\alpha}}\lambda - 1 \right]
-&amp; \textrm{for}\quad \alpha&gt;0.
+&amp; \textrm{if}\quad \alpha&gt;0.
 \end{array}\right.\]</span></td>
-<td style="text-align: right;">(5.9)</td>
+<td style="text-align: right;">(5.11)</td>
 </tr>
 </tbody>
 </table>
 </div>
 <p><a href="#II_Luck">Proof</a> in in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
-<p>The mean benefit <span class="math inline">\(\mu\)</span> here, gives us an indication of the relative number of false positive to false negative errors, made by the model; it tells us if the model is over or underestimating the target on average. From another point of view, it quantifies the amount of skew in the distribution of luck. Skew describes the extent of asymmetry in a distribution. For negatively skewed distributions, the tail is longer (and thinner) on the left (and vice versa for positively skewed distributions). Therefore, <span class="math inline">\(\mu&lt;1\)</span> indicates more weight on the left (and thus the tail on the right) hence positive skew (and vice versa for <span class="math inline">\(\mu&gt;1\)</span>). Figure <a href="#fig:BenefitMeanSkew" data-reference-type="ref" data-reference="fig:BenefitMeanSkew">5.4</a> provides visual illustrations of benefit distributions with different mean benefits <span class="math inline">\(\mu\)</span>. When the mean benefit is one (as in the centre figure), the distribution has no skew; it is symmetric.</p>
+<p>The mean benefit <span class="math inline">\(\mu\)</span> here, gives us an indication of the relative number of false positive to false negative errors, made by the model; it tells us if the model is over or underestimating the target on average. From another point of view, it quantifies the amount of skew in the distribution of luck. Skew describes the extent of asymmetry in a distribution. For negatively skewed distributions, the tail is longer (and thinner) on the left (and vice versa for positively skewed distributions). Therefore, <span class="math inline">\(\mu&lt;1\)</span> indicates more weight on the left (and thus the tail on the right) hence positive skew (and vice versa for <span class="math inline">\(\mu&gt;1\)</span>). Figure <a href="#fig:BenefitMeanSkew" data-reference-type="ref" data-reference="fig:BenefitMeanSkew">5.5</a> provides visual illustrations of benefit distributions with different mean benefits <span class="math inline">\(\mu\)</span>. When the mean benefit is one (as in the centre figure), the distribution has no skew; it is symmetric.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_BenefitMeanSkew.png" id="fig:BenefitMeanSkew" alt="Figure 5.4: Characterisation of benefit distributions with different mean benefits." />
-<figcaption aria-hidden="true">Figure 5.4: Characterisation of benefit distributions with different mean benefits.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_BenefitMeanSkew.png" id="fig:BenefitMeanSkew" alt="Figure 5.5: Characterisation of benefit distributions with different mean benefits." />
+<figcaption aria-hidden="true">Figure 5.5: Characterisation of benefit distributions with different mean benefits.</figcaption>
 </figure>
 <p>We can see from these equations that for fixed <span class="math inline">\(\mu\)</span>, <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> is a linearly decreasing function of accuracy. We know that for most problems, the accuracy of our model is bounded below by our dataset, <span class="math display">\[0.5 \leq \max[\mathbb{P}(Y=0), \mathbb{P}(Y=1)] &lt; \lambda \leq 1.\]</span> If we can find the maximal value of the index for a given accuracy, this allows us to find an upper bound for the index, based on a dataset with known <span class="math inline">\(Y\)</span>. Before analysing the behaviour of the index as a function of <span class="math inline">\(\mu\)</span>, we note that <span class="math inline">\(\mu\)</span> is also constrained for our classifier. For a model with accuracy <span class="math inline">\(\lambda=n_c/n\)</span>, the total number of benefits <span class="math inline">\(B\)</span>, must satisfy the following bounds, <span class="math display">\[n_c \leq B \leq n_c+2(n-n_c) = 2n-n_c.\]</span> We also know, that the total number of benefits must equate to <span class="math inline">\(n\)</span> times the mean, that is, <span class="math inline">\(B=n\mu\)</span>. Given this, it is straightforward to show that we must have</p>
 <div id="eq:mu_bounds">
@@ -3131,20 +3178,20 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 <tr class="odd">
 <td style="text-align: center;"><span class="math display">\[
 \lambda \leq \mu \leq 2 - \lambda.\]</span></td>
-<td style="text-align: right;">(5.10)</td>
+<td style="text-align: right;">(5.12)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>As the accuracy of the model <span class="math inline">\(\lambda\)</span> increases, the range of possible values the mean benefit <span class="math inline">\(\mu\)</span> can take, decreases. Our domain is then an isosceles triangle. In Figure <a href="#fig:domain" data-reference-type="ref" data-reference="fig:domain">5.5</a> we provide a visualisation of the domain space. We choose to plot the mean benefit <span class="math inline">\(\mu\)</span> on the horizontal axis, enabling us to visualise the benefit distributions in the natural orientation.</p>
+<p>As the accuracy of the model <span class="math inline">\(\lambda\)</span> increases, the range of possible values the mean benefit <span class="math inline">\(\mu\)</span> can take, decreases. Our domain is then an isosceles triangle. In Figure <a href="#fig:domain" data-reference-type="ref" data-reference="fig:domain">5.6</a> we provide a visualisation of the domain space. We choose to plot the mean benefit <span class="math inline">\(\mu\)</span> on the horizontal axis, enabling us to visualise the benefit distributions in the natural orientation.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_domain_1.png" id="fig:domain" style="width:60.0%" alt="Figure 5.5: Visualisation of index domain." />
-<figcaption aria-hidden="true">Figure 5.5: Visualisation of index domain.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_domain_1.png" id="fig:domain" style="width:60.0%" alt="Figure 5.6: Visualisation of index domain." />
+<figcaption aria-hidden="true">Figure 5.6: Visualisation of index domain.</figcaption>
 </figure>
-<p>In Figures <a href="#fig:Imu_varlambda" data-reference-type="ref" data-reference="fig:Imu_varlambda">5.6</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\lambda\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\alpha\)</span>.</p>
+<p>In Figures <a href="#fig:Imu_varlambda" data-reference-type="ref" data-reference="fig:Imu_varlambda">5.7</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\lambda\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\alpha\)</span>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_I_alpha_1-4_varlambda.png" id="fig:Imu_varlambda" alt="Figure 5.6: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \lambda and fixed \alpha." />
-<figcaption aria-hidden="true">Figure 5.6: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\lambda\)</span> and fixed <span class="math inline">\(\alpha\)</span>.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_I_alpha_1-4_varlambda.png" id="fig:Imu_varlambda" alt="Figure 5.7: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \lambda and fixed \alpha." />
+<figcaption aria-hidden="true">Figure 5.7: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\lambda\)</span> and fixed <span class="math inline">\(\alpha\)</span>.</figcaption>
 </figure>
 <section id="index-maximum" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1"><span class="header-section-number">5.3.1</span> Index maximum</h3>
@@ -3162,12 +3209,12 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 <td style="text-align: center;"><span class="math display">\[
 \quad g(\alpha) = \left\{
 \begin{array}{cl}
-\ln2 &amp; \textrm{for}\quad\alpha = 1 \\
+\ln2 &amp; \textrm{if}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-&amp; \textrm{for}\quad \alpha&gt;0
+&amp; \textrm{if}\quad \alpha&gt;0
 \end{array}\right.\]</span></td>
-<td style="text-align: right;">(5.11)</td>
+<td style="text-align: right;">(5.13)</td>
 </tr>
 </tbody>
 </table>
@@ -3182,7 +3229,7 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 \tilde{\mu}\geq2-\lambda &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
 \textrm{ is a strictly increasing function of }\mu.
 \end{aligned}\]</span></p>
-<p>From equations (5.10) and (5.11), we see that for <span class="math inline">\(\tilde{\mu}\)</span> to fall within the domain of <span class="math inline">\(\mu\)</span> we require,</p>
+<p>From equations (5.12) and (5.13), we see that for <span class="math inline">\(\tilde{\mu}\)</span> to fall within the domain of <span class="math inline">\(\mu\)</span> we require,</p>
 <div id="eq:g_bounds">
 <table>
 <colgroup>
@@ -3194,7 +3241,7 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 <td style="text-align: center;"><span class="math display">\[
 \lambda \leq g(\alpha)\lambda \leq 2 - \lambda \quad\Leftrightarrow\quad
 1 &lt; g(\alpha) &lt; \frac{2}{\lambda}-1.\]</span></td>
-<td style="text-align: right;">(5.12)</td>
+<td style="text-align: right;">(5.14)</td>
 </tr>
 </tbody>
 </table>
@@ -3211,23 +3258,23 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 <td style="text-align: center;"><span class="math display">\[
 g(\alpha) &lt; \frac{2}{\lambda}-1 \quad\Leftrightarrow\quad
 \lambda &lt; \tilde{\lambda}(\alpha) = \frac{2}{1+g(\alpha)},\]</span></td>
-<td style="text-align: right;">(5.13)</td>
+<td style="text-align: right;">(5.15)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>where <span class="math inline">\(g(\alpha)\)</span> is given in equation 5.11. To understand the behaviour of the index better, we need to understand the behaviour of <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span>. We plot <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span> in Figures <a href="#fig:g_alpha" data-reference-type="ref" data-reference="fig:g_alpha">5.7</a>.</p>
+<p>where <span class="math inline">\(g(\alpha)\)</span> is given in equation 5.13. To understand the behaviour of the index better, we need to understand the behaviour of <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span>. We plot <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span> in Figures <a href="#fig:g_alpha" data-reference-type="ref" data-reference="fig:g_alpha">5.8</a>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_g_lambda_tilde_alpha.png" id="fig:g_alpha" alt="Figure 5.7: g(\alpha) and \tilde{\lambda}(\alpha), see equation (5.13)." />
-<figcaption aria-hidden="true">Figure 5.7: <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span>, see equation (5.13).</figcaption>
+<img src="05_UtilityFairness/figures/Fig_g_lambda_tilde_alpha.png" id="fig:g_alpha" alt="Figure 5.8: g(\alpha) and \tilde{\lambda}(\alpha), see equation (5.15)." />
+<figcaption aria-hidden="true">Figure 5.8: <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}(\alpha)\)</span>, see equation (5.15).</figcaption>
 </figure>
 <p>Note that, <span class="math display">\[g(2)=1 \quad\textrm{and}\quad\left\{
 \begin{array}{lcr}
-g(\alpha)&lt;1 &amp; \textrm{for} &amp; 0&lt;\alpha&lt;2,\\
-g(\alpha)&gt;1 &amp; \textrm{for} &amp;   \alpha&gt;2.
-\end{array}\right.\]</span> This allows us to reformulate the lower bound on <span class="math inline">\(g(\alpha)\)</span> (given in equation (5.12)) as bound on <span class="math inline">\(\alpha\)</span>, <span class="math display">\[g(\alpha) &gt; 1 \quad\Leftrightarrow\quad \alpha &gt; 2.\]</span> Since <span class="math inline">\(2^{\alpha-1}\)</span> dominates <span class="math inline">\(\alpha\)</span> for large <span class="math inline">\(\alpha\)</span>, we know that <span class="math display">\[g(\alpha) \rightarrow 1^+ \quad\textrm{as}\quad \alpha\rightarrow\infty
+g(\alpha)&lt;1 &amp; \textrm{if} &amp; 0&lt;\alpha&lt;2,\\
+g(\alpha)&gt;1 &amp; \textrm{if} &amp;   \alpha&gt;2.
+\end{array}\right.\]</span> This allows us to reformulate the lower bound on <span class="math inline">\(g(\alpha)\)</span> (given in equation (5.14)) as bound on <span class="math inline">\(\alpha\)</span>, <span class="math display">\[g(\alpha) &gt; 1 \quad\Leftrightarrow\quad \alpha &gt; 2.\]</span> Since <span class="math inline">\(2^{\alpha-1}\)</span> dominates <span class="math inline">\(\alpha\)</span> for large <span class="math inline">\(\alpha\)</span>, we know that <span class="math display">\[g(\alpha) \rightarrow 1^+ \quad\textrm{as}\quad \alpha\rightarrow\infty
 \quad\Rightarrow\quad\tilde{\lambda}(\alpha) \rightarrow 1^-
-\quad\textrm{as}\quad \alpha\rightarrow\infty.\]</span> Differentiating <span class="math inline">\(g(\alpha)\)</span> in equation (5.11) gives, <span class="math display">\[g&#39;(\alpha) = \frac{\alpha(\alpha-1)\ln2 - (2^{\alpha-1}-1)}
+\quad\textrm{as}\quad \alpha\rightarrow\infty.\]</span> Differentiating <span class="math inline">\(g(\alpha)\)</span> in equation (5.13) gives, <span class="math display">\[g&#39;(\alpha) = \frac{\alpha(\alpha-1)\ln2 - (2^{\alpha-1}-1)}
                   {[(\alpha-1)2^{\alpha-1}]^2}=0
 \quad\Leftrightarrow\quad \alpha = \alpha_*\]</span> where <span class="math inline">\(\alpha_*\)</span> satisfies <span class="math display">\[\alpha_*(\alpha_*-1)\ln2 = 2^{\alpha_*-1}-1.\]</span> <span class="math inline">\(g&#39;(\alpha)\)</span> has exactly one root <span class="math inline">\(\alpha=\alpha_*\)</span> (somewhere between 4 and 5) which can be found numerically. <span class="math display">\[g&#39;&#39;(\alpha_*) = \frac{2-\alpha_*\ln2}{(\alpha_*-1)2^{\alpha_*-1}} &lt; 0.\]</span> Thus <span class="math inline">\(g(\alpha)\)</span> is maximal at <span class="math inline">\(\alpha=\alpha_*\)</span>. For reference, <span class="math display">\[\begin{aligned}
 \alpha_* \approx 4.72 \quad\Rightarrow\quad
@@ -3247,7 +3294,7 @@ g(\alpha)&gt;1 &amp; \textrm{for} &amp;   \alpha&gt;2.
 &amp; \quad\Rightarrow\quad I_{\alpha}(\mu,\lambda)
 \textrm{ is a strictly increasing function of }\mu,
 \textrm{ maximal at }\mu=2-\lambda.
-\end{aligned}\]</span> where <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}\)</span> are given in equations (5.11) and (5.13) respectively. These characteristically different behaviours are indeed observed in Figures <a href="#fig:Imu_varlambda" data-reference-type="ref" data-reference="fig:Imu_varlambda">5.6</a> for different values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span>. We note that in these plots, the accuracy <span class="math inline">\(\lambda\)</span> does exceed the level required, for the index to become a strictly increasing function of <span class="math inline">\(\mu\)</span>. For reference, <span class="math inline">\(\tilde{\lambda}(3)=16/17\approx94.1\%\)</span> and <span class="math inline">\(\tilde{\lambda}(4)=12/13\approx92.3\%\)</span>.</p>
+\end{aligned}\]</span> where <span class="math inline">\(g(\alpha)\)</span> and <span class="math inline">\(\tilde{\lambda}\)</span> are given in equations (5.13) and (5.15) respectively. These characteristically different behaviours are indeed observed in Figures <a href="#fig:Imu_varlambda" data-reference-type="ref" data-reference="fig:Imu_varlambda">5.7</a> for different values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span>. We note that in these plots, the accuracy <span class="math inline">\(\lambda\)</span> does exceed the level required, for the index to become a strictly increasing function of <span class="math inline">\(\mu\)</span>. For reference, <span class="math inline">\(\tilde{\lambda}(3)=16/17\approx94.1\%\)</span> and <span class="math inline">\(\tilde{\lambda}(4)=12/13\approx92.3\%\)</span>.</p>
 <p>We are almost there. We now know that, <span class="math display">\[\max_{\mu}\left[I_{\alpha}\left(\mu,\lambda\right)\right]
 = I_{\alpha}\left(\mu_*,\lambda\right) \nonumber\\
 \]</span> where, <span class="math display">\[\mu_* = \left\{
@@ -3257,38 +3304,38 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 \quad\textrm{and}\quad \lambda&lt;\tilde{\lambda}(\alpha) \\
 2-\lambda        &amp; \quad\textrm{if}\quad \alpha&gt;2
 \quad\textrm{and}\quad \lambda\geq\tilde{\lambda}(\alpha).
-\end{array}\right.\]</span> Substituting <span class="math inline">\(\mu=\mu_*\)</span> into equation (5.9) yields the index maximum (for fixed <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span>),</p>
+\end{array}\right.\]</span> Substituting <span class="math inline">\(\mu=\mu_*\)</span> into equation (5.11) yields the index maximum (for fixed <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span>),</p>
 <div class="lookbox">
 <p><strong>Equal Luck Generalised Entropy Index Maximum Value</strong></p>
 <p>We can write the maximal value of the generalised entropy index as a function of <span class="math inline">\(\lambda\)</span>, <span class="math display">\[\max_{\mu}\left[I_{\alpha}\left(\mu,\lambda\right)\right] = \left\{
 \begin{array}{cl}
--\ln\lambda &amp; \textrm{for}\quad \alpha=1 \\
+-\ln\lambda &amp; \textrm{if}\quad \alpha=1 \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\lambda^{\alpha-1}} - 1 \right)
-&amp; \textrm{for}\quad 0&lt;\alpha\leq2 \\
+&amp; \textrm{if}\quad 0&lt;\alpha\leq2 \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)}\left[\dfrac{2^{\alpha-1}}
 {\alpha g^{\alpha-1}(\alpha)\lambda^{\alpha-1}} - 1 \right]
-&amp; \textrm{for}\quad \alpha&gt;2,\,\lambda&lt;\tilde{\lambda}(\alpha) \\
+&amp; \textrm{if}\quad \alpha&gt;2,\,\lambda&lt;\tilde{\lambda}(\alpha) \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)}
 \left(\dfrac{1}{(2-\lambda)^{\alpha-1}} - 1 \right)
-&amp; \textrm{for}\quad \alpha&gt;2,\,\lambda\geq\tilde{\lambda}(\alpha)
+&amp; \textrm{if}\quad \alpha&gt;2,\,\lambda\geq\tilde{\lambda}(\alpha)
 \end{array}\right.\]</span> where, <span class="math display">\[\tilde{\lambda}(\alpha) = \frac{2}{1+g(\alpha)}
 \quad\textrm{and}\quad g(\alpha) = \left\{
 \begin{array}{cl}
-\ln2 &amp; \textrm{for}\quad\alpha = 1 \\
+\ln2 &amp; \textrm{if}\quad\alpha = 1 \\
 \rule{0em}{3.8ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1)2^{\alpha-1}}
-&amp; \textrm{for}\quad \alpha&gt;0
+&amp; \textrm{if}\quad \alpha&gt;0
 \end{array}\right.\]</span></p>
 </div>
-<p>In Figures <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.8</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\alpha\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\lambda\)</span>. In the final plot, <span class="math inline">\(\lambda=95\%\)</span>; we see that <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> is a strictly increasing function of <span class="math inline">\(\mu\)</span>, for both <span class="math inline">\(\alpha=3\)</span> and <span class="math inline">\(\alpha=4\)</span>.</p>
+<p>In Figures <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.9</a> we plot <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> as a function of <span class="math inline">\(\mu\)</span> for a range of values of <span class="math inline">\(\alpha\)</span>. Each plot corresponds to a different value of <span class="math inline">\(\lambda\)</span>. In the final plot, <span class="math inline">\(\lambda=95\%\)</span>; we see that <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span> is a strictly increasing function of <span class="math inline">\(\mu\)</span>, for both <span class="math inline">\(\alpha=3\)</span> and <span class="math inline">\(\alpha=4\)</span>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_I_lambda_50-95_varalpha.png" id="fig:Imu_varalpha" alt="Figure 5.8: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \alpha and fixed \lambda." />
-<figcaption aria-hidden="true">Figure 5.8: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\alpha\)</span> and fixed <span class="math inline">\(\lambda\)</span>.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_I_lambda_50-95_varalpha.png" id="fig:Imu_varalpha" alt="Figure 5.9: Generalised entropy index I_{\alpha}\left(\mu,\lambda\right) as a function of \mu for varying \alpha and fixed \lambda." />
+<figcaption aria-hidden="true">Figure 5.9: Generalised entropy index <span class="math inline">\(I_{\alpha}\left(\mu,\lambda\right)\)</span> as a function of <span class="math inline">\(\mu\)</span> for varying <span class="math inline">\(\alpha\)</span> and fixed <span class="math inline">\(\lambda\)</span>.</figcaption>
 </figure>
-<p>From Figure <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.8</a>, we can see that both <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span>, have an impact on the relative preference between false positive and false negative errors. As the accuracy of our model increases, the change in behaviour of the index, for different choices of <span class="math inline">\(\alpha\)</span>, becomes more extreme.</p>
+<p>From Figure <a href="#fig:Imu_varalpha" data-reference-type="ref" data-reference="fig:Imu_varalpha">5.9</a>, we can see that both <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span>, have an impact on the relative preference between false positive and false negative errors. As the accuracy of our model increases, the change in behaviour of the index, for different choices of <span class="math inline">\(\alpha\)</span>, becomes more extreme.</p>
 </section>
 <section id="when-is-making-an-error-preferable" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2"><span class="header-section-number">5.3.2</span> When is Making an Error Preferable?</h3>
@@ -3309,17 +3356,17 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 \Delta I^{\pm}_{\alpha}(\mu,\lambda;n)
 = I_{\alpha}\left(\lambda-\frac{1}{n}, \mu\pm\frac{1}{n}\right)
 - I_{\alpha}(\mu,\lambda).\]</span></td>
-<td style="text-align: right;">(5.14)</td>
+<td style="text-align: right;">(5.16)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The discrete grid of adjacent models we can reach through a small change in the model (given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span>), is shown in Figure <a href="#fig:domain_2" data-reference-type="ref" data-reference="fig:domain_2">5.9</a>.</p>
+<p>The discrete grid of adjacent models we can reach through a small change in the model (given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span>), is shown in Figure <a href="#fig:domain_2" data-reference-type="ref" data-reference="fig:domain_2">5.10</a>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_domain_2.png" id="fig:domain_2" style="width:40.0%" alt="Figure 5.9: Visualisation of the local domain space for given \mu, \lambda and n (assuming the point (\mu,\lambda) is not on an edge)." />
-<figcaption aria-hidden="true">Figure 5.9: Visualisation of the local domain space for given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span> (assuming the point <span class="math inline">\((\mu,\lambda)\)</span> is not on an edge).</figcaption>
+<img src="05_UtilityFairness/figures/Fig_domain_2.png" id="fig:domain_2" style="width:40.0%" alt="Figure 5.10: Visualisation of the local domain space for given \mu, \lambda and n (assuming the point (\mu,\lambda) is not on an edge)." />
+<figcaption aria-hidden="true">Figure 5.10: Visualisation of the local domain space for given <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(n\)</span> (assuming the point <span class="math inline">\((\mu,\lambda)\)</span> is not on an edge).</figcaption>
 </figure>
-<p>Equation 5.9 provides an expression for <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span>. Substituting for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> in the case <span class="math inline">\(\alpha=1\)</span> gives, <span class="math display">\[I_{\alpha}\left(\lambda-\frac{1}{n},\mu\pm\frac{1}{n}\right) =
+<p>Equation 5.11 provides an expression for <span class="math inline">\(I_{\alpha}(\mu,\lambda)\)</span>. Substituting for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> in the case <span class="math inline">\(\alpha=1\)</span> gives, <span class="math display">\[I_{\alpha}\left(\lambda-\frac{1}{n},\mu\pm\frac{1}{n}\right) =
 \left[1-\left(\frac{\lambda}{\mu}-\frac{1}{n\mu}\right)
 \left(1\pm\frac{1}{n\mu}\right)^{-1}\right]\ln2-\ln\mu
 - \ln\left(1\pm\frac{1}{n\mu}\right).\]</span> For <span class="math inline">\(\alpha&gt;0\)</span>, we get, <span class="math display">\[I_{\alpha}\left(\lambda-\frac{1}{n},\mu\pm\frac{1}{n}\right) =
@@ -3331,12 +3378,12 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 \left(\frac{1}{n\mu}\right) + \mathrm{O}\left(\frac{1}{n\mu}\right)^2\]</span> where, <span class="math display">\[\xi_{\alpha}(\mu,\lambda) = \left\{
 \begin{array}{cl}
 \left(1\pm\dfrac{\lambda}{\mu}\right)\ln2\mp1
-&amp; \textrm{for}\quad\alpha = 1 \\
+&amp; \textrm{if}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 \dfrac{1}{\alpha(\alpha-1)\mu^{\alpha}}\bigg[
 \Big((1\pm1\mp\alpha)2^{\alpha-1}-1\Big)\mu \pm
 \alpha(2^{\alpha-1}-1)\lambda\bigg]
-&amp; \textrm{for}\quad \alpha&gt;0.
+&amp; \textrm{if}\quad \alpha&gt;0.
 \end{array}\right.\]</span></p>
 <p>From these expressions, we can get a clearer understanding of when the index deviates from simply being a measure of error. In particular, we want to know when an error, is preferable to an accurate prediction; that is, when the index change (resulting from an error) is negative. With a little effort we can show that,</p>
 <div id="eq:DeltaI_neg">
@@ -3355,7 +3402,7 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 &amp; \Delta I^+_{\alpha}(\mu,\lambda;n) &lt; 0 \quad\Rightarrow\quad
 \mu &gt; h^+(\alpha) \lambda
 \end{array}\qquad\right\}\]</span></td>
-<td style="text-align: right;">(5.15)</td>
+<td style="text-align: right;">(5.17)</td>
 </tr>
 </tbody>
 </table>
@@ -3372,12 +3419,12 @@ g(\alpha)\lambda &amp; \quad\textrm{if}\quad \alpha&gt;2
 <td style="text-align: center;"><span class="math display">\[
 h^{\pm}(\alpha) =  \left\{
 \begin{array}{cl}
-\dfrac{\ln2}{1\mp\ln2} &amp; \textrm{for}\quad\alpha = 1 \\
+\dfrac{\ln2}{1\mp\ln2} &amp; \textrm{if}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-1\mp1)2^{\alpha-1}\pm1}
-&amp; \textrm{for}\quad \alpha&gt;0
+&amp; \textrm{if}\quad \alpha&gt;0
 \end{array}\right.\]</span></td>
-<td style="text-align: right;">(5.16)</td>
+<td style="text-align: right;">(5.18)</td>
 </tr>
 </tbody>
 </table>
@@ -3397,22 +3444,22 @@ h^{\pm}(\alpha) =  \left\{
 <td style="text-align: center;"><span class="math display">\[
 h^-(\alpha) =  \left\{
 \begin{array}{cl}
-\dfrac{\ln2}{1+\ln2} \approx 0.41 &amp; \textrm{for}\quad\alpha = 1 \\
+\dfrac{\ln2}{1+\ln2} \approx 0.41 &amp; \textrm{if}\quad\alpha = 1 \\
 \rule{0em}{4.1ex}
 1-\dfrac{\alpha-1}{\alpha2^{\alpha-1}-1}
-&amp; \textrm{for}\quad \alpha&gt;0
+&amp; \textrm{if}\quad \alpha&gt;0
 \end{array}\right.\]</span></td>
-<td style="text-align: right;">(5.17)</td>
+<td style="text-align: right;">(5.19)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Equation (5.17) reveals that <span class="math inline">\(h^-(\alpha)\)</span> is a strictly increasing function of <span class="math inline">\(\alpha\)</span>, for <span class="math inline">\(\alpha&gt;0\)</span> (since <span class="math inline">\(\alpha2^{\alpha-1}\)</span> dominates <span class="math inline">\(\alpha\)</span>). In addition, we can see that <span class="math inline">\(h^-(\alpha)\rightarrow1^-\)</span> as <span class="math inline">\(\alpha\rightarrow\infty\)</span>. In Figure <a href="#fig:DeltaIminus" data-reference-type="ref" data-reference="fig:DeltaIminus">5.10</a> we plot <span class="math inline">\(h^-(\alpha)\)</span>.</p>
+<p>Equation (5.19) reveals that <span class="math inline">\(h^-(\alpha)\)</span> is a strictly increasing function of <span class="math inline">\(\alpha\)</span>, for <span class="math inline">\(\alpha&gt;0\)</span> (since <span class="math inline">\(\alpha2^{\alpha-1}\)</span> dominates <span class="math inline">\(\alpha\)</span>). In addition, we can see that <span class="math inline">\(h^-(\alpha)\rightarrow1^-\)</span> as <span class="math inline">\(\alpha\rightarrow\infty\)</span>. In Figure <a href="#fig:DeltaIminus" data-reference-type="ref" data-reference="fig:DeltaIminus">5.11</a> we plot <span class="math inline">\(h^-(\alpha)\)</span>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_h_minus_alpha.png" id="fig:DeltaIminus" style="width:65.0%" alt="Figure 5.10: h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)." />
-<figcaption aria-hidden="true">Figure 5.10: <span class="math inline">\(h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)\)</span>.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_h_minus_alpha.png" id="fig:DeltaIminus" style="width:65.0%" alt="Figure 5.11: h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)." />
+<figcaption aria-hidden="true">Figure 5.11: <span class="math inline">\(h^-(\alpha) = 1 - (\alpha-1)/(\alpha2^{\alpha-1}-1)\)</span>.</figcaption>
 </figure>
-<p>Earlier we showed that we must have <span class="math inline">\(\mu\geq\lambda\)</span>. Then from equation (5.15), for <span class="math inline">\(\Delta I^-_{\alpha}(\mu,\lambda;n)&lt;0\)</span> we need <span class="math inline">\(h^-(\alpha)&gt;1\)</span>. Since <span class="math inline">\(h^-(\alpha)&lt;1\)</span> for all <span class="math inline">\(\alpha&gt;0\)</span>, we know that making an additional false negative error, never decreases the value of the index. What about false positive errors?</p>
+<p>Earlier we showed that we must have <span class="math inline">\(\mu\geq\lambda\)</span>. Then from equation (5.17), for <span class="math inline">\(\Delta I^-_{\alpha}(\mu,\lambda;n)&lt;0\)</span> we need <span class="math inline">\(h^-(\alpha)&gt;1\)</span>. Since <span class="math inline">\(h^-(\alpha)&lt;1\)</span> for all <span class="math inline">\(\alpha&gt;0\)</span>, we know that making an additional false negative error, never decreases the value of the index. What about false positive errors?</p>
 </section>
 <section id="false-positive-errors" class="level4 unnumbered">
 <h4 class="unnumbered">False Positive Errors</h4>
@@ -3428,21 +3475,21 @@ h^-(\alpha) =  \left\{
 <td style="text-align: center;"><span class="math display">\[
 h^+(\alpha) =  \left\{
 \begin{array}{cl}
-\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \textrm{for}\quad\alpha = 1 \\
+\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \textrm{if}\quad\alpha = 1 \\
 \rule{0em}{4.2ex}
 \dfrac{\alpha(1-2^{1-\alpha})}{(\alpha-2)+2^{1-\alpha}}
-&amp; \textrm{for}\quad \alpha&gt;0.
+&amp; \textrm{if}\quad \alpha&gt;0.
 \end{array}\right.\]</span></td>
-<td style="text-align: right;">(5.18)</td>
+<td style="text-align: right;">(5.20)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Equation (5.18) reveals that <span class="math inline">\(h^+(\alpha)\)</span> is a decreasing function of <span class="math inline">\(\alpha\)</span>, since <span class="math inline">\(2^{1-\alpha}\)</span> is a strictly decreasing function of <span class="math inline">\(\alpha\)</span>. In addition, we can see that <span class="math inline">\(h^+(\alpha)\rightarrow1^+\)</span> as <span class="math inline">\(\alpha\rightarrow\infty.\)</span> Earlier we showed that we must have <span class="math inline">\(\mu\leq2-\lambda\)</span>. Then from equation (5.15), for <span class="math inline">\(\Delta I^+_{\alpha}(\mu,\lambda;n)&lt;0\)</span> we need, <span class="math display">\[h^+(\alpha)\lambda &lt; 2-\lambda \quad\Leftrightarrow\quad
-\lambda &lt; \bar{\lambda}(\alpha) = \frac{2}{1+h^+(\alpha)}.\]</span> From what ew know about <span class="math inline">\(h^+(\alpha)\)</span>, we can deduce that <span class="math inline">\(\bar{\lambda}(\alpha)\)</span> is an increasing function of <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\bar{\lambda}(\alpha)\rightarrow1^-\)</span> as <span class="math inline">\(\alpha\rightarrow\infty\)</span>. Since <span class="math inline">\(\bar{\lambda}(\alpha)&lt;1\)</span> for all <span class="math inline">\(\alpha&gt;0\)</span>, we know there are indeed some circumstances, under which a false positive error, decreases the value of the index. In Figures <a href="#fig:DeltaIplus" data-reference-type="ref" data-reference="fig:DeltaIplus">5.11</a>, we plot <span class="math inline">\(h^+(\alpha)\)</span> and <span class="math inline">\(\bar{\lambda}(\alpha)\)</span>.</p>
+<p>Equation (5.20) reveals that <span class="math inline">\(h^+(\alpha)\)</span> is a decreasing function of <span class="math inline">\(\alpha\)</span>, since <span class="math inline">\(2^{1-\alpha}\)</span> is a strictly decreasing function of <span class="math inline">\(\alpha\)</span>. In addition, we can see that <span class="math inline">\(h^+(\alpha)\rightarrow1^+\)</span> as <span class="math inline">\(\alpha\rightarrow\infty.\)</span> Earlier we showed that we must have <span class="math inline">\(\mu\leq2-\lambda\)</span>. Then from equation (5.17), for <span class="math inline">\(\Delta I^+_{\alpha}(\mu,\lambda;n)&lt;0\)</span> we need, <span class="math display">\[h^+(\alpha)\lambda &lt; 2-\lambda \quad\Leftrightarrow\quad
+\lambda &lt; \bar{\lambda}(\alpha) = \frac{2}{1+h^+(\alpha)}.\]</span> From what ew know about <span class="math inline">\(h^+(\alpha)\)</span>, we can deduce that <span class="math inline">\(\bar{\lambda}(\alpha)\)</span> is an increasing function of <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\bar{\lambda}(\alpha)\rightarrow1^-\)</span> as <span class="math inline">\(\alpha\rightarrow\infty\)</span>. Since <span class="math inline">\(\bar{\lambda}(\alpha)&lt;1\)</span> for all <span class="math inline">\(\alpha&gt;0\)</span>, we know there are indeed some circumstances, under which a false positive error, decreases the value of the index. In Figures <a href="#fig:DeltaIplus" data-reference-type="ref" data-reference="fig:DeltaIplus">5.12</a>, we plot <span class="math inline">\(h^+(\alpha)\)</span> and <span class="math inline">\(\bar{\lambda}(\alpha)\)</span>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_h_plus_lambda_bar_alpha.png" id="fig:DeltaIplus" alt="Figure 5.11: h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad and \quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]." />
-<figcaption aria-hidden="true">Figure 5.11: <span class="math inline">\(h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad\)</span> and <span class="math inline">\(\quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]\)</span>.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_h_plus_lambda_bar_alpha.png" id="fig:DeltaIplus" alt="Figure 5.12: h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad and \quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]." />
+<figcaption aria-hidden="true">Figure 5.12: <span class="math inline">\(h^+(\alpha)=[\alpha(2^{\alpha-1}-1)]/[(\alpha-2)2^{\alpha-1}+1]\quad\)</span> and <span class="math inline">\(\quad\bar{\lambda}(\alpha)=2/[1+h^+(\alpha)]\)</span>.</figcaption>
 </figure>
 </section>
 <section id="the-deviation-region" class="level4 unnumbered">
@@ -3454,14 +3501,14 @@ h^+(\alpha) =  \left\{
 \mu &gt; h^+(\alpha) \lambda
 \end{aligned}\]</span> where, <span class="math display">\[h^+(\alpha) =  \left\{
 \begin{array}{cl}
-\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \textrm{for}\quad\alpha = 1 \\
+\dfrac{\ln2}{1-\ln2} \approx 2.26 &amp; \textrm{if}\quad\alpha = 1 \\
 \rule{0em}{4.2ex}
 \dfrac{\alpha(2^{\alpha-1}-1)}{(\alpha-2)2^{\alpha-1}+1}
-&amp; \textrm{for}\quad \alpha&gt;0
-\end{array}\right.\]</span> This is only possible if the accuracy is sufficiently low, <span class="math display">\[\lambda &lt; \bar{\lambda}(\alpha)=\frac{2}{1+h^+(\alpha)}.\]</span> The deviation region is then described as, <span class="math inline">\(\mu&gt;h^+(\alpha)\lambda\)</span>, where <span class="math inline">\(h^+(\alpha)\)</span> is given in equation (5.18). We mark the deviation region on the contour plot for <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> in Figure <a href="#fig:cplot_varalpha" data-reference-type="ref" data-reference="fig:cplot_varalpha">5.12</a>.</p>
+&amp; \textrm{if}\quad \alpha&gt;0
+\end{array}\right.\]</span> This is only possible if the accuracy is sufficiently low, <span class="math display">\[\lambda &lt; \bar{\lambda}(\alpha)=\frac{2}{1+h^+(\alpha)}.\]</span> The deviation region is then described as, <span class="math inline">\(\mu&gt;h^+(\alpha)\lambda\)</span>, where <span class="math inline">\(h^+(\alpha)\)</span> is given in equation (5.20). We mark the deviation region on the contour plot for <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> in Figure <a href="#fig:cplot_varalpha" data-reference-type="ref" data-reference="fig:cplot_varalpha">5.13</a>.</p>
 <figure>
-<img src="05_UtilityFairness/figures/Fig_ccplot_varalpha.png" id="fig:cplot_varalpha" alt="Figure 5.12: Contour plots showing I_{\alpha}(\mu, \lambda) for different values of \alpha." />
-<figcaption aria-hidden="true">Figure 5.12: Contour plots showing <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> for different values of <span class="math inline">\(\alpha\)</span>.</figcaption>
+<img src="05_UtilityFairness/figures/Fig_ccplot_varalpha.png" id="fig:cplot_varalpha" alt="Figure 5.13: Contour plots showing I_{\alpha}(\mu, \lambda) for different values of \alpha." />
+<figcaption aria-hidden="true">Figure 5.13: Contour plots showing <span class="math inline">\(I_{\alpha}(\mu, \lambda)\)</span> for different values of <span class="math inline">\(\alpha\)</span>.</figcaption>
 </figure>
 <p>For reference, in Table <a href="#tbl:BeneficialErrorThresholds" data-reference-type="ref" data-reference="tbl:BeneficialErrorThresholds">5.2</a>, we provide some values of <span class="math inline">\(\bar{\lambda}(\alpha)\)</span> and <span class="math inline">\(h^+(\alpha)\)</span>.</p>
 <div id="tbl:BeneficialErrorThresholds">
@@ -3557,10 +3604,6 @@ b_+ &amp; 1
 </ul>
 </section>
 </section>
-</section>
-<section id="part-iii-mitigating-bias" class="level1 unnumbered">
-<h1 class="unnumbered">Part III Mitigating Bias</h1>
-<p>Coming soon...</p>
 </section>
 <section id="app_Notation" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">A</span> Notation and Conventions</h1>
@@ -3670,7 +3713,7 @@ b_+ &amp; 1
 <td style="text-align: left;"><span class="math inline">\(\displaystyle \delta(x) = H&#39;(x) = \left\{
 \begin{array}{cl}
 \infty &amp; \textrm{if} \quad x=0 \\
-0 &amp; \textrm{otherwise}
+0      &amp; \textrm{otherwise}
 \end{array}
 \right.\)</span></td>
 </tr>
@@ -4070,7 +4113,7 @@ def normalised_mutual_information(x, y):
 <p><span class="math display">\[d_{\max} = \min\left\{ \frac{\mathbb{P}(\hat{Y}=1)}{\mathbb{P}(Z=1)},
                        \frac{\mathbb{P}(\hat{Y}=0)}{\mathbb{P}(Z=0)} \right\}.\]</span></p>
 </div>
-<p>We can write statistical parity difference as <span class="math display">\[d = \mathbb{P}(\hat{Y}=1 | Z=1) - \mathbb{P}(\hat{Y}=1 | Z=0).\]</span> Let’s rewrite this with advantaged and disadvantaged outcomes and groups to make it more concrete, <span class="math display">\[d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-) \\
+<p>We can write statistical parity difference as <span class="math display">\[d = \mathbb{P}(\hat{Y}=1 | Z=1) - \mathbb{P}(\hat{Y}=1 | Z=0).\]</span> Let’s rewrite this with advantaged and disadvantaged outcomes and groups to make it more concrete, <span class="math display">\[d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-)
   = \frac{\mathbb{P}(y^+, z^+)}{\mathbb{P}(z^+)} - \frac{\mathbb{P}(y^+, z^-)}{\mathbb{P}(z^-)}
   \leq \frac{\mathbb{P}(y^+)}{\mathbb{P}(z^+)}.\]</span> This maximal value occurs when <span class="math display">\[\mathbb{P}(y^+, z^+) = \mathbb{P}(y^+) \quad \text{and} \quad \mathbb{P}(y^+, z^-)=0;\]</span> that is, when all members of the advantaged class, receive the advantaged outcome. We can also write, <span class="math display">\[\begin{aligned}
 d = \mathbb{P}(y^+|z^+) - \mathbb{P}(y^+|z^-)
@@ -4234,7 +4277,6 @@ def model_prediction(model_score, t1=0.45, t2=0.55):
 <div id="II_falphax">
 <p><strong>Proof: Behaviour of <span class="math inline">\(f_{\alpha}(x)\)</span></strong></p>
 </div>
-<p>Show that,</p>
 <ul>
 <li><p>For <span class="math inline">\(\alpha&lt;1\)</span>, <span class="math inline">\(f_{\alpha}(x)\)</span> is a strictly decreasing</p></li>
 <li><p>For <span class="math inline">\(\alpha=1\)</span>, <span class="math inline">\(f_{\alpha}(x)\)</span> is minimal at <span class="math inline">\(x=e^{-1}\)</span></p></li>
@@ -4246,31 +4288,24 @@ f_0(x) = -\ln (x) \quad
 &amp; \Rightarrow \quad f&#39;_0(x) = -\frac{1}{x} &lt; 0
               \quad \textrm{for} \quad x &gt; 0 \\
 &amp; \Rightarrow \quad f_0(x) \textrm{ strictly decreasing for } x &gt; 0 \\
-&amp; \Rightarrow \quad f&#39;_0(x):(0,n)
-                    \rightarrow\left(-\infty,-\frac{1}{n}\right). \\
 f_0(x) = 0 \quad &amp; \Leftrightarrow\quad x = 1.
 \end{aligned}\]</span> For <span class="math inline">\(\alpha=1\)</span>, <span class="math display">\[\begin{aligned}
 f_1(x) = x\ln x \quad
 &amp; \Rightarrow \quad f&#39;_1(x) = 1 + \ln x = 0 \quad
   \Leftrightarrow\quad x = \frac{1}{e}.\\
-&amp; \Rightarrow \quad f&#39;&#39;_1(x) = \frac{1}{x} &gt; 0 \quad\forall\,x &gt; 0 \\
+&amp; \Rightarrow \quad f&#39;&#39;_1(x) = \frac{1}{x} &gt; 0 \quad\forall\;x &gt; 0 \\
 &amp; \Rightarrow \quad f_1(x) \textrm{ is minimal at } x=\frac{1}{e} \\
-f_1(x) = 0\quad &amp; \Leftrightarrow\quad x\in\{0,1\}, \qquad
-f_1(x) &gt; 0 \quad\textrm{for}\quad x &gt; 1
+f_1(x) = 0\quad &amp; \Leftrightarrow\quad x\in\{0,1\}, \quad\Rightarrow\quad
+f_1(x) &gt; 0 \,\textrm{ for }\, x &gt; 1 \quad\mathrm{and}\quad
+f_1(x) &lt; 0 \,\textrm{ for }\, x &lt; 1
 \end{aligned}\]</span> For <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, <span class="math inline">\(\alpha\notin\{0,1\}\)</span>, <span class="math display">\[\begin{aligned}
-f_{\alpha}(x) = \frac{x^{\alpha}-1}{\alpha(\alpha-1)} \quad
+f_{\alpha}(x) = \frac{x^{\alpha}-1}{\alpha(\alpha-1)}\quad &amp; \Rightarrow\quad
+f&#39;_{\alpha}(x) = \frac{x^{\alpha-1}}{\alpha-1}.\\
 &amp; \Rightarrow\quad
-f&#39;_{\alpha}(x) = \frac{x^{\alpha-1}}{\alpha-1} &gt; 0 \quad\forall\quad x&gt;0.\\
-f&#39;_{\alpha}(x)=0 \quad \Leftrightarrow\quad x = 0 \quad
-&amp; \Rightarrow\quad f_{\alpha}(x) \textrm{ strictly increasing for } x &gt; 0.
-\end{aligned}\]</span> <span class="math display">\[f_{\alpha}(x):[0,n]\rightarrow \left[\frac{-1}{\alpha(\alpha-1)},
-\frac{n^{\alpha}-1}{\alpha(\alpha-1)}\right].\]</span> <span class="math display">\[\begin{aligned}
-&amp; \alpha&lt;1 \quad\Rightarrow\quad\textrm{gradient is decreasing}\quad
-f&#39;_{\alpha}(x):(0,n]\rightarrow\left(-\infty,
-\frac{-1}{(1-\alpha)n^{1-\alpha}}\right] \\
-&amp; \alpha&gt;1 \quad\Rightarrow\quad\textrm{gradient is increasing}\quad
-f&#39;_{\alpha}(x):(0,n]\rightarrow\left(0,
-\frac{n^{\alpha-1}}{\alpha-1}\right].
+f&#39;_1(x) &gt; 0 \,\textrm{ if }\, \alpha &gt; 1 \quad\mathrm{and}\quad
+f&#39;_1(x) &lt; 0 \,\textrm{ if }\, \alpha &lt; 1 \\
+&amp; \Rightarrow\quad f_{\alpha}(x) \textrm{ strictly decreasing for }\alpha&lt;1 \\
+&amp; \Rightarrow\quad f_{\alpha}(x) \textrm{ strictly increasing for } \alpha&gt;1 \\
 \end{aligned}\]</span></p>
 <div class="lookbox">
 <div id="II_GEIdecomp">
@@ -4369,15 +4404,13 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 </section>
 <section id="case-alpha0-1" class="level3 unnumbered">
 <h3 class="unnumbered">Case: <span class="math inline">\(\alpha=0\)</span></h3>
-<p>We write the generalised entropy index as, <span class="math display">\[I_0(\boldsymbol{b}) = \frac{1}{n} \sum_{i=1}^n \ln \frac{\mu}{b_i}. \\
-\]</span> Note that in this case all benefits must be greater than zero.</p>
+<p>We write the generalised entropy index as, <span class="math display">\[I_0(\boldsymbol{b}) = \frac{1}{n} \sum_{i=1}^n \ln \frac{\mu}{b_i}.\]</span> Note that in this case all benefits must be greater than zero.</p>
 </section>
 <section id="case-alpha1-1" class="level3 unnumbered">
 <h3 class="unnumbered">Case: <span class="math inline">\(\alpha=1\)</span></h3>
 <p>In this case we write the generalised entropy (or Theil) index as, <span class="math display">\[I_1(\boldsymbol{b}) = T(\boldsymbol{b})
-= \frac{1}{n}\sum_{i=1}^{n} \frac{b_i}{\mu} \ln \frac{b_i}{\mu} \\
-\]</span> Suppose our benefits array is binary and <span class="math inline">\(m\)</span> of the <span class="math inline">\(n\)</span> elements is one and the remaining <span class="math inline">\(n-m\)</span> elements are zero. Then we have <span class="math inline">\(\mu=m/n\)</span>, <span class="math display">\[T(\boldsymbol{b}) = \frac{1}{n}\sum_{i=1}^{m} \frac{n}{m} \ln \frac{n}{m}
-= \ln \frac{n}{m} = \ln n - \ln m\]</span> Differentiating with respect to <span class="math inline">\(m\)</span> gives, <span class="math display">\[\frac{ \mathrm{d} T }{ \mathrm{d} m } = -\frac{1}{m}.\]</span> The gradient is negative for all values of <span class="math inline">\(m\)</span>. The slope increases from -1 at <span class="math inline">\(m=1\)</span> to <span class="math inline">\(-1/n\)</span> at <span class="math inline">\(m=n\)</span>. Thus, the index is a decreasing function of <span class="math inline">\(m\)</span>. We know it is zero when <span class="math inline">\(m=n\)</span> and must be maximal at <span class="math inline">\(m=1\)</span>, when it has just one non-zero element. As shown in figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.3</a>. The maximal value of the index is then, <span class="math display">\[\max[T(\boldsymbol{b})] = \ln n\]</span></p>
+= \frac{1}{n}\sum_{i=1}^{n} \frac{b_i}{\mu} \ln \frac{b_i}{\mu}.\]</span> Suppose our benefits array is binary and <span class="math inline">\(m\)</span> of the <span class="math inline">\(n\)</span> elements is one and the remaining <span class="math inline">\(n-m\)</span> elements are zero. Then we have <span class="math inline">\(\mu=m/n\)</span>, <span class="math display">\[T(\boldsymbol{b}) = \frac{1}{n}\sum_{i=1}^{m} \frac{n}{m} \ln \frac{n}{m}
+= \ln \frac{n}{m} = \ln n - \ln m\]</span> Differentiating with respect to <span class="math inline">\(m\)</span> gives, <span class="math display">\[\frac{ \mathrm{d} T }{ \mathrm{d} m } = -\frac{1}{m}.\]</span> The gradient is negative for all values of <span class="math inline">\(m\)</span>. The slope increases from -1 at <span class="math inline">\(m=1\)</span> to <span class="math inline">\(-1/n\)</span> at <span class="math inline">\(m=n\)</span>. Thus, the index is a decreasing function of <span class="math inline">\(m\)</span>. We know it is zero when <span class="math inline">\(m=n\)</span> and must be maximal at <span class="math inline">\(m=1\)</span>, when it has just one non-zero element. As shown in figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.4</a>. The maximal value of the index is then, <span class="math display">\[\max[T(\boldsymbol{b})] = \ln n\]</span></p>
 </section>
 <section id="case-alphanotin01-1" class="level3 unnumbered">
 <h3 class="unnumbered">Case: <span class="math inline">\(\alpha\notin\{0,1\}\)</span></h3>
@@ -4385,7 +4418,7 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 \sum_{i=1}^n \left[ \left(\frac{b_i}{\mu}\right)^{\alpha}-1 \right].\]</span> For a binary array of benefits with <span class="math inline">\(m\)</span> of the <span class="math inline">\(n\)</span> elements being non-zero we can write this as, <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = \frac{1}{n\alpha(\alpha-1)}
 \left[ m \left(\frac{n}{m}\right)^{\alpha}-n \right]
 = \frac{1}{\alpha(\alpha-1)}
-\left[ \left(\frac{n}{m}\right)^{\alpha-1}-1 \right].\]</span> Differentiating with respect to <span class="math inline">\(m\)</span> gives, <span class="math display">\[\frac{ \mathrm{d} I_{\alpha} }{ \mathrm{d} m } = -\frac{1}{n\alpha}\left(\frac{n}{m}\right)^{\alpha}.\]</span> For <span class="math inline">\(\alpha&gt;0\)</span>, we find the gradient to be negative for all values of <span class="math inline">\(m\)</span>. The slope is an increasing function of <span class="math inline">\(m\)</span>. Thus, the index is a decreasing function of <span class="math inline">\(m\)</span>. We know the value of the index is zero when <span class="math inline">\(m=n\)</span> and must be maximal at <span class="math inline">\(m=1\)</span>, when it has just one non-zero element. As shown in figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.3</a> for the value <span class="math inline">\(\alpha=2\)</span>. The maximal value of the index is then, <span class="math display">\[\max[I_{\alpha}(\boldsymbol{b})] = \frac{n^{\alpha-1}-1}{\alpha(\alpha-1)}.\]</span></p>
+\left[ \left(\frac{n}{m}\right)^{\alpha-1}-1 \right].\]</span> Differentiating with respect to <span class="math inline">\(m\)</span> gives, <span class="math display">\[\frac{ \mathrm{d} I_{\alpha} }{ \mathrm{d} m } = -\frac{1}{n\alpha}\left(\frac{n}{m}\right)^{\alpha}.\]</span> For <span class="math inline">\(\alpha&gt;0\)</span>, we find the gradient to be negative for all values of <span class="math inline">\(m\)</span>. The slope is an increasing function of <span class="math inline">\(m\)</span>. Thus, the index is a decreasing function of <span class="math inline">\(m\)</span>. We know the value of the index is zero when <span class="math inline">\(m=n\)</span> and must be maximal at <span class="math inline">\(m=1\)</span>, when it has just one non-zero element. As shown in figure <a href="#fig:GEI_bmin0" data-reference-type="ref" data-reference="fig:GEI_bmin0">5.4</a> for the value <span class="math inline">\(\alpha=2\)</span>. The maximal value of the index is then, <span class="math display">\[\max[I_{\alpha}(\boldsymbol{b})] = \frac{n^{\alpha-1}-1}{\alpha(\alpha-1)}.\]</span></p>
 <div class="lookbox">
 <div id="II_Binary">
 <p><strong>Index value for Binary Benefits</strong></p>
@@ -4403,7 +4436,7 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n\alpha(\alpha-1)}
 I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n}\left[(n-n_c)f_{\alpha}(0)
 + n_c f_{\alpha}\left(\frac{1}{\mu}\right)\right]\\
 &amp; = (1-\mu) f_{\alpha}(0) + \mu f_{\alpha}\left(\frac{1}{\mu}\right),
-\end{aligned}\]</span> since the mean error <span class="math inline">\(\mu=n_c/n\)</span> is exactly the accuracy of our model. From equation (5.3) we know, <span class="math display">\[\begin{aligned}
+\end{aligned}\]</span> since the mean error <span class="math inline">\(\mu=n_c/n\)</span> is exactly the accuracy of our model. From equation (5.2) we know, <span class="math display">\[\begin{aligned}
 (1-\mu)f_{\alpha}(0) &amp; = \left\{
 \begin{array}{cl}
 0                            &amp; \textrm{for}\quad\alpha=1 \\
@@ -4435,7 +4468,7 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n}\left[(n-n_c)f_{\alpha}(0)
 </div>
 <p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>); <span class="math inline">\(n_+\)</span> false positive predictions (in which case <span class="math inline">\(b=2\)</span>); and the remaining <span class="math inline">\(n-n_c-n_+\)</span> predictions are false negative (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as, <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
 + n_c f_{\alpha}\left(\frac{1}{\mu}\right)
-+ n_+ f_{\alpha}\left(\frac{2}{\mu}\right)\right].\]</span> From equation (5.3) we know, <span class="math display">\[\begin{aligned}
++ n_+ f_{\alpha}\left(\frac{2}{\mu}\right)\right].\]</span> From equation (5.2) we know, <span class="math display">\[\begin{aligned}
 f_{\alpha}(0) &amp; = \left\{
 \begin{array}{cl}
 0                            &amp; \textrm{for}\quad\alpha=1 \\
@@ -4477,7 +4510,7 @@ f_{\alpha}\left(\dfrac{2}{\mu}\right) &amp; = \left\{
 &amp; \textrm{for}\quad \alpha&gt;0
 \end{array}\right.\]</span></p>
 </div>
-<p>We wish to find the maximal value of the index for a given accuracy. We start by looking for turning points. Differentiating equation (5.9), <span class="math display">\[\frac{ \partial I_{\alpha} }{ \partial \mu } = \left\{
+<p>We wish to find the maximal value of the index for a given accuracy. We start by looking for turning points. Differentiating equation (5.11), <span class="math display">\[\frac{ \partial I_{\alpha} }{ \partial \mu } = \left\{
 \begin{array}{cl}
 \dfrac{1}{\mu^2} \left( \lambda\ln2 - \mu \right)
 &amp; \textrm{for}\quad\alpha = 1 \\
