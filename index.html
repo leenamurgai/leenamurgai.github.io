@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Dr Leena Murgai">
-  <meta name="dcterms.date" content="2023-03-06">
+  <meta name="dcterms.date" content="2023-03-26">
   <meta name="google-site-verification" content="P2QDxs8DF7oWhzhn6gwF-hjhnxJHhfG71FOX0v56hf0" />
   <meta property="og:url" content="https://mitigatingbias.ml">
   <meta property="og:type" content="book">
@@ -32,7 +32,7 @@
 <header>
 <h1 class="title">Mitigating Bias in Machine Learning</h1>
 <p class="byline"><a href="https://leenamurgai.co.uk" target="_blank" rel="noopener noreferrer">Dr Leena Murgai</a></p>
-<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer"> 6 March 2023</a></p>
+<p class="byline"><a href="https://github.com/leenamurgai/mitigatingbias.ml" target="_blank" rel="noopener noreferrer">26 March 2023</a></p>
 <p class="byline"><a href="https://raw.githubusercontent.com/leenamurgai/mitigatingbias.ml/main/profile/mbml_citation.bib" target="_blank" rel="noopener noreferrer">Cite this book</a></p>
 </header>
 <div class="TOC">
@@ -3161,14 +3161,13 @@ b_{10} &amp; 1
 1   &amp; 0 \\
 b_+ &amp; 1
 \end{array}
-\right)\]</span> Note that the benefit function equal accuracy, corresponds to the special case <span class="math inline">\(b_+=0\)</span>, where all types of errors are equally unlucky. To make the analysis easier in the case where <span class="math inline">\(\hat{Y}=1\)</span> is the advantageous outcome, we examine the behaviour for the specific case <span class="math inline">\(b_+=2\)</span>, (as suggested in the original paper and specified in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>). Here the false positive benefit is twice as lucky as an accurate prediction.</p>
-<p>The value of our inequality index is computed much like an expected cost. The associated cost matrix is given by, <span class="math display">\[c_{ij} = \mathrm{cost}(\hat{y}=i, y=j) = b_{ij}/\mu.\]</span> The difference here is that the associated cost matrix is not constant, but rather depends on the distribution of benefits. Our choice of parameter <span class="math inline">\(\alpha\)</span>, corresponds to different loss functions. As our model performance changes, so does the mean benefit and thus the associated costs. The mean benefit <span class="math inline">\(\mu\)</span> is always positive and so does not affect the relative size or ordering of the associated costs in the matrix, but can still impact the relative preference of different predictions (as is the case when we define a cost sensitive utility). Crucially, cost sensitive utilities mean that making a more accurate prediction might not always reduce the expected cost.</p>
+\right)\]</span> Note that the benefit function equal accuracy, corresponds to the special case <span class="math inline">\(b_+=0\)</span>, where all types of errors are equally unlucky. The value of our inequality index is computed much like an expected cost. The associated cost matrix is given by, <span class="math display">\[c_{ij} = \mathrm{cost}(\hat{y}=i, y=j) = b_{ij}/\mu.\]</span> The difference here is that the associated cost matrix is not constant, but rather depends on the distribution of benefits. Our choice of parameter <span class="math inline">\(\alpha\)</span>, corresponds to different loss functions. As our model performance changes, so does the mean benefit and thus the associated costs. The mean benefit <span class="math inline">\(\mu\)</span> is always positive and so does not affect the relative size or ordering of the associated costs in the matrix, but can still impact the relative preference of different predictions (as is the case when we define a cost sensitive utility). Crucially, cost sensitive utilities mean that making a more accurate prediction might not always reduce the expected cost.</p>
 </section>
 </section>
 <section id="fairness-as-utility" class="level2" data-number="5.4">
 <h2 data-number="5.4"><span class="header-section-number">5.4</span> Fairness as Utility</h2>
 <p>In section <a href="#sec_GEImax" data-reference-type="ref" data-reference="sec_GEImax">5.2.5</a> we saw how the value of the generalised entropy index is maximal when only one individual benefits. In this section we will show that the distribution of benefits and thus the index are more tightly constrained for any <em>reasonable</em> model <span class="math inline">\(\hat{Y}\)</span>, and that those constraints become tighter still on fixing the dataset. We derive an analytical account of the behaviour of the index given by the criterion of equal luck for different values of <span class="math inline">\(\alpha\)</span>, and show how it relates to other well known model performance metrics.</p>
-<p>Under the criterion of equal luck, our benefit distribution can be characterised with two parameters, the mean benefit <span class="math inline">\(\mu\)</span> and the model accuracy <span class="math inline">\(\lambda\)</span>.</p>
+<p>Under the criterion of equal luck, our benefit distribution can be characterised with three parameters, the mean benefit <span class="math inline">\(\mu\)</span> and the model accuracy <span class="math inline">\(\lambda\)</span>, and the false positive benefit <span class="math inline">\(b_+\)</span>.</p>
 <div class="lookbox">
 <p><strong>Index value for Equal Luck</strong></p>
 <div id="eq:GEI_acc-mu">
@@ -3182,12 +3181,12 @@ b_+ &amp; 1
 <td style="text-align: center;"><span class="math display">\[
 I_{\alpha}\left(\mu,\lambda\right) = \left\{
 \begin{array}{cl}
-\left(1-\dfrac{\lambda}{\mu}\right)\ln2-\ln\mu
+\ln \left(\dfrac{b_+}{\mu}\right) - \dfrac{\lambda}{\mu}\ln b_+
 &amp; \textrm{if}\quad\alpha = 1 \\
 \rule{0em}{4.5ex}
 \dfrac{1}{\alpha(\alpha-1)}
-\left[ \left(\dfrac{2}{\mu}\right)^{\alpha-1}
-- \dfrac{(2^{\alpha-1}-1)}{\mu^{\alpha}}\lambda - 1 \right]
+\left[ \left(\dfrac{b_+}{\mu}\right)^{\alpha-1}
+- \dfrac{(b_+^{\alpha-1}-1)}{\mu^{\alpha}}\lambda - 1 \right]
 &amp; \textrm{if}\quad \alpha&gt;0.
 \end{array}\right.\]</span></td>
 <td style="text-align: right;">(5.12)</td>
@@ -3197,7 +3196,7 @@ I_{\alpha}\left(\mu,\lambda\right) = \left\{
 </div>
 <p><a href="#II_Luck">Proof</a> in in appendix <a href="#sec_app_IISolutions" data-reference-type="ref" data-reference="sec_app_IISolutions">D.3</a>.</p>
 </div>
-<p>The mean benefit <span class="math inline">\(\mu\)</span> here, gives us an indication of the relative number of false positive to false negative errors, made by the model; it tells us if the model is over or underestimating the target on average. From another point of view, it quantifies the amount of skew in the distribution of luck. Skew describes the extent of asymmetry in a distribution. For negatively skewed distributions, the tail is longer (and thinner) on the left (and vice versa for positively skewed distributions). Therefore, <span class="math inline">\(\mu&lt;1\)</span> indicates more weight on the left (and thus the tail on the right) hence positive skew (and vice versa for <span class="math inline">\(\mu&gt;1\)</span>). Figure <a href="#fig:BenefitMeanSkew" data-reference-type="ref" data-reference="fig:BenefitMeanSkew">5.6</a> provides visual illustrations of benefit distributions with different mean benefits <span class="math inline">\(\mu\)</span>. When the mean benefit is one (as in the centre figure), the distribution has no skew; it is symmetric.</p>
+<p>To make the analysis easier in the case where <span class="math inline">\(\hat{Y}=1\)</span> is the advantageous outcome, we examine the behaviour for the specific case <span class="math inline">\(b_+=2\)</span>, (as suggested in the original paper and specified in Table <a href="#tbl:clfBenefitFuncs" data-reference-type="ref" data-reference="tbl:clfBenefitFuncs">5.1</a>). Here the false positive benefit is twice as lucky as an accurate prediction. The mean benefit <span class="math inline">\(\mu\)</span> here, gives us an indication of the relative number of false positive to false negative errors, made by the model; it tells us if the model is over or underestimating the target on average. From another point of view, it quantifies the amount of skew in the distribution of luck. Skew describes the extent of asymmetry in a distribution. For negatively skewed distributions, the tail is longer (and thinner) on the left (and vice versa for positively skewed distributions). Therefore, <span class="math inline">\(\mu&lt;1\)</span> indicates more weight on the left (and thus the tail on the right) hence positive skew (and vice versa for <span class="math inline">\(\mu&gt;1\)</span>). Figure <a href="#fig:BenefitMeanSkew" data-reference-type="ref" data-reference="fig:BenefitMeanSkew">5.6</a> provides visual illustrations of benefit distributions with different mean benefits <span class="math inline">\(\mu\)</span>. When the mean benefit is one (as in the centre figure), the distribution has no skew; it is symmetric.</p>
 <figure>
 <img src="05_UtilityFairness/figures/Fig_BenefitMeanSkew.png" id="fig:BenefitMeanSkew" alt="Figure 5.6: Characterisation of benefit distributions with different mean benefits." />
 <figcaption aria-hidden="true">Figure 5.6: Characterisation of benefit distributions with different mean benefits.</figcaption>
@@ -4528,18 +4527,18 @@ I_{\alpha}(\boldsymbol{b}) &amp; = \frac{1}{n}\left[(n-n_c)f_{\alpha}(0)
 </div>
 <p><span class="math display">\[I_{\alpha}\left(\mu,\lambda\right) = \left\{
 \begin{array}{cl}
-\left(1-\dfrac{\lambda}{\mu}\right)\ln2-\ln\mu
+\left(1-\dfrac{\lambda}{\mu}\right)\ln b_+-\ln\mu
 &amp; \textrm{for}\quad\alpha = 1 \\
 \rule{0em}{4.5ex}
 \dfrac{1}{\alpha(\alpha-1)}
-\left[ \left(\dfrac{2}{\mu}\right)^{\alpha-1}
-- \dfrac{(2^{\alpha-1}-1)}{\mu^{\alpha}}\lambda - 1 \right]
+\left[ \left(\dfrac{b_+}{\mu}\right)^{\alpha-1}
+- \dfrac{(b_+^{\alpha-1}-1)}{\mu^{\alpha}}\lambda - 1 \right]
 &amp; \textrm{for}\quad \alpha&gt;0.
 \end{array}\right.\]</span></p>
 </div>
-<p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>); <span class="math inline">\(n_+\)</span> false positive predictions (in which case <span class="math inline">\(b=2\)</span>); and the remaining <span class="math inline">\(n-n_c-n_+\)</span> predictions are false negative (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as, <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
+<p>Let’s suppose our model makes <span class="math inline">\(n_c\)</span> correct predictions (in which case <span class="math inline">\(b=1\)</span>); <span class="math inline">\(n_+\)</span> false positive predictions (in which case <span class="math inline">\(b=b_+\)</span>); and the remaining <span class="math inline">\(n-n_c-n_+\)</span> predictions are false negative (in which case <span class="math inline">\(b=0\)</span>). We can write the value of the index as, <span class="math display">\[I_{\alpha}(\boldsymbol{b}) = \frac{1}{n}\left[(n-n_c-n_+)f_{\alpha}(0)
 + n_c f_{\alpha}\left(\frac{1}{\mu}\right)
-+ n_+ f_{\alpha}\left(\frac{2}{\mu}\right)\right].\]</span> From equation (5.2) we know, <span class="math display">\[\begin{aligned}
++ n_+ f_{\alpha}\left(\frac{b_+}{\mu}\right)\right].\]</span> From equation (5.2) we know, <span class="math display">\[\begin{aligned}
 f_{\alpha}(0) &amp; = \left\{
 \begin{array}{cl}
 0                            &amp; \textrm{for}\quad\alpha=1 \\
@@ -4553,22 +4552,22 @@ f_{\alpha}\left(\dfrac{1}{\mu}\right) &amp; = \left\{
 \dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{1}{\mu^{\alpha}}-1\right)
 &amp; \textrm{for}\quad\alpha&gt;0,
 \end{array}\right. \\
-f_{\alpha}\left(\dfrac{2}{\mu}\right) &amp; = \left\{
+f_{\alpha}\left(\dfrac{b_+}{\mu}\right) &amp; = \left\{
 \begin{array}{cl}
-\dfrac{2(\ln2-\ln\mu)}{\mu}
+\dfrac{b_+(\ln b_+-\ln\mu)}{\mu}
 &amp; \textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
-\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{2^{\alpha}}{\mu^{\alpha}}-1\right)
+\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{b_+^{\alpha}}{\mu^{\alpha}}-1\right)
 &amp; \textrm{for}\quad\alpha&gt;0.
 \end{array}\right. \\
 \Rightarrow\quad I_{\alpha}(\boldsymbol{b}) &amp; = \left\{
 \begin{array}{cl}
--\dfrac{(n_c+2n_+)}{n}\dfrac{\ln\mu}{\mu} + \dfrac{2n_+\ln2}{n\mu}
+-\dfrac{(n_c+n_+b_+)}{n}\dfrac{\ln\mu}{\mu} + \dfrac{n_+b_+\ln b_+}{n\mu}
 &amp; \textrm{for}\quad\alpha=1 \\ \rule{0em}{4ex}
-\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{n_c+2^{\alpha}n_+}{n\mu^{\alpha}} - 1\right)
+\dfrac{1}{\alpha(\alpha-1)}\left(\dfrac{n_c+b_+^{\alpha}n_+}{n\mu^{\alpha}} - 1\right)
 &amp; \textrm{for}\quad\alpha&gt;0.
 \end{array}\right.
-\end{aligned}\]</span> Let us denote the accuracy of our model with <span class="math inline">\(\lambda\)</span>. We have, <span class="math display">\[\lambda = \frac{n_c}{n} \quad\textrm{and}\quad \mu = \frac{n_c+2n_+}{n}
-\quad\Rightarrow\quad \frac{2n_+}{n} = \mu-\lambda.\]</span> Substituting completes the proof.</p>
+\end{aligned}\]</span> Let us denote the accuracy of our model with <span class="math inline">\(\lambda\)</span>. We have, <span class="math display">\[\lambda = \frac{n_c}{n} \quad\textrm{and}\quad \mu = \frac{n_c+n_+b_+}{n}
+\quad\Rightarrow\quad \frac{n_+b_+}{n} = \mu-\lambda.\]</span> Substituting completes the proof.</p>
 <div class="lookbox">
 <div id="II_IndexTpt">
 <p><strong>Index turning point</strong></p>
